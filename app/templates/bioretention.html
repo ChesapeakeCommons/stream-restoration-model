@@ -1,193 +1,121 @@
-<div data-ng-include="'/templates/header--view.html'"></div>
+<form data-ng-submit="page.saveInputs()" class="form" role="form">
 
-<main class="container">
-    <form data-ng-submit="page.saveReport()" class="row feature summary">
-        <article class="feature-detail">
-            <div class="column-16 feature-detail-content">
+    <article class="feature-detail">
 
-                <fieldset>
-                    <!-- Report Date -->
+        <div class="feature-detail-content">
+
+            <fieldset>
+
+                <h2>
+                    Installation Summary
+                </h2>
+
+                <div class="row">
+
                     <div class="form-group column-8">
-                        <label for="report_date" class="control-label">
-                            Report Date
+
+                        <label for="bioretention_impervious_area" class="control-label">
+                            Area Draining to the Practice (Impervious Area)
                         </label>
 
-                        <input data-ng-model="page.modelInputs.report_date" class="form-control" class="form-control" type="text" id="report_date" name="report_date" placeholder="Enter a date" />
+                        <input data-ng-model="page.modelInputs.installation_bioretention_impervious_area" class="form-control" class="form-control" type="number" id="bioretention_impervious_area" name="bioretention_impervious_area" />
+
+                        <p class="help-text">
+                            sq ft
+                        </p>
+
                     </div>
 
-                    <!-- Measurement Period -->
-                    <div class="form-group column-8">
-                        <label for="measurement_period" class="control-label">
-                            Measurement Period
-                        </label>
-
-                        <select class="form-control" data-ng-model="page.modelInputs.measurement_period" id="measurement_period" name="measurement_period">
-                            <option value="Planning">Planning</option>
-                            <option value="Installation">Installation</option>
-                            <option value="Monitoring">Monitoring</option>
-                        </select>
-                    </div>
-
-                    <!-- WIP Reporting Agency -->
-                    <div class="form-group column-8" data-ng-if="page.modelInputs.measurement_period === 'Planning'">
-                        <label for="wip_reporting_agency" class="control-label">
-                            WIP Reporting Agency
-                        </label>
-
-                        <select class="form-control" data-ng-model="page.modelInputs.wip_reporting_agency" id="wip_reporting_agency" name="wip_reporting_agency">
-                            <option value="DC District Department of the Environment">DC District Department of the Environment</option>
-                            <option value="Delaware Department of Natural Resources and Environmental Control">Delaware Department of Natural Resources and Environmental Control</option>
-                            <option value="Maryland Department of Natural Resources">MD Department of Natural Resources</option>
-                            <option value="Maryland Department of the Environment">MD Department of the Environment</option>
-                            <option value="Maryland Department of Agriculture">MD Department of Agriculture</option>
-                            <option value="New York Department of Environmental Conservation">New York Department of Environmental Conservation</option>
-                            <option value="Pennsylvania Department of Environmental Protection">Pennsylvania Department of Environmental Protection</option>
-                            <option value="Virginia Department of Conservation and Recreation">Virginia Department of Conservation and Recreation</option>
-                            <option value="West Virginia Department of Environmental Protection">West Virginia Department of Environmental Protection</option>
-                        </select>
-                    </div>
-                </fieldset>
-
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Planning' || page.modelInputs.measurement_period === 'Installation'">
-                    <h2><strong>Installation</strong> Summary</h2>
-
-                    <div class="row">
-                        <div class="form-group column-8">
-                            <label for="bioretention_impervious_area" class="control-label">
-                                Area Draining to the Practice (Impervious Area)
-                            </label>
-
-                            <input data-ng-model="page.modelInputs.installation_bioretention_impervious_area" class="form-control" class="form-control" type="number" id="bioretention_impervious_area" name="bioretention_impervious_area" />
-
-                            <p class="help-text">
-                                sq ft
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group column-8">
-                            <label for="bioretention_total_drainage_area" class="control-label">
-                                Total Drainage Area
-                            </label>
-
-                            <input data-ng-model="page.modelInputs.installation_bioretention_total_drainage_area" class="form-control" class="form-control" type="number" id="bioretention_total_drainage_area" name="bioretention_total_drainage_area" />
-
-                            <p class="help-text">
-                                sq ft
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group column-8">
-                            <label for="rainfall_depth_treated" class="control-label">
-                                Rainfall Depth Treated
-                            </label>
-
-                            <input data-ng-model="page.modelInputs.installation_rainfall_depth_treated" class="form-control" class="form-control" type="number" id="rainfall_depth_treated" name="rainfall_depth_treated" step="0.0001" />
-
-                            <p class="help-text">
-                                in
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group column-8">
-                            <label for="bioretention_practice_area" class="control-label">
-                                Practice Area
-                            </label>
-
-                            <input data-ng-model="page.modelInputs.installation_bioretention_practice_area" class="form-control" class="form-control" type="number" id="bioretention_practice_area" name="bioretention_practice_area" />
-
-                            <p class="help-text">
-                                sq ft
-                            </p>
-                        </div>
-                    </div>
-
-
-                </fieldset>
-
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Monitoring'">
-                    <h2><strong>Interim</strong> BMP Metrics Data</h2>
-
-                    <div class="form-group column-5">
-                        <label for="bird_count" class="control-label">
-                            Number of observed bird or small animal species
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.monitoring_bird_count" class="form-control" class="form-control" type="number" id="bird_count" name="bird_count" />
-                    </div>
-
-                </fieldset>
-
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Monitoring'">
-                    <h2><strong>Adaptive</strong> Management Checks Performed</h2>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label class="control-label">
-                                <input data-ng-model="page.modelInputs.monitoring_obstructions" type="checkbox" id="obstructions" name="obstructions" /> Keep all inflows into, and outflows from, the BMP free of obstructions
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label class="control-label">
-                                <input data-ng-model="page.modelInputs.monitoring_maintenance" type="checkbox" id="maintenance" name="maintenance" /> Initially, and then annually, review CSN LID maintenance guide (CSN, 2014)
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label class="control-label">
-                                <input data-ng-model="page.modelInputs.monitoring_post_storm" type="checkbox" id="post_storm" name="post_storm" /> Visually check the BMP after each major storm and perform any needed maintenance
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label class="control-label">
-                                <input data-ng-model="page.modelInputs.monitoring_ponding" type="checkbox" id="ponding" name="ponding" /> Ponding may indicate clogging of the media. Replace media as needed in bioretention area
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label class="control-label">
-                                <input data-ng-model="page.modelInputs.monitoring_dying_plants" type="checkbox" id="dying_plants" name="dying_plants" /> Check and correct conditions producing too much or too little water, resulting in dying plants
-                        </div>
-                    </div>
-
-                </fieldset>
-
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Planning' || page.modelInputs.measurement_period === 'Installation' || page.modelInputs.measurement_period === 'Monitoring'">
-                    <h2><strong>Notes</strong></h2>
-
-                    <div class="form-group">
-                        <textarea rows="1" data-ng-model="page.modelInputs.notes" class="form-control animate" msd-elastic id="notes" name="notes" placeholder="Notes">{{ page.modelInputs.notes }}</textarea>
-                    </div>
-
-                </fieldset>
-
-                <div class="form-actions">
-                    <button type="submit" class="button button-submit">
-                        Save Changes
-                    </button>
-                    <button type="button" data-ng-click="page.deleteReport()" class="button button-submit">
-                        Delete
-                    </button>
                 </div>
 
-            </div>
-        </article>
-    </form>
-</main>
+                <div class="row">
 
-<div data-ng-include="'/templates/footer--view.html'"></div>
+                    <div class="form-group column-8">
+
+                        <label for="bioretention_total_drainage_area" class="control-label">
+                            Total Drainage Area
+                        </label>
+
+                        <input data-ng-model="page.modelInputs.installation_bioretention_total_drainage_area" class="form-control" class="form-control" type="number" id="bioretention_total_drainage_area" name="bioretention_total_drainage_area" />
+
+                        <p class="help-text">
+                            sq ft
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group column-8">
+
+                        <label for="rainfall_depth_treated" class="control-label">
+                            Rainfall Depth Treated
+                        </label>
+
+                        <input data-ng-model="page.modelInputs.installation_rainfall_depth_treated" class="form-control" class="form-control" type="number" id="rainfall_depth_treated" name="rainfall_depth_treated" step="0.0001" />
+
+                        <p class="help-text">
+                            in
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="form-group column-8">
+
+                        <label for="bioretention_practice_area" class="control-label">
+                            Practice Area
+                        </label>
+
+                        <input data-ng-model="page.modelInputs.installation_bioretention_practice_area" class="form-control" class="form-control" type="number" id="bioretention_practice_area" name="bioretention_practice_area" />
+
+                        <p class="help-text">
+                            sq ft
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <h2>
+                    Interim Metric Data
+                </h2>
+
+                <div class="form-group column-5">
+
+                    <label for="bird_count" class="control-label">
+                        Number of observed bird or small animal species
+                    </label>
+
+                    <input data-ng-model="page.modelInputs.monitoring_bird_count" class="form-control" class="form-control" type="number" id="bird_count" name="bird_count" />
+
+                </div>
+
+            </fieldset>
+
+            <div class="form-actions">
+
+                <button type="submit" class="button button-submit">
+                    Save Changes
+                </button>
+
+                <button type="button" data-ng-click="page.deleteReport()" class="button button-submit">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</form>

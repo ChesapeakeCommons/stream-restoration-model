@@ -1,517 +1,596 @@
-<div data-ng-include="'/templates/header--view.html'"></div>
+<form data-ng-submit="page.saveInputs()" class="form" role="form">
 
-<main class="container">
-    <form data-ng-submit="page.saveReport()" class="row feature summary">
-        <article class="feature-detail">
-            <div class="column-16 feature-detail-content">
+    <article class="feature-detail">
 
-                <!-- BASIC READING INFORMATION -->
-                <fieldset>
-                    <div class="form-group column-8">
-                        <label for="report_date" class="control-label">
-                            Report Date
-                        </label>
+        <div class="feature-detail-content">
 
-                        <input data-ng-model="page.modelInputs.report_date" class="form-control" class="form-control" type="text" id="report_date" name="report_date" placeholder="Enter a date" />
-                    </div>
+            <!-- INSTALLATION FIELDS -->
 
-                    <!-- Measurement Period -->
-                    <div class="form-group column-8">
-                        <label for="measurement_period" class="control-label">
-                            Measurement Period
-                        </label>
+            <fieldset>
 
-                        <select class="form-control" data-ng-model="page.modelInputs.measurement_period" id="measurement_period" name="measurement_period">
-                            <option value="Planning">Planning</option>
-                            <option value="Installation">Installation</option>
-                            <option value="Monitoring">Monitoring</option>
-                        </select>
-                    </div>
+                <h2>
+                    Installation Summary
+                </h2>
 
-                    <!-- WIP Reporting Agency -->
-                    <div class="form-group column-8" data-ng-if="page.modelInputs.measurement_period === 'Planning'">
-                        <label for="wip_reporting_agency" class="control-label">
-                            WIP Reporting Agency
-                        </label>
+                <div class="form-group">
 
-                        <select class="form-control" data-ng-model="page.modelInputs.wip_reporting_agency" id="wip_reporting_agency" name="wip_reporting_agency">
-                            <option value="DC District Department of the Environment">DC District Department of the Environment</option>
-                            <option value="Delaware Department of Natural Resources and Environmental Control">Delaware Department of Natural Resources and Environmental Control</option>
-                            <option value="Maryland Department of Natural Resources">MD Department of Natural Resources</option>
-                            <option value="Maryland Department of the Environment">MD Department of the Environment</option>
-                            <option value="Maryland Department of Agriculture">MD Department of Agriculture</option>
-                            <option value="New York Department of Environmental Conservation">New York Department of Environmental Conservation</option>
-                            <option value="Pennsylvania Department of Environmental Protection">Pennsylvania Department of Environmental Protection</option>
-                            <option value="Virginia Department of Conservation and Recreation">Virginia Department of Conservation and Recreation</option>
-                            <option value="West Virginia Department of Environmental Protection">West Virginia Department of Environmental Protection</option>
-                        </select>
-                    </div>
-                </fieldset>
+                    <div class="row nested-row">
 
-                <!-- INSTALLATION FIELDS -->
+                        <div class="column-4">
 
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Planning' || page.modelInputs.measurement_period === 'Installation'">
-
-                    <h2>
-                        <strong>Installation</strong> Summary
-                    </h2>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-4">
-                                <label for="installation_structure_type_1" class="control-label">
-                                    Type of Structural Feature
-                                </label>
-
-                                <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_1" id="installation_structure_type_1" name="installation_structure_type_1" data-ng-options="type for type in page.options.structureTypes">
-                                    <option value="">
-                                        -- Select a Structure type --
-                                    </option>
-                                </select>
-
-                            </div>
-                            <div class="column-4">
-                                <label for="installation_structure_units_1" class="control-label">
-                                    Units
-                                </label>
-
-                                <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_1" id="installation_structure_units_1" name="installation_structure_units_1" placeholder="" />
-                            </div>
-                            <div class="column-4">
-                                <label for="installation_structure_extent_1" class="control-label">
-                                    Extent
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_1" id="installation_structure_extent_1" name="installation_structure_extent_1" placeholder="" />
-                            </div>
-                        </div>
-
-                        <div class="row nested-row">
-                            <div class="column-4">
-                                <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_2" id="installation_structure_type_2" name="installation_structure_type_2" data-ng-options="type for type in page.options.structureTypes">
-                                    <option value="">
-                                        -- Select a Structure type --
-                                    </option>
-                                </select>
-
-                            </div>
-                            <div class="column-4">
-                                <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_2" id="installation_structure_units_2" name="installation_structure_units_2" placeholder="" />
-                            </div>
-                            <div class="column-4">
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_2" id="installation_structure_extent_2" name="installation_structure_extent_2" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-
-                        <div class="row nested-row">
-                            <div class="column-4">
-                                <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_3" id="installation_structure_type_3" name="installation_structure_type_3" data-ng-options="type for type in page.options.structureTypes">
-                                    <option value="">
-                                        -- Select a Structure type --
-                                    </option>
-                                </select>
-
-                            </div>
-                            <div class="column-4">
-                                <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_3" id="installation_structure_units_3" name="installation_structure_units_3" placeholder="" />
-                            </div>
-                            <div class="column-4">
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_3" id="installation_structure_extent_3" name="installation_structure_extent_3" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-
-                        <div class="row nested-row">
-                            <div class="column-4">
-                                <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_4" id="installation_structure_type_4" name="installation_structure_type_4" data-ng-options="type for type in page.options.structureTypes">
-                                    <option value="">
-                                        -- Select a Structure type --
-                                    </option>
-                                </select>
-
-                            </div>
-                            <div class="column-4">
-                                <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_4" id="installation_structure_units_4" name="installation_structure_units_4" placeholder="" />
-                            </div>
-                            <div class="column-4">
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_4" id="installation_structure_extent_4" name="installation_structure_extent_4" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-                </fieldset>
-
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Planning' || page.modelInputs.measurement_period === 'Installation'">
-
-                    <h2>
-                        <strong>Chesapeake Bay</strong> Metrics
-                    </h2>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_areas_protected" class="control-label">
-                                    Acres Protected Under Long-term Easement
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_areas_protected" id="metrics_areas_protected" name="metrics_areas_protected" placeholder="" step="0.0001" />
-                                <p class="help-text">
-                                    permanent or >30 years
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_habitat_restoration_target_species_1" class="control-label">
-                                    Habitat Restoration Target Species (1)
-                                </label>
-
-                                <input type="text" class="form-control" data-ng-model="page.modelInputs.metrics_habitat_restoration_target_species_1" id="metrics_habitat_restoration_target_species_1" name="metrics_habitat_restoration_target_species_1" placeholder="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_habitat_restoration_target_species_2" class="control-label">
-                                    Habitat Restoration Target Species (2)
-                                </label>
-
-                                <input type="text" class="form-control" data-ng-model="page.modelInputs.metrics_habitat_restoration_target_species_2" id="metrics_habitat_restoration_target_species_2" name="metrics_habitat_restoration_target_species_2" placeholder="" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_areas_of_habitat_restored" class="control-label">
-                                    Acres of Habitat Restored
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_areas_of_habitat_restored" id="metrics_areas_of_habitat_restored" name="metrics_areas_of_habitat_restored" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_acres_of_wetlands_restored" class="control-label">
-                                    Acres of Wetlands Restored
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_wetlands_restored" id="metrics_acres_of_wetlands_restored" name="metrics_acres_of_wetlands_restored" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_miles_of_living_shoreline_restored" class="control-label">
-                                    Miles of Living Shoreline Restored
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_miles_of_living_shoreline_restored" id="metrics_miles_of_living_shoreline_restored" name="metrics_miles_of_living_shoreline_restored" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_acres_of_oyster_habitat_restored" class="control-label">
-                                    Acres of Oyster Habitat Restored
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_oyster_habitat_restored" id="metrics_acres_of_oyster_habitat_restored" name="metrics_acres_of_oyster_habitat_restored" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-8">
-                                <label for="metrics_fish_passage_improvements_number_of_passage_barriers_re" class="control-label">
-                                    Fish Passage Improvements
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_fish_passage_improvements_number_of_passage_barriers_re" id="metrics_fish_passage_improvements_number_of_passage_barriers_re" name="metrics_fish_passage_improvements_number_of_passage_barriers_re" placeholder="" step="0.0001" />
-                                <p class="help-text">
-                                    # of passage barriers rectified
-                                </p>
-                            </div>
-                            <div class="column-8">
-                                <label for="metrics_fish_passage_improvements_number_of_fish_crossing_barri" class="control-label">
-                                    &nbsp;
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_fish_passage_improvements_number_of_fish_crossing_barri" id="metrics_fish_passage_improvements_number_of_fish_crossing_barri" name="metrics_fish_passage_improvements_number_of_fish_crossing_barri" placeholder="" step="0.0001" />
-                                <p class="help-text">
-                                    # of fish counted crossing rectified barriers
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_miles_of_stream_opened" class="control-label">
-                                    Miles of Stream Opened
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_miles_of_stream_opened" id="metrics_miles_of_stream_opened" name="metrics_miles_of_stream_opened" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-8">
-                                <label for="metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" class="control-label">
-                                    Eastern Brook Trout
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" id="metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" name="metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" placeholder="" step="0.0001" />
-                                <p class="help-text">
-                                    # reintroduced subwatersheds
-                                </p>
-                            </div>
-                            <div class="column-8">
-                                <label for="metrics_number_of_habitat_units_improved_eastern_brook_trout" class="control-label">
-                                    &nbsp;
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_number_of_habitat_units_improved_eastern_brook_trout" id="metrics_number_of_habitat_units_improved_eastern_brook_trout" name="metrics_number_of_habitat_units_improved_eastern_brook_trout" placeholder="" step="0.0001" />
-                                <p class="help-text">
-                                    # of habitat units improved
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </fieldset>
-
-                <!-- MONITORING FIELDS -->
-
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Monitoring'">
-
-                    <h2>
-                        <strong>Interim</strong> Metrics
-                    </h2>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_riffle_stability_index" class="control-label">
-                                    Riffle Stability Index
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_riffle_stability_index" id="metrics_riffle_stability_index" name="metrics_riffle_stability_index" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_relative_bed_stability" class="control-label">
-                                    Relative Bed Stability
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_relative_bed_stability" id="metrics_relative_bed_stability" name="metrics_relative_bed_stability" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_substrate_mean_particle_size" class="control-label">
-                                    Substrate Mean Particle Size
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_substrate_mean_particle_size" id="metrics_substrate_mean_particle_size" name="metrics_substrate_mean_particle_size" placeholder="" step="0.0001" />
-                                <p class="help-text">
-                                    D50
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_streambed_percent_fines" class="control-label">
-                                    Streambed Percent Fines
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_streambed_percent_fines" id="metrics_streambed_percent_fines" name="metrics_streambed_percent_fines" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_bed_armoring_ratio" class="control-label">
-                                    Bed Armoring Ratio
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_bed_armoring_ratio" id="metrics_bed_armoring_ratio" name="metrics_bed_armoring_ratio" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_total_habitat_assessment_score" class="control-label">
-                                    Total Habitat Assessment Score
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_total_habitat_assessment_score" id="metrics_total_habitat_assessment_score" name="metrics_total_habitat_assessment_score" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_type_of_habitat_assessment" class="control-label">
-                                    Type of Habitat Assessment
-                                </label>
-
-                                <select class="form-control" data-ng-model="page.modelInputs.metrics_type_of_habitat_assessment" id="metrics_type_of_habitat_assessment" name="metrics_type_of_habitat_assessment" data-ng-options="type for type in page.options.habitatAssessmentTypes">
-                                    <option value="">
-                                        -- Select an Assessment Type --
-                                    </option>
-                                </select>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_area_in_habitat_patch_areas" class="control-label">
-                                    Area in Habitat "Patch" Areas
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_area_in_habitat_patch_areas" id="metrics_area_in_habitat_patch_areas" name="metrics_area_in_habitat_patch_areas" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-8">
-                                <label for="metrics_acres_of_target_species_1_habitat_restoredprotected" class="control-label">
-                                    Acres of Target Species 1 Habitat Restored/Protected
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_target_species_1_habitat_restoredprotected" id="metrics_acres_of_target_species_1_habitat_restoredprotected" name="metrics_acres_of_target_species_1_habitat_restoredprotected" placeholder="" step="0.0001" />
-                            </div>
-                            <div class="column-8">
-                                <label for="metrics_acres_of_target_species_2_habitat_restoredprotected" class="control-label">
-                                    Acres of Target Species 2 Habitat Restored/Protected
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_target_species_2_habitat_restoredprotected" id="metrics_acres_of_target_species_2_habitat_restoredprotected" name="metrics_acres_of_target_species_2_habitat_restoredprotected" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_whol_lwd_assessment" class="control-label">
-                                    WOHL LWD Assessment
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_whol_lwd_assessment" id="metrics_whol_lwd_assessment" name="metrics_whol_lwd_assessment" placeholder="" step="0.0001" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="row nested-row">
-                            <div class="column-16">
-                                <label for="metrics_large_woody_debris_index" class="control-label">
-                                    Large Woody Debris Index
-                                </label>
-
-                                <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_large_woody_debris_index" id="metrics_large_woody_debris_index" name="metrics_large_woody_debris_index" placeholder="" step="0.0001" />
-                                <p class="help-text">
-                                    LWDI
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </fieldset>
-
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Monitoring'">
-                    <h2><strong>Adaptive</strong> Management Checks Performed</h2>
-
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label for="monitoring_design_criteria_checklist" class="control-label">
-                                <input type="checkbox" data-ng-model="page.modelInputs.monitoring_design_criteria_checklist" id="monitoring_design_criteria_checklist" name="monitoring_design_criteria_checklist" />
-                                Coir logs, woody debris additions, or other natural structural elements meet all design specifications.
+                            <label for="installation_structure_type_1" class="control-label">
+                                Type of Structural Feature
                             </label>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label for="monitoring_geomorphic" class="control-label">
-                                <input type="checkbox" data-ng-model="page.modelInputs.monitoring_geomorphic" id="monitoring_geomorphic" name="monitoring_geomorphic" />
-                                Is the bed composition too fine? If so, see Sellner et al., 2012, p. 102.
+                            <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_1" id="installation_structure_type_1" name="installation_structure_type_1" data-ng-options="type for type in page.options.structureTypes">
+                                <option value="">
+                                    -- Select a Structure type --
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="column-4">
+
+                            <label for="installation_structure_units_1" class="control-label">
+                                Units
                             </label>
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <div class="checkbox">
-                            <label for="monitoring_biological" class="control-label">
-                                <input type="checkbox" data-ng-model="page.modelInputs.monitoring_biological" id="monitoring_biological" name="monitoring_biological" />
-                                Has LWD maintained its planned density? If not, see Sellner et al., 2012, p.104.
+                            <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_1" id="installation_structure_units_1" name="installation_structure_units_1" placeholder="" />
+
+                        </div>
+
+                        <div class="column-4">
+
+                            <label for="installation_structure_extent_1" class="control-label">
+                                Extent
                             </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_1" id="installation_structure_extent_1" name="installation_structure_extent_1" placeholder="" />
                         </div>
-                    </div>
-                </fieldset>
 
-                <!-- NOTES -->
-                <fieldset data-ng-if="page.modelInputs.measurement_period === 'Planning' || page.modelInputs.measurement_period === 'Installation' || page.modelInputs.measurement_period === 'Monitoring'">
-                    <h2><strong>Notes</strong></h2>
-
-                    <div class="form-group">
-                        <textarea rows="1" data-ng-model="page.modelInputs.notes" class="form-control animate" msd-elastic id="notes" name="notes" placeholder="Notes">{{ page.modelInputs.notes }}</textarea>
                     </div>
 
-                </fieldset>
+                    <div class="row nested-row">
 
+                        <div class="column-4">
 
-                <div class="form-actions">
-                    <button type="submit" class="button button-submit">
-                        Save Changes
-                    </button>
-                    <button type="button" data-ng-click="page.deleteReport()" class="button button-submit">
-                        Delete
-                    </button>
+                            <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_2" id="installation_structure_type_2" name="installation_structure_type_2" data-ng-options="type for type in page.options.structureTypes">
+                                <option value="">
+                                    -- Select a Structure type --
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="column-4">
+                            <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_2" id="installation_structure_units_2" name="installation_structure_units_2" placeholder="" />
+                        </div>
+
+                        <div class="column-4">
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_2" id="installation_structure_extent_2" name="installation_structure_extent_2" placeholder="" step="0.0001" />
+                        </div>
+
+                    </div>
+
+                    <div class="row nested-row">
+
+                        <div class="column-4">
+
+                            <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_3" id="installation_structure_type_3" name="installation_structure_type_3" data-ng-options="type for type in page.options.structureTypes">
+                                <option value="">
+                                    -- Select a Structure type --
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="column-4">
+                            <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_3" id="installation_structure_units_3" name="installation_structure_units_3" placeholder="" />
+                        </div>
+
+                        <div class="column-4">
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_3" id="installation_structure_extent_3" name="installation_structure_extent_3" placeholder="" step="0.0001" />
+                        </div>
+
+                    </div>
+
+                    <div class="row nested-row">
+
+                        <div class="column-4">
+
+                            <select class="form-control" data-ng-model="page.modelInputs.installation_structure_type_4" id="installation_structure_type_4" name="installation_structure_type_4" data-ng-options="type for type in page.options.structureTypes">
+                                <option value="">
+                                    -- Select a Structure type --
+                                </option>
+                            </select>
+
+                        </div>
+
+                        <div class="column-4">
+                            <input type="text" class="form-control" data-ng-model="page.modelInputs.installation_structure_units_4" id="installation_structure_units_4" name="installation_structure_units_4" placeholder="" />
+                        </div>
+
+                        <div class="column-4">
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.installation_structure_extent_4" id="installation_structure_extent_4" name="installation_structure_extent_4" placeholder="" step="0.0001" />
+                        </div>
+
+                    </div>
+
                 </div>
 
-            </div>
-        </article>
-    </form>
-</main>
+            </fieldset>
 
-<div data-ng-include="'/templates/footer--view.html'"></div>
+            <fieldset>
+
+                <h2>
+                    Metrics
+                </h2>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_areas_protected" class="control-label">
+                                Acres Protected Under Long-term Easement
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_areas_protected" id="metrics_areas_protected" name="metrics_areas_protected" placeholder="" step="0.0001" />
+
+                            <p class="help-text">
+                                permanent or >30 years
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_habitat_restoration_target_species_1" class="control-label">
+                                Habitat Restoration Target Species (1)
+                            </label>
+
+                            <input type="text" class="form-control" data-ng-model="page.modelInputs.metrics_habitat_restoration_target_species_1" id="metrics_habitat_restoration_target_species_1" name="metrics_habitat_restoration_target_species_1" placeholder="" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_habitat_restoration_target_species_2" class="control-label">
+                                Habitat Restoration Target Species (2)
+                            </label>
+
+                            <input type="text" class="form-control" data-ng-model="page.modelInputs.metrics_habitat_restoration_target_species_2" id="metrics_habitat_restoration_target_species_2" name="metrics_habitat_restoration_target_species_2" placeholder="" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_areas_of_habitat_restored" class="control-label">
+                                Acres of Habitat Restored
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_areas_of_habitat_restored" id="metrics_areas_of_habitat_restored" name="metrics_areas_of_habitat_restored" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_acres_of_wetlands_restored" class="control-label">
+                                Acres of Wetlands Restored
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_wetlands_restored" id="metrics_acres_of_wetlands_restored" name="metrics_acres_of_wetlands_restored" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_miles_of_living_shoreline_restored" class="control-label">
+                                Miles of Living Shoreline Restored
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_miles_of_living_shoreline_restored" id="metrics_miles_of_living_shoreline_restored" name="metrics_miles_of_living_shoreline_restored" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_acres_of_oyster_habitat_restored" class="control-label">
+                                Acres of Oyster Habitat Restored
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_oyster_habitat_restored" id="metrics_acres_of_oyster_habitat_restored" name="metrics_acres_of_oyster_habitat_restored" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-8">
+                            <label for="metrics_fish_passage_improvements_number_of_passage_barriers_re" class="control-label">
+                                Fish Passage Improvements
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_fish_passage_improvements_number_of_passage_barriers_re" id="metrics_fish_passage_improvements_number_of_passage_barriers_re" name="metrics_fish_passage_improvements_number_of_passage_barriers_re" placeholder="" step="0.0001" />
+
+                            <p class="help-text">
+                                # of passage barriers rectified
+                            </p>
+
+                        </div>
+
+                        <div class="column-8">
+
+                            <label for="metrics_fish_passage_improvements_number_of_fish_crossing_barri" class="control-label">
+                                &nbsp;
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_fish_passage_improvements_number_of_fish_crossing_barri" id="metrics_fish_passage_improvements_number_of_fish_crossing_barri" name="metrics_fish_passage_improvements_number_of_fish_crossing_barri" placeholder="" step="0.0001" />
+
+                            <p class="help-text">
+                                # of fish counted crossing rectified barriers
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_miles_of_stream_opened" class="control-label">
+                                Miles of Stream Opened
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_miles_of_stream_opened" id="metrics_miles_of_stream_opened" name="metrics_miles_of_stream_opened" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-8">
+
+                            <label for="metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" class="control-label">
+                                Eastern Brook Trout
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" id="metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" name="metrics_number_of_reintroduced_subwatersheds_eastern_brook_trou" placeholder="" step="0.0001" />
+
+                            <p class="help-text">
+                                # reintroduced subwatersheds
+                            </p>
+
+                        </div>
+
+                        <div class="column-8">
+
+                            <label for="metrics_number_of_habitat_units_improved_eastern_brook_trout" class="control-label">
+                                &nbsp;
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_number_of_habitat_units_improved_eastern_brook_trout" id="metrics_number_of_habitat_units_improved_eastern_brook_trout" name="metrics_number_of_habitat_units_improved_eastern_brook_trout" placeholder="" step="0.0001" />
+
+                            <p class="help-text">
+                                # of habitat units improved
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset>
+
+                <h2>
+                    <strong>Interim</strong> Metrics
+                </h2>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_riffle_stability_index" class="control-label">
+                                Riffle Stability Index
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_riffle_stability_index" id="metrics_riffle_stability_index" name="metrics_riffle_stability_index" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_relative_bed_stability" class="control-label">
+                                Relative Bed Stability
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_relative_bed_stability" id="metrics_relative_bed_stability" name="metrics_relative_bed_stability" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_substrate_mean_particle_size" class="control-label">
+                                Substrate Mean Particle Size
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_substrate_mean_particle_size" id="metrics_substrate_mean_particle_size" name="metrics_substrate_mean_particle_size" placeholder="" step="0.0001" />
+
+                            <p class="help-text">
+                                D50
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_streambed_percent_fines" class="control-label">
+                                Streambed Percent Fines
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_streambed_percent_fines" id="metrics_streambed_percent_fines" name="metrics_streambed_percent_fines" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_bed_armoring_ratio" class="control-label">
+                                Bed Armoring Ratio
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_bed_armoring_ratio" id="metrics_bed_armoring_ratio" name="metrics_bed_armoring_ratio" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_total_habitat_assessment_score" class="control-label">
+                                Total Habitat Assessment Score
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_total_habitat_assessment_score" id="metrics_total_habitat_assessment_score" name="metrics_total_habitat_assessment_score" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_type_of_habitat_assessment" class="control-label">
+                                Type of Habitat Assessment
+                            </label>
+
+                            <select class="form-control" data-ng-model="page.modelInputs.metrics_type_of_habitat_assessment" id="metrics_type_of_habitat_assessment" name="metrics_type_of_habitat_assessment" data-ng-options="type for type in page.options.habitatAssessmentTypes">
+                                <option value="">
+                                    -- Select an Assessment Type --
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_area_in_habitat_patch_areas" class="control-label">
+                                Area in Habitat "Patch" Areas
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_area_in_habitat_patch_areas" id="metrics_area_in_habitat_patch_areas" name="metrics_area_in_habitat_patch_areas" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-8">
+
+                            <label for="metrics_acres_of_target_species_1_habitat_restoredprotected" class="control-label">
+                                Acres of Target Species 1 Habitat Restored/Protected
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_target_species_1_habitat_restoredprotected" id="metrics_acres_of_target_species_1_habitat_restoredprotected" name="metrics_acres_of_target_species_1_habitat_restoredprotected" placeholder="" step="0.0001" />
+
+                        </div>
+
+                        <div class="column-8">
+
+                            <label for="metrics_acres_of_target_species_2_habitat_restoredprotected" class="control-label">
+                                Acres of Target Species 2 Habitat Restored/Protected
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_acres_of_target_species_2_habitat_restoredprotected" id="metrics_acres_of_target_species_2_habitat_restoredprotected" name="metrics_acres_of_target_species_2_habitat_restoredprotected" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_whol_lwd_assessment" class="control-label">
+                                WOHL LWD Assessment
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_whol_lwd_assessment" id="metrics_whol_lwd_assessment" name="metrics_whol_lwd_assessment" placeholder="" step="0.0001" />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    <div class="row nested-row">
+
+                        <div class="column-16">
+
+                            <label for="metrics_large_woody_debris_index" class="control-label">
+                                Large Woody Debris Index
+                            </label>
+
+                            <input type="number" class="form-control" data-ng-model="page.modelInputs.metrics_large_woody_debris_index" id="metrics_large_woody_debris_index" name="metrics_large_woody_debris_index" placeholder="" step="0.0001" />
+
+                            <p class="help-text">
+                                LWDI
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </fieldset>
+
+            <div class="form-actions">
+
+                <button type="submit" class="button button-submit">
+                    Save Changes
+                </button>
+
+                <button type="button" data-ng-click="page.deleteReport()" class="button button-submit">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</form>
