@@ -68,3 +68,22 @@ def analyze_type_post(practice_type):
         request.get_json())
 
     return jsonify(**datum), 200
+
+
+@module.route('/v1/tpl/<practice_type>', methods=['OPTIONS'])
+def template_type_options():
+
+    """Define default user preflight check."""
+    return jsonify(**{
+        'meta': {
+            'status': 200
+        }
+    })
+
+
+@module.route('/v1/tpl/<practice_type>', methods=['POST'])
+def template_type_post(practice_type):
+
+    tpl = utilities.handle_request(practice_type)
+
+    return tpl, 200
