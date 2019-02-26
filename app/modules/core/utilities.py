@@ -106,3 +106,38 @@ def handle_request(data):
     else:
 
         abort(400, 'Empty or invalid request body.')
+
+
+def fetch_tpl_path(practice_type):
+
+    logger.debug(
+        'core.utilities.fetch_tpl: %s',
+        practice_type)
+
+    tpl_idx = {
+        practice: '%s.html' % practice
+        for practice in [
+            'bank_stabilization',
+            'enhanced_stream_restoration',
+            'instream_habitat',
+            'stormwater'
+        ]
+    }
+
+    logger.debug(
+        'core.utilities.tpl_idx: %s',
+        tpl_idx)
+
+    practice_type = practice_type.replace('-', '_')
+
+    logger.debug(
+        'core.utilities.stripped_type: %s',
+        practice_type)
+
+    if practice_type in tpl_idx:
+
+        return tpl_idx.get(practice_type)
+
+    else:
+
+        abort(400, 'Invalid `practice_code` parameter.')

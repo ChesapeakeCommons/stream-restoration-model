@@ -48,9 +48,9 @@ class ScenarioResult(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     
-    bmp_full_name = db.Column(db.Text)
-    bmp_short_name = db.Column(db.Text)
-    bmp_unit_full_name = db.Column(db.Text)
+    full_name = db.Column(db.Text)
+    short_name = db.Column(db.Text)
+    unit_full_name = db.Column(db.Text)
     geography_full_name = db.Column(db.Text)
     land_river_segment = db.Column(db.Text)
     sector = db.Column(db.Text)

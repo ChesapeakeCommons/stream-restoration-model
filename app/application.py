@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+import os
+
 # Import standard dependencies
 
 from datetime import datetime
@@ -63,7 +65,7 @@ class Application(object):
 
         """Create our base Flask application
         """
-        self.app = flask.Flask(__name__, static_path='/static')
+        self.app = flask.Flask(__name__, static_folder='static')
 
         """Import all custom app configurations
         """

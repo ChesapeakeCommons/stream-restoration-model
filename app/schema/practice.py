@@ -42,14 +42,9 @@ class Practice(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
-    bmp_description = db.Column(db.Text)
-    bmp_full_name = db.Column(db.Text)
-    bmp_group = db.Column(db.Text)
-    bmp_short_name = db.Column(db.Text, unique=True)
-    bmp_type = db.Column(db.Text)
-    official_bmp = db.Column(db.Boolean)
-    planning_bmp = db.Column(db.Boolean)
-    sector = db.Column(db.Text)
+    name = db.Column(db.Text)
+    description = db.Column(db.Text)
+    key = db.Column(db.Text, unique=True)
 
     # Specify fields that should be available to keyword searches
 

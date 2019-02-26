@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Define the BMPInStreamHabitat schema.
+"""Define the InStreamHabitat schema.
 
 Created by Viable Industries, L.L.C. on 02/05/2015.
 Copyright 2016 Viable Industries, L.L.C. All rights reserved.
@@ -36,10 +36,10 @@ from flask.ext.restless.helpers import to_dict
 from flask.ext.restless.helpers import get_relations
 
 
-class BMPInStreamHabitat(db.Model):
-    """BMPInStreamHabitat schema definition.
+class InStreamHabitat(db.Model):
+    """InStreamHabitat schema definition.
 
-    The `BMPInStreamHabitat` database table definition.
+    The `InStreamHabitat` database table definition.
 
     :param object db.Model: SQLAlchemy declarative base
 
@@ -47,7 +47,7 @@ class BMPInStreamHabitat(db.Model):
     https://pythonhosted.org/Flask-SQLAlchemy/models.html
     """
 
-    __tablename__ = 'bmp_in_stream_habitat'
+    __tablename__ = 'in_stream_habitat'
     __table_args__ = {
         'extend_existing': True
     }

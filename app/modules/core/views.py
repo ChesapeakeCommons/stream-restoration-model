@@ -16,11 +16,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+import os
+
 # Import Flask dependencies
 
 from flask import abort
 from flask import jsonify
 from flask import request
+from flask import send_from_directory
+
+from app import logger
 
 # Import module dependencies
 
@@ -71,7 +76,7 @@ def analyze_type_post(practice_type):
 
 
 @module.route('/v1/tpl/<practice_type>', methods=['OPTIONS'])
-def template_type_options():
+def template_type_options(practice_type):
 
     """Define default user preflight check."""
     return jsonify(**{
@@ -81,9 +86,12 @@ def template_type_options():
     })
 
 
-@module.route('/v1/tpl/<practice_type>', methods=['POST'])
-def template_type_post(practice_type):
+@module.route('/v1/tpl/<practice_type>', methods=['GET'])
+def template_type_get(practice_type):
 
-    tpl = utilities.handle_request(practice_type)
+    tpl_path = utilities.fetch_tpl_path(practice_type)
 
-    return tpl, 200
+    root_dir = '/Users/brendanmcintyre/dnr-model/app/static/templates'
+
+    return send_from_directory(
+        root_dir, tpl_path)

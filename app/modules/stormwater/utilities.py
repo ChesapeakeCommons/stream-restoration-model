@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Define the BMPStormwater schema.
+"""Define the Stormwater schema.
 
 Created by Viable Industries, L.L.C. on 02/05/2017.
 Copyright 2016 Viable Industries, L.L.C. All rights reserved.

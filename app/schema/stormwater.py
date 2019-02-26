@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Define the BMPStormwater schema.
+"""Define the Stormwater schema.
 
 Created by Viable Industries, L.L.C. on 02/05/2017.
 Copyright 2016 Viable Industries, L.L.C. All rights reserved.
@@ -40,10 +40,10 @@ from flask.ext.restless.helpers import to_dict
 from flask.ext.restless.helpers import get_relations
 
 
-class BMPStormwater(db.Model):
-    """BMPStormwater schema definition.
+class Stormwater(db.Model):
+    """Stormwater schema definition.
 
-    The `BMPStormwater` database table definition.
+    The `Stormwater` database table definition.
 
     :param object db.Model: SQLAlchemy declarative base
 
@@ -51,7 +51,7 @@ class BMPStormwater(db.Model):
     https://pythonhosted.org/Flask-SQLAlchemy/models.html
     """
 
-    __tablename__ = 'bmp_stormwater'
+    __tablename__ = 'stormwater'
     __table_args__ = {
         'extend_existing': True
     }
@@ -100,7 +100,7 @@ class BMPStormwater(db.Model):
 
     custom_nutrient_reductions_id = db.Column(db.Integer, db.ForeignKey('nutrient.id'))
     custom_nutrient_reductions = db.relationship('Nutrient', **{
-        'foreign_keys': 'BMPStormwater.custom_nutrient_reductions_id',
+        'foreign_keys': 'Stormwater.custom_nutrient_reductions_id',
         'uselist': False,
         'backref': db.backref('nutrients_stormwater')
     })
@@ -108,7 +108,7 @@ class BMPStormwater(db.Model):
     """Practice to associate with this report."""
     practice_id = db.Column(db.Integer, db.ForeignKey('practice.id', ondelete='CASCADE'))
     practice = db.relationship('Practice', **{
-      'primaryjoin': 'or_(BMPStormwater.practice_id==Practice.id)',
+      'primaryjoin': 'or_(Stormwater.practice_id==Practice.id)',
       'backref': db.backref('readings_stormwater', cascade='delete, delete-orphan'),
       'uselist': False
     })
@@ -116,21 +116,21 @@ class BMPStormwater(db.Model):
     """Organization Account to associate with this report."""
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'))
     account = db.relationship('Account', **{
-      'foreign_keys': 'BMPStormwater.account_id',
+      'foreign_keys': 'Stormwater.account_id',
       'uselist': False
     })
 
     """User account that originally created the Site."""
     creator_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     created_by = db.relationship("User", **{
-        'foreign_keys': 'BMPStormwater.creator_id',
+        'foreign_keys': 'Stormwater.creator_id',
         'uselist': False
     })
 
     """User account that last edited this Site."""
     last_modified_by_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     last_modified_by = db.relationship('User', **{
-        'foreign_keys': 'BMPStormwater.last_modified_by_id',
+        'foreign_keys': 'Stormwater.last_modified_by_id',
         'uselist': False
     })
 

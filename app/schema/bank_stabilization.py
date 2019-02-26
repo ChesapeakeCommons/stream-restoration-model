@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Define the BMPBankStabilization schema.
+"""Define the BankStabilization schema.
 
 Created by Viable Industries, L.L.C. on 02/05/2015.
 Copyright 2016 Viable Industries, L.L.C. All rights reserved.
@@ -38,10 +38,10 @@ from flask.ext.restless.helpers import to_dict
 from flask.ext.restless.helpers import get_relations
 
 
-class BMPBankStabilization(db.Model):
-    """BMPBankStabilization schema definition.
+class BankStabilization(db.Model):
+    """BankStabilization schema definition.
 
-    The `BMPBankStabilization` database table definition.
+    The `BankStabilization` database table definition.
 
     :param object db.Model: SQLAlchemy declarative base
 
@@ -49,7 +49,7 @@ class BMPBankStabilization(db.Model):
     https://pythonhosted.org/Flask-SQLAlchemy/models.html
     """
 
-    __tablename__ = 'bmp_bank_stabilization'
+    __tablename__ = 'bank_stabilization'
     __table_args__ = {
         'extend_existing': True
     }

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Define the BMPEnhancedStreamRestoration schema.
+"""Define the EnhancedStreamRestoration schema.
 
 Created by Viable Industries, L.L.C. on 02/05/2015.
 Copyright 2016 Viable Industries, L.L.C. All rights reserved.
@@ -33,10 +33,10 @@ from flask.ext.restless.helpers import to_dict
 from flask.ext.restless.helpers import get_relations
 
 
-class BMPEnhancedStreamRestoration(db.Model):
-    """BMPEnhancedStreamRestoration schema definition.
+class EnhancedStreamRestoration(db.Model):
+    """EnhancedStreamRestoration schema definition.
 
-    The `BMPEnhancedStreamRestoration` database table definition.
+    The `EnhancedStreamRestoration` database table definition.
 
     :param object db.Model: SQLAlchemy declarative base
 
@@ -44,7 +44,7 @@ class BMPEnhancedStreamRestoration(db.Model):
     https://pythonhosted.org/Flask-SQLAlchemy/models.html
     """
 
-    __tablename__ = 'bmp_enhanced_stream_restoration'
+    __tablename__ = 'enhanced_stream_restoration'
     __table_args__ = {
         'extend_existing': True
     }

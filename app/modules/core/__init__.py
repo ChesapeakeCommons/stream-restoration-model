@@ -16,12 +16,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+import os
+
 
 from flask import Blueprint
 
 
 from app.schema.practice import Practice as Model
 
+
+static_folder = os.path.join(os.pardir, 'static')
 
 module = Blueprint(**{
     'name': __name__,

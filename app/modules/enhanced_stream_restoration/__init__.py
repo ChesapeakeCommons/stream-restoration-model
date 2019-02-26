@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Define the BMPBankStabilization module.
+"""Define the BankStabilization module.
 
 Created by Viable Industries, L.L.C. on 01/29/2015.
 Copyright 2016 Viable Industries, L.L.C. All rights reserved.
@@ -21,8 +21,6 @@ from flask import Blueprint
 
 
 from app import db
-from app.schema.bmp_enhanced_stream_restoration import BMPEnhancedStreamRestoration as Model
-
 
 
 module = Blueprint(**{
@@ -35,9 +33,3 @@ module = Blueprint(**{
     'subdomain': None,
     'url_defaults': None
 })
-
-
-if module:
-    """Verify Blueprint `module` is intantiated."""
-    from . import endpoints
-    from . import views

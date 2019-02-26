@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""Define the BMPInStreamHabitat schema.
+"""Define the InStreamHabitat schema.
 
 Created by Viable Industries, L.L.C. on 02/05/2015.
 Copyright 2016 Viable Industries, L.L.C. All rights reserved.
