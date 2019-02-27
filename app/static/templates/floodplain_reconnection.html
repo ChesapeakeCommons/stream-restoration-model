@@ -1,0 +1,163 @@
+<form data-ng-submit="page.saveInputs()" class="form" role="form">
+
+    <article class="feature-detail">
+
+        <div class="feature-detail-content">
+
+            <fieldset>
+
+                <div class="form-group">
+
+                    <h2>
+                        Project Design Completion Percentage (%)
+                    </h2>
+
+                    <div class="form-element">
+
+                        <div class="search-options-radio">
+
+                            <label for="has_majority_design_completion_false">
+                                <input data-ng-model="page.modelInputs.has_majority_design_completion" type="radio" data-ng-value="false" class="form-control" id="has_majority_design_completion_false" name="has_majority_design_completion_false" />Less than 90% designed
+                            </strong></label>
+
+
+                            <label for="has_majority_design_completion_true">
+                                <input data-ng-model="page.modelInputs.has_majority_design_completion" type="radio" data-ng-value="true" class="form-control" id="has_majority_design_completion_true" name="has_majority_design_completion_true" />Greater than 90% designed
+                            </strong></label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                    How far along are you with your stream restoration design at the time of entering values into FieldDoc? Do not select the percentage of design completion you anticipate at project start time. Also, if you are less than 90% designed you are required to add the “In-stream habitat” practice to your site, and you are highly encouraged to add “In-stream habitat” to sites over 90% designed. Per the expert panel report, as the inputs for enhanced stream restoration require engineered specifications, only those proposals that are at least 90% designed can use Protocols 1, 2, and 3.
+                </p>
+
+            </fieldset>
+
+            <div data-ng-if="page.modelInputs.has_majority_design_completion === false">
+
+                <div class="form-element">
+
+                    <!-- <label for="override_linear_feet_in_coastal_plain" class="meta-label"><strong>
+                        Linear feet in coastal plain
+                    </strong></label> -->
+
+                    <span class="meta-label">
+                        <strong>Linear feet in coastal plain</strong>
+                    </span>
+
+                    <input data-ng-model="page.modelInputs.override_linear_feet_in_coastal_plain" type="number" id="override_linear_feet_in_coastal_plain" name="override_linear_feet_in_coastal_plain" class="form-control" step="0.001" data-ng-change="page.change.updateTotal()" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        linear feet
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <span class="meta-label">
+                        <strong>Linear feet in non-coastal plain</strong>
+                    </span>
+
+                    <!-- <label for="override_linear_feet_in_noncoastal_plain" class="meta-label"><strong>
+                        Linear feet in non-coastal plain
+                    </strong></label> -->
+
+                    <input data-ng-model="page.modelInputs.override_linear_feet_in_noncoastal_plain" type="number" id="override_linear_feet_in_noncoastal_plain" name="override_linear_feet_in_noncoastal_plain" class="form-control" step="0.001" data-ng-change="page.change.updateTotal()" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        linear feet
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div data-ng-if="page.modelInputs.has_majority_design_completion === true">
+
+                <fieldset>
+
+                    <p style="color: #212121; font-size: 1em; font-style: normal;">
+                        <strong>Protocol 3: Floodplain Reconnection Volume Credit</strong>
+                    </p>
+
+                    <div class="form-element">
+
+                        <label for="stream_length_reconnected_at_floodplain" class="meta-label">
+                            <strong>Stream length reconnected at floodplain</strong>
+                        </label>
+
+                        <input data-ng-model="page.modelInputs.stream_length_reconnected_at_floodplain" class="form-control" class="form-control" type="number" id="stream_length_reconnected_at_floodplain" name="stream_length_reconnected_at_floodplain" step="0.0001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            feet
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="connected_floodplain_surface_area" class="meta-label">
+                            <strong>Connected floodplain surface area</strong>
+                        </label>
+
+                        <input data-ng-model="page.modelInputs.connected_floodplain_surface_area" class="form-control" class="form-control" type="number" id="connected_floodplain_surface_area" name="connected_floodplain_surface_area" step="0.0000000001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            acres
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="watershed_impervious_area" class="meta-label">
+                            <strong>Watershed impervious area</strong>
+                        </label>
+
+                        <input data-ng-model="page.modelInputs.watershed_impervious_area" class="form-control" class="form-control" type="number" id="watershed_impervious_area" name="watershed_impervious_area" step="0.0001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            acres
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="watershed_pervious_area" class="meta-label">
+                            <strong>Watershed pervious area</strong>
+                        </label>
+
+                        <input data-ng-model="page.modelInputs.watershed_pervious_area" class="form-control" class="form-control" type="number" id="watershed_pervious_area" name="watershed_pervious_area" step="0.0001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            acres
+                        </p>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <div class="save--action--wrapper save--action--bottom">
+                <button type="submit" data-ng-disabled="page.status.processing">
+                    <i class="material-icons" data-ng-if="page.status.processing">
+                        more_horiz
+                    </i>
+                    <i class="material-icons" data-ng-if="!page.status.processing">
+                        done
+                    </i>
+                </button>
+            </div>
+
+        </div>
+
+    </article>
+
+</form>

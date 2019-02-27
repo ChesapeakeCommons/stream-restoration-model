@@ -34,8 +34,9 @@ from app import logger
 from app import serializer
 
 from app.modules import bank_stabilization
-from app.modules import enhanced_stream_restoration
+from app.modules import floodplain_reconnection
 from app.modules import instream_habitat
+from app.modules import instream_processing
 from app.modules import stormwater
 
 from app.schema.practice import Practice
@@ -93,8 +94,9 @@ def handle_request(data):
         get_mod_name(module.__name__): rgetattr(module, 'utilities')
         for module in [
             bank_stabilization,
-            enhanced_stream_restoration,
+            floodplain_reconnection,
             instream_habitat,
+            instream_processing,
             stormwater
         ]
     }
@@ -130,8 +132,9 @@ def fetch_tpl_path(practice_type):
         practice: '%s.html' % practice
         for practice in [
             'bank_stabilization',
-            'enhanced_stream_restoration',
+            'floodplain_reconnection',
             'instream_habitat',
+            'instream_processing',
             'stormwater'
         ]
     }

@@ -75,24 +75,6 @@
 
                 </div>
 
-                <div class="form-element">
-
-                    <span class="meta-label">
-                        <strong>Total linear feet</strong>
-                    </span>
-
-                    <!-- <label for="override_linear_feet_in_total" class="meta-label"><strong>
-                        Total linear feet
-                    </strong></label> -->
-
-                    <input data-ng-model="page.modelInputs.override_linear_feet_in_total" type="number" id="override_linear_feet_in_total" name="override_linear_feet_in_total" class="form-control" step="0.001" data-ng-disabled="true" />
-
-                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        linear feet
-                    </p>
-
-                </div>
-
             </div>
 
             <div data-ng-if="page.modelInputs.has_majority_design_completion === true">
@@ -243,42 +225,6 @@
 
                     </div>
 
-                </fieldset>
-
-                <fieldset>
-
-                    <p style="color: #212121; font-size: 1em; font-style: normal;">
-                        <strong>Protocol 3: Floodplain Reconnection Volume Credit</strong>
-                    </p>
-
-                    <div class="form-element">
-
-                        <label for="stream_length_reconnected_at_floodplain" class="meta-label">
-                            <strong>Stream length reconnected at floodplain</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.stream_length_reconnected_at_floodplain" class="form-control" class="form-control" type="number" id="stream_length_reconnected_at_floodplain" name="stream_length_reconnected_at_floodplain" step="0.0001" />
-
-                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                            feet
-                        </p>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="connected_floodplain_surface_area" class="meta-label">
-                            <strong>Connected floodplain surface area</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.connected_floodplain_surface_area" class="form-control" class="form-control" type="number" id="connected_floodplain_surface_area" name="connected_floodplain_surface_area" step="0.0000000001" />
-
-                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                            acres
-                        </p>
-
-                    </div>
-
                     <div class="form-element">
 
                         <label for="watershed_impervious_area" class="meta-label">
@@ -293,123 +239,7 @@
 
                     </div>
 
-                    <div class="form-element">
-
-                        <label for="watershed_pervious_area" class="meta-label">
-                            <strong>Watershed pervious area</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.watershed_pervious_area" class="form-control" class="form-control" type="number" id="watershed_pervious_area" name="watershed_pervious_area" step="0.0001" />
-
-                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                            acres
-                        </p>
-
-                    </div>
-
                 </fieldset>
-
-                <!-- <fieldset>
-
-                    <h2>
-                        Interim Metric Data
-                    </h2>
-
-                    <p>
-                        Hydrologic
-                    </p>
-
-                    <div class="form-element">
-
-                        <label for="mean_annual_bankfull_flow" class="meta-label">
-                            <strong>Mean Annual Bankfull Flow</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.mean_annual_bankfull_flow" class="form-control" class="form-control" type="number" id="mean_annual_bankfull_flow" name="mean_annual_bankfull_flow" step="0.0001" />
-
-                        <p class="help-text"></p>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="monthly_flow_frequency_probability_plot" class="meta-label">
-                            <strong>Monthly Flow Frequency Probability Plot</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.monthly_flow_frequency_probability_plot" class="form-control" class="form-control" type="text" id="monthly_flow_frequency_probability_plot" name="monthly_flow_frequency_probability_plot" />
-
-                        <p class="help-text"></p>
-
-                    </div>
-
-                </fieldset> -->
-
-                <!-- <fieldset>
-
-                    <p>
-                        Hydraulic
-                    </p>
-
-                    <div class="form-element">
-
-                        <label for="number_of_overbank_flows_per_year" class="meta-label">
-                            <strong>Number of Over-bank Flows per Year</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.number_of_overbank_flows_per_year" class="form-control" class="form-control" type="number" id="number_of_overbank_flows_per_year" name="number_of_overbank_flows_per_year" step="0.0001" />
-
-                    </div>
-
-                </fieldset> -->
-
-                <!-- <fieldset>
-
-                    <p>
-                        Riparian Vegetation
-                    </p>
-
-                    <div class="form-element">
-
-                        <label for="left_bank_vegetative_protection" class="meta-label">
-                            <strong>Left Bank Vegetative Protection</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.left_bank_vegetative_protection" class="form-control" class="form-control" type="number" id="left_bank_vegetative_protection" name="left_bank_vegetative_protection" step="0.0001" />
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="left_bank_riparian_vegetative_zone_width" class="meta-label">
-                            <strong>Left Bank Riparian Vegetative Zone Width</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.left_bank_riparian_vegetative_zone_width" class="form-control" class="form-control" type="number" id="left_bank_riparian_vegetative_zone_width" name="left_bank_riparian_vegetative_zone_width" step="0.0001" />
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="right_bank_vegetative_protection" class="meta-label">
-                            <strong>Right Bank Vegetative Protection</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.right_bank_vegetative_protection" class="form-control" class="form-control" type="number" id="right_bank_vegetative_protection" name="right_bank_vegetative_protection" step="0.0001" />
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="right_bank_riparian_vegetative_zone_width" class="meta-label">
-                            <strong>Right Bank Riparian Vegetative Zone Width</strong>
-                        </label>
-
-                        <input data-ng-model="page.modelInputs.right_bank_riparian_vegetative_zone_width" class="form-control" class="form-control" type="number" id="right_bank_riparian_vegetative_zone_width" name="right_bank_riparian_vegetative_zone_width" step="0.0001" />
-
-                    </div>
-
-                </fieldset> -->
 
             </div>
 
