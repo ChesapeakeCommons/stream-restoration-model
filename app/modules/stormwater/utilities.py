@@ -16,18 +16,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-
 import math as Math
 
-
 from datetime import datetime
-
 
 from app import db
 from app import logger
 
+from .constants import URBAN_STATE_UAL as load_data
 
-def reduction(inputs, value, load_data, preinstallation=False):
+
+def reduction(data, preinstallation=False):
 
     """If the measurement_period is Pre-Installation the LER will use the
     raw installation_lateral_erosion_rate provided by the user.
@@ -35,7 +34,7 @@ def reduction(inputs, value, load_data, preinstallation=False):
     If the measurement_period is Planning or Installation the LER will be
     halved (i.e., multipled by 0.5).
 
-    The Expert Panel (EP) guidance specifies a default value of 50%,
+    The Expert Panel (EP) guidance specifies a default data of 50%,
     subject to post-installation monitoring which could justify a larger
     reduction efficiency.[1]
 
@@ -43,315 +42,189 @@ def reduction(inputs, value, load_data, preinstallation=False):
         Engineering Department Virginia Tech
     """
     return {
-        'nitrogen': inputs.nitrogen(value, load_data, preinstallation=preinstallation),
-        'phosphorus': inputs.phosphorus(value, load_data, preinstallation=preinstallation),
-        'sediment': inputs.sediment(value, load_data, preinstallation=preinstallation)
+        'nitrogen': nitrogen(data),
+        'phosphorus': phosphorus(data),
+        'sediment': sediment(data)
     }
 
 
-def installed_to_date(inputs, periods, percentage=False):
+def adjustor_curve_nitrogen(data):
 
-    planned_total_nitrogen = 0
-    planned_total_phosphorus = 0
-    planned_total_sediment = 0
-    planned_gallons_per_year_of_stormwater_detained_or_infiltrated = 0
-    planned_acres_of_protected_bmps_to_reduce_stormwater_runoff = 0
-    planned_acres_of_installed_bmps_to_reduce_stormwater_runoff = 0
-    planned_practice_1_extent = 0
-    planned_practice_2_extent = 0
-    planned_practice_3_extent = 0
-    planned_practice_4_extent = 0
-    planned_impervious_area = 0
-    planned_total_drainage_area = 0
+    depth_treated = runoff_depth_treated(data)
 
-    installed_total_nitrogen = 0
-    installed_total_phosphorus = 0
-    installed_total_sediment = 0
-    installed_gallons_per_year_of_stormwater_detained_or_infiltrated = 0
-    installed_acres_of_protected_bmps_to_reduce_stormwater_runoff = 0
-    installed_acres_of_installed_bmps_to_reduce_stormwater_runoff = 0
-    installed_practice_1_extent = 0
-    installed_practice_2_extent = 0
-    installed_practice_3_extent = 0
-    installed_practice_4_extent = 0
-    installed_impervious_area = 0
-    installed_total_drainage_area = 0
+    # runoff_volume_captured = runoff_volume_captured(data)
 
-    for _index, _period in enumerate(periods):
+    reduction = 0.0
 
-        if _period.get('properties').get('measurement_period') == 'Planning':
-            planned_total_nitrogen += _period.get('properties').get('planning').get('nitrogen', 0).get('value', 0)
-            planned_total_phosphorus += _period.get('properties').get('planning').get('phosphorus', 0).get('value', 0)
-            planned_total_sediment += _period.get('properties').get('planning').get('sediment', 0).get('value', 0)
-            planned_gallons_per_year_of_stormwater_detained_or_infiltrated += _period.get('properties').get('metrics').get('gallons_per_year_of_stormwater_detained_or_infiltrated', 0)
-            planned_acres_of_protected_bmps_to_reduce_stormwater_runoff += _period.get('properties').get('metrics').get('acres_of_protected_bmps_to_reduce_stormwater_runoff', 0)
-            planned_acres_of_installed_bmps_to_reduce_stormwater_runoff += _period.get('properties').get('metrics').get('acres_of_installed_bmps_to_reduce_stormwater_runoff', 0)
+    first = 0.0308 * Math.pow(depth_treated, 5)
 
-            planned_practice_1_extent = _period.get('properties').get('practice_1_extent') if _period.get('properties').get('practice_1_extent') else 0
-            planned_practice_2_extent = _period.get('properties').get('practice_2_extent') if _period.get('properties').get('practice_2_extent') else 0
-            planned_practice_3_extent = _period.get('properties').get('practice_3_extent') if _period.get('properties').get('practice_3_extent') else 0
-            planned_practice_4_extent = _period.get('properties').get('practice_4_extent') if _period.get('properties').get('practice_4_extent') else 0
+    second = 0.2562 * Math.pow(depth_treated, 4)
 
-            planned_impervious_area = _period.get('properties').get('impervious_area') if _period.get('properties').get('impervious_area') else 0
-            planned_total_drainage_area = _period.get('properties').get('total_drainage_area') if _period.get('properties').get('total_drainage_area') else 0
+    third = 0.8634 * Math.pow(depth_treated, 3)
 
-        elif _period.get('properties').get('measurement_period') == 'Installation':
-            installed_total_nitrogen += _period.get('properties').get('installation').get('nitrogen', 0).get('value', 0)
-            installed_total_phosphorus += _period.get('properties').get('installation').get('phosphorus', 0).get('value', 0)
-            installed_total_sediment += _period.get('properties').get('installation').get('sediment', 0).get('value', 0)
-            installed_gallons_per_year_of_stormwater_detained_or_infiltrated += _period.get('properties').get('metrics').get('gallons_per_year_of_stormwater_detained_or_infiltrated', 0)
-            installed_acres_of_protected_bmps_to_reduce_stormwater_runoff += _period.get('properties').get('metrics').get('acres_of_protected_bmps_to_reduce_stormwater_runoff', 0)
-            installed_acres_of_installed_bmps_to_reduce_stormwater_runoff += _period.get('properties').get('metrics').get('acres_of_installed_bmps_to_reduce_stormwater_runoff', 0)
+    fourth = 1.5285 * Math.pow(depth_treated, 2)
 
-            installed_practice_1_extent = _period.get('properties').get('practice_1_extent') if _period.get('properties').get('practice_1_extent') else 0
-            installed_practice_2_extent = _period.get('properties').get('practice_2_extent') if _period.get('properties').get('practice_2_extent') else 0
-            installed_practice_3_extent = _period.get('properties').get('practice_3_extent') if _period.get('properties').get('practice_3_extent') else 0
-            installed_practice_4_extent = _period.get('properties').get('practice_4_extent') if _period.get('properties').get('practice_4_extent') else 0
-            installed_impervious_area = _period.get('properties').get('impervious_area') if _period.get('properties').get('impervious_area') else 0
-            installed_total_drainage_area = _period.get('properties').get('total_drainage_area') if _period.get('properties').get('total_drainage_area') else 0
+    fifth = 1.501 * depth_treated
 
-    _totals = {
-        'nitrogen': installed_total_nitrogen,
-        'phosphorus': installed_total_phosphorus,
-        'sediment': installed_total_sediment,
-        'gallons_per_year_of_stormwater_detained_or_infiltrated': installed_gallons_per_year_of_stormwater_detained_or_infiltrated,
-        'acres_of_protected_bmps_to_reduce_stormwater_runoff': installed_acres_of_protected_bmps_to_reduce_stormwater_runoff,
-        'acres_of_installed_bmps_to_reduce_stormwater_runoff': installed_acres_of_installed_bmps_to_reduce_stormwater_runoff,
-
-        'practice_1_extent': installed_practice_1_extent,
-        'practice_2_extent': installed_practice_2_extent,
-        'practice_3_extent': installed_practice_3_extent,
-        'practice_4_extent': installed_practice_4_extent,
-
-        'impervious_area': installed_impervious_area,
-        'total_drainage_area': installed_total_drainage_area,
-    }
-
-    if percentage:
-
-        _totals = {
-            'nitrogen': (installed_total_nitrogen/planned_total_nitrogen)*100 if planned_total_nitrogen > 0 else 0,
-            'phosphorus': (installed_total_phosphorus/planned_total_phosphorus)*100 if planned_total_phosphorus > 0 else 0,
-            'sediment': (installed_total_sediment/planned_total_sediment)*100 if planned_total_sediment > 0 else 0,
-
-            'gallons_per_year_of_stormwater_detained_or_infiltrated': (installed_acres_of_protected_bmps_to_reduce_stormwater_runoff/planned_acres_of_protected_bmps_to_reduce_stormwater_runoff)*100 if planned_acres_of_protected_bmps_to_reduce_stormwater_runoff > 0 else 0,
-            'acres_of_protected_bmps_to_reduce_stormwater_runoff': (installed_acres_of_protected_bmps_to_reduce_stormwater_runoff/planned_acres_of_protected_bmps_to_reduce_stormwater_runoff)*100 if planned_acres_of_protected_bmps_to_reduce_stormwater_runoff > 0 else 0,
-            'acres_of_installed_bmps_to_reduce_stormwater_runoff': (installed_acres_of_installed_bmps_to_reduce_stormwater_runoff/planned_acres_of_installed_bmps_to_reduce_stormwater_runoff)*100 if planned_acres_of_installed_bmps_to_reduce_stormwater_runoff > 0 else 0,
-
-            'practice_1_extent': (installed_practice_1_extent/planned_practice_1_extent)*100 if planned_practice_1_extent > 0 else 0,
-            'practice_2_extent': (installed_practice_2_extent/planned_practice_2_extent)*100 if planned_practice_2_extent > 0 else 0,
-            'practice_3_extent': (installed_practice_3_extent/planned_practice_3_extent)*100 if planned_practice_3_extent > 0 else 0,
-            'practice_4_extent': (installed_practice_4_extent/planned_practice_4_extent)*100 if planned_practice_4_extent > 0 else 0,
-
-            'impervious_area': (installed_impervious_area/planned_impervious_area)*100 if planned_impervious_area > 0 else 0,
-            'total_drainage_area': (installed_total_drainage_area/planned_total_drainage_area)*100 if planned_total_drainage_area > 0 else 0,
-        }
-
-    return _totals
-
-
-def adjustorCurveNitrogen(inputs, value):
-
-    depthTreated = inputs.runoffDepthTreated(value)
-    runoffVolumeCaptured = inputs.runoffVolumeCaptured(value)
-
-    classification = value.get('site_reduction_classification', None)
-    reduction = 0
-
-    if classification == "Runoff Reduction":
-
-        first = 0.0308*Math.pow(depthTreated, 5)
-        second = 0.2562*Math.pow(depthTreated, 4)
-        third = 0.8634*Math.pow(depthTreated, 3)
-        fourth = 1.5285*Math.pow(depthTreated, 2)
-        fifth = 1.501*depthTreated
-
-        reduction = (first-second+third-fourth+fifth-0.013)
-
-    elif classification == "Stormwater Treatment":
-
-        first = 0.0152*Math.pow(depthTreated, 5)
-        second = 0.131*Math.pow(depthTreated, 4)
-        third = 0.4581*Math.pow(depthTreated, 3)
-        fourth = 0.8418*Math.pow(depthTreated, 2)
-        fifth = 0.8536*depthTreated
-
-        reduction = (first-second+third-fourth+fifth-0.0046)
+    reduction = (first - second + third - fourth + fifth - 0.013)
 
     return reduction
 
 
-def adjustorCurvePhosphorus(inputs, value):
+def adjustor_curve_phosphorus(data):
 
-    depthTreated = inputs.runoffDepthTreated(value)
-    runoffVolumeCaptured = inputs.runoffVolumeCaptured(value)
+    depth_treated = runoff_depth_treated(data)
 
-    classification = value.get('site_reduction_classification', None)
-    reduction = 0
+    # runoff_volume_captured = runoff_volume_captured(data)
 
-    if classification == "Runoff Reduction":
+    reduction = 0.0
 
-        first = 0.0304*Math.pow(depthTreated, 5)
-        second = 0.2619*Math.pow(depthTreated, 4)
-        third = 0.9161*Math.pow(depthTreated, 3)
-        fourth = 1.6837*Math.pow(depthTreated, 2)
-        fifth = 1.7072*depthTreated
+    first = 0.0304 * Math.pow(depth_treated, 5)
+    second = 0.2619 * Math.pow(depth_treated, 4)
+    third = 0.9161 * Math.pow(depth_treated, 3)
+    fourth = 1.6837 * Math.pow(depth_treated, 2)
+    fifth = 1.7072 * depth_treated
 
-        reduction = (first-second+third-fourth+fifth-0.0091)
-
-    elif classification == "Stormwater Treatment":
-
-        first = 0.0239*Math.pow(depthTreated, 5)
-        second = 0.2058*Math.pow(depthTreated, 4)
-        third = 0.7198*Math.pow(depthTreated, 3)
-        fourth = 1.3229*Math.pow(depthTreated, 2)
-        fifth = 1.3414*depthTreated
-
-        reduction = (first-second+third-fourth+fifth-0.0072)
+    reduction = (first - second + third - fourth + fifth - 0.0091)
 
     return reduction
 
 
-def adjustorCurveSediment(inputs, value):
+def adjustor_curve_sediment(data):
 
-    depthTreated = inputs.runoffDepthTreated(value)
-    runoffVolumeCaptured = inputs.runoffVolumeCaptured(value)
+    depth_treated = runoff_depth_treated(data)
 
-    classification = value.get('site_reduction_classification', None)
-    reduction = 0
+    # runoff_volume_captured = runoff_volume_captured(data)
 
-    if classification == "Runoff Reduction":
+    reduction = 0.0
         
-        first = 0.0326*Math.pow(depthTreated, 5)
-        second = 0.2806*Math.pow(depthTreated, 4)
-        third = 0.9816*Math.pow(depthTreated, 3)
-        fourth = 1.8039*Math.pow(depthTreated, 2)
-        fifth = 1.8292*depthTreated
+    first = 0.0326 * Math.pow(depth_treated, 5)
+    second = 0.2806 * Math.pow(depth_treated, 4)
+    third = 0.9816 * Math.pow(depth_treated, 3)
+    fourth = 1.8039 * Math.pow(depth_treated, 2)
+    fifth = 1.8292 * depth_treated
 
-        reduction = (first-second+third-fourth+fifth-0.0098)
-
-    elif classification == "Stormwater Treatment":
-
-        first = 0.0304*Math.pow(depthTreated, 5)
-        second = 0.2619*Math.pow(depthTreated, 4)
-        third = 0.9161*Math.pow(depthTreated, 3)
-        fourth = 1.6837*Math.pow(depthTreated, 2)
-        fifth = 1.7072*depthTreated
-
-        reduction = (first-second+third-fourth+fifth-0.0091)
+    reduction = (first - second + third - fourth + fifth - 0.0098)
 
     return reduction
 
 
-def nitrogen(inputs, value, loaddata, preinstallation=False):
+def nitrogen(data, preinstallation=False):
 
-    multiplier = 1
+    multiplier = 1.0
 
     if preinstallation == False:
 
-        multiplier = inputs.adjustorCurveNitrogen(value)
+        multiplier = adjustor_curve_nitrogen(data)
 
-    impervious_area = value.get('impervious_area') if value.get('impervious_area') else 0
-    impervious_tn_ual = loaddata['impervious']['tn_ual'] if loaddata and 'impervious' in loaddata and 'tn_ual' in loaddata['impervious'] else 0
-    total_drainage_area = value.get('total_drainage_area') if value.get('total_drainage_area') else 0
+    impervious_area = data.get('impervious_area', 0)
+    impervious_tn_ual = load_data['impervious']['tn_ual']
+    total_drainage_area = data.get('total_drainage_area', 0)
 
     return {
-        "value": (((impervious_area * impervious_tn_ual) + ((total_drainage_area - impervious_area) * impervious_tn_ual)) * multiplier) / 43560,
+        "data": (((impervious_area * impervious_tn_ual) + ((total_drainage_area - impervious_area) * impervious_tn_ual)) * multiplier) / 43560,
         "adjustor": multiplier
     }
 
 
-def phosphorus(inputs, value, loaddata, preinstallation=False):
+def phosphorus(data, preinstallation=False):
 
-    multiplier = 1
+    multiplier = 1.0
 
     if preinstallation == False:
 
-        multiplier = inputs.adjustorCurvePhosphorus(value)
+        multiplier = adjustor_curve_phosphorus(data)
 
-    impervious_area = value.get('impervious_area') if value.get('impervious_area') else 0
-    impervious_tp_ual = loaddata['impervious']['tp_ual'] if loaddata and 'impervious' in loaddata and 'tp_ual' in loaddata['impervious'] else 0
-    total_drainage_area = value.get('total_drainage_area') if value.get('total_drainage_area') else 0
+    impervious_area = data.get('impervious_area', 0)
+    impervious_tp_ual = load_data['impervious']['tp_ual']
+    total_drainage_area = data.get('total_drainage_area', 0)
 
     return {
-        "value": (((impervious_area * impervious_tp_ual) + ((total_drainage_area - impervious_area) * impervious_tp_ual)) * multiplier) / 43560,
+        "data": (((impervious_area * impervious_tp_ual) + ((total_drainage_area - impervious_area) * impervious_tp_ual)) * multiplier) / 43560,
         "adjustor": multiplier
     }
 
 
-def sediment(inputs, value, loaddata, preinstallation=False):
+def sediment(data, preinstallation=False):
 
-    multiplier = 1
+    multiplier = 1.0
 
     if preinstallation == False:
 
-        multiplier = inputs.adjustorCurveSediment(value)
+        multiplier = adjustor_curve_sediment(data)
 
-    impervious_area = value.get('impervious_area') if value.get('impervious_area') else 0
-    impervious_tss_ual = loaddata['impervious']['tss_ual'] if loaddata and 'impervious' in loaddata and 'tss_ual' in loaddata['impervious'] else 0
-    total_drainage_area = value.get('total_drainage_area') if value.get('total_drainage_area') else 0
+    impervious_area = data.get('impervious_area', 0)
+    impervious_tss_ual = load_data['impervious']['tss_ual']
+    total_drainage_area = data.get('total_drainage_area', 0)
 
     return {
-        "value": (((impervious_area * impervious_tss_ual) + ((total_drainage_area - impervious_area) * impervious_tss_ual)) * multiplier) / 43560,
+        "data": (((impervious_area * impervious_tss_ual) + ((total_drainage_area - impervious_area) * impervious_tss_ual)) * multiplier) / 43560,
         "adjustor": multiplier
     }
 
 
-def runoffDepthTreated(inputs, value):
+def runoff_depth_treated(data):
 
-    depthTreated = 1.0
+    logger.debug(
+        'stormwater.utilities.runoff_depth_treated.data: %s',
+        data)
 
-    runoff_volume_captured = value.get('runoff_volume_captured') if value.get('runoff_volume_captured') else 0
+    depth_treated = 1.0
 
-    impervious_area = value.get('impervious_area') if value.get('impervious_area') else 0
+    runoff_volume_captured = float(data.get('runoff_volume_captured', 0))
+
+    logger.debug(
+        'stormwater.utilities.runoff_depth_treated.runoff_volume_captured: %s',
+        runoff_volume_captured)
+
+    impervious_area = float(data.get('impervious_area', 0))
+
+    logger.debug(
+        'stormwater.utilities.runoff_depth_treated.impervious_area: %s',
+        impervious_area)
 
     if runoff_volume_captured and impervious_area:
 
-      depthTreated = (runoff_volume_captured * 12) / (impervious_area / 43560)
+      depth_treated = (runoff_volume_captured * 12) / (impervious_area / 43560)
 
-    return depthTreated
-
-
-def rainfallDepthTreated(inputs, value):
-
-    depthTreated = inputs.runoffDepthTreated(value)
-
-    impervious_area = value.get('impervious_area') if value.get('impervious_area') else 0
-
-    return (depthTreated/(impervious_area/43560)) * 12
+    return depth_treated
 
 
-def runoffVolumeCaptured(inputs, value):
+def rainfall_depth_treated(data):
 
-    depthTreated = inputs.runoffDepthTreated(value)
+    depth_treated = runoff_depth_treated(data)
 
-    impervious_area = value.get('impervious_area') if value.get('impervious_area') else 0
+    impervious_area = float(data.get('impervious_area', 0))
 
-    return (depthTreated*impervious_area)/(12*43560)
-
-
-def acres_of_protected_bmps_to_reduce_stormwater_runoff(inputs, value):
-
-    total_drainage_area = value.get('total_drainage_area') if value.get('total_drainage_area') else 0
-
-    return (total_drainage_area/43560)
+    return (depth_treated / (impervious_area / 43560)) * 12
 
 
-def acres_of_installed_bmps_to_reduce_stormwater_runoff(inputs, value):
+def runoff_volume_captured(data):
 
-    practice_1_extent = value.get('practice_1_extent') if value.get('practice_1_extent') else 0
-    practice_2_extent = value.get('practice_2_extent') if value.get('practice_2_extent') else 0
-    practice_3_extent = value.get('practice_3_extent') if value.get('practice_3_extent') else 0
-    practice_4_extent = value.get('practice_4_extent') if value.get('practice_4_extent') else 0
+    depth_treated = runoff_depth_treated(data)
 
-    return practice_1_extent+practice_2_extent+practice_3_extent+practice_4_extent;
+    impervious_area = float(data.get('impervious_area', 0))
+
+    return (depth_treated * impervious_area) / (float(12) * 43560)
 
 
-def gallons_per_year_of_stormwater_detained_or_infiltrated(inputs, value):
+def acres_of_protected_bmps_to_reduce_stormwater_runoff(data):
+
+    total_drainage_area = float(data.get('total_drainage_area', 0))
+
+    return (total_drainage_area / 43560)
+
+
+def acres_of_installed_bmps_to_reduce_stormwater_runoff(data):
+
+    return data.get('practice_extent', 0)
+
+
+def gallons_per_year_of_stormwater_detained_or_infiltrated(data):
 
     gallons_ = 0
 
-    runoff_volume_captured = value.get('runoff_volume_captured') if value.get('runoff_volume_captured') else 0
+    runoff_volume_captured = float(data.get('runoff_volume_captured', 0))
 
     if runoff_volume_captured:
 

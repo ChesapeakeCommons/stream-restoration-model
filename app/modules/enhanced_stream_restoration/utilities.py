@@ -25,6 +25,7 @@ from app import logger
 
 
 def efficiency(inputs):
+    
     return {
         "n_eff": 0.2,
         "p_eff": 0.3,
@@ -48,6 +49,7 @@ def reduction(inputs, value, readings, load_data, has_majority_design_completion
         Engineering Department Virginia Tech
     """
     if has_majority_design_completion:
+
         return {
             'nitrogen': {
                 'protocol_2': inputs.nitrogen_protocol_2(value, load_data),
@@ -58,6 +60,7 @@ def reduction(inputs, value, readings, load_data, has_majority_design_completion
             },
             'sediment': inputs.sediment_protocol_1(readings, load_data)
         }
+
     else:
         return {
             'nitrogen': {
