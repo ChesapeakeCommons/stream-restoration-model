@@ -43,8 +43,9 @@ from app.schema.practice import Practice
 from app.utilities import extract_json_properties
 from app.utilities import geom_as_wkt
 from app.utilities import parse_geometry
-from app.utilities import truncate
+from app.utilities import rgetattr
 from app.utilities import scrub_request
+from app.utilities import truncate
 
 
 def calculate_reduction(obj, value, attr):
@@ -82,7 +83,7 @@ def handle_request(data):
         str(request))
 
     func_idx = {
-        module.__name__: getattr(module, 'reduction')
+        module.__name__: rgetattr(module, 'utilities')
         for module in [
             bank_stabilization,
             enhanced_stream_restoration,

@@ -570,3 +570,12 @@ def validate_amount(data):
             data['amount'] = 0
 
     return data
+
+
+def rgetattr(obj, attr, *args):
+    """See https://stackoverflow.com/questions/31174295/getattr-and-setattr-on-nested-objects"""
+    def _getattr(obj, attr):
+
+        return getattr(obj, attr, *args)
+
+    return reduce(_getattr, [obj] + attr.split('.'))

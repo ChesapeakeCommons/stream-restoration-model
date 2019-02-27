@@ -33,3 +33,7 @@ module = Blueprint(**{
     'subdomain': None,
     'url_defaults': None
 })
+
+if module:
+    """Verify module Blueprint is instantiated."""
+    from . import utilities
