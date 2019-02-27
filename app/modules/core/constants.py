@@ -16,21 +16,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-# Import package dependencies
+from app.modules import bank_stabilization
+from app.modules import enhanced_stream_restoration
+from app.modules import instream_habitat
+from app.modules import stormwater
 
-from app.schema.practice_type import PracticeType
-from app.schema.tag import Tag
 
-
-FILTER_MAP = {
-    'organization': lambda a, b: a.append(
-        PracticeType.organization_id.in_(b)
-    ),
-    'program': lambda a, b: a.append(
-        PracticeType.program_id.in_(b)
-    ),
-    'tag': lambda a, b: a.append(
-        PracticeType.tags.any(
-            Tag.id.in_(b))
-    )
+FUNC_IDX = {
+    'bank_stabilization': bank_stabilization.utilities.reduction,
+    'enhanced_stream_restoration': enhanced_stream_restoration.utilities.reduction,
+    'instream_habitat': instream_habitat.utilities,
+    'stormwater': stormwater.utilities.reduction
 }

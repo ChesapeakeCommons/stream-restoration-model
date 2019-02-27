@@ -27,10 +27,10 @@ from app import db
 from app import logger
 
 
-def reduction(inputs, value, preinstallation=False):
+def reduction(data):
 
     """If the measurement_period is Pre-Installation the LER will use the
-    raw installation_lateral_erosion_rate provided by the user.
+    raw lateral_erosion_rate provided by the user.
 
     If the measurement_period is Planning or Installation the LER will be
     halved (i.e., multipled by 0.5).
@@ -42,36 +42,40 @@ def reduction(inputs, value, preinstallation=False):
     [1] Gene Yagow, Senior Research Scientist, Biological Systems
         Engineering Department Virginia Tech
     """
-    installation_lateral_erosion_rate = value.get('installation_lateral_erosion_rate', 0) if value.get('installation_lateral_erosion_rate', 0) else 0
-    installation_length_of_streambank = value.get('installation_length_of_streambank', 0) if value.get('installation_length_of_streambank', 0) else 0
-    installation_soil_bulk_density = value.get('installation_soil_bulk_density', 0) if value.get('installation_soil_bulk_density', 0) else 0
+    lateral_erosion_rate = data.get('lateral_erosion_rate', 0) if data.get('lateral_erosion_rate', 0) else 0
+    length_of_streambank = data.get('length_of_streambank', 0) if data.get('length_of_streambank', 0) else 0
+    soil_bulk_density = data.get('soil_bulk_density', 0) if data.get('soil_bulk_density', 0) else 0
 
-    ler = installation_lateral_erosion_rate * 0.5
+    ler = lateral_erosion_rate * 0.5
 
-    if preinstallation:
-        ler = installation_lateral_erosion_rate
+    # if preinstallation:
 
-    base_length = installation_length_of_streambank
-    soil_density = installation_soil_bulk_density
+    #     ler = lateral_erosion_rate
 
-    installation_eroding_bank_height = value.get('installation_eroding_bank_height', 0) if value.get('installation_eroding_bank_height', 0) else 0
-    installation_eroding_bank_horizontal_width = value.get('installation_eroding_bank_horizontal_width', 0) if value.get('installation_eroding_bank_horizontal_width', 0) else 0
+    base_length = length_of_streambank
+    soil_density = soil_bulk_density
 
-    square_root = math.sqrt((installation_eroding_bank_height * installation_eroding_bank_height) + (installation_eroding_bank_horizontal_width * installation_eroding_bank_horizontal_width))
+    eroding_bank_height = data.get('eroding_bank_height', 0) if data.get('eroding_bank_height', 0) else 0
+    # eroding_bank_horizontal_width = data.get('eroding_bank_horizontal_width', 0) if data.get('eroding_bank_horizontal_width', 0) else 0
+
+    # square_root = math.sqrt((eroding_bank_height * eroding_bank_height) + (eroding_bank_horizontal_width * eroding_bank_horizontal_width))
+
+    square_root = math.sqrt(eroding_bank_height * eroding_bank_height)
+
     load_total = base_length * square_root * ler * soil_density
 
-    installation_soil_n_content = value.get('installation_soil_n_content', 0) if value.get('installation_soil_n_content', 0) else 0
-    installation_soil_p_content = value.get('installation_soil_p_content', 0) if value.get('installation_soil_p_content', 0) else 0
+    soil_n_content = data.get('soil_n_content', 0) if data.get('soil_n_content', 0) else 0
+    soil_p_content = data.get('soil_p_content', 0) if data.get('soil_p_content', 0) else 0
 
     return {
-        'nitrogen': ((load_total)/2000)*installation_soil_n_content,
-        'phosphorus': ((load_total)/2000)*installation_soil_p_content,
-        'sediment': (load_total)/2000
+        'nitrogen': ((load_total) / 2000) * soil_n_content,
+        'phosphorus': ((load_total) / 2000) * soil_p_content,
+        'sediment': (load_total) / 2000
     }
 
 
-def miles_of_streambank_restored(inputs, value):
+def miles_of_streambank_restored(data):
 
-    installation_length_of_streambank = value.get('installation_length_of_streambank', 0) if value.get('installation_length_of_streambank', 0) else 0
+    length_of_streambank = data.get('length_of_streambank', 0) if data.get('length_of_streambank', 0) else 0
 
-    return (installation_length_of_streambank / 5280)
+    return (length_of_streambank / 5280)

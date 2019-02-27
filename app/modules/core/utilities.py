@@ -65,15 +65,22 @@ def validate_request(data):
 
         practice_code = data.get('practice_code')
 
-        unit_quantity = data.get('units')
+        # unit_quantity = data.get('units')
 
-        return (practice_code and unit_quantity and
-                isinstance(practice_code, basestring) and
-                isinstance(unit_quantity, (float, int)))
+        # return (practice_code and unit_quantity and
+        #         isinstance(practice_code, basestring) and
+        #         isinstance(unit_quantity, (float, int)))
+
+        return (practice_code and isinstance(practice_code, basestring))
 
     except (AttributeError, KeyError):
 
         return False
+
+
+def get_mod_name(string):
+
+    return string.rsplit('.', 1)[1]
 
 
 def handle_request(data):
@@ -83,7 +90,7 @@ def handle_request(data):
         str(request))
 
     func_idx = {
-        module.__name__: rgetattr(module, 'utilities')
+        get_mod_name(module.__name__): rgetattr(module, 'utilities')
         for module in [
             bank_stabilization,
             enhanced_stream_restoration,
@@ -92,13 +99,17 @@ def handle_request(data):
         ]
     }
 
+    logger.debug(
+        'core.utilities.handle_request.func_idx: %s',
+        func_idx)
+
     if validate_request(data):
 
         practice_type = data.get('practice_code')
 
         if practice_type in func_idx:
 
-            return func_idx.get(practice_type)(data)
+            return func_idx.get(practice_type).reduction(data)
 
         else:
 
