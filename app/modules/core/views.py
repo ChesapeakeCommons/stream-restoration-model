@@ -16,6 +16,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+# Import standard dependencies
+
 import os
 
 # Import Flask dependencies
@@ -25,12 +27,13 @@ from flask import jsonify
 from flask import request
 from flask import send_from_directory
 
+# Import package dependencies
+
 from app import logger
 
 # Import module dependencies
 
 from . import module
-from . import Model
 from . import utilities
 
 

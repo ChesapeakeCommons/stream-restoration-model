@@ -28,7 +28,6 @@ from geoalchemy2.elements import WKBElement
 
 # Import package dependencies
 
-from app import db
 from app import logger
 
 
@@ -41,13 +40,6 @@ def _parse_value(key, value, obj=None):
     if isinstance(value, datetime):
 
         return value.isoformat()
-
-    if isinstance(value, WKBElement):
-
-        # logger.debug('Geometry type: %s', dir(ST_AsGeoJSON(value)))
-
-        return json.loads(
-            db.session.scalar(geofunc.ST_AsGeoJSON(value)))
 
     if obj and value and key.endswith('_id'):
 

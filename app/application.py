@@ -29,7 +29,6 @@ from flask.ext.security.signals import user_registered
 
 # Import package dependencies
 
-from . import db
 from . import celery
 from . import flask
 from . import imp
@@ -84,10 +83,6 @@ class Application(object):
         """Load system modules
         """
         self.load_modules()
-
-        """Setup the Database
-        """
-        self.setup_database()
 
         self.init_celery()
 
@@ -151,22 +146,6 @@ class Application(object):
         logger.info('Application is setting up database')
 
 
-    def setup_database(self):
-        """Setup all database schemas."""
-        logger.info('Application is setting up database')
-
-        """Setup the database and associate it with the application
-        """
-        db.init_app(self.app)
-        db.app = self.app
-
-        """Create all database tables
-
-        Create all of the database tables defined with the modules
-        """
-        db.create_all()
-
-
     def init_celery(self):
         
         celery.conf.result_backend = self.app.config['CELERY_BACKEND']
@@ -175,61 +154,6 @@ class Application(object):
         celery.conf.update(self.app.config)
 
         celery.app = self.app
-
-
-    def assign_default_user_role(self, app, db, user_datastore, role):
-        """Ensure that users are assigned the app-defined role by default.
-
-        :param object app
-            the application we are acting upon
-        :param object db
-            the database our application is using for storage
-        :param object user_datastore
-            the Flask Security User Datastore implementation
-        :param string role
-            the name of the `Role` we want to assign by default
-        """
-        @user_registered.connect_via(app)
-        def user_registered_sighandler(app, user, confirm_token):
-
-            """Retrieve the default role requested."""
-            default_role = user_datastore.find_role(role)
-
-            """Assign that role to the acting `User` object."""
-            user_datastore.add_role_to_user(user, default_role)
-
-            """Save all of our revisions to the database."""
-            db.session.commit()
-
-
-    def load_endpoint(self, Module):
-        r"""Load a single module endpoint.
-
-        Given a module name, locate the `endpoint.py` file, and instantiate a
-        new Flask Restless compatible endpoint accorindg to the settings
-        contained within the `endpoint.py` file.
-
-        :param object self: The Application class
-        :param object Module: The of module containing endpoint
-
-        See the official Flask Restless documentation for more information
-        https://flask-restless.readthedocs.org/en/latest/api.html#\
-        flask.ext.restless.APIManager.create_api
-        """
-        manager = APIManager(self.app, flask_sqlalchemy_db=db)
-
-        if hasattr(Module, 'endpoints'):
-            if hasattr(Module, 'Model'):
-                Seed_ = Module.endpoints.Seed()
-                manager.create_api(Module.Model, **Seed_.__arguments__)
-                logger.info('`%s` module endpoints loaded' %
-                            (Module.__name__))
-            else:
-                logger.error('`%s` module has endpoints, but is missing '
-                             'Model' % (Module.__name__))
-        else:
-            logger.info('`%s` module did not contain any endpoints.' %
-                        (Module.__name__))
 
 
     def load_modules(self):
@@ -262,15 +186,18 @@ class Application(object):
                 """Locate and load the module into our module_list
                 """
                 try:
+
                     f, filename, descr = imp.find_module(module_name,
                                                          [modules_path])
                     modules_list[module_name] = imp.load_module(module_name,
                                                                 f, filename,
                                                                 descr)
                 except ImportError:
+
                     logger.error('`load_modules` was unable to locate the'
                                  '`__init__.py` file in your %s module' %
                                  (module_name))
+                    
                     raise
 
                 """Register this module with the application as a blueprint
@@ -279,18 +206,14 @@ class Application(object):
                 http://flask.pocoo.org/docs/0.10/api/#flask.Flask.register_blueprint
                 """
                 if hasattr(modules_list[module_name], 'module'):
+
                     module_blueprint = modules_list[module_name].module
                     self.app.register_blueprint(module_blueprint)
 
                     logger.info('Application successfully loaded `%s` module' %
                                 (module_name))
 
-                    """Load any endpoints that are contained within this module.
-
-                    Use the Application.load_endpoint method to instantiate any
-                    endpoints contained within the module.
-                    """
-                    self.load_endpoint(modules_list[module_name])
                 else:
+
                     logger.error('Application failed to load `%s` module' %
                                  (module_name))

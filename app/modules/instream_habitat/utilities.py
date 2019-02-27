@@ -16,14 +16,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+# Import standard dependencies
 
 import math as Math
-
-
 from datetime import datetime
 
+# Import package dependencies
 
-from app import db
 from app import logger
 
 

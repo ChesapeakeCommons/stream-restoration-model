@@ -16,13 +16,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+# Import standard dependencies
+
 import os
 
+# Import Flask dependencies
 
 from flask import Blueprint
-
-
-from app.schema.practice import Practice as Model
 
 
 static_folder = os.path.join(os.pardir, 'static')
@@ -37,7 +37,6 @@ module = Blueprint(**{
     'subdomain': None,
     'url_defaults': None
 })
-
 
 if module:
     """Verify module Blueprint is instantiated."""

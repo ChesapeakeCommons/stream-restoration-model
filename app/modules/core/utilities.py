@@ -29,7 +29,6 @@ from flask import request
 
 # Import package dependencies
 
-from app import db
 from app import logger
 from app import serializer
 
@@ -39,11 +38,7 @@ from app.modules import instream_habitat
 from app.modules import instream_processing
 from app.modules import stormwater
 
-from app.schema.practice import Practice
-
 from app.utilities import extract_json_properties
-from app.utilities import geom_as_wkt
-from app.utilities import parse_geometry
 from app.utilities import rgetattr
 from app.utilities import scrub_request
 from app.utilities import truncate

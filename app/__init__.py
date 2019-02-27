@@ -41,20 +41,6 @@ from . import responses
 celery = Celery(__name__)
 
 
-"""Setup Database.
-
-Initializes the object relational mapper (ORM) that allows the application to
-communicate directly with the database.
-
-@param (object) db
-    The instantiated SQLAlchemy instance
-
-See the official SQLAlchemy documentation for more information
-http://docs.sqlalchemy.org/en/latest/
-"""
-db = SQLAlchemy(session_options={"autoflush": False})
-
-
 """System Logging.
 
 System logging enables us to retain useful activity within the system in
