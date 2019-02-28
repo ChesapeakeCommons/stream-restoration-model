@@ -94,7 +94,7 @@ def template_type_get(practice_type):
 
     tpl_path = utilities.fetch_tpl_path(practice_type)
 
-    root_dir = '/Users/brendanmcintyre/dnr-model/app/static/templates'
+    root_dir = '/Users/brendanmcintyre/dnr-model/app/static/tpl'
 
     return send_from_directory(
         root_dir, tpl_path)
