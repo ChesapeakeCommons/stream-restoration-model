@@ -59,17 +59,17 @@ def reduction(data):
     if data.get('has_majority_design_completion', False):
 
         return {
-            'nitrogen': nitrogen_protocol_3(data),
-            'phosphorus': phosphorus_protocol_3(data),
-            'sediment': sediment_protocol_1(data)
+            'tn_lbs_reduced': nitrogen_protocol_3(data),
+            'tp_lbs_reduced': phosphorus_protocol_3(data),
+            'tss_tons_reduced': sediment_protocol_1(data)
         }
 
     else:
 
         return {
-            'nitrogen': nitrogen(data),
-            'phosphorus': phosphorus(data),
-            'sediment': sediment(data)
+            'tn_lbs_reduced': nitrogen(data),
+            'tp_lbs_reduced': phosphorus(data),
+            'tss_tons_reduced': sediment(data)
         }
 
 

@@ -67,9 +67,9 @@ def reduction(data):
     soil_p_content = data.get('soil_p_content', 0) if data.get('soil_p_content', 0) else 0
 
     return {
-        'nitrogen': ((load_total) / 2000) * soil_n_content,
-        'phosphorus': ((load_total) / 2000) * soil_p_content,
-        'sediment': (load_total) / 2000
+        'tn_lbs_reduced': ((load_total) / 2000) * soil_n_content,
+        'tp_lbs_reduced': ((load_total) / 2000) * soil_p_content,
+        'tss_tons_reduced': (load_total) / 2000
     }
 
 

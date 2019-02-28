@@ -45,10 +45,18 @@ def reduction(data, preinstallation=False):
     [1] Gene Yagow, Senior Research Scientist, Biological Systems
         Engineering Department Virginia Tech
     """
+
+    n_result = nitrogen(data)
+    p_result = phosphorus(data)
+    tss_result = sediment(data)
+
     return {
-        'nitrogen': nitrogen(data),
-        'phosphorus': phosphorus(data),
-        'sediment': sediment(data)
+        'tn_lbs_reduced': n_result.get('reduction'),
+        'tn_lbs_reduced': p_result.get('reduction'),
+        'tss_tons_reduced': tss_result.get('reduction'),
+        'n_curve': tss_result.get('curve'),
+        'p_curve': tss_result.get('curve'),
+        'tss_curve': tss_result.get('curve')
     }
 
 
@@ -126,8 +134,8 @@ def nitrogen(data, preinstallation=False):
     total_drainage_area = data.get('total_drainage_area', 0)
 
     return {
-        "data": (((impervious_area * impervious_tn_ual) + ((total_drainage_area - impervious_area) * impervious_tn_ual)) * multiplier) / 43560,
-        "adjustor": multiplier
+        "reduction": (((impervious_area * impervious_tn_ual) + ((total_drainage_area - impervious_area) * impervious_tn_ual)) * multiplier) / 43560,
+        "curve": multiplier
     }
 
 
@@ -144,8 +152,8 @@ def phosphorus(data, preinstallation=False):
     total_drainage_area = data.get('total_drainage_area', 0)
 
     return {
-        "data": (((impervious_area * impervious_tp_ual) + ((total_drainage_area - impervious_area) * impervious_tp_ual)) * multiplier) / 43560,
-        "adjustor": multiplier
+        "reduction": (((impervious_area * impervious_tp_ual) + ((total_drainage_area - impervious_area) * impervious_tp_ual)) * multiplier) / 43560,
+        "curve": multiplier
     }
 
 
@@ -162,8 +170,8 @@ def sediment(data, preinstallation=False):
     total_drainage_area = data.get('total_drainage_area', 0)
 
     return {
-        "data": (((impervious_area * impervious_tss_ual) + ((total_drainage_area - impervious_area) * impervious_tss_ual)) * multiplier) / 43560,
-        "adjustor": multiplier
+        "reduction": (((impervious_area * impervious_tss_ual) + ((total_drainage_area - impervious_area) * impervious_tss_ual)) * multiplier) / 43560,
+        "curve": multiplier
     }
 
 

@@ -124,7 +124,7 @@ def fetch_tpl_path(practice_type):
         practice_type)
 
     tpl_idx = {
-        practice: '%s.html' % practice
+        practice: '%s.html' % practice.replace('_', '-')
         for practice in [
             'bank_stabilization',
             'floodplain_reconnection',
