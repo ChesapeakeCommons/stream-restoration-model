@@ -44,12 +44,11 @@
                         <strong>LER evaluation basis</strong>
                     </label>
 
-                    <select class="form-control" data-ng-model="page.modelInputs.ler_evaluation_basis" id="ler_evaluation_basis" name="ler_evaluation_basis">
-                        <option value="BEHI/NBS">BEHI/NBS</option>
-                        <option value="Bank Erosion Pins">Bank Erosion Pins</option>
-                        <option value="Evaluation of Recession Severity Category">Evaluation of Recession Severity Category</option>
-                        <option value="Other">Other</option>
-                    </select>
+                    <input type="text" class="form-control" data-ng-model="page.modelInputs.ler_evaluation_basis" id="ler_evaluation_basis" name="ler_evaluation_basis" placeholder="&hellip;" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        Examples: BEHI/NBS, Bank Erosion Pins, Evaluation of Recession Severity Category, Other
+                    </p>
 
                 </div>
 
