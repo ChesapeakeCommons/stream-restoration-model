@@ -108,6 +108,48 @@
 
                 </div>
 
+                <div class="form-element">
+
+                    <label for="soil_bulk_density" class="meta-label">
+                        <strong>Pounds per year of total nitrogen reduced</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.tn_lbs_reduced" id="tn_lbs_reduced" name="tn_lbs_reduced" placeholder="" step="0.001" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        lbs/𝑎
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="soil_n_content" class="meta-label">
+                        <strong>Pounds per year of total phosphorus reduced</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.tp_lbs_reduced" id="tp_lbs_reduced" name="tp_lbs_reduced" placeholder="" step="0.001" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        lbs/𝑎
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="soil_p_content" class="meta-label">
+                        <strong>Tons per year of total suspended solids reduced</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.tss_tons_reduced" id="tss_tons_reduced" name="tss_tons_reduced" placeholder="" step="0.001" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        tons/𝑎
+                    </p>
+
+                </div>
+
             </fieldset>
 
             <div class="save--action--wrapper save--action--bottom">

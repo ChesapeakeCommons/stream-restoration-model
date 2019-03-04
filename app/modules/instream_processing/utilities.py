@@ -59,8 +59,7 @@ def reduction(data):
     if data.get('has_majority_design_completion', False):
 
         return {
-            'tn_lbs_reduced': nitrogen_protocol_2(data),
-            'tss_tons_reduced': sediment_protocol_1(data)
+            'tn_lbs_reduced': nitrogen_protocol_2(data)
         }
 
     else:
