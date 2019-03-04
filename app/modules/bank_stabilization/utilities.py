@@ -60,16 +60,10 @@ def reduction(data):
     soil_p_content = data.get('soil_p_content', 0) if data.get('soil_p_content', 0) else 0
 
     return {
-        'tn_lbs_reduced': data.get('tn_lbs_reduced', 0),
-        'tp_lbs_reduced': data.get('tp_lbs_reduced', 0),
-        'tss_tons_reduced': data.get('tss_tons_reduced', 0)
+        'tn_lbs_reduced': ((load_total) / 2000) * soil_n_content,
+        'tp_lbs_reduced': ((load_total) / 2000) * soil_p_content,
+        'tss_tons_reduced': (load_total) / 2000
     }
-
-    # return {
-    #     'tn_lbs_reduced': ((load_total) / 2000) * soil_n_content,
-    #     'tp_lbs_reduced': ((load_total) / 2000) * soil_p_content,
-    #     'tss_tons_reduced': (load_total) / 2000
-    # }
 
 
 def miles_of_streambank_restored(data):
