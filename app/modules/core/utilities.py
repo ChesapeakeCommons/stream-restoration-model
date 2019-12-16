@@ -36,6 +36,7 @@ from app.modules import bank_stabilization
 from app.modules import floodplain_reconnection
 from app.modules import instream_habitat
 from app.modules import instream_processing
+from app.modules import shoreline_management
 from app.modules import stormwater
 
 from app.utilities import extract_json_properties
@@ -67,7 +68,7 @@ def validate_request(data):
         #         isinstance(practice_code, basestring) and
         #         isinstance(unit_quantity, (float, int)))
 
-        return (practice_code and isinstance(practice_code, basestring))
+        return practice_code and isinstance(practice_code, basestring)
 
     except (AttributeError, KeyError):
 
@@ -92,6 +93,7 @@ def handle_request(data):
             floodplain_reconnection,
             instream_habitat,
             instream_processing,
+            shoreline_management,
             stormwater
         ]
     }

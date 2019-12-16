@@ -1,0 +1,177 @@
+<form data-ng-submit="page.saveInputs()" class="form" role="form">
+
+    <article class="feature-detail">
+
+        <div class="feature-detail-content">
+
+            <fieldset>
+
+                <div class="form-group">
+
+                    <p style="color: #212121; font-size: 1em; font-style: normal;">
+                        <strong>Project design completion percentage (%)</strong>
+                    </p>
+
+                    <div class="form-element">
+
+                        <div class="search-options-radio">
+
+                            <label for="has_majority_design_completion_false">
+                                <input data-ng-model="page.modelInputs.has_majority_design_completion" type="radio" data-ng-value="false" class="form-control" id="has_majority_design_completion_false" name="has_majority_design_completion_false" />
+                                <strong>Less than 90% designed</strong>
+                            </label>
+
+
+                            <label for="has_majority_design_completion_true">
+                                <input data-ng-model="page.modelInputs.has_majority_design_completion" type="radio" data-ng-value="true" class="form-control" id="has_majority_design_completion_true" name="has_majority_design_completion_true" />
+                                <strong>Greater than 90% designed</strong>
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                    How far along are you with your shoreline management design at the time of entering values into FieldDoc? Do not select the percentage of design completion you anticipate at project start time. Per the expert panel report, as the inputs for shoreline management require engineered specifications, only those proposals that are at least 90% designed can use protocols 1, 2, 3, and 4.
+                </p>
+
+            </fieldset>
+
+            <fieldset data-ng-if="page.modelInputs.has_majority_design_completion === false">
+
+                <div class="form-element">
+
+                    <label for="length_of_living_shoreline_l90" class="meta-label">
+                        <strong>Length of living shoreline restored (feet)</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline_l90" name="length_of_living_shoreline_l90" placeholder="" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        ft
+                    </p>
+
+                </div>
+
+            </fieldset>
+
+            <fieldset data-ng-if="page.modelInputs.has_majority_design_completion === true">
+
+                <div class="form-element">
+
+                    <label for="length_of_living_shoreline" class="meta-label">
+                        <strong>Length of living shoreline restored (feet)</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline" name="length_of_living_shoreline" placeholder="" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        ft
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="existing_avg_bank_height" class="meta-label">
+                        <strong>Existing average bank height (feet)</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.existing_avg_bank_height" id="existing_avg_bank_height" name="existing_avg_bank_height" placeholder="" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        ft
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="existing_shoreline_recession_rate" class="meta-label">
+                        <strong>Existing shoreline recession rate (feet/year)</strong>
+                    </label>
+
+                    <input type="text" class="form-control" data-ng-model="page.modelInputs.existing_shoreline_recession_rate" id="existing_shoreline_recession_rate" name="existing_shoreline_recession_rate" placeholder="&hellip;" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        ft
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="soil_bulk_density" class="meta-label">
+                        <strong>Soil bulk density</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.soil_bulk_density" id="soil_bulk_density" name="soil_bulk_density" placeholder="" step="0.001" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        lbs/ft<sup>3</sup>
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="sand_reduction_factor" class="meta-label">
+                        <strong>Sand reduction factor</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.sand_reduction_factor" id="sand_reduction_factor" name="sand_reduction_factor" placeholder="" step="0.001" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        Instructional text goes here...
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="bank_instability_reduction_factor" class="meta-label">
+                        <strong>Bank instability reduction factor (if applicable)</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.bank_instability_reduction_factor" id="bank_instability_reduction_factor" name="bank_instability_reduction_factor" placeholder="" step="0.001" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        Instructional text goes here...
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="planted_tidal_wetland_area" class="meta-label">
+                        <strong>Area of planted tidal wetlands (acres)</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.planted_tidal_wetland_area" id="planted_tidal_wetland_area" name="planted_tidal_wetland_area" placeholder="" step="0.001" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        Acres
+                    </p>
+
+                </div>
+
+            </fieldset>
+
+            <div class="save--action--wrapper save--action--bottom">
+                <button type="submit" data-ng-disabled="page.status.processing">
+                    <i class="material-icons" data-ng-if="page.status.processing">
+                        more_horiz
+                    </i>
+                    <i class="material-icons" data-ng-if="!page.status.processing">
+                        done
+                    </i>
+                </button>
+            </div>
+
+        </div>
+
+    </article>
+
+</form>
