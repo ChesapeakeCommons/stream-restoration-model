@@ -61,7 +61,7 @@
                         <strong>Length of living shoreline restored (feet)</strong>
                     </label>
 
-                    <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline_l90" name="length_of_living_shoreline_l90" placeholder="" />
+                    <input type="number" step="0.01" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline_l90" name="length_of_living_shoreline_l90" placeholder="" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
                         Enter linear feet of proposed shoreline restoration practice. Maryland, Delaware, and Washington D.C. use different default rates than Virginia. These rates are defaults reductions used for planning purposes as described in Forand et. al., 2019.
@@ -79,7 +79,7 @@
                         <strong>Length of living shoreline restored (feet)</strong>
                     </label>
 
-                    <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline" name="length_of_living_shoreline" placeholder="" />
+                    <input type="number" step="0.01" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline" name="length_of_living_shoreline" placeholder="" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
                         How far along are you with your shoreline management design at the time of entering values into FieldDoc? Do not select the percentage of design completion you anticipate at project start time. Per the expert panel report, as the inputs for shoreline management require engineered specifications, only those proposals that are at least 90% designed can use protocols 1, 2, 3, and 4.
@@ -93,7 +93,7 @@
                         <strong>Existing average bank height (feet)</strong>
                     </label>
 
-                    <input type="number" class="form-control" data-ng-model="page.modelInputs.existing_avg_bank_height" id="existing_avg_bank_height" name="existing_avg_bank_height" placeholder="" />
+                    <input type="number" step="0.01" class="form-control" data-ng-model="page.modelInputs.existing_avg_bank_height" id="existing_avg_bank_height" name="existing_avg_bank_height" placeholder="" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
                         ft
@@ -107,7 +107,7 @@
                         <strong>Existing shoreline recession rate (feet/year)</strong>
                     </label>
 
-                    <input type="text" class="form-control" data-ng-model="page.modelInputs.existing_shoreline_recession_rate" id="existing_shoreline_recession_rate" name="existing_shoreline_recession_rate" placeholder="&hellip;" />
+                    <input type="number" step="0.01" class="form-control" data-ng-model="page.modelInputs.existing_shoreline_recession_rate" id="existing_shoreline_recession_rate" name="existing_shoreline_recession_rate" placeholder="&hellip;" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
                         Select rate from Virginia’s Shoreline Evolution Reports (http://web.vims.edu/physical/research/shoreline/Publications-Evolution.htm); Maryland's ShorelineChange Maps for Tidewater Maryland (https://gisapps.dnr.state.md.us/coastalatlas/WAB2); or measure in field.  (Forand et. al., 2019)
@@ -163,7 +163,7 @@
                         <strong>Area of planted tidal wetlands (acres)</strong>
                     </label>
 
-                    <input type="number" class="form-control" data-ng-model="page.modelInputs.planted_tidal_wetland_area" id="planted_tidal_wetland_area" name="planted_tidal_wetland_area" placeholder="" step="0.001" />
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.planted_tidal_wetland_area" id="planted_tidal_wetland_area" name="planted_tidal_wetland_area" placeholder="" step="0.01" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
                         Enter the total post-construction area of the net increase in marsh plantings.
