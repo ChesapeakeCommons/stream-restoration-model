@@ -30,11 +30,6 @@ from app import logger
 from .constants import STATE_COEFFICIENTS
 
 
-if not hasattr(__builtins__, 'basestring'):
-
-    basestring = (str, bytes)
-
-
 # Protocol 1: Erosion Prevention
 
 
@@ -244,20 +239,18 @@ def reduction(data):
 
         state_code = str(data.get('state_code', 0)).lower()
 
-        if isinstance(state_code, basestring):
+        if state_code in ['dc', 'de', 'md', 'va']:
 
-            if state_code in ['dc', 'de', 'md', 'va']:
+            n_func = STATE_COEFFICIENTS.get('n').get(state_code)
 
-                n_func = STATE_COEFFICIENTS.get('n').get(state_code)
+            p_func = STATE_COEFFICIENTS.get('p').get(state_code)
 
-                p_func = STATE_COEFFICIENTS.get('p').get(state_code)
+            tss_func = STATE_COEFFICIENTS.get('tss').get(state_code)
 
-                tss_func = STATE_COEFFICIENTS.get('tss').get(state_code)
-
-                return {
-                    'tn_lbs_reduced': n_func(length_of_living_shoreline),
-                    'tp_lbs_reduced': p_func(length_of_living_shoreline),
-                    'tss_tons_reduced': tss_func(length_of_living_shoreline)
-                }
+            return {
+                'tn_lbs_reduced': n_func(length_of_living_shoreline),
+                'tp_lbs_reduced': p_func(length_of_living_shoreline),
+                'tss_tons_reduced': tss_func(length_of_living_shoreline)
+            }
 
     return {}
