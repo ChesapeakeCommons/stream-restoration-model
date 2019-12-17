@@ -220,12 +220,11 @@ def reduction(data):
             ]),
             'tn_lbs_reduced_2': tn_2(planted_tidal_wetland_area),
             'tn_lbs_reduced_4': tn_4(planted_tidal_wetland_area),
-            'tp_lbs_reduced_1': ([
+            'tp_lbs_reduced_1': tp_1([
                 length_of_living_shoreline,
                 existing_avg_bank_height,
                 existing_shoreline_recession_rate,
                 soil_bulk_density,
-                sand_reduction_factor,
                 bank_instability_reduction_factor
             ]),
             'tp_lbs_reduced_3': tp_3(planted_tidal_wetland_area),
@@ -243,11 +242,9 @@ def reduction(data):
 
     else:
 
-        state_code = data.get('state_code')
+        state_code = str(data.get('state_code', 0)).lower()
 
         if isinstance(state_code, basestring):
-
-            state_code.lower()
 
             if state_code in ['dc', 'de', 'md', 'va']:
 
