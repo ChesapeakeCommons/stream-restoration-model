@@ -38,12 +38,12 @@ if not hasattr(__builtins__, 'basestring'):
 # Protocol 1: Erosion Prevention
 
 
-def tn_1(*args):
+def tn_1(seq):
     """
     Multiply a list of values and multiply the product
     by a standard coefficient.
 
-    :param args: A list of numeric values representing
+    :param seq: A list of numeric values representing
     variables associated with the physical conditions
     affecting a shoreline management conservation
     practice.
@@ -52,17 +52,17 @@ def tn_1(*args):
     by the given input variable values.
     """
 
-    product = functools.reduce(operator.mul, args)
+    product = functools.reduce(operator.mul, seq)
 
     return product * 0.00029
 
 
-def tp_1(*args):
+def tp_1(seq):
     """
     Multiply a list of values and multiply the product
     by a standard coefficient.
 
-    :param args: A list of numeric values representing
+    :param seq: A list of numeric values representing
     variables associated with the physical conditions
     affecting a shoreline management conservation
     practice.
@@ -71,17 +71,17 @@ def tp_1(*args):
     by the given input variable values.
     """
 
-    product = functools.reduce(operator.mul, args)
+    product = functools.reduce(operator.mul, seq)
 
     return product * 0.000205
 
 
-def tss_1(*args):
+def tss_1(seq):
     """
     Multiply a list of values and divide the product
     by 2,000 (pounds per ton).
 
-    :param args: A list of numeric values representing
+    :param seq: A list of numeric values representing
     variables associated with the physical conditions
     affecting a shoreline management conservation
     practice.
@@ -90,7 +90,7 @@ def tss_1(*args):
     produced by the given input variable values.
     """
 
-    product = functools.reduce(operator.mul, args)
+    product = functools.reduce(operator.mul, seq)
 
     return product / 2000
 
