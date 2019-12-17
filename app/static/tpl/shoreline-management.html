@@ -43,6 +43,20 @@
 
                 <div class="form-element">
 
+                    <label for="state_code" class="meta-label">
+                        <strong>State</strong>
+                    </label>
+
+                    <input type="number" class="form-control" data-ng-model="page.modelInputs.state_code" id="state_code" name="state_code" placeholder="" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        Enter the two-letter abbreviation for the state where the proposed shoreline restoration practice is located.
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
                     <label for="length_of_living_shoreline_l90" class="meta-label">
                         <strong>Length of living shoreline restored (feet)</strong>
                     </label>
@@ -50,7 +64,7 @@
                     <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline_l90" name="length_of_living_shoreline_l90" placeholder="" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        ft
+                        Enter linear feet of proposed shoreline restoration practice. Maryland, Delaware, and Washington D.C. use different default rates than Virginia. These rates are defaults reductions used for planning purposes as described in Forand et. al., 2019.
                     </p>
 
                 </div>
@@ -68,7 +82,7 @@
                     <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_living_shoreline" id="length_of_living_shoreline" name="length_of_living_shoreline" placeholder="" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        ft
+                        How far along are you with your shoreline management design at the time of entering values into FieldDoc? Do not select the percentage of design completion you anticipate at project start time. Per the expert panel report, as the inputs for shoreline management require engineered specifications, only those proposals that are at least 90% designed can use protocols 1, 2, 3, and 4.
                     </p>
 
                 </div>
@@ -96,7 +110,7 @@
                     <input type="text" class="form-control" data-ng-model="page.modelInputs.existing_shoreline_recession_rate" id="existing_shoreline_recession_rate" name="existing_shoreline_recession_rate" placeholder="&hellip;" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        ft
+                        Select rate from Virginia’s Shoreline Evolution Reports (http://web.vims.edu/physical/research/shoreline/Publications-Evolution.htm); Maryland's ShorelineChange Maps for Tidewater Maryland (https://gisapps.dnr.state.md.us/coastalatlas/WAB2); or measure in field.  (Forand et. al., 2019)
                     </p>
 
                 </div>
@@ -104,13 +118,13 @@
                 <div class="form-element">
 
                     <label for="soil_bulk_density" class="meta-label">
-                        <strong>Soil bulk density</strong>
+                        <strong>Soil bulk density (lbs/ft<sup>3</sup>)</strong>
                     </label>
 
                     <input type="number" class="form-control" data-ng-model="page.modelInputs.soil_bulk_density" id="soil_bulk_density" name="soil_bulk_density" placeholder="" step="0.001" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        lbs/ft<sup>3</sup>
+                        Use the default value of 93.6 lbs/ft<sup>3</sup> or measure in the field and provide details under notes. (Forand et. al., 2019)
                     </p>
 
                 </div>
@@ -124,7 +138,7 @@
                     <input type="number" class="form-control" data-ng-model="page.modelInputs.sand_reduction_factor" id="sand_reduction_factor" name="sand_reduction_factor" placeholder="" step="0.001" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        Instructional text goes here...
+                        Use the default values by state of: 0.337 (VA) and 0.551 (MD, DC, DE) or based off of site-specific measurements. (Forand et. al., 2019)
                     </p>
 
                 </div>
@@ -138,7 +152,7 @@
                     <input type="number" class="form-control" data-ng-model="page.modelInputs.bank_instability_reduction_factor" id="bank_instability_reduction_factor" name="bank_instability_reduction_factor" placeholder="" step="0.001" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        Instructional text goes here...
+                        Use value of 0.5 if the project does not address the critical angle of repose, otherwise use value of 1.  (Forand et. al., pg 43, 2019.)
                     </p>
 
                 </div>
@@ -152,7 +166,7 @@
                     <input type="number" class="form-control" data-ng-model="page.modelInputs.planted_tidal_wetland_area" id="planted_tidal_wetland_area" name="planted_tidal_wetland_area" placeholder="" step="0.001" />
 
                     <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
-                        Acres
+                        Enter the total post-construction area of the net increase in marsh plantings.
                     </p>
 
                 </div>
