@@ -36,6 +36,7 @@ from app.modules import bank_stabilization
 from app.modules import floodplain_reconnection
 from app.modules import instream_habitat
 from app.modules import instream_processing
+from app.modules import oyster_aquaculture
 from app.modules import shoreline_management
 from app.modules import stormwater
 
@@ -93,6 +94,7 @@ def handle_request(data):
             floodplain_reconnection,
             instream_habitat,
             instream_processing,
+            oyster_aquaculture,
             shoreline_management,
             stormwater
         ]
@@ -104,11 +106,17 @@ def handle_request(data):
 
     if validate_request(data):
 
-        practice_type = data.get('practice_code')
+        codes = data.get('practice_code', '').split('.')
 
-        if practice_type in func_idx:
+        if codes[0] in func_idx:
 
-            return func_idx.get(practice_type).reduction(data)
+            if len(codes) > 1:
+
+                data.update({
+                    'secondary_code': codes[1]
+                })
+
+            return func_idx.get(codes[0]).reduction(data)
 
         else:
 
