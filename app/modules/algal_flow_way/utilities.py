@@ -94,7 +94,7 @@ def tss_1(grams, percent_solids):
     if (isinstance(grams, (float, int)) and
             isinstance(percent_solids, (float, int))):
 
-        return ((grams * (percent_solids / 100)) / 0.0022) / 2000
+        return ((grams * (percent_solids / 100.0)) / 0.0022) / 2000
 
     return 0
 
