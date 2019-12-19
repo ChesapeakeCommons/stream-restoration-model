@@ -127,7 +127,7 @@ def reduction(data):
             ),
             'tss_tons_reduced': tss_1(
                 grams=data.get('biomass'),
-                percent_solids=data.get('percent_solids')
+                percent_solids=data.get('percent_ash_solids')
             )
         }
 
