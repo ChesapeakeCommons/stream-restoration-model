@@ -40,7 +40,7 @@ def tn_1(grams, percent_n):
 
     :param seq: A list of numeric values representing
     variables associated with the physical conditions
-    affecting a shoreline management conservation
+    affecting an algal flow-way conservation
     practice.
     :return: A float value representing the estimated
     total nitrogen load reduction in pounds produced
@@ -62,7 +62,7 @@ def tp_1(grams, percent_p):
 
     :param seq: A list of numeric values representing
     variables associated with the physical conditions
-    affecting a shoreline management conservation
+    affecting an algal flow-way conservation
     practice.
     :return: A float value representing the estimated
     total nitrogen load reduction in pounds produced
@@ -84,7 +84,7 @@ def tss_1(grams, percent_solids):
 
     :param seq: A list of numeric values representing
     variables associated with the physical conditions
-    affecting a shoreline management conservation
+    affecting an algal flow-way conservation
     practice.
     :return: A float value representing the estimated
     total suspended solids load reduction in tons
@@ -136,9 +136,9 @@ def reduction(data):
     if isinstance(surface_area, (float, int)):
 
         return {
-            'tn_lbs_reduced': surface_area * 545,
-            'tp_lbs_reduced': surface_area * 45,
-            'tss_tons_reduced': (surface_area * 3219) / 2000
+            'tn_lbs_reduced': surface_area * 545.0,
+            'tp_lbs_reduced': surface_area * 45.0,
+            'tss_tons_reduced': (surface_area * 3219.0) / 2000.0
         }
 
     return {}
