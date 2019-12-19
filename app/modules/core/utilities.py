@@ -32,6 +32,7 @@ from flask import request
 from app import logger
 from app import serializer
 
+from app.modules import algal_flow_way
 from app.modules import bank_stabilization
 from app.modules import floodplain_reconnection
 from app.modules import instream_habitat
@@ -90,6 +91,7 @@ def handle_request(data):
     func_idx = {
         get_mod_name(module.__name__): rgetattr(module, 'utilities')
         for module in [
+            algal_flow_way,
             bank_stabilization,
             floodplain_reconnection,
             instream_habitat,
