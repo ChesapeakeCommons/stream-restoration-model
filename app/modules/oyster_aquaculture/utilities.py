@@ -49,9 +49,9 @@ def aggregate(unit_idx, tissue_weight_idx):
     for each target metric.
     """
 
-    total_n_grams = 0
+    total_n_grams = 0.0
 
-    total_p_grams = 0
+    total_p_grams = 0.0
 
     for code in PRACTICE_CODES:
 
@@ -126,6 +126,7 @@ def reduction(data):
                 })
 
             if total_p_grams:
+
                 datum.update({
                     'tp_lbs_reduced': total_p_grams/453.59237
                 })
