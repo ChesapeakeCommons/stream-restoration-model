@@ -41,33 +41,48 @@ def reduction(data):
     [1] Gene Yagow, Senior Research Scientist, Biological Systems
         Engineering Department Virginia Tech
     """
-    lateral_erosion_rate = data.get('lateral_erosion_rate', 0) if data.get('lateral_erosion_rate', 0) else 0
-    length_of_streambank = data.get('length_of_streambank', 0) if data.get('length_of_streambank', 0) else 0
-    soil_bulk_density = data.get('soil_bulk_density', 0) if data.get('soil_bulk_density', 0) else 0
 
-    ler = lateral_erosion_rate * 0.5
+    has_majority_design_completion = data.get('has_majority_design_completion', False)
 
-    base_length = length_of_streambank
-    soil_density = soil_bulk_density
+    length_of_streambank = data.get('length_of_streambank', 0)
 
-    eroding_bank_height = data.get('eroding_bank_height', 0) if data.get('eroding_bank_height', 0) else 0
+    if isinstance(length_of_streambank, (float, int)):
 
-    square_root = math.sqrt(eroding_bank_height * eroding_bank_height)
+        if has_majority_design_completion:
 
-    load_total = base_length * square_root * ler * soil_density
+            lateral_erosion_rate = data.get('lateral_erosion_rate', 0)
 
-    soil_n_content = data.get('soil_n_content', 0) if data.get('soil_n_content', 0) else 0
-    soil_p_content = data.get('soil_p_content', 0) if data.get('soil_p_content', 0) else 0
+            soil_bulk_density = data.get('soil_bulk_density', 0)
 
-    return {
-        'tn_lbs_reduced': ((load_total) / 2000) * soil_n_content,
-        'tp_lbs_reduced': ((load_total) / 2000) * soil_p_content,
-        'tss_tons_reduced': (load_total) / 2000
-    }
+            ler = lateral_erosion_rate * 0.5
+
+            base_length = length_of_streambank
+            soil_density = soil_bulk_density
+
+            eroding_bank_height = data.get('eroding_bank_height', 0)
+
+            square_root = math.sqrt(eroding_bank_height * eroding_bank_height)
+
+            load_total = base_length * square_root * ler * soil_density
+
+            soil_n_content = data.get('soil_n_content', 0)
+            soil_p_content = data.get('soil_p_content', 0)
+
+            return {
+                'tn_lbs_reduced': (load_total / 2000) * soil_n_content,
+                'tp_lbs_reduced': (load_total / 2000) * soil_p_content,
+                'tss_tons_reduced': load_total / 2000
+            }
+
+        return {
+            'tss_tons_reduced': (float(length_of_streambank) * 248) / 2000
+        }
+
+    return {}
 
 
 def miles_of_streambank_restored(data):
 
     length_of_streambank = data.get('length_of_streambank', 0) if data.get('length_of_streambank', 0) else 0
 
-    return (length_of_streambank / 5280)
+    return length_of_streambank / 5280

@@ -200,103 +200,10 @@ def sediment(data):
 
     if data.get('override_linear_feet_in_coastal_plain'):
 
-        coastal_ = data.get('override_linear_feet_in_coastal_plain') * 15.13
+        coastal_ = data.get('override_linear_feet_in_coastal_plain') * 248.0
 
     if data.get('override_linear_feet_in_noncoastal_plain'):
 
-        noncoastal_ = data.get('override_linear_feet_in_noncoastal_plain') * 44.88
+        noncoastal_ = data.get('override_linear_feet_in_noncoastal_plain') * 248.0
 
-    return ((coastal_ + noncoastal_) / 2000)
-
-
-def miles_of_streambank_restored(data):
-
-    miles = 0
-
-    if not data.get('has_majority_design_completion'):
-
-        coastal_ = 0
-        noncoastal_ = 0
-
-        if data.get('override_linear_feet_in_coastal_plain', 0):
-
-            coastal_ = data.get('override_linear_feet_in_coastal_plain', 0)
-
-        if data.get('override_linear_feet_in_noncoastal_plain', 0):
-
-            noncoastal_ = data.get('override_linear_feet_in_noncoastal_plain', 0)
-
-        miles = ((coastal_ + noncoastal_) / 5280)
-
-        return miles
-
-    project_left_bank_height = data.get('project_left_bank_height', 0)
-    left_bank_bankfull_height = data.get('left_bank_bankfull_height', 0)
-
-    project_right_bank_height = data.get('project_right_bank_height', 0)
-    right_bank_bankfull_height = data.get('right_bank_bankfull_height', 0)
-
-    length_of_left_bank_with_improved_connectivity = data.get('length_of_left_bank_with_improved_connectivity', 0)
-    length_of_right_bank_with_improved_connectivity = data.get('length_of_right_bank_with_improved_connectivity', 0)
-
-    stream_width_at_mean_base_flow = data.get('stream_width_at_mean_base_flow', 0)
-    stream_length_reconnected_at_floodplain = data.get('stream_length_reconnected_at_floodplain', 0)
-
-    left_behi = bank_height_ratio(project_left_bank_height, left_bank_bankfull_height)
-    right_behi = bank_height_ratio(project_right_bank_height, right_bank_bankfull_height)
-    left_bank = 0
-    right_bank = 0
-    feet_to_miles = 5280
-
-    if left_behi < 1.1:
-
-        left_bank = length_of_left_bank_with_improved_connectivity
-
-    if right_behi < 1.1:
-
-        right_bank = length_of_right_bank_with_improved_connectivity
-
-    miles = ((left_bank + right_bank + stream_length_reconnected_at_floodplain) / feet_to_miles)
-
-    return miles
-
-
-def acres_of_streambank_restored(data):
-
-    project_left_bank_height = data.get('project_left_bank_height', 0)
-    left_bank_bankfull_height = data.get('left_bank_bankfull_height', 0)
-
-    project_right_bank_height = data.get('project_right_bank_height', 0)
-    right_bank_bankfull_height = data.get('right_bank_bankfull_height', 0)
-
-    length_of_left_bank_with_improved_connectivity = data.get('length_of_left_bank_with_improved_connectivity', 0)
-    length_of_right_bank_with_improved_connectivity = data.get('length_of_right_bank_with_improved_connectivity', 0)
-
-    stream_width_at_mean_base_flow = data.get('stream_width_at_mean_base_flow', 0)
-    stream_length_reconnected_at_floodplain = data.get('stream_length_reconnected_at_floodplain', 0)
-
-    acres = 0
-    left_behi = bank_height_ratio(project_left_bank_height, left_bank_bankfull_height)
-    right_behi = bank_height_ratio(project_right_bank_height, right_bank_bankfull_height)
-    left_bank = 0
-    right_bank = 0
-    to_acres = 43560
-
-    if left_behi < 1.1:
-
-        left_bank = length_of_left_bank_with_improved_connectivity
-
-    if right_behi < 1.1:
-
-        right_bank = length_of_right_bank_with_improved_connectivity
-
-    acres = (((left_bank * (stream_width_at_mean_base_flow / 2 + 5)) + (right_bank * (stream_width_at_mean_base_flow / 2 + 5)) + stream_length_reconnected_at_floodplain) / to_acres)
-
-    return acres
-
-
-def acres_of_floodplain_reconnected(data):
-
-    acres = data.get('connected_floodplain_surface_area', 0)
-
-    return acres
+    return (coastal_ + noncoastal_) / 2000
