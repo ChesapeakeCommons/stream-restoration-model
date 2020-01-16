@@ -160,47 +160,38 @@ def sediment_protocol_1(data):
 
 def nitrogen(data):
 
-    coastal_ = 0
-    noncoastal_ = 0
+    reduction_ = 0
 
-    if data.get('override_linear_feet_in_coastal_plain', 0):
+    linear_feet = data.get('linear_feet')
 
-        coastal_ = data.get('override_linear_feet_in_coastal_plain', 0) * 0.075
+    if isinstance(linear_feet, (float, int)):
 
-    if data.get('override_linear_feet_in_noncoastal_plain', 0):
+        reduction_ = linear_feet * 0.075
 
-        noncoastal_ = data.get('override_linear_feet_in_noncoastal_plain', 0) * 0.075
-
-    return coastal_ + noncoastal_
+    return reduction_
 
 
 def phosphorus(data):
 
-    coastal_ = 0
-    noncoastal_ = 0
+    reduction_ = 0
 
-    if data.get('override_linear_feet_in_coastal_plain', 0):
+    linear_feet = data.get('linear_feet')
 
-        coastal_ = data.get('override_linear_feet_in_coastal_plain', 0) * 0.068
+    if isinstance(linear_feet, (float, int)):
 
-    if data.get('override_linear_feet_in_noncoastal_plain', 0):
+        reduction_ = linear_feet * 0.068
 
-        noncoastal_ = data.get('override_linear_feet_in_noncoastal_plain', 0) * 0.068
-
-    return coastal_ + noncoastal_
+    return reduction_
 
 
 def sediment(data):
 
-    coastal_ = 0
-    noncoastal_ = 0
+    reduction_ = 0
 
-    if data.get('override_linear_feet_in_coastal_plain'):
+    linear_feet = data.get('linear_feet')
 
-        coastal_ = data.get('override_linear_feet_in_coastal_plain') * 248.0
+    if isinstance(linear_feet, (float, int)):
 
-    if data.get('override_linear_feet_in_noncoastal_plain'):
+        reduction_ = linear_feet * 248.0
 
-        noncoastal_ = data.get('override_linear_feet_in_noncoastal_plain') * 248.0
-
-    return (coastal_ + noncoastal_) / 2000
+    return reduction_
