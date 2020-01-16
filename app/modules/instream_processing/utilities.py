@@ -197,4 +197,4 @@ def sediment(data):
 
         reduction_ = linear_feet * 248.0
 
-    return reduction_
+    return reduction_ / 2000.0
