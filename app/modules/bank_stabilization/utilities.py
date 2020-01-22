@@ -75,14 +75,9 @@ def reduction(data):
             }
 
         return {
+            'tn_lbs_reduced': length_of_streambank * 0.075,
+            'tp_lbs_reduced': length_of_streambank * 0.068,
             'tss_tons_reduced': (float(length_of_streambank) * 248) / 2000
         }
 
     return {}
-
-
-def miles_of_streambank_restored(data):
-
-    length_of_streambank = data.get('length_of_streambank', 0) if data.get('length_of_streambank', 0) else 0
-
-    return length_of_streambank / 5280
