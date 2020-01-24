@@ -40,6 +40,7 @@ from app.modules import instream_processing
 from app.modules import oyster_aquaculture
 from app.modules import shoreline_management
 from app.modules import stormwater
+from app.modules import stream_stabilization
 
 from app.utilities import extract_json_properties
 from app.utilities import rgetattr
@@ -98,7 +99,8 @@ def handle_request(data):
             instream_processing,
             oyster_aquaculture,
             shoreline_management,
-            stormwater
+            stormwater,
+            stream_stabilization
         ]
     }
 
@@ -142,7 +144,8 @@ def fetch_tpl_path(practice_type):
             'floodplain_reconnection',
             'instream_habitat',
             'instream_processing',
-            'stormwater'
+            'stormwater',
+            'stream_stabilization'
         ]
     }
 
