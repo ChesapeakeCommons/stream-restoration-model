@@ -1,0 +1,47 @@
+<form data-ng-submit="page.savePractice()" class="form" role="form">
+
+    <article class="feature-detail">
+
+        <div class="feature-detail-content">
+
+            <fieldset>
+
+                <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                    <strong>Calculating Length:</strong> Linear features can be placed on either one, or both, sides of a stream. If a linear practice is installed on both sides of a stream, the total length of the practice is the sum of the length installed on both sides. For calculation of reduction benefits; if the upland characteristics of the site are different on the two sides, enter the practice as two BMPs; if the upland characteristics are the same on both sides, sum the length installed on each side and enter the total as one BMP.
+                </p>
+
+                <div class="form-element">
+
+                    <label for="stream_feet_treated" class="meta-label">
+                        <strong>Stream feet treated</strong>
+                    </label>
+
+                    <input type="number" step="0.01" min="0" class="form-control" data-ng-model="page.modelInputs.stream_feet_treated" id="stream_feet_treated" name="stream_feet_treated" placeholder="" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        Instructions go here.
+                    </p>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="number_of_units" class="meta-label">
+                        <strong>Number of units</strong>
+                    </label>
+
+                    <input type="number" step="1" min="0" class="form-control" data-ng-model="page.modelInputs.number_of_units" id="number_of_units" name="number_of_units" placeholder="" />
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        Instructions go here.
+                    </p>
+
+                </div>
+
+            </fieldset>
+
+        </div>
+
+    </article>
+
+</form>
