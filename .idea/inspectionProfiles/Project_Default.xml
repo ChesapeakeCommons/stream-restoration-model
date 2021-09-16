@@ -1,0 +1,47 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="34">
+            <item index="0" class="java.lang.String" itemvalue="alembic" />
+            <item index="1" class="java.lang.String" itemvalue="Flask-Security" />
+            <item index="2" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="3" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="4" class="java.lang.String" itemvalue="psycopg2" />
+            <item index="5" class="java.lang.String" itemvalue="Wand" />
+            <item index="6" class="java.lang.String" itemvalue="pep8" />
+            <item index="7" class="java.lang.String" itemvalue="wsgiref" />
+            <item index="8" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="9" class="java.lang.String" itemvalue="requests" />
+            <item index="10" class="java.lang.String" itemvalue="python-editor" />
+            <item index="11" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="12" class="java.lang.String" itemvalue="Flask-Login" />
+            <item index="13" class="java.lang.String" itemvalue="requests-oauthlib" />
+            <item index="14" class="java.lang.String" itemvalue="CommonsRestless" />
+            <item index="15" class="java.lang.String" itemvalue="pexif" />
+            <item index="16" class="java.lang.String" itemvalue="GeoAlchemy2" />
+            <item index="17" class="java.lang.String" itemvalue="itsdangerous" />
+            <item index="18" class="java.lang.String" itemvalue="mimerender" />
+            <item index="19" class="java.lang.String" itemvalue="passlib" />
+            <item index="20" class="java.lang.String" itemvalue="Flask" />
+            <item index="21" class="java.lang.String" itemvalue="blinker" />
+            <item index="22" class="java.lang.String" itemvalue="python-mimeparse" />
+            <item index="23" class="java.lang.String" itemvalue="six" />
+            <item index="24" class="java.lang.String" itemvalue="Werkzeug" />
+            <item index="25" class="java.lang.String" itemvalue="Flask-Principal" />
+            <item index="26" class="java.lang.String" itemvalue="Flask-WTF" />
+            <item index="27" class="java.lang.String" itemvalue="CommonsCloud-OAuthLib" />
+            <item index="28" class="java.lang.String" itemvalue="Flask-SQLAlchemy" />
+            <item index="29" class="java.lang.String" itemvalue="WTForms" />
+            <item index="30" class="java.lang.String" itemvalue="Flask-Mail" />
+            <item index="31" class="java.lang.String" itemvalue="pep257" />
+            <item index="32" class="java.lang.String" itemvalue="CommonsCloud-FlaskOAuthlib" />
+            <item index="33" class="java.lang.String" itemvalue="Mako" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

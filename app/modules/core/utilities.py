@@ -32,13 +32,14 @@ from flask import request
 from app import logger
 from app import serializer
 
-from app.modules import algal_flow_way
 from app.modules import bank_stabilization
+from app.modules import denitrification
 from app.modules import floodplain_reconnection
 from app.modules import instream_habitat
 from app.modules import instream_processing
 from app.modules import outfall_stabilization
-from app.modules import oyster_aquaculture
+from app.modules import outfall_and_gulley_stabilization
+from app.modules import prevented_sediment
 from app.modules import shoreline_management
 from app.modules import stormwater
 
@@ -92,13 +93,14 @@ def handle_request(data):
     func_idx = {
         get_mod_name(module.__name__): rgetattr(module, 'utilities')
         for module in [
-            algal_flow_way,
             bank_stabilization,
+            denitrification,
             floodplain_reconnection,
             instream_habitat,
             instream_processing,
             outfall_stabilization,
-            oyster_aquaculture,
+            outfall_and_gulley_stabilization,
+            prevented_sediment,
             shoreline_management,
             stormwater
         ]

@@ -1,0 +1,191 @@
+<form data-ng-submit="page.saveInputs()" class="form" role="form">
+
+    <article class="feature-detail">
+
+        <div class="feature-detail-content">
+
+            <fieldset>
+
+                <div class="form-group">
+
+                    <p style="color: #212121; font-size: 1em; font-style: normal;">
+                        <strong>Project design completion percentage (%)</strong>
+                    </p>
+
+                    <div class="form-element">
+
+                        <div class="search-options-radio">
+
+                            <label for="has_majority_design_completion_false">
+                                <input data-ng-model="page.modelInputs.has_majority_design_completion" type="radio" data-ng-value="false" class="form-control" id="has_majority_design_completion_false" name="has_majority_design_completion_false" />Less than 90% designed
+                            </strong></label>
+
+
+                            <label for="has_majority_design_completion_true">
+                                <input data-ng-model="page.modelInputs.has_majority_design_completion" type="radio" data-ng-value="true" class="form-control" id="has_majority_design_completion_true" name="has_majority_design_completion_true" />Greater than 90% designed
+                            </strong></label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                    How far along are you with your stream restoration design at the time of entering values into FieldDoc? Do not select the percentage of design completion you anticipate at project start time. Also, if you are less than 90% designed you are required to add the “In-stream habitat” practice to your site, and you are highly encouraged to add “In-stream habitat” to sites over 90% designed. Per the expert panel report, as the inputs for enhanced stream restoration require engineered specifications, only those proposals that are at least 90% designed can use Protocols 1, 2, and 3.
+                </p>
+
+            </fieldset>
+
+            <div data-ng-if="page.modelInputs.has_majority_design_completion === false">
+
+                <fieldset>
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        <strong>Calculating Length:</strong> Linear features can be placed on either one, or both, sides of a stream. If a linear practice is installed on both sides of a stream, the total length of the practice is the sum of the length installed on both sides. For calculation of reduction benefits; if the upland characteristics of the site are different on the two sides, enter the practice as two BMPs; if the upland characteristics are the same on both sides, sum the length installed on each side and enter the total as one BMP.
+                    </p>
+
+                    <div class="form-element">
+
+                        <label for="length_of_streambank_lt90" class="meta-label">
+                            <strong>Length of streambank</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_streambank" id="length_of_streambank_lt90" name="length_of_streambank" placeholder="" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            ft
+                        </p>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <div data-ng-if="page.modelInputs.has_majority_design_completion === true">
+
+                <fieldset>
+
+                    <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                        <strong>Calculating Length:</strong> Linear features can be placed on either one, or both, sides of a stream. If a linear practice is installed on both sides of a stream, the total length of the practice is the sum of the length installed on both sides. For calculation of reduction benefits; if the upland characteristics of the site are different on the two sides, enter the practice as two BMPs; if the upland characteristics are the same on both sides, sum the length installed on each side and enter the total as one BMP.
+                    </p>
+
+                    <div class="form-element">
+
+                        <label for="length_of_streambank" class="meta-label">
+                            <strong>Length of streambank</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.length_of_streambank" id="length_of_streambank" name="length_of_streambank" placeholder="" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            ft
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="eroding_bank_height" class="meta-label">
+                            <strong>Eroding bank height</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.eroding_bank_height" id="eroding_bank_height" name="eroding_bank_height" placeholder="" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            ft
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="ler_evaluation_basis" class="meta-label">
+                            <strong>LER evaluation basis</strong>
+                        </label>
+
+                        <input type="text" class="form-control" data-ng-model="page.modelInputs.ler_evaluation_basis" id="ler_evaluation_basis" name="ler_evaluation_basis" placeholder="&hellip;" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            Examples: BEHI/NBS, Bank Erosion Pins, Evaluation of Recession Severity Category, Other
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="lateral_erosion_rate" class="meta-label">
+                            <strong>Lateral erosion rate</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.lateral_erosion_rate" id="lateral_erosion_rate" name="lateral_erosion_rate" placeholder="" step="0.001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            LER; feet/yr
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="soil_bulk_density" class="meta-label">
+                            <strong>Soil bulk density</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.soil_bulk_density" id="soil_bulk_density" name="soil_bulk_density" placeholder="" step="0.001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            lbs/ft<sup>3</sup>
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="soil_n_content" class="meta-label">
+                            <strong>Soil N content</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.soil_n_content" id="soil_n_content" name="soil_n_content" placeholder="" step="0.001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            lbs N/ton soil
+                        </p>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="soil_p_content" class="meta-label">
+                            <strong>Soil P content</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.soil_p_content" id="soil_p_content" name="soil_p_content" placeholder="" step="0.001" />
+
+                        <p style="color: #616161; font-size: 0.9em; font-style: normal; margin-top: 0.5em;">
+                            lbs P/ton soil
+                        </p>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <div class="save--action--wrapper save--action--bottom">
+                <button type="submit" data-ng-disabled="page.status.processing">
+                    <i class="material-icons" data-ng-if="page.status.processing">
+                        more_horiz
+                    </i>
+                    <i class="material-icons" data-ng-if="!page.status.processing">
+                        done
+                    </i>
+                </button>
+            </div>
+
+        </div>
+
+    </article>
+
+</form>
