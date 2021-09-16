@@ -37,5 +37,5 @@ def reduction(data):
         return {}
 
     return {
-        'tss_tons_reduced': 0.5 * (total_prevented_sediment / 30)
+        'tss_lbs_reduced': 0.5 * (total_prevented_sediment / 30)
     }
