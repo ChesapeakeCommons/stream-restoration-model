@@ -86,7 +86,7 @@ def reduction(data):
         return {
             'tn_lbs_reduced': total
         }
-    
+
     except (ValueError, ZeroDivisionError):
 
         return {}

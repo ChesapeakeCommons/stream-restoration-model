@@ -1,0 +1,129 @@
+<h2>
+    Protocol 1: Prevented sediment
+</h2>
+
+<p>
+    <strong>
+        Qualifying conditions
+    </strong>
+</p>
+
+<p>
+    The stream reach must be greater than 100 feet in length and be still actively enlarging or degrading in response to
+    upstream development or adjustment to previous disturbances in the watershed (e.g., a road crossing and failing
+    dams). Most projects will be located on first- to third-order streams, but if larger fourth and fifth order streams
+    are found to contribute significant and uncontrolled amounts of sediment and nutrients to downstream waters,
+    consideration for this BMP would be appropriate, recognizing that multiple and/or larger scale projects may be
+    needed or warranted to achieve desired watershed treatment goals.
+</p>
+
+<p>
+    The project must utilize a comprehensive approach to stream restoration design, addressing long-term stability of
+    the channel, banks, and floodplain.
+</p>
+
+<p>
+    Special consideration is given to projects that are explicitly designed to reconnect the stream with its floodplain
+    or create wetlands and instream habitat features known to promote nutrient uptake or denitrification.
+</p>
+
+<p>
+    Each project must comply with all state and federal permitting requirements, including 404 and 401 permits, which
+    may contain conditions for pre-project assessment and data collection, as well as post-construction monitoring.
+</p>
+
+<p>
+    Stream restoration is a carefully designed intervention to improve the hydrologic, hydraulic, geomorphic, water
+    quality, and biological condition of degraded urban streams, and must not be implemented for the sole purpose of
+    nutrient or sediment reduction.
+</p>
+
+<p>
+    There may be instances where limited bank stabilization is needed to protect critical public infrastructure, which
+    may need to be mitigated and does not qualify for any sediment or reduction credits.
+</p>
+
+<p>
+    A qualifying project must meet certain presumptive criteria to ensure that high functioning portions of the urban
+    stream corridor are not used for in-stream stormwater treatment (i.e., where existing stream quality is still good).
+    These may include one or more of the following:
+</p>
+
+<ul>
+    <li>
+        Geomorphic evidence of active stream degradation (i.e., BEHI score)
+    </li>
+    <li>
+        An IBI of fair or worse
+    </li>
+    <li>
+        Hydrologic evidence of floodplain disconnection
+    </li>
+    <li>
+        Evidence of significant depth of legacy sediment in the project reach
+    </li>
+</ul>
+
+<form data-ng-submit="page.saveInputs()" class="form" role="form">
+
+    <article class="feature-detail">
+
+        <div class="feature-detail-content">
+
+            <div data-ng-if="page.modelInputs.qualified">
+
+                <fieldset>
+
+                    <div class="form-element">
+
+                        <label for="bulk_density_of_soil" class="meta-label">
+                            <strong>Bulk density of soil (lbs/ft<sup>3</sup>)</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.bulk_density_of_soil"
+                               id="bulk_density_of_soil" name="bulk_density_of_soil" placeholder=""/>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="bank_erosion_rate" class="meta-label">
+                            <strong>Bank erosion rate (ft/year)</strong>
+                        </label>
+
+                        <input type="number" class="form-control" data-ng-model="page.modelInputs.bank_erosion_rate"
+                               id="bank_erosion_rate" name="bank_erosion_rate" placeholder=""/>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="eroding_bank_area" class="meta-label">
+                            <strong>Eroding bank area (ft<sup>2</sup>)</strong>
+                        </label>
+
+                        <input type="text" class="form-control" data-ng-model="page.modelInputs.eroding_bank_area"
+                               id="eroding_bank_area" name="eroding_bank_area" placeholder="&hellip;"/>
+
+                    </div>
+
+                </fieldset>
+
+            </div>
+
+            <div class="save--action--wrapper save--action--bottom">
+                <button type="submit" data-ng-disabled="page.status.processing">
+                    <i class="material-icons" data-ng-if="page.status.processing">
+                        more_horiz
+                    </i>
+                    <i class="material-icons" data-ng-if="!page.status.processing">
+                        done
+                    </i>
+                </button>
+            </div>
+
+        </div>
+
+    </article>
+
+</form>
