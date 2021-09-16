@@ -9,8 +9,9 @@
 </p>
 
 <p>
-    The stream reach must be greater than 100 feet in length and be still actively enlarging or degrading in response to
-    upstream development or adjustment to previous disturbances in the watershed (e.g., a road crossing and failing
+    &bull; The stream reach must be greater than 100 feet in length and be still actively enlarging or degrading in
+    response to upstream development or adjustment to previous disturbances in the watershed (e.g., a road crossing and
+    failing
     dams). Most projects will be located on first- to third-order streams, but if larger fourth and fifth order streams
     are found to contribute significant and uncontrolled amounts of sediment and nutrients to downstream waters,
     consideration for this BMP would be appropriate, recognizing that multiple and/or larger scale projects may be
@@ -18,33 +19,36 @@
 </p>
 
 <p>
-    The project must utilize a comprehensive approach to stream restoration design, addressing long-term stability of
+    &bull; The project must utilize a comprehensive approach to stream restoration design, addressing long-term
+    stability of
     the channel, banks, and floodplain.
 </p>
 
 <p>
-    Special consideration is given to projects that are explicitly designed to reconnect the stream with its floodplain
+    &bull; Special consideration is given to projects that are explicitly designed to reconnect the stream with its
+    floodplain
     or create wetlands and instream habitat features known to promote nutrient uptake or denitrification.
 </p>
 
 <p>
-    Each project must comply with all state and federal permitting requirements, including 404 and 401 permits, which
+    &bull; Each project must comply with all state and federal permitting requirements, including 404 and 401 permits,
+    which
     may contain conditions for pre-project assessment and data collection, as well as post-construction monitoring.
 </p>
 
 <p>
-    Stream restoration is a carefully designed intervention to improve the hydrologic, hydraulic, geomorphic, water
+    &bull; Stream restoration is a carefully designed intervention to improve the hydrologic, hydraulic, geomorphic, water
     quality, and biological condition of degraded urban streams, and must not be implemented for the sole purpose of
     nutrient or sediment reduction.
 </p>
 
 <p>
-    There may be instances where limited bank stabilization is needed to protect critical public infrastructure, which
+    &bull; There may be instances where limited bank stabilization is needed to protect critical public infrastructure, which
     may need to be mitigated and does not qualify for any sediment or reduction credits.
 </p>
 
 <p>
-    A qualifying project must meet certain presumptive criteria to ensure that high functioning portions of the urban
+    &bull; A qualifying project must meet certain presumptive criteria to ensure that high functioning portions of the urban
     stream corridor are not used for in-stream stormwater treatment (i.e., where existing stream quality is still good).
     These may include one or more of the following:
 </p>
@@ -80,6 +84,7 @@
 
 <form id="protocol-1"
       data-ng-submit="page.saveInputs('prevented_sediment')"
+      data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
       class="form"
       role="form">
 
@@ -87,7 +92,7 @@
 
         <div class="feature-detail-content">
 
-            <div data-ng-if="page.modelInputs.conditions.protocol1">
+            <div>
 
                 <p>
                     <strong>
@@ -251,6 +256,7 @@
 
 <form id="protocol-2"
       data-ng-submit="page.saveInputs('denitrification')"
+      data-ng-if="page.modelInputs.conditions.protocol2"
       class="form"
       role="form">
 
@@ -258,7 +264,7 @@
 
         <div class="feature-detail-content">
 
-            <div data-ng-if="page.modelInputs.conditions.protocol2">
+            <div>
 
                 <p>
                     <strong>
@@ -426,6 +432,7 @@
 
 <form id="protocol-5"
       data-ng-submit="page.saveInputs('outfall_and_gully_stabilization')"
+      data-ng-if="page.modelInputs.conditions.protocol5 && !page.modelInputs.conditions.protocol1"
       class="form"
       role="form">
 
@@ -433,7 +440,7 @@
 
         <div class="feature-detail-content">
 
-            <div data-ng-if="page.modelInputs.conditions.protocol5">
+            <div>
 
                 <p>
                     <strong>
