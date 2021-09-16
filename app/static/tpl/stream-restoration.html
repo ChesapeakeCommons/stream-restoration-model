@@ -2,74 +2,105 @@
     Protocol 1: Prevented sediment
 </h2>
 
-<p>
-    <strong>
-        Qualifying conditions
-    </strong>
+<p class="flex flex-dir-row flex-align-center">
+    <span>
+        <strong>
+            Qualifying conditions
+        </strong>
+    </span>
+    <div data-ng-click="page.displayConditions.protocol1 = !page.displayConditions.protocol1"
+         data-ng-if="!page.displayConditions.protocol1"
+         class="flex flex-dir-col flex-justify-center flex-align-center"
+         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+         title="Show more">
+        <div class="halo-btn">
+            <div class="halo"></div>
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                     viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div data-ng-click="page.displayConditions.protocol1 = !page.displayConditions.protocol1"
+         data-ng-if="page.displayConditions.protocol1"
+         class="flex flex-dir-col flex-justify-center flex-align-center"
+         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+         title="Show less">
+        <div class="halo-btn">
+            <div class="halo"></div>
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                     viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
+                </svg>
+            </span>
+        </div>
+    </div>
 </p>
 
-<p>
-    &bull; The stream reach must be greater than 100 feet in length and be still actively enlarging or degrading in
-    response to upstream development or adjustment to previous disturbances in the watershed (e.g., a road crossing and
-    failing
-    dams). Most projects will be located on first- to third-order streams, but if larger fourth and fifth order streams
-    are found to contribute significant and uncontrolled amounts of sediment and nutrients to downstream waters,
-    consideration for this BMP would be appropriate, recognizing that multiple and/or larger scale projects may be
-    needed or warranted to achieve desired watershed treatment goals.
-</p>
+<div data-ng-if="page.displayConditions.protocol1">
 
-<p>
-    &bull; The project must utilize a comprehensive approach to stream restoration design, addressing long-term
-    stability of
-    the channel, banks, and floodplain.
-</p>
+    <p>
+        The stream reach must be greater than 100 feet in length and be still actively enlarging or degrading in
+        response to upstream development or adjustment to previous disturbances in the watershed (e.g., a road crossing and
+        failing dams). Most projects will be located on first- to third-order streams, but if larger fourth and fifth order streams
+        are found to contribute significant and uncontrolled amounts of sediment and nutrients to downstream waters,
+        consideration for this BMP would be appropriate, recognizing that multiple and/or larger scale projects may be
+        needed or warranted to achieve desired watershed treatment goals.
+    </p>
 
-<p>
-    &bull; Special consideration is given to projects that are explicitly designed to reconnect the stream with its
-    floodplain
-    or create wetlands and instream habitat features known to promote nutrient uptake or denitrification.
-</p>
+    <p>
+        The project must utilize a comprehensive approach to stream restoration design, addressing long-term
+        stability of the channel, banks, and floodplain.
+    </p>
 
-<p>
-    &bull; Each project must comply with all state and federal permitting requirements, including 404 and 401 permits,
-    which
-    may contain conditions for pre-project assessment and data collection, as well as post-construction monitoring.
-</p>
+    <p>
+        Special consideration is given to projects that are explicitly designed to reconnect the stream with its
+        floodplain or create wetlands and instream habitat features known to promote nutrient uptake or denitrification.
+    </p>
 
-<p>
-    &bull; Stream restoration is a carefully designed intervention to improve the hydrologic, hydraulic, geomorphic,
-    water
-    quality, and biological condition of degraded urban streams, and must not be implemented for the sole purpose of
-    nutrient or sediment reduction.
-</p>
+    <p>
+        Each project must comply with all state and federal permitting requirements, including 404 and 401 permits,
+        which may contain conditions for pre-project assessment and data collection, as well as post-construction monitoring.
+    </p>
 
-<p>
-    &bull; There may be instances where limited bank stabilization is needed to protect critical public infrastructure,
-    which
-    may need to be mitigated and does not qualify for any sediment or reduction credits.
-</p>
+    <p>
+        Stream restoration is a carefully designed intervention to improve the hydrologic, hydraulic, geomorphic,
+        water quality, and biological condition of degraded urban streams, and must not be implemented for the sole purpose of
+        nutrient or sediment reduction.
+    </p>
 
-<p>
-    &bull; A qualifying project must meet certain presumptive criteria to ensure that high functioning portions of the
-    urban
-    stream corridor are not used for in-stream stormwater treatment (i.e., where existing stream quality is still good).
-    These may include one or more of the following:
-</p>
+    <p>
+        There may be instances where limited bank stabilization is needed to protect critical public infrastructure,
+        which may need to be mitigated and does not qualify for any sediment or reduction credits.
+    </p>
 
-<ul>
-    <li>
-        Geomorphic evidence of active stream degradation (i.e., BEHI score)
-    </li>
-    <li>
-        An IBI of fair or worse
-    </li>
-    <li>
-        Hydrologic evidence of floodplain disconnection
-    </li>
-    <li>
-        Evidence of significant depth of legacy sediment in the project reach
-    </li>
-</ul>
+    <p>
+        A qualifying project must meet certain presumptive criteria to ensure that high functioning portions of the
+        urban stream corridor are not used for in-stream stormwater treatment (i.e., where existing stream quality is still good).
+        These may include one or more of the following:
+    </p>
+
+    <ul>
+        <li>
+            Geomorphic evidence of active stream degradation (i.e., BEHI score)
+        </li>
+        <li>
+            An IBI of fair or worse
+        </li>
+        <li>
+            Hydrologic evidence of floodplain disconnection
+        </li>
+        <li>
+            Evidence of significant depth of legacy sediment in the project reach
+        </li>
+    </ul>
+
+</div>
 
 <div class="pad-1"
      style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;"
@@ -163,85 +194,123 @@
     Protocol 2: Denitrification in the hyporheic zone
 </h2>
 
-<p>
-    <strong>
-        Qualifying conditions
-    </strong>
+<p class="flex flex-dir-row flex-align-center">
+    <span>
+        <strong>
+            Qualifying conditions
+        </strong>
+    </span>
+    <div data-ng-click="page.displayConditions.protocol2 = !page.displayConditions.protocol2"
+         data-ng-if="!page.displayConditions.protocol2"
+         class="flex flex-dir-col flex-justify-center flex-align-center"
+         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+         title="Show more">
+        <div class="halo-btn">
+            <div class="halo"></div>
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                     viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div data-ng-click="page.displayConditions.protocol2 = !page.displayConditions.protocol2"
+         data-ng-if="page.displayConditions.protocol2"
+         class="flex flex-dir-col flex-justify-center flex-align-center"
+         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+         title="Show less">
+        <div class="halo-btn">
+            <div class="halo"></div>
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                     viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
+                </svg>
+            </span>
+        </div>
+    </div>
 </p>
 
-<p>
-    Project must meet applicable floodplain management requirements in the stream corridor. Any individual stream
-    restoration project should be assessed with hydrologic and hydraulic models to demonstrate whether it increases
-    water surface elevations or has adverse downstream flooding impacts. In general, these analyses are based on design
-    storm events and flood risk conditions established by the appropriate local or state floodplain management agency
-    (e. g., the 100-year storm event).
-</p>
+<div data-ng-if="page.displayConditions.protocol2">
 
-<p>
-    Project must evaluate the duration of floodplain ponding in the context of the restoration goals. Micro pools and
-    long-duration ponding of water on the floodplain is essential for amphibian habitat, but large open water features
-    may adversely impact the desired riparian vegetative community. In evaluating a potential restoration site and
-    design, consider the potential adverse effects of extended open water ponding based on the soil characteristics,
-    plant community, amphibian and other aquatic habitat goals.
-</p>
+    <p>
+        Project must meet applicable floodplain management requirements in the stream corridor. Any individual stream
+        restoration project should be assessed with hydrologic and hydraulic models to demonstrate whether it increases
+        water surface elevations or has adverse downstream flooding impacts. In general, these analyses are based on design
+        storm events and flood risk conditions established by the appropriate local or state floodplain management agency
+        (e. g., the 100-year storm event).
+    </p>
 
-<p>
-    Project must demonstrate consideration of potential unintended consequences of the restoration. The project should
-    document that a site impairment exists and that the interventions or restoration work proposed are appropriate to
-    address the impairment. The proposed design should demonstrate that a positive ecological functional uplift (or
-    change) for the stream and associated riparian system will result.
-</p>
+    <p>
+        Project must evaluate the duration of floodplain ponding in the context of the restoration goals. Micro pools and
+        long-duration ponding of water on the floodplain is essential for amphibian habitat, but large open water features
+        may adversely impact the desired riparian vegetative community. In evaluating a potential restoration site and
+        design, consider the potential adverse effects of extended open water ponding based on the soil characteristics,
+        plant community, amphibian and other aquatic habitat goals.
+    </p>
 
-<p>
-    Project must demonstrate that it either provides, or is tied into existing upstream and downstream grade controls to
-    ensure the project reach can maintain the intended stream access to the floodplain.
-</p>
+    <p>
+        Project must demonstrate consideration of potential unintended consequences of the restoration. The project should
+        document that a site impairment exists and that the interventions or restoration work proposed are appropriate to
+        address the impairment. The proposed design should demonstrate that a positive ecological functional uplift (or
+        change) for the stream and associated riparian system will result.
+    </p>
 
-<p>
-    Project must clearly define the boundary of the effective hyporheic zone. For Floodplain Restoration and Raising the
-    Streambed projects the effective hyporheic zone is a maximum of 18 inches deep in the floodplain soil profile, and
-    extends only to those areas that are regularly inundated after the streambed is raised. The actual dimensions must
-    be confirmed by site investigations that define stream flow conditions, root zones, aquifer conditions and the
-    pre-project water table conditions.
-</p>
+    <p>
+        Project must demonstrate that it either provides, or is tied into existing upstream and downstream grade controls to
+        ensure the project reach can maintain the intended stream access to the floodplain.
+    </p>
 
-<p>
-    Project must demonstrate that baseflow conditions are not reduced as a result of the restoration (ex. change from
-    perennial to seasonal intermittent flow).
-</p>
+    <p>
+        Project must clearly define the boundary of the effective hyporheic zone. For Floodplain Restoration and Raising the
+        Streambed projects the effective hyporheic zone is a maximum of 18 inches deep in the floodplain soil profile, and
+        extends only to those areas that are regularly inundated after the streambed is raised. The actual dimensions must
+        be confirmed by site investigations that define stream flow conditions, root zones, aquifer conditions and the
+        pre-project water table conditions.
+    </p>
 
-<p>
-    Presence of legacy sediment deposits or other floodplain impairment. Legacy sediments must be present in the project
-    reach to a depth that has impaired aquatic ecosystem function. Legacy sediment includes any deposits that have
-    occurred since European settlement, including very recent sediment deposits, often created by features such as mill
-    dams, road embankments, floodplain fill and other kinds of stream corridor impairment.
-</p>
+    <p>
+        Project must demonstrate that baseflow conditions are not reduced as a result of the restoration (ex. change from
+        perennial to seasonal intermittent flow).
+    </p>
 
-<p>
-    Floodplain connection to valley bottom aquifer. The design objective is to restore a plant/groundwater connection
-    within the floodplain, so that most of the root mass of the floodplain vegetation is in direct contact with the
-    underlying hyporheic aquifer. In cases where the historic hyporheic aquifer cannot be accessed due to modern
-    controls (i.e., culverts or utility crossings), the objective is to plug the flow of the underlying aquifer so as to
-    create a new hyporheic zone using cobbles, gravel and/or sandy materials.
-</p>
+    <p>
+        Presence of legacy sediment deposits or other floodplain impairment. Legacy sediments must be present in the project
+        reach to a depth that has impaired aquatic ecosystem function. Legacy sediment includes any deposits that have
+        occurred since European settlement, including very recent sediment deposits, often created by features such as mill
+        dams, road embankments, floodplain fill and other kinds of stream corridor impairment.
+    </p>
 
-<p>
-    Defined boundaries for the channel(s), floodplain and valley bottom. The restored channel and floodplain dimensions
-    are based on field testing that define the key vertical and lateral sediment boundaries of the existing floodplain
-    and the hyporheic aquifer beneath it.
-</p>
+    <p>
+        Floodplain connection to valley bottom aquifer. The design objective is to restore a plant/groundwater connection
+        within the floodplain, so that most of the root mass of the floodplain vegetation is in direct contact with the
+        underlying hyporheic aquifer. In cases where the historic hyporheic aquifer cannot be accessed due to modern
+        controls (i.e., culverts or utility crossings), the objective is to plug the flow of the underlying aquifer so as to
+        create a new hyporheic zone using cobbles, gravel and/or sandy materials.
+    </p>
 
-<p>
-    Removal of legacy sediments is the primary means to restore floodplain reconnection at most sites.
-</p>
+    <p>
+        Defined boundaries for the channel(s), floodplain and valley bottom. The restored channel and floodplain dimensions
+        are based on field testing that define the key vertical and lateral sediment boundaries of the existing floodplain
+        and the hyporheic aquifer beneath it.
+    </p>
 
-<p>
-    Meet applicable floodplain management requirements in the stream corridor. Any individual stream restoration project
-    should be assessed with hydrologic and hydraulic models to demonstrate whether it increases water surface elevations
-    or adverse downstream flooding impacts. In general, these analyses are based on design storm events and flood risk
-    conditions established by the appropriate local or state floodplain management agency (e.g., the 100-year storm
-    event).
-</p>
+    <p>
+        Removal of legacy sediments is the primary means to restore floodplain reconnection at most sites.
+    </p>
+
+    <p>
+        Meet applicable floodplain management requirements in the stream corridor. Any individual stream restoration project
+        should be assessed with hydrologic and hydraulic models to demonstrate whether it increases water surface elevations
+        or adverse downstream flooding impacts. In general, these analyses are based on design storm events and flood risk
+        conditions established by the appropriate local or state floodplain management agency (e.g., the 100-year storm
+        event).
+    </p>
+
+</div>
 
 <div class="pad-1"
      style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;"
@@ -468,7 +537,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    
+
                 </div>
 
                 <fieldset>
@@ -531,57 +600,95 @@
     Protocol 5: Outfall and gully stabilization
 </h2>
 
-<p>
-    <strong>
-        Qualifying conditions
-    </strong>
+<p class="flex flex-dir-row flex-align-center">
+    <span>
+        <strong>
+            Qualifying conditions
+        </strong>
+    </span>
+    <div data-ng-click="page.displayConditions.protocol5 = !page.displayConditions.protocol5"
+         data-ng-if="!page.displayConditions.protocol5"
+         class="flex flex-dir-col flex-justify-center flex-align-center"
+         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+         title="Show more">
+        <div class="halo-btn">
+            <div class="halo"></div>
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                     viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                </svg>
+            </span>
+        </div>
+    </div>
+    <div data-ng-click="page.displayConditions.protocol5 = !page.displayConditions.protocol5"
+         data-ng-if="page.displayConditions.protocol5"
+         class="flex flex-dir-col flex-justify-center flex-align-center"
+         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+         title="Show less">
+        <div class="halo-btn">
+            <div class="halo"></div>
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                     viewBox="0 0 24 24" width="24px" fill="#000000">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
+                </svg>
+            </span>
+        </div>
+    </div>
 </p>
 
-<p>
-    The channel or gully slope below the source must exhibit predictive indicators for severe erosion or hill-slope
-    failure and must be observed to be actively enlarging or degrading.
-</p>
+<div data-ng-if="page.displayConditions.protocol5">
 
-<p>
-    The project should utilize a comprehensive approach to stream channel design, addressing longterm stability and
-    resiliency of the channel, banks, and floodplain.
-</p>
+    <p>
+        The channel or gully slope below the source must exhibit predictive indicators for severe erosion or hill-slope
+        failure and must be observed to be actively enlarging or degrading.
+    </p>
 
-<p>
-    Each project must comply with all state and federal permitting requirements, including 404 and 401 permits, which
-    usually contain conditions for pre-and post-project assessment and post construction monitoring.
-</p>
+    <p>
+        The project should utilize a comprehensive approach to stream channel design, addressing longterm stability and
+        resiliency of the channel, banks, and floodplain.
+    </p>
 
-<p>
-    Projects need to meet post-construction stability criteria and successfully establish needed vegetation. Projects
-    should maintain or improve existing native riparian vegetation in the headwater stream corridor to the extent
-    possible. Projects should follow regulatory agency guidance regarding compensation for any losses of forest,
-    wetlands and sensitive habitats within project work areas.
-</p>
+    <p>
+        Each project must comply with all state and federal permitting requirements, including 404 and 401 permits, which
+        usually contain conditions for pre-and post-project assessment and post construction monitoring.
+    </p>
 
-<p>
-    Projects should avoid the use of pipe extensions or drop structures unless it can be demonstrated that they are
-    needed to sustain channel stability and they do not introduce new aquatic organism passage issues.
-</p>
+    <p>
+        Projects need to meet post-construction stability criteria and successfully establish needed vegetation. Projects
+        should maintain or improve existing native riparian vegetation in the headwater stream corridor to the extent
+        possible. Projects should follow regulatory agency guidance regarding compensation for any losses of forest,
+        wetlands and sensitive habitats within project work areas.
+    </p>
 
-<p>
-    The project should provide functional lift within the project reach, typically as indicated by improvements of
-    Levels 2 (Hydraulics) and when possible 3 (Geomorphology) of the stream functions pyramid (Harman et al , 2011).
-</p>
+    <p>
+        Projects should avoid the use of pipe extensions or drop structures unless it can be demonstrated that they are
+        needed to sustain channel stability and they do not introduce new aquatic organism passage issues.
+    </p>
 
-<p>
-    The project directly addresses a headcut, with severe vertical incision (progressive bedlowering).
-</p>
+    <p>
+        The project should provide functional lift within the project reach, typically as indicated by improvements of
+        Levels 2 (Hydraulics) and when possible 3 (Geomorphology) of the stream functions pyramid (Harman et al , 2011).
+    </p>
 
-<p>
-    The project MUST NOT introduce barriers or challenges to aquatic organism passage or degrade instream habitat.
-    Projects should always seek to improve passage of aquatic organisms and aquatic habitat where possible.
-</p>
+    <p>
+        The project directly addresses a headcut, with severe vertical incision (progressive bedlowering).
+    </p>
 
-<p>
-    Drop structures, extension of an existing storm drain pipes, stormwater collection features, and scour protection or
-    other hard armoring techniques used in OGSPs are not eligible for credit in perennial or intermittent channels.
-</p>
+    <p>
+        The project MUST NOT introduce barriers or challenges to aquatic organism passage or degrade instream habitat.
+        Projects should always seek to improve passage of aquatic organisms and aquatic habitat where possible.
+    </p>
+
+    <p>
+        Drop structures, extension of an existing storm drain pipes, stormwater collection features, and scour protection or
+        other hard armoring techniques used in OGSPs are not eligible for credit in perennial or intermittent channels.
+    </p>
+
+</div>
 
 <div class="pad-1"
      style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;"
