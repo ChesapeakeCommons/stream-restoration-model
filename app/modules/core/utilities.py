@@ -38,7 +38,7 @@ from app.modules import floodplain_reconnection
 from app.modules import instream_habitat
 from app.modules import instream_processing
 from app.modules import outfall_stabilization
-from app.modules import outfall_and_gulley_stabilization
+from app.modules import outfall_and_gully_stabilization
 from app.modules import prevented_sediment
 from app.modules import shoreline_management
 from app.modules import stormwater
@@ -99,7 +99,7 @@ def handle_request(data):
             instream_habitat,
             instream_processing,
             outfall_stabilization,
-            outfall_and_gulley_stabilization,
+            outfall_and_gully_stabilization,
             prevented_sediment,
             shoreline_management,
             stormwater
