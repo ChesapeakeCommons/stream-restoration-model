@@ -105,18 +105,51 @@
 
 </div>
 
-<div class="pad-1"
-     style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;"
-     data-ng-click="page.modelInputs.conditions.protocol1 = !page.modelInputs.conditions.protocol1">
-    <div>
-        This project meets all qualifying conditions for protocol 1
-    </div>
-    <div class="margin-l-1"
+<div class="pad-t-1 pad-b-1"
+     style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;">
+    <div class="margin-r-1"
          style="opacity: 0;">
         <span class="material-icons">
-            check_circle
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+                <rect fill="none" height="24" width="24"/>
+                <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
+            </svg>
         </span>
     </div>
+    <div class="pad-r-2">
+        This project meets all qualifying conditions for protocol 1.
+    </div>
+    <label data-ng-click="page.modelInputs.conditions.protocol1 = !page.modelInputs.conditions.protocol1"
+           for="protocol1-checkbox"
+           title="Accept/reject conditions">
+        <span class="input-mask"
+              data-ng-if="page.modelInputs.conditions.protocol1">
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                     width="24px" fill="#2196F3">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </span>
+        </span>
+        <span class="input-mask"
+              data-ng-if="!page.modelInputs.conditions.protocol1">
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                     width="24px" fill="#2196F3">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                </svg>
+            </span>
+        </span>
+        <input type="checkbox"
+               style="position: fixed; right: 100%;"
+               id="protocol1-checkbox"
+               name="protocol1-checkbox"
+               data-ng-model="page.modelInputs.conditions.protocol1">
+    </label>
 </div>
 
 <form id="protocol-1"
@@ -317,18 +350,51 @@
 
 </div>
 
-<div class="pad-1"
-     style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;"
-     data-ng-click="page.modelInputs.conditions.protocol2 = !page.modelInputs.conditions.protocol2">
-    <div>
-        This project meets all qualifying conditions for protocol 2
-    </div>
-    <div class="margin-l-1"
+<div class="pad-t-1 pad-b-1"
+     style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;">
+    <div class="margin-r-1"
          style="opacity: 0;">
         <span class="material-icons">
-            check_circle
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+                <rect fill="none" height="24" width="24"/>
+                <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
+            </svg>
         </span>
     </div>
+    <div class="pad-r-2">
+        This project meets all qualifying conditions for protocol 2.
+    </div>
+    <label data-ng-click="page.modelInputs.conditions.protocol2 = !page.modelInputs.conditions.protocol2"
+           for="protocol2-checkbox"
+           title="Accept/reject conditions">
+        <span class="input-mask"
+              data-ng-if="page.modelInputs.conditions.protocol2">
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                     width="24px" fill="#2196F3">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </span>
+        </span>
+        <span class="input-mask"
+              data-ng-if="!page.modelInputs.conditions.protocol2">
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                     width="24px" fill="#2196F3">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                </svg>
+            </span>
+        </span>
+        <input type="checkbox"
+               style="position: fixed; right: 100%;"
+               id="protocol2-checkbox"
+               name="protocol2-checkbox"
+               data-ng-model="page.modelInputs.conditions.protocol2">
+    </label>
 </div>
 
 <form id="protocol-2"
@@ -696,19 +762,52 @@
 
 </div>
 
-<div class="pad-1"
+<div class="pad-t-1 pad-b-1"
      style="display: flex; flex-flow: row nowrap; align-items: center; border-radius: 0.5rem; background: #E0E0E0;"
-     data-ng-class="{'margin-b-4': !page.modelInputs.conditions.protocol5}"
-     data-ng-click="page.modelInputs.conditions.protocol5 = !page.modelInputs.conditions.protocol5">
-    <div>
-        This project meets all qualifying conditions for protocol 5
-    </div>
-    <div class="margin-l-1"
+     data-ng-class="{'margin-b-4': !page.modelInputs.conditions.protocol5 && page.modelInputs.conditions.protocol1}">
+    <div class="margin-r-1"
          style="opacity: 0;">
         <span class="material-icons">
-            check_circle
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+                <rect fill="none" height="24" width="24"/>
+                <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
+            </svg>
         </span>
     </div>
+    <div class="pad-r-2">
+        This project meets all qualifying conditions for protocol 5.
+    </div>
+    <label data-ng-click="page.modelInputs.conditions.protocol5 = !page.modelInputs.conditions.protocol5"
+           for="protocol5-checkbox"
+           title="Accept/reject conditions">
+        <span class="input-mask"
+              data-ng-if="page.modelInputs.conditions.protocol5">
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                     width="24px" fill="#2196F3">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </span>
+        </span>
+        <span class="input-mask"
+              data-ng-if="!page.modelInputs.conditions.protocol5">
+            <span class="material-icons">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                     width="24px" fill="#2196F3">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                </svg>
+            </span>
+        </span>
+        <input type="checkbox"
+               style="position: fixed; right: 100%;"
+               id="protocol5-checkbox"
+               name="protocol5-checkbox"
+               data-ng-model="page.modelInputs.conditions.protocol5">
+    </label>
 </div>
 
 <form id="protocol-5"
