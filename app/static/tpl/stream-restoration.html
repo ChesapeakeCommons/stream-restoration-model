@@ -177,8 +177,13 @@
                             <strong>Bulk density of soil (lbs/ft<sup>3</sup>)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.bulk_density_of_soil"
-                               id="bulk_density_of_soil" name="bulk_density_of_soil" placeholder=""/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.bulk_density_of_soil"
+                               id="bulk_density_of_soil"
+                               name="bulk_density_of_soil"
+                               placeholder=""/>
 
                     </div>
 
@@ -188,8 +193,13 @@
                             <strong>Bank erosion rate (ft/year)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.bank_erosion_rate"
-                               id="bank_erosion_rate" name="bank_erosion_rate" placeholder=""/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.bank_erosion_rate"
+                               id="bank_erosion_rate"
+                               name="bank_erosion_rate"
+                               placeholder=""/>
 
                     </div>
 
@@ -199,8 +209,13 @@
                             <strong>Eroding bank area (ft<sup>2</sup>)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.eroding_bank_area"
-                               id="eroding_bank_area" name="eroding_bank_area" placeholder="&hellip;"/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.eroding_bank_area"
+                               id="eroding_bank_area"
+                               name="eroding_bank_area"
+                               placeholder="&hellip;"/>
 
                     </div>
 
@@ -421,8 +436,13 @@
                             <strong>Floodplain area (ft<sup>2</sup>)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.floodplain_sq_ft"
-                               id="floodplain_sq_ft" name="floodplain_sq_ft" placeholder=""/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.floodplain_sq_ft"
+                               id="floodplain_sq_ft"
+                               name="floodplain_sq_ft"
+                               placeholder=""/>
 
                     </div>
 
@@ -432,8 +452,13 @@
                             <strong>Channel area (ft<sup>2</sup>)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.channel_sq_ft"
-                               id="channel_sq_ft" name="channel_sq_ft" placeholder=""/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.channel_sq_ft"
+                               id="channel_sq_ft"
+                               name="channel_sq_ft"
+                               placeholder=""/>
 
                     </div>
 
@@ -616,8 +641,13 @@
                             <strong>Baseflow reduction factor (B<sub>f</sub>)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.brf"
-                               id="brf" name="brf" placeholder=""/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.brf"
+                               id="brf"
+                               name="brf"
+                               placeholder=""/>
 
                     </div>
 
@@ -627,8 +657,13 @@
                             <strong>Floodplain height factor (H<sub>f</sub>)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.fhf"
-                               id="fhf" name="fhf" placeholder=""/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.fhf"
+                               id="fhf"
+                               name="fhf"
+                               placeholder=""/>
 
                     </div>
 
@@ -638,8 +673,13 @@
                             <strong>Aquifer conductivity reduction factor (A<sub>f</sub>)</strong>
                         </label>
 
-                        <input type="number" class="form-control" data-ng-model="page.modelInputs.acrf"
-                               id="acrf" name="acrf" placeholder=""/>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.acrf"
+                               id="acrf"
+                               name="acrf"
+                               placeholder=""/>
 
                     </div>
 
@@ -845,29 +885,27 @@
                     </strong>
                 </p>
 
-                <p class="pad-0 pad-t-1 pad-b-1 margin-0">
+                <p class="pad-0 pad-t-2 pad-b-1 margin-0">
                     <strong>
                         Model flow diversions for the stream to the floodplain.
                     </strong>
                 </p>
-
-<!--                <p class="pad-0 pad-y-2 margin-0">-->
-<!--                    <strong>-->
-<!--                        Enter measured flow.-->
-<!--                    </strong>-->
-<!--                </p>-->
 
                 <fieldset class="pad-0 margin-0" style="border: none;">
 
                     <div class="form-element">
 
                         <label for="baseflow_discharge" class="meta-label">
-                            <strong>Baseflow discharge (cfs) </strong>
+                            <strong>Baseflow discharge (cfs)</strong>
                         </label>
 
-                        <input type="number" class="form-control"
+                        <input type="number"
+                               step="any"
+                               class="form-control"
                                data-ng-model="page.modelInputs.floodplain_reconnection.baseflow_discharge"
-                               id="baseflow_discharge" name="baseflow_discharge" placeholder=""/>
+                               id="baseflow_discharge"
+                               name="baseflow_discharge"
+                               placeholder=""/>
 
                         <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
                             Baseflow discharge is defined as the 50% recurrence interval discharge.
@@ -903,7 +941,9 @@
                                         <strong>Existing</strong>
                                     </label>
 
-                                    <input type="number" class="form-control"
+                                    <input type="number"
+                                           step="any"
+                                           class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.existing_channel_capacity_discharge"
                                            id="existing_channel_capacity_discharge"
                                            name="existing_channel_capacity_discharge"
@@ -922,7 +962,9 @@
                                         <strong>Proposed</strong>
                                     </label>
 
-                                    <input type="number" class="form-control"
+                                    <input type="number"
+                                           step="any"
+                                           class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.proposed_channel_capacity_discharge"
                                            id="proposed_channel_capacity_discharge"
                                            name="proposed_channel_capacity_discharge"
@@ -953,7 +995,9 @@
                                         <strong>Existing</strong>
                                     </label>
 
-                                    <input type="number" class="form-control"
+                                    <input type="number"
+                                           step="any"
+                                           class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.existing_floodplain_treatment_zone_flow"
                                            id="existing_floodplain_treatment_zone_flow"
                                            name="existing_floodplain_treatment_zone_flow"
@@ -973,6 +1017,7 @@
                                     </label>
 
                                     <input type="number"
+                                           step="any"
                                            class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.proposed_floodplain_treatment_zone_flow"
                                            id="proposed_floodplain_treatment_zone_flow"
@@ -1010,7 +1055,9 @@
                                         <strong>Existing</strong>
                                     </label>
 
-                                    <input type="number" class="form-control"
+                                    <input type="number"
+                                           step="any"
+                                           class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.existing_treated_discharge"
                                            id="existing_treated_discharge"
                                            name="existing_treated_discharge"
@@ -1029,7 +1076,9 @@
                                         <strong>Proposed</strong>
                                     </label>
 
-                                    <input type="number" class="form-control"
+                                    <input type="number"
+                                           step="any"
+                                           class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.proposed_treated_discharge"
                                            id="proposed_treated_discharge"
                                            name="proposed_treated_discharge"
@@ -1060,7 +1109,9 @@
                                         <strong>Existing</strong>
                                     </label>
 
-                                    <input type="number" class="form-control"
+                                    <input type="number"
+                                           step="any"
+                                           class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.existing_total_discharge"
                                            id="existing_total_discharge"
                                            name="existing_total_discharge"
@@ -1079,7 +1130,9 @@
                                         <strong>Proposed</strong>
                                     </label>
 
-                                    <input type="number" class="form-control"
+                                    <input type="number"
+                                           step="any"
+                                           class="form-control"
                                            data-ng-model="page.modelInputs.floodplain_reconnection.proposed_total_discharge"
                                            id="proposed_total_discharge"
                                            name="proposed_total_discharge"
@@ -1332,9 +1385,13 @@
                         <strong>Total prevented sediment</strong>
                     </label>
 
-                    <input type="number" class="form-control"
+                    <input type="number"
+                           step="any"
+                           class="form-control"
                            data-ng-model="page.modelInputs.total_prevented_sediment"
-                           id="total_prevented_sediment" name="total_prevented_sediment" placeholder=""/>
+                           id="total_prevented_sediment"
+                           name="total_prevented_sediment"
+                           placeholder=""/>
 
                 </div>
 
