@@ -27,7 +27,7 @@ from app import logger
 
 # Import module dependencies
 
-from .constants import URBAN_STATE_UAL as load_data
+from .constants import LR_LOADS
 
 
 def reduction(data):
