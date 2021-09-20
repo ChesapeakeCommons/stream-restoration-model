@@ -839,17 +839,23 @@
 
             <div>
 
-                <p class="pad-0 pad-y-2 margin-0">
+                <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
+                    <strong>
+                        1. Flow treated
+                    </strong>
+                </p>
+
+                <p class="pad-0 pad-t-1 margin-0">
                     <strong>
                         Model flow diversions for the stream to the floodplain.
                     </strong>
                 </p>
 
-                <p class="pad-0 pad-y-2 margin-0">
-                    <strong>
-                        Enter measured flow.
-                    </strong>
-                </p>
+<!--                <p class="pad-0 pad-y-2 margin-0">-->
+<!--                    <strong>-->
+<!--                        Enter measured flow.-->
+<!--                    </strong>-->
+<!--                </p>-->
 
                 <fieldset class="pad-0 margin-0" style="border: none;">
 
@@ -863,11 +869,15 @@
                                data-ng-model="page.modelInputs.floodplain_reconnection.baseflow_discharge"
                                id="baseflow_discharge" name="baseflow_discharge" placeholder=""/>
 
+                        <p class="pad-0 margin-0 margin-t-1" style=".9rem;">
+                            Baseflow discharge is defined as the 50% recurrence interval discharge.
+                        </p>
+
                     </div>
 
                 </fieldset>
 
-                <p class="pad-0 pad-y-2 margin-0">
+                <p class="pad-0 pad-t-2 margin-0">
                     <strong>
                         Enter data calculated from the flow duration curve.
                     </strong>
