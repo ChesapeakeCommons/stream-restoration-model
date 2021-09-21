@@ -36,8 +36,15 @@ def reduction(data):
 
     upstream_miles = data.get('upstream_miles')
 
+    treatable_flow_credit = data.get('treatable_flow_credit')
+
+    values = [
+        upstream_miles,
+        treatable_flow_credit,
+    ]
+
     if (not isinstance(segments, list) or
-            not isinstance(upstream_miles, (float, int))):
+            not all(isinstance(x, (float, int)) for x in values)):
 
         return {}
 
@@ -69,8 +76,15 @@ def reduction(data):
 
             pass
 
+    tn_load = sum(n_loads) / float(len(n_loads)) * upstream_miles,
+    tp_load = sum(p_loads) / float(len(p_loads)) * upstream_miles,
+    tss_load = sum(s_loads) / float(len(s_loads)) * upstream_miles
+
     return {
-        'tn': sum(n_loads) / float(len(n_loads)) * upstream_miles,
-        'tp': sum(p_loads) / float(len(p_loads)) * upstream_miles,
-        'tss': sum(s_loads) / float(len(s_loads)) * upstream_miles
+        'tn_load': tn_load,
+        'tp_load': tp_load,
+        'tss_load': tss_load,
+        'tn_treatable_load': tn_load * treatable_flow_credit,
+        'tp_treatable_load': tp_load * treatable_flow_credit,
+        'tss_treatable_load': tss_load * treatable_flow_credit
     }
