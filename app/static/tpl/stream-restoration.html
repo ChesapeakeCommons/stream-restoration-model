@@ -180,7 +180,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.bulk_density_of_soil"
+                               data-ng-model="page.modelInputs.prevented_sediment.bulk_density_of_soil"
                                id="bulk_density_of_soil"
                                name="bulk_density_of_soil"
                                placeholder=""/>
@@ -196,7 +196,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.bank_erosion_rate"
+                               data-ng-model="page.modelInputs.prevented_sediment.bank_erosion_rate"
                                id="bank_erosion_rate"
                                name="bank_erosion_rate"
                                placeholder=""/>
@@ -212,7 +212,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.eroding_bank_area"
+                               data-ng-model="page.modelInputs.prevented_sediment.eroding_bank_area"
                                id="eroding_bank_area"
                                name="eroding_bank_area"
                                placeholder="&hellip;"/>
@@ -439,7 +439,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.floodplain_sq_ft"
+                               data-ng-model="page.modelInputs.denitrification.floodplain_sq_ft"
                                id="floodplain_sq_ft"
                                name="floodplain_sq_ft"
                                placeholder=""/>
@@ -455,7 +455,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.channel_sq_ft"
+                               data-ng-model="page.modelInputs.denitrification.channel_sq_ft"
                                id="channel_sq_ft"
                                name="channel_sq_ft"
                                placeholder=""/>
@@ -644,7 +644,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.brf"
+                               data-ng-model="page.modelInputs.denitrification.brf"
                                id="brf"
                                name="brf"
                                placeholder=""/>
@@ -660,7 +660,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.fhf"
+                               data-ng-model="page.modelInputs.denitrification.fhf"
                                id="fhf"
                                name="fhf"
                                placeholder=""/>
@@ -676,7 +676,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.acrf"
+                               data-ng-model="page.modelInputs.denitrification.acrf"
                                id="acrf"
                                name="acrf"
                                placeholder=""/>
@@ -867,8 +867,8 @@
     </label>
 </div>
 
-<form id="protocol-3"
-      data-ng-submit="page.saveInputs('floodplain_reconnection')"
+<form id="protocol-3-1"
+      data-ng-submit="page.saveInputs('floodplain_reconnection1')"
       data-ng-if="page.modelInputs.conditions.protocol3"
       class="form"
       role="form">
@@ -902,7 +902,7 @@
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.floodplain_reconnection.baseflow_discharge"
+                               data-ng-model="page.modelInputs.floodplain_reconnection1.baseflow_discharge"
                                id="baseflow_discharge"
                                name="baseflow_discharge"
                                placeholder=""/>
@@ -944,7 +944,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_channel_capacity_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.existing_channel_capacity_discharge"
                                            id="existing_channel_capacity_discharge"
                                            name="existing_channel_capacity_discharge"
                                            placeholder=""/>
@@ -965,7 +965,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_channel_capacity_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.proposed_channel_capacity_discharge"
                                            id="proposed_channel_capacity_discharge"
                                            name="proposed_channel_capacity_discharge"
                                            placeholder=""/>
@@ -998,7 +998,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_floodplain_treatment_zone_flow"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.existing_floodplain_treatment_zone_flow"
                                            id="existing_floodplain_treatment_zone_flow"
                                            name="existing_floodplain_treatment_zone_flow"
                                            placeholder=""/>
@@ -1019,7 +1019,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_floodplain_treatment_zone_flow"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.proposed_floodplain_treatment_zone_flow"
                                            id="proposed_floodplain_treatment_zone_flow"
                                            name="proposed_floodplain_treatment_zone_flow"
                                            placeholder=""/>
@@ -1058,7 +1058,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_treated_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.existing_treated_discharge"
                                            id="existing_treated_discharge"
                                            name="existing_treated_discharge"
                                            placeholder=""/>
@@ -1079,7 +1079,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_treated_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.proposed_treated_discharge"
                                            id="proposed_treated_discharge"
                                            name="proposed_treated_discharge"
                                            placeholder=""/>
@@ -1112,7 +1112,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_total_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.existing_total_discharge"
                                            id="existing_total_discharge"
                                            name="existing_total_discharge"
                                            placeholder=""/>
@@ -1133,7 +1133,7 @@
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_total_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection1.proposed_total_discharge"
                                            id="proposed_total_discharge"
                                            name="proposed_total_discharge"
                                            placeholder=""/>
@@ -1143,6 +1143,69 @@
                             </div>
 
                         </div>
+
+                    </div>
+
+                </fieldset>
+
+                <div class="save--action--wrapper save--action--bottom">
+                    <button type="submit" data-ng-disabled="page.status.processing">
+                        <i class="material-icons" data-ng-if="page.status.processing">
+                            more_horiz
+                        </i>
+                        <i class="material-icons" data-ng-if="!page.status.processing">
+                            done
+                        </i>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</form>
+
+<form id="protocol-3-2"
+      data-ng-submit="page.saveInputs('floodplain_reconnection1')"
+      data-ng-if="page.modelInputs.conditions.protocol3"
+      class="form"
+      role="form">
+
+    <article class="feature-detail">
+
+        <div class="feature-detail-content">
+
+            <div>
+
+                <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
+                    <strong>
+                        1. Flow treated
+                    </strong>
+                </p>
+
+                <p class="pad-0 pad-t-2 pad-b-1 margin-0">
+                    <strong>
+                        Model flow diversions for the stream to the floodplain.
+                    </strong>
+                </p>
+
+                <fieldset class="pad-0 margin-0" style="border: none;">
+
+                    <div class="form-element">
+
+                        <label for="upstream_miles" class="meta-label">
+                            <strong>Stream length upstream of project (miles)</strong>
+                        </label>
+
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.floodplain_reconnection2.upstream_miles"
+                               id="upstream_miles"
+                               name="upstream_miles"
+                               placeholder=""/>
 
                     </div>
 

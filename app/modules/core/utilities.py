@@ -34,7 +34,8 @@ from app import serializer
 
 from app.modules import bank_stabilization
 from app.modules import denitrification
-from app.modules import floodplain_reconnection
+from app.modules import floodplain_reconnection1
+from app.modules import floodplain_reconnection2
 from app.modules import instream_habitat
 from app.modules import instream_processing
 from app.modules import outfall_stabilization
@@ -95,7 +96,8 @@ def handle_request(data):
         for module in [
             bank_stabilization,
             denitrification,
-            floodplain_reconnection,
+            floodplain_reconnection1,
+            floodplain_reconnection2,
             instream_habitat,
             instream_processing,
             outfall_stabilization,
