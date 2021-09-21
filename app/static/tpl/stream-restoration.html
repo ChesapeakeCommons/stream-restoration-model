@@ -157,18 +157,18 @@
       class="form"
       role="form">
 
+    <p class="pad-0 pad-y-2 margin-0">
+        <strong>
+            Estimate stream sediment erosion rates and annual sediment loadings.
+        </strong>
+    </p>
+
     <article class="feature-detail"
              data-ng-repeat="(idx, bank) in page.modelInputs.prevented_sediment.banks">
 
         <div class="feature-detail-content">
 
             <div>
-
-                <p class="pad-0 pad-y-2 margin-0">
-                    <strong>
-                        Estimate stream sediment erosion rates and annual sediment loadings.
-                    </strong>
-                </p>
 
                 <fieldset class="pad-0 margin-0" style="border: none;">
 
@@ -306,6 +306,7 @@
 
 <div data-ng-click="page.modelInputs.prevented_sediment.banks.push({id:null,bulk_density_of_soil:null,
         bank_erosion_rate:null,eroding_bank_height:null,eroding_bank_length:null})"
+     data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
      class="pad-t-1 pad-b-1"
      style="display: flex; flex-flow: row nowrap; align-items: center;">
     <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
