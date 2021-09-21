@@ -28,14 +28,16 @@ from app import logger
 
 def reduction(data):
 
+    return data
+
     # (Sediment annual = 0.5 (Total sediment volume / 30)
 
-    total_prevented_sediment = data.get('total_prevented_sediment', 0)
-
-    if not isinstance(total_prevented_sediment, (float, int)):
-
-        return {}
-
-    return {
-        'tss_lbs_reduced': 0.5 * (total_prevented_sediment / 30)
-    }
+    # total_prevented_sediment = data.get('total_prevented_sediment', 0)
+    #
+    # if not isinstance(total_prevented_sediment, (float, int)):
+    #
+    #     return {}
+    #
+    # return {
+    #     'tss_lbs_reduced': 0.5 * (total_prevented_sediment / 30)
+    # }

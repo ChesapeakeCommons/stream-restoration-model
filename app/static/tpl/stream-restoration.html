@@ -157,7 +157,8 @@
       class="form"
       role="form">
 
-    <article class="feature-detail">
+    <article class="feature-detail"
+             data-ng-repeat="(idx, bank) in page.modelInputs.prevented_sediment.banks">
 
         <div class="feature-detail-content">
 
@@ -173,64 +174,116 @@
 
                     <div class="form-element">
 
-                        <label for="bulk_density_of_soil" class="meta-label">
+                        <label for="bank_id-{{ idx }}" class="meta-label">
+                            <strong>Bank ID</strong>
+                        </label>
+
+                        <input type="text"
+                               class="form-control"
+                               data-ng-model="bank.id"
+                               id="bank_id-{{ idx }}"
+                               name="bank_id-{{ idx }}"
+                               placeholder="&hellip;"/>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="bulk_density_of_soil-{{ idx }}" class="meta-label">
                             <strong>Bulk density of soil (lbs/ft<sup>3</sup>)</strong>
                         </label>
 
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.prevented_sediment.bulk_density_of_soil"
-                               id="bulk_density_of_soil"
-                               name="bulk_density_of_soil"
+                               data-ng-model="bank.bulk_density_of_soil"
+                               id="bulk_density_of_soil-{{ idx }}"
+                               name="bulk_density_of_soil-{{ idx }}"
                                placeholder=""/>
 
                     </div>
 
                     <div class="form-element">
 
-                        <label for="bank_erosion_rate" class="meta-label">
+                        <label for="bank_erosion_rate-{{ idx }}" class="meta-label">
                             <strong>Bank erosion rate (ft/year)</strong>
                         </label>
 
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.prevented_sediment.bank_erosion_rate"
-                               id="bank_erosion_rate"
-                               name="bank_erosion_rate"
+                               data-ng-model="bank.bank_erosion_rate"
+                               id="bank_erosion_rate-{{ idx }}"
+                               name="bank_erosion_rate-{{ idx }}"
                                placeholder=""/>
 
                     </div>
 
                     <div class="form-element">
 
-                        <label for="eroding_bank_area" class="meta-label">
-                            <strong>Eroding bank area (ft<sup>2</sup>)</strong>
+                        <label for="eroding_bank_length-{{ idx }}" class="meta-label">
+                            <strong>Eroding bank length (ft)</strong>
                         </label>
 
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.prevented_sediment.eroding_bank_area"
-                               id="eroding_bank_area"
-                               name="eroding_bank_area"
+                               data-ng-model="bank.eroding_bank_length"
+                               id="eroding_bank_length-{{ idx }}"
+                               name="eroding_bank_length-{{ idx }}"
+                               placeholder="&hellip;"/>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="eroding_bank_height-{{ idx }}" class="meta-label">
+                            <strong>Eroding bank height (ft)</strong>
+                        </label>
+
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="bank.eroding_bank_height"
+                               id="eroding_bank_height-{{ idx }}"
+                               name="eroding_bank_height-{{ idx }}"
+                               placeholder="&hellip;"/>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="nitrogen_concentration-{{ idx }}" class="meta-label">
+                            <strong>Nitrogen concentration (lbs/ton)</strong>
+                        </label>
+
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="bank.nitrogen_concentration"
+                               id="nitrogen_concentration-{{ idx }}"
+                               name="nitrogen_concentration-{{ idx }}"
+                               placeholder="&hellip;"/>
+
+                    </div>
+
+                    <div class="form-element">
+
+                        <label for="phosphorus_concentration-{{ idx }}" class="meta-label">
+                            <strong>Phosphorus concentration (lbs/ton)</strong>
+                        </label>
+
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="bank.phosphorus_concentration"
+                               id="phosphorus_concentration-{{ idx }}"
+                               name="phosphorus_concentration-{{ idx }}"
                                placeholder="&hellip;"/>
 
                     </div>
 
                 </fieldset>
-
-                <div class="save--action--wrapper save--action--bottom">
-                    <button type="submit" data-ng-disabled="page.status.processing">
-                        <i class="material-icons" data-ng-if="page.status.processing">
-                            more_horiz
-                        </i>
-                        <i class="material-icons" data-ng-if="!page.status.processing">
-                            done
-                        </i>
-                    </button>
-                </div>
 
             </div>
 
@@ -238,7 +291,34 @@
 
     </article>
 
+    <div class="save--action--wrapper save--action--bottom">
+        <button type="submit" data-ng-disabled="page.status.processing">
+            <i class="material-icons" data-ng-if="page.status.processing">
+                more_horiz
+            </i>
+            <i class="material-icons" data-ng-if="!page.status.processing">
+                done
+            </i>
+        </button>
+    </div>
+
 </form>
+
+<div data-ng-click="page.modelInputs.prevented_sediment.banks.push({id:null,bulk_density_of_soil:null,
+        bank_erosion_rate:null,eroding_bank_height:null,eroding_bank_length:null})"
+     class="pad-t-1 pad-b-1"
+     style="display: flex; flex-flow: row nowrap; align-items: center;">
+    <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+             width="24px" fill="#2196F3">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+        </svg>
+    </div>
+    <div class="pad-r-2" style="color: #2196F3; cursor: pointer;">
+        Add a set of bank measurements.
+    </div>
+</div>
 
 <!-- PROTOCOL 2 -->
 
@@ -1526,7 +1606,7 @@
                     modeling program such as InRoads or Geopak.
                 </p>
 
-                <ul class="pad-0 pad-l-2 margin-0 margin-t-1"
+                <ul class="pad-0 pad-l-2 margin-0 margin-t-1 margin-b-1"
                     style="list-style: disc;">
 
                     <li>
@@ -1573,16 +1653,48 @@
 
                 <div class="form-element">
 
-                    <label for="total_prevented_sediment" class="meta-label">
+                    <label for="tss_lbs_reduced-5" class="meta-label">
                         <strong>Total prevented sediment</strong>
                     </label>
 
                     <input type="number"
                            step="any"
                            class="form-control"
-                           data-ng-model="page.modelInputs.total_prevented_sediment"
-                           id="total_prevented_sediment"
-                           name="total_prevented_sediment"
+                           data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tss_lbs_reduced"
+                           id="tss_lbs_reduced-5"
+                           name="tss_lbs_reduced-5"
+                           placeholder=""/>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="tn_lbs_reduced-5" class="meta-label">
+                        <strong>Total prevented nitrogen</strong>
+                    </label>
+
+                    <input type="number"
+                           step="any"
+                           class="form-control"
+                           data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tn_lbs_reduced"
+                           id="tn_lbs_reduced-5"
+                           name="tn_lbs_reduced-5"
+                           placeholder=""/>
+
+                </div>
+
+                <div class="form-element">
+
+                    <label for="tp_lbs_reduced-5" class="meta-label">
+                        <strong>Total prevented phosphorus (lbs)</strong>
+                    </label>
+
+                    <input type="number"
+                           step="any"
+                           class="form-control"
+                           data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tp_lbs_reduced"
+                           id="tp_lbs_reduced-5"
+                           name="tp_lbs_reduced-5"
                            placeholder=""/>
 
                 </div>
