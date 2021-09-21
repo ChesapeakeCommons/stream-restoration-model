@@ -76,9 +76,11 @@ def reduction(data):
 
             pass
 
-    tn_load = sum(n_loads) / float(len(n_loads)) * upstream_miles,
-    tp_load = sum(p_loads) / float(len(p_loads)) * upstream_miles,
-    tss_load = sum(s_loads) / float(len(s_loads)) * upstream_miles
+    tn_load = (sum(n_loads) / float(len(n_loads))) * upstream_miles
+
+    tp_load = (sum(p_loads) / float(len(p_loads))) * upstream_miles
+
+    tss_load = (sum(s_loads) / float(len(s_loads))) * upstream_miles
 
     return {
         'tn_load': tn_load,
