@@ -1,111 +1,15 @@
-<!-- PROTOCOL 1 -->
+<!-- PERCENT COMPLETE -->
 
 <h2>
-    Protocol 1: Prevented sediment
+    Project design completion percentage (%)
 </h2>
 
-<div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
-    <span class="grow">
-        <strong>
-            Qualifying conditions
-        </strong>
-    </span>
-    <div data-ng-click="page.displayConditions.protocol1 = !page.displayConditions.protocol1"
-         data-ng-if="!page.displayConditions.protocol1"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show more">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-                </svg>
-            </span>
-        </div>
-    </div>
-    <div data-ng-click="page.displayConditions.protocol1 = !page.displayConditions.protocol1"
-         data-ng-if="page.displayConditions.protocol1"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show less">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
-                </svg>
-            </span>
-        </div>
-    </div>
-</div>
-
-<div class="pad-1 margin-b-2"
-     style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
-     data-ng-if="page.displayConditions.protocol1">
-
-    <p class="pad-0 margin-b-2">
-        The stream reach must be greater than 100 feet in length and be still actively enlarging or degrading in
-        response to upstream development or adjustment to previous disturbances in the watershed (e.g., a road crossing and
-        failing dams). Most projects will be located on first- to third-order streams, but if larger fourth and fifth order streams
-        are found to contribute significant and uncontrolled amounts of sediment and nutrients to downstream waters,
-        consideration for this BMP would be appropriate, recognizing that multiple and/or larger scale projects may be
-        needed or warranted to achieve desired watershed treatment goals.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        The project must utilize a comprehensive approach to stream restoration design, addressing long-term
-        stability of the channel, banks, and floodplain.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Special consideration is given to projects that are explicitly designed to reconnect the stream with its
-        floodplain or create wetlands and instream habitat features known to promote nutrient uptake or denitrification.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Each project must comply with all state and federal permitting requirements, including 404 and 401 permits,
-        which may contain conditions for pre-project assessment and data collection, as well as post-construction monitoring.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Stream restoration is a carefully designed intervention to improve the hydrologic, hydraulic, geomorphic,
-        water quality, and biological condition of degraded urban streams, and must not be implemented for the sole purpose of
-        nutrient or sediment reduction.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        There may be instances where limited bank stabilization is needed to protect critical public infrastructure,
-        which may need to be mitigated and does not qualify for any sediment or reduction credits.
-    </p>
-
-    <p class="pad-0 margin-0">
-        A qualifying project must meet certain presumptive criteria to ensure that high functioning portions of the
-        urban stream corridor are not used for in-stream stormwater treatment (i.e., where existing stream quality is still good).
-        These may include one or more of the following:
-    </p>
-
-    <ul class="pad-0 pad-l-2 margin-0 margin-t-1 margin-b-1"
-        style="list-style: disc;">
-        <li>
-            - Geomorphic evidence of active stream degradation (i.e., BEHI score)
-        </li>
-        <li>
-            - An IBI of fair or worse
-        </li>
-        <li>
-            - Hydrologic evidence of floodplain disconnection
-        </li>
-        <li>
-            - Evidence of significant depth of legacy sediment in the project reach
-        </li>
-    </ul>
-
-</div>
+<p class="pad-0 margin-0 margin-t-1 margin-b-1">
+    How far along are you with your stream restoration design at the time of entering values into FieldDoc? Do not
+    select the percentage of design completion you anticipate at project start time. Per the expert panel report, as the
+    inputs for enhanced stream restoration require engineered specifications, only those proposals that are at least 90%
+    designed can use Protocols 1, 2, 3, or 5.
+</p>
 
 <div class="pad-t-1 pad-b-1"
      style="display: flex; flex-flow: row nowrap; align-items: center;">
@@ -118,13 +22,13 @@
         </svg>
     </div>
     <div class="pad-r-2">
-        This project meets all qualifying conditions for protocol 1.
+        This project meets the >90% designed threshold.
     </div>
-    <label data-ng-click="page.modelInputs.conditions.protocol1 = !page.modelInputs.conditions.protocol1"
-           for="protocol1-checkbox"
+    <label data-ng-click="page.modelInputs.conditions.gt_90_pct_designed = !page.modelInputs.conditions.gt_90_pct_designed"
+           for="default-checkbox"
            title="Accept/reject conditions">
         <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="page.modelInputs.conditions.protocol1">
+             data-ng-if="page.modelInputs.conditions.gt_90_pct_designed">
             <span class="material-icons">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                      width="24px" fill="#2196F3">
@@ -134,7 +38,7 @@
             </span>
         </div>
         <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="!page.modelInputs.conditions.protocol1">
+             data-ng-if="!page.modelInputs.conditions.gt_90_pct_designed">
             <span class="material-icons">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                      width="24px" fill="#2196F3">
@@ -145,26 +49,25 @@
         </div>
         <input type="checkbox"
                style="position: fixed; right: 100%;"
-               id="protocol1-checkbox"
-               name="protocol1-checkbox"
-               data-ng-model="page.modelInputs.conditions.protocol1">
+               id="default-checkbox"
+               name="default-checkbox"
+               data-ng-model="page.modelInputs.conditions.gt_90_pct_designed">
     </label>
 </div>
 
-<form id="protocol-1"
-      data-ng-submit="page.saveInputs('prevented_sediment')"
-      data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
+<form id="default-input"
+      data-ng-submit="page.saveInputs('default')"
+      data-ng-if="!page.modelInputs.conditions.gt_90_pct_designed"
       class="form"
       role="form">
 
     <p class="pad-0 pad-y-2 margin-0">
         <strong>
-            Estimate stream sediment erosion rates and annual sediment loadings.
+            Enter length of streambank.
         </strong>
     </p>
 
-    <article class="feature-detail"
-             data-ng-repeat="(idx, bank) in page.modelInputs.prevented_sediment.banks">
+    <article class="feature-detail">
 
         <div class="feature-detail-content">
 
@@ -174,112 +77,26 @@
 
                     <div class="form-element">
 
-                        <label for="bank_id-{{ idx }}" class="meta-label">
-                            <strong>Bank ID</strong>
+                        <label for="length_of_streambank" class="meta-label">
+                            <strong>Bank length (linear ft)</strong>
                         </label>
 
-                        <input type="text"
+                        <input type="number"
+                               step="any"
                                class="form-control"
-                               data-ng-model="bank.id"
-                               id="bank_id-{{ idx }}"
-                               name="bank_id-{{ idx }}"
+                               data-ng-model="page.modelInputs.default.length_of_streambank"
+                               id="length_of_streambank"
+                               name="length_of_streambank"
                                placeholder="&hellip;"/>
 
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="bulk_density_of_soil-{{ idx }}" class="meta-label">
-                            <strong>Bulk density of soil (lbs/ft<sup>3</sup>)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="bank.bulk_density_of_soil"
-                               id="bulk_density_of_soil-{{ idx }}"
-                               name="bulk_density_of_soil-{{ idx }}"
-                               placeholder=""/>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="bank_erosion_rate-{{ idx }}" class="meta-label">
-                            <strong>Bank erosion rate (ft/year)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="bank.bank_erosion_rate"
-                               id="bank_erosion_rate-{{ idx }}"
-                               name="bank_erosion_rate-{{ idx }}"
-                               placeholder=""/>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="eroding_bank_length-{{ idx }}" class="meta-label">
-                            <strong>Eroding bank length (ft)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="bank.eroding_bank_length"
-                               id="eroding_bank_length-{{ idx }}"
-                               name="eroding_bank_length-{{ idx }}"
-                               placeholder="&hellip;"/>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="eroding_bank_height-{{ idx }}" class="meta-label">
-                            <strong>Eroding bank height (ft)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="bank.eroding_bank_height"
-                               id="eroding_bank_height-{{ idx }}"
-                               name="eroding_bank_height-{{ idx }}"
-                               placeholder="&hellip;"/>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="nitrogen_concentration-{{ idx }}" class="meta-label">
-                            <strong>Nitrogen concentration (lbs/ton)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="bank.nitrogen_concentration"
-                               id="nitrogen_concentration-{{ idx }}"
-                               name="nitrogen_concentration-{{ idx }}"
-                               placeholder="&hellip;"/>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="phosphorus_concentration-{{ idx }}" class="meta-label">
-                            <strong>Phosphorus concentration (lbs/ton)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="bank.phosphorus_concentration"
-                               id="phosphorus_concentration-{{ idx }}"
-                               name="phosphorus_concentration-{{ idx }}"
-                               placeholder="&hellip;"/>
+                        <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
+                            Linear features can be placed on one or both sides of a stream. If a linear practice is
+                            installed on both sides of a stream, the total length of the practice is the sum of the
+                            length installed on both sides. For calculation of reduction benefits; if the upland
+                            characteristics of the site are different on the two sides, enter the practice as two BMPs;
+                            if the upland characteristics are the same on both sides, sum the length installed on each
+                            side and enter the total as one BMP.
+                        </p>
 
                     </div>
 
@@ -304,752 +121,1062 @@
 
 </form>
 
-<div data-ng-click="page.modelInputs.prevented_sediment.banks.push({id:null,bulk_density_of_soil:null,
-        bank_erosion_rate:null,eroding_bank_height:null,eroding_bank_length:null})"
-     data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
-     class="pad-t-1 pad-b-1"
-     style="display: flex; flex-flow: row nowrap; align-items: center;">
-    <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-             width="24px" fill="#0366d6">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
-        </svg>
-    </div>
-    <a class="pad-r-2" href="#">
-        Add a set of bank measurements.
-    </a>
-</div>
+<div data-ng-if="page.modelInputs.conditions.gt_90_pct_designed">
 
-<!-- PROTOCOL 2 -->
+    <!-- PROTOCOL 1 -->
 
-<h2>
-    Protocol 2: Denitrification in the hyporheic zone
-</h2>
+    <h2>
+        Protocol 1: Prevented sediment
+    </h2>
 
-<div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
-    <span class="grow">
-        <strong>
-            Qualifying conditions
-        </strong>
-    </span>
-    <div data-ng-click="page.displayConditions.protocol2 = !page.displayConditions.protocol2"
-         data-ng-if="!page.displayConditions.protocol2"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show more">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-                </svg>
-            </span>
+    <div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
+        <span class="grow">
+            <strong>
+                Qualifying conditions
+            </strong>
+        </span>
+        <div data-ng-click="page.displayConditions.protocol1 = !page.displayConditions.protocol1"
+             data-ng-if="!page.displayConditions.protocol1"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show more">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div data-ng-click="page.displayConditions.protocol1 = !page.displayConditions.protocol1"
+             data-ng-if="page.displayConditions.protocol1"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show less">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
+                    </svg>
+                </span>
+            </div>
         </div>
     </div>
-    <div data-ng-click="page.displayConditions.protocol2 = !page.displayConditions.protocol2"
-         data-ng-if="page.displayConditions.protocol2"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show less">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
-                </svg>
-            </span>
-        </div>
+
+    <div class="pad-1 margin-b-2"
+         style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
+         data-ng-if="page.displayConditions.protocol1">
+
+        <p class="pad-0 margin-b-2">
+            The stream reach must be greater than 100 feet in length and be still actively enlarging or degrading in
+            response to upstream development or adjustment to previous disturbances in the watershed (e.g., a road crossing and
+            failing dams). Most projects will be located on first- to third-order streams, but if larger fourth and fifth order streams
+            are found to contribute significant and uncontrolled amounts of sediment and nutrients to downstream waters,
+            consideration for this BMP would be appropriate, recognizing that multiple and/or larger scale projects may be
+            needed or warranted to achieve desired watershed treatment goals.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            The project must utilize a comprehensive approach to stream restoration design, addressing long-term
+            stability of the channel, banks, and floodplain.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Special consideration is given to projects that are explicitly designed to reconnect the stream with its
+            floodplain or create wetlands and instream habitat features known to promote nutrient uptake or denitrification.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Each project must comply with all state and federal permitting requirements, including 404 and 401 permits,
+            which may contain conditions for pre-project assessment and data collection, as well as post-construction monitoring.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Stream restoration is a carefully designed intervention to improve the hydrologic, hydraulic, geomorphic,
+            water quality, and biological condition of degraded urban streams, and must not be implemented for the sole purpose of
+            nutrient or sediment reduction.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            There may be instances where limited bank stabilization is needed to protect critical public infrastructure,
+            which may need to be mitigated and does not qualify for any sediment or reduction credits.
+        </p>
+
+        <p class="pad-0 margin-0">
+            A qualifying project must meet certain presumptive criteria to ensure that high functioning portions of the
+            urban stream corridor are not used for in-stream stormwater treatment (i.e., where existing stream quality is still good).
+            These may include one or more of the following:
+        </p>
+
+        <ul class="pad-0 pad-l-2 margin-0 margin-t-1 margin-b-1"
+            style="list-style: disc;">
+            <li>
+                - Geomorphic evidence of active stream degradation (i.e., BEHI score)
+            </li>
+            <li>
+                - An IBI of fair or worse
+            </li>
+            <li>
+                - Hydrologic evidence of floodplain disconnection
+            </li>
+            <li>
+                - Evidence of significant depth of legacy sediment in the project reach
+            </li>
+        </ul>
+
     </div>
-</div>
 
-<div class="pad-1 margin-b-2"
-     style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
-     data-ng-if="page.displayConditions.protocol2">
-
-    <p class="pad-0 margin-b-2">
-        Project must meet applicable floodplain management requirements in the stream corridor. Any individual stream
-        restoration project should be assessed with hydrologic and hydraulic models to demonstrate whether it increases
-        water surface elevations or has adverse downstream flooding impacts. In general, these analyses are based on design
-        storm events and flood risk conditions established by the appropriate local or state floodplain management agency
-        (e. g., the 100-year storm event).
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must evaluate the duration of floodplain ponding in the context of the restoration goals. Micro pools and
-        long-duration ponding of water on the floodplain is essential for amphibian habitat, but large open water features
-        may adversely impact the desired riparian vegetative community. In evaluating a potential restoration site and
-        design, consider the potential adverse effects of extended open water ponding based on the soil characteristics,
-        plant community, amphibian and other aquatic habitat goals.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must demonstrate consideration of potential unintended consequences of the restoration. The project should
-        document that a site impairment exists and that the interventions or restoration work proposed are appropriate to
-        address the impairment. The proposed design should demonstrate that a positive ecological functional uplift (or
-        change) for the stream and associated riparian system will result.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must demonstrate that it either provides, or is tied into existing upstream and downstream grade controls to
-        ensure the project reach can maintain the intended stream access to the floodplain.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must clearly define the boundary of the effective hyporheic zone. For Floodplain Restoration and Raising the
-        Streambed projects the effective hyporheic zone is a maximum of 18 inches deep in the floodplain soil profile, and
-        extends only to those areas that are regularly inundated after the streambed is raised. The actual dimensions must
-        be confirmed by site investigations that define stream flow conditions, root zones, aquifer conditions and the
-        pre-project water table conditions.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must demonstrate that baseflow conditions are not reduced as a result of the restoration (ex. change from
-        perennial to seasonal intermittent flow).
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Presence of legacy sediment deposits or other floodplain impairment. Legacy sediments must be present in the project
-        reach to a depth that has impaired aquatic ecosystem function. Legacy sediment includes any deposits that have
-        occurred since European settlement, including very recent sediment deposits, often created by features such as mill
-        dams, road embankments, floodplain fill and other kinds of stream corridor impairment.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Floodplain connection to valley bottom aquifer. The design objective is to restore a plant/groundwater connection
-        within the floodplain, so that most of the root mass of the floodplain vegetation is in direct contact with the
-        underlying hyporheic aquifer. In cases where the historic hyporheic aquifer cannot be accessed due to modern
-        controls (i.e., culverts or utility crossings), the objective is to plug the flow of the underlying aquifer so as to
-        create a new hyporheic zone using cobbles, gravel and/or sandy materials.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Defined boundaries for the channel(s), floodplain and valley bottom. The restored channel and floodplain dimensions
-        are based on field testing that define the key vertical and lateral sediment boundaries of the existing floodplain
-        and the hyporheic aquifer beneath it.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Removal of legacy sediments is the primary means to restore floodplain reconnection at most sites.
-    </p>
-
-    <p class="pad-0 margin-0">
-        Meet applicable floodplain management requirements in the stream corridor. Any individual stream restoration project
-        should be assessed with hydrologic and hydraulic models to demonstrate whether it increases water surface elevations
-        or adverse downstream flooding impacts. In general, these analyses are based on design storm events and flood risk
-        conditions established by the appropriate local or state floodplain management agency (e.g., the 100-year storm
-        event).
-    </p>
-
-</div>
-
-<div class="pad-t-1 pad-b-1"
-     style="display: flex; flex-flow: row nowrap; align-items: center;">
-    <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
-             width="24px" fill="#000000">
-            <rect fill="none" height="24" width="24"/>
-            <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
-        </svg>
-    </div>
-    <div class="pad-r-2">
-        This project meets all qualifying conditions for protocol 2.
-    </div>
-    <label data-ng-click="page.modelInputs.conditions.protocol2 = !page.modelInputs.conditions.protocol2"
-           for="protocol2-checkbox"
-           title="Accept/reject conditions">
-        <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="page.modelInputs.conditions.protocol2">
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                     width="24px" fill="#2196F3">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-            </span>
+    <div class="pad-t-1 pad-b-1"
+         style="display: flex; flex-flow: row nowrap; align-items: center;">
+        <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+                <rect fill="none" height="24" width="24"/>
+                <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
+            </svg>
         </div>
-        <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="!page.modelInputs.conditions.protocol2">
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                     width="24px" fill="#2196F3">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-                </svg>
-            </span>
+        <div class="pad-r-2">
+            This project meets all qualifying conditions for protocol 1.
         </div>
-        <input type="checkbox"
-               style="position: fixed; right: 100%;"
-               id="protocol2-checkbox"
-               name="protocol2-checkbox"
-               data-ng-model="page.modelInputs.conditions.protocol2">
-    </label>
-</div>
+        <label data-ng-click="page.modelInputs.conditions.protocol1 = !page.modelInputs.conditions.protocol1"
+               for="protocol1-checkbox"
+               title="Accept/reject conditions">
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="page.modelInputs.conditions.protocol1">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="!page.modelInputs.conditions.protocol1">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                </span>
+            </div>
+            <input type="checkbox"
+                   style="position: fixed; right: 100%;"
+                   id="protocol1-checkbox"
+                   name="protocol1-checkbox"
+                   data-ng-model="page.modelInputs.conditions.protocol1">
+        </label>
+    </div>
 
-<form id="protocol-2"
-      data-ng-submit="page.saveInputs('denitrification')"
-      data-ng-if="page.modelInputs.conditions.protocol2"
-      class="form"
-      role="form">
+    <form id="protocol-1"
+          data-ng-submit="page.saveInputs('prevented_sediment')"
+          data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
+          class="form"
+          role="form">
 
-    <article class="feature-detail">
+        <p class="pad-0 pad-y-2 margin-0">
+            <strong>
+                Estimate stream sediment erosion rates and annual sediment loadings.
+            </strong>
+        </p>
 
-        <div class="feature-detail-content">
+        <article class="feature-detail"
+                 data-ng-repeat="(idx, bank) in page.modelInputs.prevented_sediment.banks">
 
-            <div>
-
-                <p class="pad-0 pad-y-2 margin-0">
-                    <strong>
-                        Define the effective hyporheic zone and apply the denitrification rate.
-                    </strong>
-                </p>
-
-                <fieldset class="pad-0 margin-0" style="border: none;">
-
-                    <div class="form-element">
-
-                        <label for="floodplain_sq_ft" class="meta-label">
-                            <strong>Floodplain area (ft<sup>2</sup>)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="page.modelInputs.denitrification.floodplain_sq_ft"
-                               id="floodplain_sq_ft"
-                               name="floodplain_sq_ft"
-                               placeholder=""/>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <label for="channel_sq_ft" class="meta-label">
-                            <strong>Channel area (ft<sup>2</sup>)</strong>
-                        </label>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="page.modelInputs.denitrification.channel_sq_ft"
-                               id="channel_sq_ft"
-                               name="channel_sq_ft"
-                               placeholder=""/>
-
-                    </div>
-
-                </fieldset>
-
-                <p class="pad-0 pad-y-2 margin-0">
-                    <strong>
-                        Enter the site specific discount factors using the table below.
-                    </strong>
-                </p>
-
-                <div class="table-view" style="overflow: auto;">
-
-                    <table style="font-size: 0.9rem;">
-                        <thead>
-                            <tr>
-                                <th colspan="6" class="pad-50p">
-                                    Site specific discount factors for adjusting the denitrification rate
-                                    (Parola et al, 2019)
-                                </th>
-                            </tr>
-                            <tr>
-                                <th colspan="6" class="pad-50p"
-                                    style="font-size: 0.875rem; font-weight: normal;">
-                                    <em>Effective hyporheic zone N credit</em> = (Base rate) (EHZ)
-                                        (B<sub>f</sub>) (H<sub>f</sub>) (A<sub>f</sub>)
-                                </th>
-                            <tr style="background: #EEEEEE;">
-                                <th colspan="2" class="pad-50p">
-                                    Baseflow reduction factor (B<sub>f</sub>)
-                                </th>
-                                <th colspan="2" class="pad-50p">
-                                    Floodplain height factor (H<sub>f</sub>)<sup>1</sup>
-                                </th>
-                                <th colspan="2" class="pad-50p">
-                                    Aquifer conductivity reduction factor (A<sub>f</sub>)<sup>2</sup>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="pad-50p">
-                                    Perennial baseflow
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    1.0
-                                </td>
-                                <td class="pad-50p">
-                                    0 - 0.75 ft
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    1.0
-                                </td>
-                                <td class="pad-50p">
-                                    cobbly gravel, gravel, gravelly sand, sand and peat
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    1.0
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pad-50p">
-                                    Baseflow in all but late summer/fall
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.75
-                                </td>
-                                <td class="pad-50p">
-                                    0.76 ft - 1.00 ft
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.75
-                                </td>
-                                <td class="pad-50p">
-                                    gravelly silt, silty sand or loamy sand, sandy loam, and organic silt with
-                                    no coarse material layer connected to the streambed
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.60
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pad-50p">
-                                    Baseflow in winter/spring
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.50
-                                </td>
-                                <td class="pad-50p">
-                                    1.01 ft - 1.25 ft
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.50
-                                </td>
-                                <td class="pad-50p">
-                                    clayey gravel, sandy silt, sandy clay loam, loam, silt loam, and silt with no
-                                    coarse material layer connected to the streambed
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.40
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pad-50p">
-                                    Baseflow only during wet seasons
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.25
-                                </td>
-                                <td class="pad-50p">
-                                    1.26 ft - 1.50 ft
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.10
-                                </td>
-                                <td class="pad-50p">
-                                    sandy clay, clay loam, silty clay loam, organic clay with no coarse material
-                                    layer connected to the streambed
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.10
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="pad-50p">
-                                    Flow only during runoff events
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.10
-                                </td>
-                                <td class="pad-50p">
-                                    > 1.50 ft
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.00
-                                </td>
-                                <td class="pad-50p">
-                                    silty clay and clay with no coarse material layer connected to the streambed
-                                </td>
-                                <td class="pad-50p" style="background: #F5F5F5;">
-                                    0.01
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
+            <div class="feature-detail-content">
 
                 <div>
-                    <p class="pad-l-50p pad-r-50p pad-t-1 pad-b-50p margin-0" style="font-size: 0.875rem;">
-                        <sup>1</sup> The floodplain height factor is determined by the restored floodplain
-                        height (Hf) above the streambed riffle elevations or low flow water surface elevations.
-                        Additional streambed feature elevations, like those at a run in sand bed channels or
-                        streambeds comprised of silty clay, also may be used to determine the restored
-                        floodplain height. Low base-flow (lowest 10% of flows) could also be used as a
-                        suitable alternative.
-                    </p>
-                </div>
-                <div>
-                    <p class="pad-50p margin-0" style="font-size: 0.875rem;">
-                        <sup>2</sup> This refers to an aquifer capacity factor based on the dominant materials
-                        within the streambed and below the floodplain soil of the EHZ. Where coarse grain
-                        aquifer layers are not directly connected to the channel, the factor should be
-                        determined based on the soil texture at the elevation of the streambed using NRCS
-                        standard texture classifications (Schoeneberger, et al, 2012).
-                    </p>
-                </div>
-                <div>
-                    <p class="pad-50p margin-0" style="font-size: 0.875rem;">
-                        "Base rate" is the mean areal floodplain denitrification rate (lbs/sq foot/yr),
-                        as recommended by Group 4.
-                    </p>
-                </div>
 
-                <fieldset class="pad-0 margin-0 margin-t-1" style="border: none;">
+                    <fieldset class="pad-0 margin-0" style="border: none;">
 
-                    <div class="form-element">
+                        <div class="form-element">
 
-                        <label for="brf" class="meta-label">
-                            <strong>Baseflow reduction factor (B<sub>f</sub>)</strong>
-                        </label>
+                            <label for="bank_id-{{ idx }}" class="meta-label">
+                                <strong>Bank ID</strong>
+                            </label>
 
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="page.modelInputs.denitrification.brf"
-                               id="brf"
-                               name="brf"
-                               placeholder=""/>
+                            <input type="text"
+                                   class="form-control"
+                                   data-ng-model="bank.id"
+                                   id="bank_id-{{ idx }}"
+                                   name="bank_id-{{ idx }}"
+                                   placeholder="&hellip;"/>
 
-                    </div>
+                        </div>
 
-                    <div class="form-element">
+                        <div class="form-element">
 
-                        <label for="fhf" class="meta-label">
-                            <strong>Floodplain height factor (H<sub>f</sub>)</strong>
-                        </label>
+                            <label for="bulk_density_of_soil-{{ idx }}" class="meta-label">
+                                <strong>Bulk density of soil (lbs/ft<sup>3</sup>)</strong>
+                            </label>
 
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="page.modelInputs.denitrification.fhf"
-                               id="fhf"
-                               name="fhf"
-                               placeholder=""/>
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="bank.bulk_density_of_soil"
+                                   id="bulk_density_of_soil-{{ idx }}"
+                                   name="bulk_density_of_soil-{{ idx }}"
+                                   placeholder=""/>
 
-                    </div>
+                        </div>
 
-                    <div class="form-element">
+                        <div class="form-element">
 
-                        <label for="acrf" class="meta-label">
-                            <strong>Aquifer conductivity reduction factor (A<sub>f</sub>)</strong>
-                        </label>
+                            <label for="bank_erosion_rate-{{ idx }}" class="meta-label">
+                                <strong>Bank erosion rate (ft/year)</strong>
+                            </label>
 
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="page.modelInputs.denitrification.acrf"
-                               id="acrf"
-                               name="acrf"
-                               placeholder=""/>
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="bank.bank_erosion_rate"
+                                   id="bank_erosion_rate-{{ idx }}"
+                                   name="bank_erosion_rate-{{ idx }}"
+                                   placeholder=""/>
 
-                    </div>
+                        </div>
 
-                </fieldset>
+                        <div class="form-element">
 
-                <div class="save--action--wrapper save--action--bottom">
-                    <button type="submit" data-ng-disabled="page.status.processing">
-                        <i class="material-icons" data-ng-if="page.status.processing">
-                            more_horiz
-                        </i>
-                        <i class="material-icons" data-ng-if="!page.status.processing">
-                            done
-                        </i>
-                    </button>
+                            <label for="eroding_bank_length-{{ idx }}" class="meta-label">
+                                <strong>Eroding bank length (ft)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="bank.eroding_bank_length"
+                                   id="eroding_bank_length-{{ idx }}"
+                                   name="eroding_bank_length-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="eroding_bank_height-{{ idx }}" class="meta-label">
+                                <strong>Eroding bank height (ft)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="bank.eroding_bank_height"
+                                   id="eroding_bank_height-{{ idx }}"
+                                   name="eroding_bank_height-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="nitrogen_concentration-{{ idx }}" class="meta-label">
+                                <strong>Nitrogen concentration (lbs/ton)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="bank.nitrogen_concentration"
+                                   id="nitrogen_concentration-{{ idx }}"
+                                   name="nitrogen_concentration-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="phosphorus_concentration-{{ idx }}" class="meta-label">
+                                <strong>Phosphorus concentration (lbs/ton)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="bank.phosphorus_concentration"
+                                   id="phosphorus_concentration-{{ idx }}"
+                                   name="phosphorus_concentration-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                    </fieldset>
+
                 </div>
 
             </div>
 
+        </article>
+
+        <div class="save--action--wrapper save--action--bottom">
+            <button type="submit" data-ng-disabled="page.status.processing">
+                <i class="material-icons" data-ng-if="page.status.processing">
+                    more_horiz
+                </i>
+                <i class="material-icons" data-ng-if="!page.status.processing">
+                    done
+                </i>
+            </button>
         </div>
 
-    </article>
+    </form>
 
-</form>
+    <div data-ng-click="page.modelInputs.prevented_sediment.banks.push({id:null,bulk_density_of_soil:null,
+            bank_erosion_rate:null,eroding_bank_height:null,eroding_bank_length:null})"
+         data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
+         class="pad-t-1 pad-b-1"
+         style="display: flex; flex-flow: row nowrap; align-items: center;">
+        <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#0366d6">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+            </svg>
+        </div>
+        <a class="pad-r-2" href="#">
+            Add a set of bank measurements.
+        </a>
+    </div>
 
-<!-- PROTOCOL 3 -->
+    <!-- PROTOCOL 2 -->
 
-<h2>
-    Protocol 3: Floodplain reconnection
-</h2>
+    <h2>
+        Protocol 2: Denitrification in the hyporheic zone
+    </h2>
 
-<div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
-    <span class="grow">
-        <strong>
-            Qualifying conditions
-        </strong>
-    </span>
-    <div data-ng-click="page.displayConditions.protocol3 = !page.displayConditions.protocol3"
-         data-ng-if="!page.displayConditions.protocol3"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show more">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-                </svg>
-            </span>
+    <div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
+        <span class="grow">
+            <strong>
+                Qualifying conditions
+            </strong>
+        </span>
+        <div data-ng-click="page.displayConditions.protocol2 = !page.displayConditions.protocol2"
+             data-ng-if="!page.displayConditions.protocol2"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show more">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div data-ng-click="page.displayConditions.protocol2 = !page.displayConditions.protocol2"
+             data-ng-if="page.displayConditions.protocol2"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show less">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
+                    </svg>
+                </span>
+            </div>
         </div>
     </div>
-    <div data-ng-click="page.displayConditions.protocol3 = !page.displayConditions.protocol3"
-         data-ng-if="page.displayConditions.protocol3"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show less">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
-                </svg>
-            </span>
-        </div>
+
+    <div class="pad-1 margin-b-2"
+         style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
+         data-ng-if="page.displayConditions.protocol2">
+
+        <p class="pad-0 margin-b-2">
+            Project must meet applicable floodplain management requirements in the stream corridor. Any individual stream
+            restoration project should be assessed with hydrologic and hydraulic models to demonstrate whether it increases
+            water surface elevations or has adverse downstream flooding impacts. In general, these analyses are based on design
+            storm events and flood risk conditions established by the appropriate local or state floodplain management agency
+            (e. g., the 100-year storm event).
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must evaluate the duration of floodplain ponding in the context of the restoration goals. Micro pools and
+            long-duration ponding of water on the floodplain is essential for amphibian habitat, but large open water features
+            may adversely impact the desired riparian vegetative community. In evaluating a potential restoration site and
+            design, consider the potential adverse effects of extended open water ponding based on the soil characteristics,
+            plant community, amphibian and other aquatic habitat goals.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must demonstrate consideration of potential unintended consequences of the restoration. The project should
+            document that a site impairment exists and that the interventions or restoration work proposed are appropriate to
+            address the impairment. The proposed design should demonstrate that a positive ecological functional uplift (or
+            change) for the stream and associated riparian system will result.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must demonstrate that it either provides, or is tied into existing upstream and downstream grade controls to
+            ensure the project reach can maintain the intended stream access to the floodplain.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must clearly define the boundary of the effective hyporheic zone. For Floodplain Restoration and Raising the
+            Streambed projects the effective hyporheic zone is a maximum of 18 inches deep in the floodplain soil profile, and
+            extends only to those areas that are regularly inundated after the streambed is raised. The actual dimensions must
+            be confirmed by site investigations that define stream flow conditions, root zones, aquifer conditions and the
+            pre-project water table conditions.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must demonstrate that baseflow conditions are not reduced as a result of the restoration (ex. change from
+            perennial to seasonal intermittent flow).
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Presence of legacy sediment deposits or other floodplain impairment. Legacy sediments must be present in the project
+            reach to a depth that has impaired aquatic ecosystem function. Legacy sediment includes any deposits that have
+            occurred since European settlement, including very recent sediment deposits, often created by features such as mill
+            dams, road embankments, floodplain fill and other kinds of stream corridor impairment.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Floodplain connection to valley bottom aquifer. The design objective is to restore a plant/groundwater connection
+            within the floodplain, so that most of the root mass of the floodplain vegetation is in direct contact with the
+            underlying hyporheic aquifer. In cases where the historic hyporheic aquifer cannot be accessed due to modern
+            controls (i.e., culverts or utility crossings), the objective is to plug the flow of the underlying aquifer so as to
+            create a new hyporheic zone using cobbles, gravel and/or sandy materials.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Defined boundaries for the channel(s), floodplain and valley bottom. The restored channel and floodplain dimensions
+            are based on field testing that define the key vertical and lateral sediment boundaries of the existing floodplain
+            and the hyporheic aquifer beneath it.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Removal of legacy sediments is the primary means to restore floodplain reconnection at most sites.
+        </p>
+
+        <p class="pad-0 margin-0">
+            Meet applicable floodplain management requirements in the stream corridor. Any individual stream restoration project
+            should be assessed with hydrologic and hydraulic models to demonstrate whether it increases water surface elevations
+            or adverse downstream flooding impacts. In general, these analyses are based on design storm events and flood risk
+            conditions established by the appropriate local or state floodplain management agency (e.g., the 100-year storm
+            event).
+        </p>
+
     </div>
-</div>
 
-<div class="pad-1 margin-b-2"
-     style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
-     data-ng-if="page.displayConditions.protocol3">
-
-    <p class="pad-0 margin-b-2">
-        Project extended hyporheic zone and floodplain treatment zone boundaries must be assessed with hydrologic and
-        hydraulic models to demonstrate whether it increases water surface elevations or has adverse downstream flooding
-        impacts.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must avoid extended ponding / inundation of the floodplain to assess the potential adverse effects of
-        extended open water ponding based on the soil characteristics, plant community, amphibian and other aquatic
-        habitat goals.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must demonstrate consideration of potential unintended consequences of the restoration, such as aquatic
-        passage and potential water quality loss. A site impairment exists and that the interventions or restoration
-        work proposed are appropriate to address the impairment. The proposed design should demonstrate that a positive
-        ecological functional uplift (or change) for the stream and associated riparian system will result.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Any wetlands that fall within the boundaries of the floodplain treatment zone and are reported for credit under
-        Protocol 3 should not also be reported using the Non-Tidal Wetlands Expert Panel.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project meets all of the qualifying conditions listed in the original Stream Restoration Protocol Expert Panel
-        report outlined in Appendix B.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must demonstrate that it either provides, or is tied into existing upstream and downstream grade
-        controls to ensure the project reach can maintain the intended stream access to the floodplain.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must clearly define the boundary of the effective hyporheic zone. For floodplain restoration and raising
-        the stream bed projects, the EHZ is a maximum of 18 inches deep in the floodplain soil profile, and extends only
-        to those areas that are regularly inundated after the streambed is raised. The actual dimensions must be
-        confirmed by site investigations that define stream flow conditions, root zones, aquifer conditions and the
-        pre-project water table conditions.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project must demonstrate that baseflow conditions are not reduced as a result of the restoration. For example,
-        change from perennial to seasonal intermittent flow.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Confirm the presence of legacy sediment deposits.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Demonstrate that the design approach restores channel and floodplain connection with the hyporheic aquifer and
-        restores processes within a hyporheic exchange zone. The EHZ is a maximum of 18 inches deep in the floodplain
-        soil profile. When modern site constraints prevent directly connecting the restored channel and floodplain to
-        the hyporheic aquifer, the design should include measures to interrupt flow within the hyporheic aquifer and
-        elevate the hyporheic exchange zone into the restored floodplain.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Project has defined EHZ boundaries across channels/floodplain.
-    </p>
-
-    <p class="pad-0 margin-0">
-        Legacy sediment removal is the primary floodplain restoration technique.
-    </p>
-
-</div>
-
-<div class="pad-t-1 pad-b-1"
-     style="display: flex; flex-flow: row nowrap; align-items: center;">
-    <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
-             width="24px" fill="#000000">
-            <rect fill="none" height="24" width="24"/>
-            <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
-        </svg>
-    </div>
-    <div class="pad-r-2">
-        This project meets all qualifying conditions for protocol 3.
-    </div>
-    <label data-ng-click="page.modelInputs.conditions.protocol3 = !page.modelInputs.conditions.protocol3"
-           for="protocol2-checkbox"
-           title="Accept/reject conditions">
-        <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="page.modelInputs.conditions.protocol3">
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                     width="24px" fill="#2196F3">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-            </span>
+    <div class="pad-t-1 pad-b-1"
+         style="display: flex; flex-flow: row nowrap; align-items: center;">
+        <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+                <rect fill="none" height="24" width="24"/>
+                <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
+            </svg>
         </div>
-        <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="!page.modelInputs.conditions.protocol3">
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                     width="24px" fill="#2196F3">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-                </svg>
-            </span>
+        <div class="pad-r-2">
+            This project meets all qualifying conditions for protocol 2.
         </div>
-        <input type="checkbox"
-               style="position: fixed; right: 100%;"
-               id="protocol3-checkbox"
-               name="protocol3-checkbox"
-               data-ng-model="page.modelInputs.conditions.protocol3">
-    </label>
-</div>
+        <label data-ng-click="page.modelInputs.conditions.protocol2 = !page.modelInputs.conditions.protocol2"
+               for="protocol2-checkbox"
+               title="Accept/reject conditions">
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="page.modelInputs.conditions.protocol2">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="!page.modelInputs.conditions.protocol2">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                </span>
+            </div>
+            <input type="checkbox"
+                   style="position: fixed; right: 100%;"
+                   id="protocol2-checkbox"
+                   name="protocol2-checkbox"
+                   data-ng-model="page.modelInputs.conditions.protocol2">
+        </label>
+    </div>
 
-<form id="protocol-3-1"
-      data-ng-submit="page.saveInputs('floodplain_reconnection_1')"
-      data-ng-if="page.modelInputs.conditions.protocol3"
-      class="form"
-      role="form">
+    <form id="protocol-2"
+          data-ng-submit="page.saveInputs('denitrification')"
+          data-ng-if="page.modelInputs.conditions.protocol2"
+          class="form"
+          role="form">
 
-    <article class="feature-detail">
+        <article class="feature-detail">
 
-        <div class="feature-detail-content">
+            <div class="feature-detail-content">
 
-            <div>
+                <div>
 
-                <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
-                    <strong>
-                        1. Flow treated
-                    </strong>
-                </p>
+                    <p class="pad-0 pad-y-2 margin-0">
+                        <strong>
+                            Define the effective hyporheic zone and apply the denitrification rate.
+                        </strong>
+                    </p>
 
-                <p class="pad-0 pad-t-2 pad-b-1 margin-0">
-                    <strong>
-                        Model flow diversions for the stream to the floodplain.
-                    </strong>
-                </p>
+                    <fieldset class="pad-0 margin-0" style="border: none;">
 
-                <fieldset class="pad-0 margin-0" style="border: none;">
+                        <div class="form-element">
 
-                    <div class="form-element">
+                            <label for="floodplain_sq_ft" class="meta-label">
+                                <strong>Floodplain area (ft<sup>2</sup>)</strong>
+                            </label>
 
-                        <label for="baseflow_discharge" class="meta-label">
-                            <strong>Baseflow discharge (cfs)</strong>
-                        </label>
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.denitrification.floodplain_sq_ft"
+                                   id="floodplain_sq_ft"
+                                   name="floodplain_sq_ft"
+                                   placeholder=""/>
 
-                        <input type="number"
-                               step="any"
-                               class="form-control"
-                               data-ng-model="page.modelInputs.floodplain_reconnection.baseflow_discharge"
-                               id="baseflow_discharge"
-                               name="baseflow_discharge"
-                               placeholder=""/>
+                        </div>
 
-                        <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
-                            Baseflow discharge is defined as the 50% recurrence interval discharge.
-                        </p>
+                        <div class="form-element">
+
+                            <label for="channel_sq_ft" class="meta-label">
+                                <strong>Channel area (ft<sup>2</sup>)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.denitrification.channel_sq_ft"
+                                   id="channel_sq_ft"
+                                   name="channel_sq_ft"
+                                   placeholder=""/>
+
+                        </div>
+
+                    </fieldset>
+
+                    <p class="pad-0 pad-y-2 margin-0">
+                        <strong>
+                            Enter the site specific discount factors using the table below.
+                        </strong>
+                    </p>
+
+                    <div class="table-view" style="overflow: auto;">
+
+                        <table style="font-size: 0.9rem;">
+                            <thead>
+                                <tr>
+                                    <th colspan="6" class="pad-50p">
+                                        Site specific discount factors for adjusting the denitrification rate
+                                        (Parola et al, 2019)
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="6" class="pad-50p"
+                                        style="font-size: 0.875rem; font-weight: normal;">
+                                        <em>Effective hyporheic zone N credit</em> = (Base rate) (EHZ)
+                                            (B<sub>f</sub>) (H<sub>f</sub>) (A<sub>f</sub>)
+                                    </th>
+                                <tr style="background: #EEEEEE;">
+                                    <th colspan="2" class="pad-50p">
+                                        Baseflow reduction factor (B<sub>f</sub>)
+                                    </th>
+                                    <th colspan="2" class="pad-50p">
+                                        Floodplain height factor (H<sub>f</sub>)<sup>1</sup>
+                                    </th>
+                                    <th colspan="2" class="pad-50p">
+                                        Aquifer conductivity reduction factor (A<sub>f</sub>)<sup>2</sup>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="pad-50p">
+                                        Perennial baseflow
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        1.0
+                                    </td>
+                                    <td class="pad-50p">
+                                        0 - 0.75 ft
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        1.0
+                                    </td>
+                                    <td class="pad-50p">
+                                        cobbly gravel, gravel, gravelly sand, sand and peat
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        1.0
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pad-50p">
+                                        Baseflow in all but late summer/fall
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.75
+                                    </td>
+                                    <td class="pad-50p">
+                                        0.76 ft - 1.00 ft
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.75
+                                    </td>
+                                    <td class="pad-50p">
+                                        gravelly silt, silty sand or loamy sand, sandy loam, and organic silt with
+                                        no coarse material layer connected to the streambed
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.60
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pad-50p">
+                                        Baseflow in winter/spring
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.50
+                                    </td>
+                                    <td class="pad-50p">
+                                        1.01 ft - 1.25 ft
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.50
+                                    </td>
+                                    <td class="pad-50p">
+                                        clayey gravel, sandy silt, sandy clay loam, loam, silt loam, and silt with no
+                                        coarse material layer connected to the streambed
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.40
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pad-50p">
+                                        Baseflow only during wet seasons
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.25
+                                    </td>
+                                    <td class="pad-50p">
+                                        1.26 ft - 1.50 ft
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.10
+                                    </td>
+                                    <td class="pad-50p">
+                                        sandy clay, clay loam, silty clay loam, organic clay with no coarse material
+                                        layer connected to the streambed
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.10
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pad-50p">
+                                        Flow only during runoff events
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.10
+                                    </td>
+                                    <td class="pad-50p">
+                                        > 1.50 ft
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.00
+                                    </td>
+                                    <td class="pad-50p">
+                                        silty clay and clay with no coarse material layer connected to the streambed
+                                    </td>
+                                    <td class="pad-50p" style="background: #F5F5F5;">
+                                        0.01
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
                     </div>
 
-                </fieldset>
-
-                <p class="pad-0 pad-t-2 margin-0">
-                    <strong>
-                        Enter data calculated from the flow duration curve.
-                    </strong>
-                </p>
-
-                <fieldset class="pad-0 margin-0 margin-t-1"
-                          style="border: none;">
-
-                    <div class="form-element">
-
-                        <p class="pad-0 pad-b-1 margin-0">
-                            <strong>Channel capacity discharge (cfs)</strong>
+                    <div>
+                        <p class="pad-l-50p pad-r-50p pad-t-1 pad-b-50p margin-0" style="font-size: 0.875rem;">
+                            <sup>1</sup> The floodplain height factor is determined by the restored floodplain
+                            height (Hf) above the streambed riffle elevations or low flow water surface elevations.
+                            Additional streambed feature elevations, like those at a run in sand bed channels or
+                            streambeds comprised of silty clay, also may be used to determine the restored
+                            floodplain height. Low base-flow (lowest 10% of flows) could also be used as a
+                            suitable alternative.
                         </p>
+                    </div>
+                    <div>
+                        <p class="pad-50p margin-0" style="font-size: 0.875rem;">
+                            <sup>2</sup> This refers to an aquifer capacity factor based on the dominant materials
+                            within the streambed and below the floodplain soil of the EHZ. Where coarse grain
+                            aquifer layers are not directly connected to the channel, the factor should be
+                            determined based on the soil texture at the elevation of the streambed using NRCS
+                            standard texture classifications (Schoeneberger, et al, 2012).
+                        </p>
+                    </div>
+                    <div>
+                        <p class="pad-50p margin-0" style="font-size: 0.875rem;">
+                            "Base rate" is the mean areal floodplain denitrification rate (lbs/sq foot/yr),
+                            as recommended by Group 4.
+                        </p>
+                    </div>
 
-                        <div class="dyad">
+                    <fieldset class="pad-0 margin-0 margin-t-1" style="border: none;">
 
-                            <div class="pad-r-1">
+                        <div class="form-element">
 
-                                <div class="form-element pad-0 margin-0">
+                            <label for="brf" class="meta-label">
+                                <strong>Baseflow reduction factor (B<sub>f</sub>)</strong>
+                            </label>
 
-                                    <label class="meta-label"
-                                           for="existing_channel_capacity_discharge">
-                                        <strong>Existing</strong>
-                                    </label>
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.denitrification.brf"
+                                   id="brf"
+                                   name="brf"
+                                   placeholder=""/>
 
-                                    <input type="number"
-                                           step="any"
-                                           class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_channel_capacity_discharge"
-                                           id="existing_channel_capacity_discharge"
-                                           name="existing_channel_capacity_discharge"
-                                           placeholder=""/>
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="fhf" class="meta-label">
+                                <strong>Floodplain height factor (H<sub>f</sub>)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.denitrification.fhf"
+                                   id="fhf"
+                                   name="fhf"
+                                   placeholder=""/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="acrf" class="meta-label">
+                                <strong>Aquifer conductivity reduction factor (A<sub>f</sub>)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.denitrification.acrf"
+                                   id="acrf"
+                                   name="acrf"
+                                   placeholder=""/>
+
+                        </div>
+
+                    </fieldset>
+
+                    <div class="save--action--wrapper save--action--bottom">
+                        <button type="submit" data-ng-disabled="page.status.processing">
+                            <i class="material-icons" data-ng-if="page.status.processing">
+                                more_horiz
+                            </i>
+                            <i class="material-icons" data-ng-if="!page.status.processing">
+                                done
+                            </i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </form>
+
+    <!-- PROTOCOL 3 -->
+
+    <h2>
+        Protocol 3: Floodplain reconnection
+    </h2>
+
+    <div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
+        <span class="grow">
+            <strong>
+                Qualifying conditions
+            </strong>
+        </span>
+        <div data-ng-click="page.displayConditions.protocol3 = !page.displayConditions.protocol3"
+             data-ng-if="!page.displayConditions.protocol3"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show more">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+        <div data-ng-click="page.displayConditions.protocol3 = !page.displayConditions.protocol3"
+             data-ng-if="page.displayConditions.protocol3"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show less">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="pad-1 margin-b-2"
+         style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
+         data-ng-if="page.displayConditions.protocol3">
+
+        <p class="pad-0 margin-b-2">
+            Project extended hyporheic zone and floodplain treatment zone boundaries must be assessed with hydrologic and
+            hydraulic models to demonstrate whether it increases water surface elevations or has adverse downstream flooding
+            impacts.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must avoid extended ponding / inundation of the floodplain to assess the potential adverse effects of
+            extended open water ponding based on the soil characteristics, plant community, amphibian and other aquatic
+            habitat goals.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must demonstrate consideration of potential unintended consequences of the restoration, such as aquatic
+            passage and potential water quality loss. A site impairment exists and that the interventions or restoration
+            work proposed are appropriate to address the impairment. The proposed design should demonstrate that a positive
+            ecological functional uplift (or change) for the stream and associated riparian system will result.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Any wetlands that fall within the boundaries of the floodplain treatment zone and are reported for credit under
+            Protocol 3 should not also be reported using the Non-Tidal Wetlands Expert Panel.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project meets all of the qualifying conditions listed in the original Stream Restoration Protocol Expert Panel
+            report outlined in Appendix B.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must demonstrate that it either provides, or is tied into existing upstream and downstream grade
+            controls to ensure the project reach can maintain the intended stream access to the floodplain.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must clearly define the boundary of the effective hyporheic zone. For floodplain restoration and raising
+            the stream bed projects, the EHZ is a maximum of 18 inches deep in the floodplain soil profile, and extends only
+            to those areas that are regularly inundated after the streambed is raised. The actual dimensions must be
+            confirmed by site investigations that define stream flow conditions, root zones, aquifer conditions and the
+            pre-project water table conditions.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project must demonstrate that baseflow conditions are not reduced as a result of the restoration. For example,
+            change from perennial to seasonal intermittent flow.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Confirm the presence of legacy sediment deposits.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Demonstrate that the design approach restores channel and floodplain connection with the hyporheic aquifer and
+            restores processes within a hyporheic exchange zone. The EHZ is a maximum of 18 inches deep in the floodplain
+            soil profile. When modern site constraints prevent directly connecting the restored channel and floodplain to
+            the hyporheic aquifer, the design should include measures to interrupt flow within the hyporheic aquifer and
+            elevate the hyporheic exchange zone into the restored floodplain.
+        </p>
+
+        <p class="pad-0 margin-b-2">
+            Project has defined EHZ boundaries across channels/floodplain.
+        </p>
+
+        <p class="pad-0 margin-0">
+            Legacy sediment removal is the primary floodplain restoration technique.
+        </p>
+
+    </div>
+
+    <div class="pad-t-1 pad-b-1"
+         style="display: flex; flex-flow: row nowrap; align-items: center;">
+        <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+                <rect fill="none" height="24" width="24"/>
+                <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
+            </svg>
+        </div>
+        <div class="pad-r-2">
+            This project meets all qualifying conditions for protocol 3.
+        </div>
+        <label data-ng-click="page.modelInputs.conditions.protocol3 = !page.modelInputs.conditions.protocol3"
+               for="protocol2-checkbox"
+               title="Accept/reject conditions">
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="page.modelInputs.conditions.protocol3">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="!page.modelInputs.conditions.protocol3">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                </span>
+            </div>
+            <input type="checkbox"
+                   style="position: fixed; right: 100%;"
+                   id="protocol3-checkbox"
+                   name="protocol3-checkbox"
+                   data-ng-model="page.modelInputs.conditions.protocol3">
+        </label>
+    </div>
+
+    <form id="protocol-3-1"
+          data-ng-submit="page.saveInputs('floodplain_reconnection_1')"
+          data-ng-if="page.modelInputs.conditions.protocol3"
+          class="form"
+          role="form">
+
+        <article class="feature-detail">
+
+            <div class="feature-detail-content">
+
+                <div>
+
+                    <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
+                        <strong>
+                            1. Flow treated
+                        </strong>
+                    </p>
+
+                    <p class="pad-0 pad-t-2 pad-b-1 margin-0">
+                        <strong>
+                            Model flow diversions for the stream to the floodplain.
+                        </strong>
+                    </p>
+
+                    <fieldset class="pad-0 margin-0" style="border: none;">
+
+                        <div class="form-element">
+
+                            <label for="baseflow_discharge" class="meta-label">
+                                <strong>Baseflow discharge (cfs)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.floodplain_reconnection.baseflow_discharge"
+                                   id="baseflow_discharge"
+                                   name="baseflow_discharge"
+                                   placeholder=""/>
+
+                            <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
+                                Baseflow discharge is defined as the 50% recurrence interval discharge.
+                            </p>
+
+                        </div>
+
+                    </fieldset>
+
+                    <p class="pad-0 pad-t-2 margin-0">
+                        <strong>
+                            Enter data calculated from the flow duration curve.
+                        </strong>
+                    </p>
+
+                    <fieldset class="pad-0 margin-0 margin-t-1"
+                              style="border: none;">
+
+                        <div class="form-element">
+
+                            <p class="pad-0 pad-b-1 margin-0">
+                                <strong>Channel capacity discharge (cfs)</strong>
+                            </p>
+
+                            <div class="dyad">
+
+                                <div class="pad-r-1">
+
+                                    <div class="form-element pad-0 margin-0">
+
+                                        <label class="meta-label"
+                                               for="existing_channel_capacity_discharge">
+                                            <strong>Existing</strong>
+                                        </label>
+
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.existing_channel_capacity_discharge"
+                                               id="existing_channel_capacity_discharge"
+                                               name="existing_channel_capacity_discharge"
+                                               placeholder=""/>
+
+                                    </div>
 
                                 </div>
 
-                            </div>
+                                <div class="pad-l-1">
 
-                            <div class="pad-l-1">
+                                    <div class="form-element pad-0 margin-0">
 
-                                <div class="form-element pad-0 margin-0">
+                                        <label class="meta-label"
+                                               for="proposed_channel_capacity_discharge">
+                                            <strong>Proposed</strong>
+                                        </label>
 
-                                    <label class="meta-label"
-                                           for="proposed_channel_capacity_discharge">
-                                        <strong>Proposed</strong>
-                                    </label>
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.proposed_channel_capacity_discharge"
+                                               id="proposed_channel_capacity_discharge"
+                                               name="proposed_channel_capacity_discharge"
+                                               placeholder=""/>
 
-                                    <input type="number"
-                                           step="any"
-                                           class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_channel_capacity_discharge"
-                                           id="proposed_channel_capacity_discharge"
-                                           name="proposed_channel_capacity_discharge"
-                                           placeholder=""/>
+                                    </div>
 
                                 </div>
 
@@ -1057,53 +1184,121 @@
 
                         </div>
 
-                    </div>
+                        <div class="form-element">
 
-                    <div class="form-element">
+                            <p class="pad-0 pad-b-1 margin-0">
+                                <strong>Floodplain treatment zone flow (cfs)</strong>
+                            </p>
 
-                        <p class="pad-0 pad-b-1 margin-0">
-                            <strong>Floodplain treatment zone flow (cfs)</strong>
-                        </p>
+                            <div class="dyad">
 
-                        <div class="dyad">
+                                <div class="pad-r-1">
 
-                            <div class="pad-r-1">
+                                    <div class="form-element pad-0 margin-0">
 
-                                <div class="form-element pad-0 margin-0">
+                                        <label class="meta-label"
+                                               for="existing_floodplain_treatment_zone_flow">
+                                            <strong>Existing</strong>
+                                        </label>
 
-                                    <label class="meta-label"
-                                           for="existing_floodplain_treatment_zone_flow">
-                                        <strong>Existing</strong>
-                                    </label>
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.existing_floodplain_treatment_zone_flow"
+                                               id="existing_floodplain_treatment_zone_flow"
+                                               name="existing_floodplain_treatment_zone_flow"
+                                               placeholder=""/>
 
-                                    <input type="number"
-                                           step="any"
-                                           class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_floodplain_treatment_zone_flow"
-                                           id="existing_floodplain_treatment_zone_flow"
-                                           name="existing_floodplain_treatment_zone_flow"
-                                           placeholder=""/>
+                                    </div>
+
+                                </div>
+
+                                <div class="pad-l-1">
+
+                                    <div class="form-element pad-0 margin-0">
+
+                                        <label class="meta-label"
+                                               for="proposed_floodplain_treatment_zone_flow">
+                                            <strong>Proposed</strong>
+                                        </label>
+
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.proposed_floodplain_treatment_zone_flow"
+                                               id="proposed_floodplain_treatment_zone_flow"
+                                               name="proposed_floodplain_treatment_zone_flow"
+                                               placeholder=""/>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                            <div class="pad-l-1">
+                            <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
+                                Using HEC-RAS or a similar model, channel flow discharge is defined as the flow
+                                that would just fill the existing channel without overtopping its banks; maximum
+                                creditable floodplain flow discharge is defined as the flow at 1 foot above the
+                                floodplain elevation unless hydraulic and hydrologic modeling shows velocities
+                                below the threshold described previously.
+                            </p>
 
-                                <div class="form-element pad-0 margin-0">
+                            <p class="pad-0 margin-0 margin-t-1" style="font-size: .9rem;">
+                                Note: If depth is greater than one foot, then floodplain velocity must be less than 2 feet
+                                per second. Depth is capped at 3 foot max or the 10-year storm discharge depth if less than
+                                3 feet.
+                            </p>
 
-                                    <label class="meta-label"
-                                           for="proposed_floodplain_treatment_zone_flow">
-                                        <strong>Proposed</strong>
-                                    </label>
+                        </div>
 
-                                    <input type="number"
-                                           step="any"
-                                           class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_floodplain_treatment_zone_flow"
-                                           id="proposed_floodplain_treatment_zone_flow"
-                                           name="proposed_floodplain_treatment_zone_flow"
-                                           placeholder=""/>
+                        <div class="form-element">
+
+                            <p class="pad-0 pad-b-1 margin-0">
+                                <strong>Treated discharge</strong>
+                            </p>
+
+                            <div class="dyad">
+
+                                <div class="flex flex-dir-col pad-r-1">
+
+                                    <div class="form-element pad-0 margin-0">
+
+                                        <label class="meta-label"
+                                               for="existing_treated_discharge">
+                                            <strong>Existing</strong>
+                                        </label>
+
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.existing_treated_discharge"
+                                               id="existing_treated_discharge"
+                                               name="existing_treated_discharge"
+                                               placeholder=""/>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="pad-l-1">
+
+                                    <div class="form-element pad-0 margin-0">
+
+                                        <label class="meta-label"
+                                               for="proposed_treated_discharge">
+                                            <strong>Proposed</strong>
+                                        </label>
+
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.proposed_treated_discharge"
+                                               id="proposed_treated_discharge"
+                                               name="proposed_treated_discharge"
+                                               placeholder=""/>
+
+                                    </div>
 
                                 </div>
 
@@ -1111,99 +1306,208 @@
 
                         </div>
 
-                        <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
-                            Using HEC-RAS or a similar model, channel flow discharge is defined as the flow
-                            that would just fill the existing channel without overtopping its banks; maximum
-                            creditable floodplain flow discharge is defined as the flow at 1 foot above the
-                            floodplain elevation unless hydraulic and hydrologic modeling shows velocities
-                            below the threshold described previously.
-                        </p>
+                        <div class="form-element">
 
-                        <p class="pad-0 margin-0 margin-t-1" style="font-size: .9rem;">
-                            Note: If depth is greater than one foot, then floodplain velocity must be less than 2 feet
-                            per second. Depth is capped at 3 foot max or the 10-year storm discharge depth if less than
-                            3 feet.
-                        </p>
+                            <p class="pad-0 pad-b-1 margin-0">
+                                <strong>Total discharge</strong>
+                            </p>
 
+                            <div class="dyad">
+
+                                <div class="flex flex-dir-col pad-r-1">
+
+                                    <div class="form-element pad-0 margin-0">
+
+                                        <label class="meta-label"
+                                               for="existing_total_discharge">
+                                            <strong>Existing</strong>
+                                        </label>
+
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.existing_total_discharge"
+                                               id="existing_total_discharge"
+                                               name="existing_total_discharge"
+                                               placeholder=""/>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="flex flex-dir-col pad-l-1">
+
+                                    <div class="form-element pad-0 margin-0">
+
+                                        <label class="meta-label"
+                                               for="proposed_total_discharge">
+                                            <strong>Proposed</strong>
+                                        </label>
+
+                                        <input type="number"
+                                               step="any"
+                                               class="form-control"
+                                               data-ng-model="page.modelInputs.floodplain_reconnection.proposed_total_discharge"
+                                               id="proposed_total_discharge"
+                                               name="proposed_total_discharge"
+                                               placeholder=""/>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </fieldset>
+
+                    <div class="save--action--wrapper save--action--bottom">
+                        <button type="submit" data-ng-disabled="page.status.processing">
+                            <i class="material-icons" data-ng-if="page.status.processing">
+                                more_horiz
+                            </i>
+                            <i class="material-icons" data-ng-if="!page.status.processing">
+                                done
+                            </i>
+                        </button>
                     </div>
 
-                    <div class="form-element">
+                </div>
 
-                        <p class="pad-0 pad-b-1 margin-0">
-                            <strong>Treated discharge</strong>
-                        </p>
+            </div>
 
-                        <div class="dyad">
+        </article>
+
+    </form>
+
+    <form id="protocol-3-2"
+          data-ng-submit="page.saveInputs('floodplain_reconnection_2')"
+          data-ng-if="page.modelInputs.conditions.protocol3"
+          class="form"
+          role="form">
+
+        <article class="feature-detail">
+
+            <div class="feature-detail-content">
+
+                <div>
+
+                    <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
+                        <strong>
+                            2. Loads
+                        </strong>
+                    </p>
+
+                    <p class="pad-0 pad-t-2 pad-b-1 margin-0">
+                        <strong>
+                            Determine treatable loads for  TN, TP, and TSS.
+                        </strong>
+                    </p>
+
+                    <fieldset class="pad-0 margin-0" style="border: none;">
+
+                        <div class="form-element">
+
+                            <label for="upstream_miles" class="meta-label">
+                                <strong>Stream length upstream of project (miles)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.floodplain_reconnection.upstream_miles"
+                                   id="upstream_miles"
+                                   name="upstream_miles"
+                                   placeholder=""/>
+
+                        </div>
+
+                    </fieldset>
+
+                    <div class="save--action--wrapper save--action--bottom">
+                        <button type="submit" data-ng-disabled="page.status.processing">
+                            <i class="material-icons" data-ng-if="page.status.processing">
+                                more_horiz
+                            </i>
+                            <i class="material-icons" data-ng-if="!page.status.processing">
+                                done
+                            </i>
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </form>
+
+    <form id="protocol-3-3"
+          data-ng-submit="page.saveInputs('floodplain_reconnection_3')"
+          data-ng-if="page.modelInputs.conditions.protocol3"
+          class="form"
+          role="form">
+
+        <article class="feature-detail">
+
+            <div class="feature-detail-content">
+
+                <div>
+
+                    <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
+                        <strong>
+                            3. Nutrient reduction credit
+                        </strong>
+                    </p>
+
+                    <p class="pad-0 pad-t-2 pad-b-2 margin-0">
+                        <strong>
+                            Specify wetland practice type(s).
+                        </strong>
+                    </p>
+
+                    <fieldset class="pad-0 margin-0" style="border: none;">
+
+                        <div class="triad">
 
                             <div class="flex flex-dir-col pad-r-1">
 
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="existing_treated_discharge">
-                                        <strong>Existing</strong>
+                                           for="wetland_restoration">
+                                        <strong>Wetland restoration (%)</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_treated_discharge"
-                                           id="existing_treated_discharge"
-                                           name="existing_treated_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection.wetland_restoration"
+                                           id="wetland_restoration"
+                                           name="wetland_restoration"
                                            placeholder=""/>
 
                                 </div>
 
                             </div>
 
-                            <div class="pad-l-1">
+                            <div class="flex flex-dir-col pad-l-1 pad-r-1">
 
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="proposed_treated_discharge">
-                                        <strong>Proposed</strong>
+                                           for="wetland_creation">
+                                        <strong>Wetland creation (%)</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_treated_discharge"
-                                           id="proposed_treated_discharge"
-                                           name="proposed_treated_discharge"
-                                           placeholder=""/>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="form-element">
-
-                        <p class="pad-0 pad-b-1 margin-0">
-                            <strong>Total discharge</strong>
-                        </p>
-
-                        <div class="dyad">
-
-                            <div class="flex flex-dir-col pad-r-1">
-
-                                <div class="form-element pad-0 margin-0">
-
-                                    <label class="meta-label"
-                                           for="existing_total_discharge">
-                                        <strong>Existing</strong>
-                                    </label>
-
-                                    <input type="number"
-                                           step="any"
-                                           class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.existing_total_discharge"
-                                           id="existing_total_discharge"
-                                           name="existing_total_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection.wetland_creation"
+                                           id="wetland_creation"
+                                           name="wetland_creation"
                                            placeholder=""/>
 
                                 </div>
@@ -1215,16 +1519,16 @@
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="proposed_total_discharge">
-                                        <strong>Proposed</strong>
+                                           for="wetland_rehab">
+                                        <strong>Wetland rehabilitation (%)</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           data-ng-model="page.modelInputs.floodplain_reconnection.proposed_total_discharge"
-                                           id="proposed_total_discharge"
-                                           name="proposed_total_discharge"
+                                           data-ng-model="page.modelInputs.floodplain_reconnection.wetland_rehab"
+                                           id="wetland_rehab"
+                                           name="wetland_rehab"
                                            placeholder=""/>
 
                                 </div>
@@ -1233,489 +1537,312 @@
 
                         </div>
 
+                        <p class="pad-0 margin-0 margin-t-1" style="font-size: .9rem;">
+                            A percent of area implemented must be entered for at least one of the wetland practices. Credit
+                            is based on the flow volume in the total Floodplain Trapping Zone (FTZ). Allowed values are 0 to
+                            100 and the sum of all values cannot exceed 100. Enter 0 for those wetland practices that do
+                            not apply.
+                        </p>
+
+                    </fieldset>
+
+                    <div class="save--action--wrapper save--action--bottom">
+                        <button type="submit" data-ng-disabled="page.status.processing">
+                            <i class="material-icons" data-ng-if="page.status.processing">
+                                more_horiz
+                            </i>
+                            <i class="material-icons" data-ng-if="!page.status.processing">
+                                done
+                            </i>
+                        </button>
                     </div>
 
-                </fieldset>
-
-                <div class="save--action--wrapper save--action--bottom">
-                    <button type="submit" data-ng-disabled="page.status.processing">
-                        <i class="material-icons" data-ng-if="page.status.processing">
-                            more_horiz
-                        </i>
-                        <i class="material-icons" data-ng-if="!page.status.processing">
-                            done
-                        </i>
-                    </button>
                 </div>
 
             </div>
 
+        </article>
+
+    </form>
+
+    <!-- PROTOCOL 5 -->
+
+    <h2>
+        Protocol 5: Outfall and gully stabilization
+    </h2>
+
+    <div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
+        <span class="grow">
+            <strong>
+                Qualifying conditions
+            </strong>
+        </span>
+        <div data-ng-click="page.displayConditions.protocol5 = !page.displayConditions.protocol5"
+             data-ng-if="!page.displayConditions.protocol5"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show more">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+                    </svg>
+                </span>
+            </div>
         </div>
+        <div data-ng-click="page.displayConditions.protocol5 = !page.displayConditions.protocol5"
+             data-ng-if="page.displayConditions.protocol5"
+             class="flex flex-dir-col flex-justify-center flex-align-center"
+             style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
+             title="Show less">
+            <div class="halo-btn">
+                <div class="halo"></div>
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                         viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
+                    </svg>
+                </span>
+            </div>
+        </div>
+    </div>
 
-    </article>
+    <div class="pad-1 margin-b-2"
+         style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
+         data-ng-if="page.displayConditions.protocol5">
 
-</form>
+        <p class="pad-0 margin-b-2">
+            The channel or gully slope below the source must exhibit predictive indicators for severe erosion or hill-slope
+            failure and must be observed to be actively enlarging or degrading.
+        </p>
 
-<form id="protocol-3-2"
-      data-ng-submit="page.saveInputs('floodplain_reconnection_2')"
-      data-ng-if="page.modelInputs.conditions.protocol3"
-      class="form"
-      role="form">
+        <p class="pad-0 margin-b-2">
+            The project should utilize a comprehensive approach to stream channel design, addressing longterm stability and
+            resiliency of the channel, banks, and floodplain.
+        </p>
 
-    <article class="feature-detail">
+        <p class="pad-0 margin-b-2">
+            Each project must comply with all state and federal permitting requirements, including 404 and 401 permits, which
+            usually contain conditions for pre-and post-project assessment and post construction monitoring.
+        </p>
 
-        <div class="feature-detail-content">
+        <p class="pad-0 margin-b-2">
+            Projects need to meet post-construction stability criteria and successfully establish needed vegetation. Projects
+            should maintain or improve existing native riparian vegetation in the headwater stream corridor to the extent
+            possible. Projects should follow regulatory agency guidance regarding compensation for any losses of forest,
+            wetlands and sensitive habitats within project work areas.
+        </p>
 
-            <div>
+        <p class="pad-0 margin-b-2">
+            Projects should avoid the use of pipe extensions or drop structures unless it can be demonstrated that they are
+            needed to sustain channel stability and they do not introduce new aquatic organism passage issues.
+        </p>
 
-                <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
-                    <strong>
-                        2. Loads
-                    </strong>
-                </p>
+        <p class="pad-0 margin-b-2">
+            The project should provide functional lift within the project reach, typically as indicated by improvements of
+            Levels 2 (Hydraulics) and when possible 3 (Geomorphology) of the stream functions pyramid (Harman et al , 2011).
+        </p>
 
-                <p class="pad-0 pad-t-2 pad-b-1 margin-0">
-                    <strong>
-                        Determine treatable loads for  TN, TP, and TSS.
-                    </strong>
-                </p>
+        <p class="pad-0 margin-b-2">
+            The project directly addresses a headcut, with severe vertical incision (progressive bedlowering).
+        </p>
 
-                <fieldset class="pad-0 margin-0" style="border: none;">
+        <p class="pad-0 margin-b-2">
+            The project MUST NOT introduce barriers or challenges to aquatic organism passage or degrade instream habitat.
+            Projects should always seek to improve passage of aquatic organisms and aquatic habitat where possible.
+        </p>
+
+        <p class="pad-0 margin-0">
+            Drop structures, extension of an existing storm drain pipes, stormwater collection features, and scour protection or
+            other hard armoring techniques used in OGSPs are not eligible for credit in perennial or intermittent channels.
+        </p>
+
+    </div>
+
+    <div class="pad-t-1 pad-b-1"
+         style="display: flex; flex-flow: row nowrap; align-items: center;"
+         data-ng-class="{'margin-b-4': !page.modelInputs.conditions.protocol5 && page.modelInputs.conditions.protocol1}">
+        <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
+                 width="24px" fill="#000000">
+                <rect fill="none" height="24" width="24"/>
+                <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
+            </svg>
+        </div>
+        <div class="pad-r-2">
+            This project meets all qualifying conditions for protocol 5.
+        </div>
+        <label data-ng-click="page.modelInputs.conditions.protocol5 = !page.modelInputs.conditions.protocol5"
+               for="protocol5-checkbox"
+               title="Accept/reject conditions">
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="page.modelInputs.conditions.protocol5">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </span>
+            </div>
+            <div class="flex flex-dir-col flex-align-center flex-justify-center"
+                 data-ng-if="!page.modelInputs.conditions.protocol5">
+                <span class="material-icons">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#2196F3">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                    </svg>
+                </span>
+            </div>
+            <input type="checkbox"
+                   style="position: fixed; right: 100%;"
+                   id="protocol5-checkbox"
+                   name="protocol5-checkbox"
+                   data-ng-model="page.modelInputs.conditions.protocol5">
+        </label>
+    </div>
+
+    <form id="protocol-5"
+          data-ng-submit="page.saveInputs('outfall_and_gully_stabilization')"
+          data-ng-if="page.modelInputs.conditions.protocol5 && !page.modelInputs.conditions.protocol1"
+          class="form"
+          style="margin: 1rem auto 4rem;"
+          role="form">
+
+        <article class="feature-detail">
+
+            <div class="feature-detail-content">
+
+                <div>
+
+                    <p class="pad-0 pad-y-2 margin-0">
+                        <strong>
+                            Calculate the existing and equilibrium channel conditions
+                        </strong>
+                    </p>
+
+                    <p>
+                        Calculate the total prevented sediment by inputting the following information into a 3-D surface
+                        modeling program such as InRoads or Geopak.
+                    </p>
+
+                    <ul class="pad-0 pad-l-2 margin-0 margin-t-1 margin-b-1"
+                        style="list-style: disc;">
+
+                        <li>
+                            - Length of proposed project reach (ft)
+                        </li>
+
+                        <li>
+                            - Channel slope (ft/ft)
+                        </li>
+
+                        <li>
+                            - Bank height (ft)
+                        </li>
+
+                        <li>
+                            - Bottom width (ft)
+                        </li>
+
+                        <li>
+                            - Top width (ft)
+                        </li>
+
+                        <li>
+                            - Bulk density (lbs/ft<sup>3</sup>)
+                        </li>
+
+                        <li>
+                            - Base level control
+                        </li>
+
+                        <li>
+                            - Equilibrium bed slope (ft/ft)
+                        </li>
+
+                        <li>
+                            - Equilibrium bank slope (ft/ft)
+                        </li>
+
+                        <li>
+                            - Future channel width (ft)
+                        </li>
+
+                    </ul>
 
                     <div class="form-element">
 
-                        <label for="upstream_miles" class="meta-label">
-                            <strong>Stream length upstream of project (miles)</strong>
+                        <label for="tss_lbs_reduced-5" class="meta-label">
+                            <strong>Total prevented sediment</strong>
                         </label>
 
                         <input type="number"
                                step="any"
                                class="form-control"
-                               data-ng-model="page.modelInputs.floodplain_reconnection.upstream_miles"
-                               id="upstream_miles"
-                               name="upstream_miles"
+                               data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tss_lbs_reduced"
+                               id="tss_lbs_reduced-5"
+                               name="tss_lbs_reduced-5"
                                placeholder=""/>
 
                     </div>
 
-                </fieldset>
+                    <div class="form-element">
 
-                <div class="save--action--wrapper save--action--bottom">
-                    <button type="submit" data-ng-disabled="page.status.processing">
-                        <i class="material-icons" data-ng-if="page.status.processing">
-                            more_horiz
-                        </i>
-                        <i class="material-icons" data-ng-if="!page.status.processing">
-                            done
-                        </i>
-                    </button>
-                </div>
+                        <label for="tn_lbs_reduced-5" class="meta-label">
+                            <strong>Total prevented nitrogen</strong>
+                        </label>
 
-            </div>
-
-        </div>
-
-    </article>
-
-</form>
-
-<form id="protocol-3-3"
-      data-ng-submit="page.saveInputs('floodplain_reconnection_3')"
-      data-ng-if="page.modelInputs.conditions.protocol3"
-      class="form"
-      role="form">
-
-    <article class="feature-detail">
-
-        <div class="feature-detail-content">
-
-            <div>
-
-                <p class="pad-0 pad-t-2 margin-0" style="font-size: 1.125rem;">
-                    <strong>
-                        3. Nutrient reduction credit
-                    </strong>
-                </p>
-
-                <p class="pad-0 pad-t-2 pad-b-2 margin-0">
-                    <strong>
-                        Specify wetland practice type(s).
-                    </strong>
-                </p>
-
-                <fieldset class="pad-0 margin-0" style="border: none;">
-
-                    <div class="triad">
-
-                        <div class="flex flex-dir-col pad-r-1">
-
-                            <div class="form-element pad-0 margin-0">
-
-                                <label class="meta-label"
-                                       for="wetland_restoration">
-                                    <strong>Wetland restoration (%)</strong>
-                                </label>
-
-                                <input type="number"
-                                       step="any"
-                                       class="form-control"
-                                       data-ng-model="page.modelInputs.floodplain_reconnection.wetland_restoration"
-                                       id="wetland_restoration"
-                                       name="wetland_restoration"
-                                       placeholder=""/>
-
-                            </div>
-
-                        </div>
-
-                        <div class="flex flex-dir-col pad-l-1 pad-r-1">
-
-                            <div class="form-element pad-0 margin-0">
-
-                                <label class="meta-label"
-                                       for="wetland_creation">
-                                    <strong>Wetland creation (%)</strong>
-                                </label>
-
-                                <input type="number"
-                                       step="any"
-                                       class="form-control"
-                                       data-ng-model="page.modelInputs.floodplain_reconnection.wetland_creation"
-                                       id="wetland_creation"
-                                       name="wetland_creation"
-                                       placeholder=""/>
-
-                            </div>
-
-                        </div>
-
-                        <div class="flex flex-dir-col pad-l-1">
-
-                            <div class="form-element pad-0 margin-0">
-
-                                <label class="meta-label"
-                                       for="wetland_rehab">
-                                    <strong>Wetland rehabilitation (%)</strong>
-                                </label>
-
-                                <input type="number"
-                                       step="any"
-                                       class="form-control"
-                                       data-ng-model="page.modelInputs.floodplain_reconnection.wetland_rehab"
-                                       id="wetland_rehab"
-                                       name="wetland_rehab"
-                                       placeholder=""/>
-
-                            </div>
-
-                        </div>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tn_lbs_reduced"
+                               id="tn_lbs_reduced-5"
+                               name="tn_lbs_reduced-5"
+                               placeholder=""/>
 
                     </div>
 
-                    <p class="pad-0 margin-0 margin-t-1" style="font-size: .9rem;">
-                        A percent of area implemented must be entered for at least one of the wetland practices. Credit
-                        is based on the flow volume in the total Floodplain Trapping Zone (FTZ). Allowed values are 0 to
-                        100 and the sum of all values cannot exceed 100. Enter 0 for those wetland practices that do
-                        not apply.
-                    </p>
+                    <div class="form-element">
 
-                </fieldset>
+                        <label for="tp_lbs_reduced-5" class="meta-label">
+                            <strong>Total prevented phosphorus (lbs)</strong>
+                        </label>
 
-                <div class="save--action--wrapper save--action--bottom">
-                    <button type="submit" data-ng-disabled="page.status.processing">
-                        <i class="material-icons" data-ng-if="page.status.processing">
-                            more_horiz
-                        </i>
-                        <i class="material-icons" data-ng-if="!page.status.processing">
-                            done
-                        </i>
-                    </button>
+                        <input type="number"
+                               step="any"
+                               class="form-control"
+                               data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tp_lbs_reduced"
+                               id="tp_lbs_reduced-5"
+                               name="tp_lbs_reduced-5"
+                               placeholder=""/>
+
+                    </div>
+
+                    <div class="save--action--wrapper save--action--bottom">
+                        <button type="submit" data-ng-disabled="page.status.processing">
+                            <i class="material-icons" data-ng-if="page.status.processing">
+                                more_horiz
+                            </i>
+                            <i class="material-icons" data-ng-if="!page.status.processing">
+                                done
+                            </i>
+                        </button>
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
+        </article>
 
-    </article>
-
-</form>
-
-<!-- PROTOCOL 5 -->
-
-<h2>
-    Protocol 5: Outfall and gully stabilization
-</h2>
-
-<div class="flex flex-dir-row flex-align-center margin-0 margin-b-1">
-    <span class="grow">
-        <strong>
-            Qualifying conditions
-        </strong>
-    </span>
-    <div data-ng-click="page.displayConditions.protocol5 = !page.displayConditions.protocol5"
-         data-ng-if="!page.displayConditions.protocol5"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show more">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-                </svg>
-            </span>
-        </div>
-    </div>
-    <div data-ng-click="page.displayConditions.protocol5 = !page.displayConditions.protocol5"
-         data-ng-if="page.displayConditions.protocol5"
-         class="flex flex-dir-col flex-justify-center flex-align-center"
-         style="flex-grow: 0; flex-shrink: 0; margin-right: -1rem;"
-         title="Show less">
-        <div class="halo-btn">
-            <div class="halo"></div>
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-                     viewBox="0 0 24 24" width="24px" fill="#000000">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"/>
-                </svg>
-            </span>
-        </div>
-    </div>
-</div>
-
-<div class="pad-1 margin-b-2"
-     style="background: #edf7fe; border-radius: .5rem; font-size: .9rem;"
-     data-ng-if="page.displayConditions.protocol5">
-
-    <p class="pad-0 margin-b-2">
-        The channel or gully slope below the source must exhibit predictive indicators for severe erosion or hill-slope
-        failure and must be observed to be actively enlarging or degrading.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        The project should utilize a comprehensive approach to stream channel design, addressing longterm stability and
-        resiliency of the channel, banks, and floodplain.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Each project must comply with all state and federal permitting requirements, including 404 and 401 permits, which
-        usually contain conditions for pre-and post-project assessment and post construction monitoring.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Projects need to meet post-construction stability criteria and successfully establish needed vegetation. Projects
-        should maintain or improve existing native riparian vegetation in the headwater stream corridor to the extent
-        possible. Projects should follow regulatory agency guidance regarding compensation for any losses of forest,
-        wetlands and sensitive habitats within project work areas.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        Projects should avoid the use of pipe extensions or drop structures unless it can be demonstrated that they are
-        needed to sustain channel stability and they do not introduce new aquatic organism passage issues.
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        The project should provide functional lift within the project reach, typically as indicated by improvements of
-        Levels 2 (Hydraulics) and when possible 3 (Geomorphology) of the stream functions pyramid (Harman et al , 2011).
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        The project directly addresses a headcut, with severe vertical incision (progressive bedlowering).
-    </p>
-
-    <p class="pad-0 margin-b-2">
-        The project MUST NOT introduce barriers or challenges to aquatic organism passage or degrade instream habitat.
-        Projects should always seek to improve passage of aquatic organisms and aquatic habitat where possible.
-    </p>
-
-    <p class="pad-0 margin-0">
-        Drop structures, extension of an existing storm drain pipes, stormwater collection features, and scour protection or
-        other hard armoring techniques used in OGSPs are not eligible for credit in perennial or intermittent channels.
-    </p>
+    </form>
 
 </div>
-
-<div class="pad-t-1 pad-b-1"
-     style="display: flex; flex-flow: row nowrap; align-items: center;"
-     data-ng-class="{'margin-b-4': !page.modelInputs.conditions.protocol5 && page.modelInputs.conditions.protocol1}">
-    <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
-        <svg xmlns="http://www.w3.org/2000/svg"
-             enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24"
-             width="24px" fill="#000000">
-            <rect fill="none" height="24" width="24"/>
-            <path d="M22,7h-9v2h9V7z M22,15h-9v2h9V15z M5.54,11L2,7.46l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,11z M5.54,19L2,15.46 l1.41-1.41l2.12,2.12l4.24-4.24l1.41,1.41L5.54,19z"/>
-        </svg>
-    </div>
-    <div class="pad-r-2">
-        This project meets all qualifying conditions for protocol 5.
-    </div>
-    <label data-ng-click="page.modelInputs.conditions.protocol5 = !page.modelInputs.conditions.protocol5"
-           for="protocol5-checkbox"
-           title="Accept/reject conditions">
-        <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="page.modelInputs.conditions.protocol5">
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                     width="24px" fill="#2196F3">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-            </span>
-        </div>
-        <div class="flex flex-dir-col flex-align-center flex-justify-center"
-             data-ng-if="!page.modelInputs.conditions.protocol5">
-            <span class="material-icons">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                     width="24px" fill="#2196F3">
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                    <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
-                </svg>
-            </span>
-        </div>
-        <input type="checkbox"
-               style="position: fixed; right: 100%;"
-               id="protocol5-checkbox"
-               name="protocol5-checkbox"
-               data-ng-model="page.modelInputs.conditions.protocol5">
-    </label>
-</div>
-
-<form id="protocol-5"
-      data-ng-submit="page.saveInputs('outfall_and_gully_stabilization')"
-      data-ng-if="page.modelInputs.conditions.protocol5 && !page.modelInputs.conditions.protocol1"
-      class="form"
-      style="margin: 1rem auto 4rem;"
-      role="form">
-
-    <article class="feature-detail">
-
-        <div class="feature-detail-content">
-
-            <div>
-
-                <p class="pad-0 pad-y-2 margin-0">
-                    <strong>
-                        Calculate the existing and equilibrium channel conditions
-                    </strong>
-                </p>
-
-                <p>
-                    Calculate the total prevented sediment by inputting the following information into a 3-D surface
-                    modeling program such as InRoads or Geopak.
-                </p>
-
-                <ul class="pad-0 pad-l-2 margin-0 margin-t-1 margin-b-1"
-                    style="list-style: disc;">
-
-                    <li>
-                        - Length of proposed project reach (ft)
-                    </li>
-
-                    <li>
-                        - Channel slope (ft/ft)
-                    </li>
-
-                    <li>
-                        - Bank height (ft)
-                    </li>
-
-                    <li>
-                        - Bottom width (ft)
-                    </li>
-
-                    <li>
-                        - Top width (ft)
-                    </li>
-
-                    <li>
-                        - Bulk density (lbs/ft<sup>3</sup>)
-                    </li>
-
-                    <li>
-                        - Base level control
-                    </li>
-
-                    <li>
-                        - Equilibrium bed slope (ft/ft)
-                    </li>
-
-                    <li>
-                        - Equilibrium bank slope (ft/ft)
-                    </li>
-
-                    <li>
-                        - Future channel width (ft)
-                    </li>
-
-                </ul>
-
-                <div class="form-element">
-
-                    <label for="tss_lbs_reduced-5" class="meta-label">
-                        <strong>Total prevented sediment</strong>
-                    </label>
-
-                    <input type="number"
-                           step="any"
-                           class="form-control"
-                           data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tss_lbs_reduced"
-                           id="tss_lbs_reduced-5"
-                           name="tss_lbs_reduced-5"
-                           placeholder=""/>
-
-                </div>
-
-                <div class="form-element">
-
-                    <label for="tn_lbs_reduced-5" class="meta-label">
-                        <strong>Total prevented nitrogen</strong>
-                    </label>
-
-                    <input type="number"
-                           step="any"
-                           class="form-control"
-                           data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tn_lbs_reduced"
-                           id="tn_lbs_reduced-5"
-                           name="tn_lbs_reduced-5"
-                           placeholder=""/>
-
-                </div>
-
-                <div class="form-element">
-
-                    <label for="tp_lbs_reduced-5" class="meta-label">
-                        <strong>Total prevented phosphorus (lbs)</strong>
-                    </label>
-
-                    <input type="number"
-                           step="any"
-                           class="form-control"
-                           data-ng-model="page.modelInputs.outfall_and_gully_stabilization.tp_lbs_reduced"
-                           id="tp_lbs_reduced-5"
-                           name="tp_lbs_reduced-5"
-                           placeholder=""/>
-
-                </div>
-
-                <div class="save--action--wrapper save--action--bottom">
-                    <button type="submit" data-ng-disabled="page.status.processing">
-                        <i class="material-icons" data-ng-if="page.status.processing">
-                            more_horiz
-                        </i>
-                        <i class="material-icons" data-ng-if="!page.status.processing">
-                            done
-                        </i>
-                    </button>
-                </div>
-
-            </div>
-
-        </div>
-
-    </article>
-
-</form>
 
