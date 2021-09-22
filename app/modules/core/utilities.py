@@ -33,6 +33,7 @@ from app import logger
 from app import serializer
 
 from app.modules import bank_stabilization
+from app.modules import default
 from app.modules import denitrification
 from app.modules import floodplain_reconnection_1
 from app.modules import floodplain_reconnection_2
@@ -96,6 +97,7 @@ def handle_request(data):
         get_mod_name(module.__name__): rgetattr(module, 'utilities')
         for module in [
             bank_stabilization,
+            default,
             denitrification,
             floodplain_reconnection_1,
             floodplain_reconnection_2,
