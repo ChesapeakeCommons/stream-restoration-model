@@ -38,4 +38,8 @@ def reduction(data):
             'tss_lbs_reduced': length_of_streambank * 248.0
         }
 
-    return {}
+    return {
+        'tn_lbs_reduced': 0,
+        'tp_lbs_reduced': 0,
+        'tss_lbs_reduced': 0
+    }

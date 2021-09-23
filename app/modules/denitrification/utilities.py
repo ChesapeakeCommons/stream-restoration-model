@@ -67,9 +67,13 @@ def reduction(data):
         acrf
     ]
 
+    res = {
+        'tn_lbs_reduced': 0
+    }
+
     if not all(isinstance(x, (float, int)) for x in values):
 
-        return {}
+        return res
 
     floodplain_tn = base_tn(floodplain_sq_ft)
 
@@ -89,4 +93,4 @@ def reduction(data):
 
     except (ValueError, ZeroDivisionError):
 
-        return {}
+        return res
