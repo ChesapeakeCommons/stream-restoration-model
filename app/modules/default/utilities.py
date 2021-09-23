@@ -35,7 +35,7 @@ def reduction(data):
         return {
             'tn_lbs_reduced': length_of_streambank * 0.075,
             'tp_lbs_reduced': length_of_streambank * 0.068,
-            'tss_tons_reduced': (length_of_streambank * 248.0) / 2000.0
+            'tss_lbs_reduced': length_of_streambank * 248.0
         }
 
     return {}
