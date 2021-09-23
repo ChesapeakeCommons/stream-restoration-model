@@ -114,7 +114,7 @@
                 data-ng-click="page.resetInputs('default')"
                 class="pad-t-50p pad-b-50p pad-l-1 pad-r-1 margin-r-2 rad-25"
                 style="color: #FFFFFF; font-size: 1rem; background: #212121; border: 0 none;">
-            Reset protocol
+            Reset
         </button>
         <button type="submit"
                 data-ng-disabled="page.status.processing"
@@ -430,6 +430,20 @@
 
             </div>
 
+            <div data-ng-click="page.modelInputs.prevented_sediment.banks.splice(idx, 1); page.resetInputs('prevented_sediment')"
+                 class="pad-b-1 flex flex-dir-row flex-align-center flex-justify-end flex-nwrap">
+                <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#0366d6">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"/>
+                    </svg>
+                </div>
+                <a class="pad-r-2" href="#">
+                    Remove this set of bank measurements.
+                </a>
+            </div>
+
         </article>
 
         <div class="pad-y-2 flex flex-dir-row flex-nwrap flex-align-center flex-justify-end">
@@ -464,7 +478,7 @@
     <div data-ng-click="page.modelInputs.prevented_sediment.banks.push({id:null,bulk_density_of_soil:null,
             bank_erosion_rate:null,eroding_bank_height:null,eroding_bank_length:null})"
          data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
-         class="pad-t-1 pad-b-1"
+         class="pad-b-1"
          style="display: flex; flex-flow: row nowrap; align-items: center;">
         <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
