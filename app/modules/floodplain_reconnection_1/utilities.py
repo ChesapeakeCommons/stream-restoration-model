@@ -52,13 +52,13 @@ def reduction(data):
         return {}
 
     existing_percent_flow_treated = (
-        existing_treated_discharge /
-        existing_total_discharge
+        float(existing_treated_discharge) /
+        float(existing_total_discharge)
     )
 
     proposed_percent_flow_treated = (
-        proposed_treated_discharge /
-        proposed_total_discharge
+        float(proposed_treated_discharge) /
+        float(proposed_total_discharge)
     )
 
     treatable_flow_credit = (
