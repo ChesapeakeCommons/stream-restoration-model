@@ -29,6 +29,7 @@ from flask.ext.security.signals import user_registered
 
 # Import package dependencies
 
+from . import db
 from . import celery
 from . import flask
 from . import imp
@@ -83,6 +84,10 @@ class Application(object):
         """Load system modules
         """
         self.load_modules()
+
+        """Setup the Database
+                """
+        self.setup_database()
 
         self.init_celery()
 
@@ -144,6 +149,21 @@ class Application(object):
             the current class (i.e., Application)
         """
         logger.info('Application is setting up database')
+
+    def setup_database(self):
+        """Setup all database schemas."""
+        logger.info('Application is setting up database')
+
+        """Setup the database and associate it with the application
+        """
+        db.init_app(self.app)
+        db.app = self.app
+
+        """Create all database tables
+
+        Create all of the database tables defined with the modules
+        """
+        db.create_all()
 
 
     def init_celery(self):

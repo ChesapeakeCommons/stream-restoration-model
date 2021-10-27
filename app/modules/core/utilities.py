@@ -43,7 +43,9 @@ from app.modules import instream_processing
 from app.modules import outfall_stabilization
 from app.modules import outfall_and_gully_stabilization
 from app.modules import prevented_sediment
+from app.modules import swp
 from app.modules import shoreline_management
+from app.modules import st
 from app.modules import stormwater
 
 from app.utilities import extract_json_properties
@@ -107,7 +109,9 @@ def handle_request(data):
             outfall_stabilization,
             outfall_and_gully_stabilization,
             prevented_sediment,
+            swp,
             shoreline_management,
+            st,
             stormwater
         ]
     }
