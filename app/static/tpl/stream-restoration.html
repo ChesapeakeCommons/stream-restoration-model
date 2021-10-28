@@ -1150,12 +1150,6 @@
 
                     </fieldset>
 
-                    <p class="pad-0 pad-t-2 margin-0">
-                        <strong>
-                            Enter data calculated from the flow duration curve.
-                        </strong>
-                    </p>
-
                     <fieldset class="pad-0 margin-0 margin-t-1"
                               style="border: none;">
 
@@ -1281,10 +1275,16 @@
 
                         </div>
 
+                        <p class="pad-0 pad-t-2 margin-0">
+                            <strong>
+                                Enter data calculated from the flow duration curve.
+                            </strong>
+                        </p>
+
                         <div class="form-element">
 
                             <p class="pad-0 pad-b-1 margin-0">
-                                <strong>Treated discharge (cfs)</strong>
+                                <strong>Treated discharge<sup>*</sup></strong>
                             </p>
 
                             <div class="dyad">
@@ -1333,12 +1333,18 @@
 
                             </div>
 
+                            <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
+                                <sup>*</sup>Area under curve between Q(1-ft depth) and Q(channel). For details on
+                                calculating this value see page 34 of “Consensus Recommendations to Improve Protocols 2
+                                and 3 for Defining Stream Restoration Pollutant Removal Credits”.
+                            </p>
+
                         </div>
 
                         <div class="form-element">
 
                             <p class="pad-0 pad-b-1 margin-0">
-                                <strong>Total discharge (cfs)</strong>
+                                <strong>Total discharge<sup>*</sup></strong>
                             </p>
 
                             <div class="dyad">
@@ -1387,6 +1393,12 @@
 
                             </div>
 
+                            <p class="pad-0 margin-0 margin-t-1" style=font-size:.9rem;">
+                                <sup>*</sup>Total area under under curve above baseflow. For details on calculating this
+                                value see page 34 of “Consensus Recommendations to Improve Protocols 2 and 3 for
+                                Defining Stream Restoration Pollutant Removal Credits”.
+                            </p>
+
                         </div>
 
                     </fieldset>
@@ -1398,13 +1410,6 @@
         </article>
 
         <div class="pad-y-2 flex flex-dir-row flex-nwrap flex-align-center flex-justify-end">
-<!--            <button type="button"-->
-<!--                    data-ng-disabled="page.status.processing"-->
-<!--                    data-ng-click="page.resetInputs('floodplain_reconnection_1')"-->
-<!--                    class="pad-t-50p pad-b-50p pad-l-1 pad-r-1 margin-r-2 rad-25"-->
-<!--                    style="color: #FFFFFF; font-size: 1rem; background: #212121; border: 0 none;">-->
-<!--                Reset protocol-->
-<!--            </button>-->
             <button type="submit"
                     data-ng-disabled="page.status.processing"
                     class="pad-t-50p pad-b-50p pad-l-1 pad-r-1 rad-25"
