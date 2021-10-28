@@ -109,10 +109,9 @@ def handle_request(data):
             outfall_stabilization,
             outfall_and_gully_stabilization,
             prevented_sediment,
-            swp,
             shoreline_management,
-            st,
-            stormwater
+            stormwater,
+            swp,
         ]
     }
 

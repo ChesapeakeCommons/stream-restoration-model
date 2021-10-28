@@ -18,7 +18,7 @@ limitations under the License.
 
 # Import standard dependencies
 
-from decimal import Decimal
+from decimal import Decimal, InvalidOperation
 
 # Import package dependencies
 
@@ -217,4 +217,13 @@ def reduced_loads(segments, source_key, reductions):
 
 def calc_load_reduction(loads, key, reductions):
 
-    return (sum(loads) / Decimal(len(loads))) * Decimal(reductions.get(key))
+    try:
+
+        return (
+            (sum(loads) / Decimal(len(loads))) *
+            Decimal(reductions.get(key))
+        )
+
+    except InvalidOperation:
+
+        return 0
