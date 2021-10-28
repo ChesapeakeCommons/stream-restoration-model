@@ -1685,7 +1685,7 @@
         <div class="pad-r-2">
             This project meets all qualifying conditions for protocol 4.
         </div>
-        <label data-ng-click="page.modelInputs.conditions.protocol4 = !page.modelInputs.conditions.protocol4"
+        <label data-ng-click="page.modelInputs.conditions.protocol4 = !page.modelInputs.conditions.protocol4; page.saveInputs('swp')"
                for="protocol1-checkbox"
                title="Accept/reject conditions">
             <div class="flex flex-dir-col flex-align-center flex-justify-center"
@@ -1712,7 +1712,6 @@
                    style="position: fixed; right: 100%;"
                    id="protocol4-checkbox"
                    name="protocol4-checkbox"
-                   data-ng-change="page.saveInputs('swp')"
                    data-ng-model="page.modelInputs.conditions.protocol4">
         </label>
     </div>
