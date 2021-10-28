@@ -8,7 +8,7 @@
     How far along are you with your stream restoration design at the time of entering values into FieldDoc? Do not
     select the percentage of design completion you anticipate at project start time. Per the expert panel report, as the
     inputs for enhanced stream restoration require engineered specifications, only those proposals that are at least 90%
-    designed can use Protocols 1, 2, 3, or 5.
+    designed can use Protocols 1, 2, 3, 4, or 5.
 </p>
 
 <div class="pad-t-1 pad-b-1"
@@ -1741,8 +1741,17 @@
 
                                 <select id="swp_modes"
                                         name="swp_modes"
-                                        data-ng-model="page.modelInputs.swp.mode"
-                                        data-ng-options="mode as mode.name for mode in page.modelInputs.swp_modes"></select>
+                                        data-ng-model="page.modelInputs.swp.mode">
+                                    <option value=""
+                                            data-ng-if="!page.modelInputs.swp.mode">
+                                        Select mode
+                                    </option>
+                                    <option data-ng-repeat="mode in page.modelInputs.swp_modes track by mode.key"
+                                            value="{{ mode.key }}"
+                                            title="{{ mode.name }}">
+                                        {{ mode.name }}
+                                    </option>
+                                </select>
 
                             </div>
 
@@ -1759,8 +1768,17 @@
 
                                 <select id="swp_load_sources"
                                         name="swp_load_sources"
-                                        data-ng-model="page.modelInputs.swp.load_source"
-                                        data-ng-options="src as src.name for src in page.modelInputs.swp_load_sources"></select>
+                                        data-ng-model="page.modelInputs.swp.load_source">
+                                    <option value=""
+                                            data-ng-if="!page.modelInputs.swp.load_source">
+                                        Select load source
+                                    </option>
+                                    <option data-ng-repeat="src in page.modelInputs.swp_load_sources track by src.key"
+                                            value="{{ src.key }}"
+                                            title="{{ src.name }}">
+                                        {{ src.name }}
+                                    </option>
+                                </select>
 
                             </div>
 
