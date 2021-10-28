@@ -1756,6 +1756,7 @@
                                         Select mode&hellip;
                                     </option>
                                     <option data-ng-repeat="mode in page.modelInputs.swp_modes track by mode.key"
+                                            data-ng-selected="mode.key === page.modelInputs.swp.mode"
                                             value="{{ mode.key }}"
                                             title="{{ mode.name }}">
                                         {{ mode.name }}
@@ -1785,6 +1786,7 @@
                                         Select load source&hellip;
                                     </option>
                                     <option data-ng-repeat="src in page.modelInputs.swp_load_sources track by src.key"
+                                            data-ng-selected="src.key === page.modelInputs.swp.source_key"
                                             value="{{ src.key }}"
                                             title="{{ src.name }}">
                                         {{ src.name }}
