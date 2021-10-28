@@ -1743,8 +1743,10 @@
                                         name="swp_modes"
                                         data-ng-model="page.modelInputs.swp.mode">
                                     <option value=""
-                                            data-ng-if="!page.modelInputs.swp.mode">
-                                        Select mode
+                                            data-ng-if="!page.modelInputs.swp.mode"
+                                            disabled
+                                            selected>
+                                        Select mode&hellip;
                                     </option>
                                     <option data-ng-repeat="mode in page.modelInputs.swp_modes track by mode.key"
                                             value="{{ mode.key }}"
@@ -1770,8 +1772,10 @@
                                         name="swp_load_sources"
                                         data-ng-model="page.modelInputs.swp.load_source">
                                     <option value=""
-                                            data-ng-if="!page.modelInputs.swp.load_source">
-                                        Select load source
+                                            data-ng-if="!page.modelInputs.swp.load_source"
+                                            disabled
+                                            selected>
+                                        Select load source&hellip;
                                     </option>
                                     <option data-ng-repeat="src in page.modelInputs.swp_load_sources track by src.key"
                                             value="{{ src.key }}"
