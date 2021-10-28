@@ -1665,7 +1665,7 @@
             green roof; green streets; infiltration; rainwater harvesting; landscape restoration/reforestation.
         </p>
 
-        <p class="pad-0 margin-b-2">
+        <p class="pad-0">
             Eligible stormwater treatment practices are: constructed wetlands; filtering practices; proprietary
             practices; wet ponds and wet swales.
         </p>
@@ -1738,19 +1738,13 @@
                                 <strong>Calculation mode</strong>
                             </label>
 
-                            <div class="classification--search" style="position: relative;">
+                            <div class="classification--search margin-t-1"
+                                 style="position: relative;">
 
-                                <input type="search"
-                                       id="swp_modes"
-                                       name="swp_modes"
-                                       style="padding: 1rem; font-size: 1rem;"
-                                       class="search"
-                                       value=""
-                                       placeholder="Select mode"
-                                       data-ng-model="page.modelInputs.swp.mode"
-                                       uib-typeahead="mode as mode.name for mode in page.modelInputs.swp_modes"
-                                       typeahead-min-length="0"
-                                       typeahead-template-url="templates/search--tpl.html">
+                                <select id="swp_modes"
+                                        name="swp_modes"
+                                        data-ng-model="page.modelInputs.swp.mode"
+                                        data-ng-options="mode as mode.name for mode in page.modelInputs.swp_modes"></select>
 
                             </div>
 
@@ -1762,20 +1756,13 @@
                                 <strong>Load source</strong>
                             </label>
 
-                            <div class="classification--search"
+                            <div class="classification--search margin-t-1"
                                  style="position: relative;">
 
-                                <input type="search"
-                                       id="swp_load_sources"
-                                       name="swp_load_sources"
-                                       style="padding: 1rem; font-size: 1rem;"
-                                       class="search"
-                                       value=""
-                                       placeholder="Select load source"
-                                       data-ng-model="page.modelInputs.swp.load_source"
-                                       uib-typeahead="src as src.name for src in page.modelInputs.swp_load_sources"
-                                       typeahead-min-length="0"
-                                       typeahead-template-url="templates/search--tpl.html">
+                                <select id="swp_load_sources"
+                                        name="swp_load_sources"
+                                        data-ng-model="page.modelInputs.swp.load_source"
+                                        data-ng-options="src as src.name for src in page.modelInputs.swp_load_sources"></select>
 
                             </div>
 
