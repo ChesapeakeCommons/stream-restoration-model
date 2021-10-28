@@ -1722,14 +1722,7 @@
           class="form"
           role="form">
 
-        <p class="pad-0 pad-y-2 margin-0">
-            <strong>
-                Ponding depth (feet)
-            </strong>
-        </p>
-
-        <article class="feature-detail"
-                 data-ng-repeat="(idx, bank) in page.modelInputs.prevented_sediment.banks">
+        <article class="feature-detail">
 
             <div class="feature-detail-content">
 
@@ -1739,111 +1732,93 @@
 
                         <div class="form-element">
 
-                            <label for="bank_id-{{ idx }}" class="meta-label">
-                                <strong>Bank ID</strong>
+                            <label for="footprint_area" class="meta-label">
+                                <strong>Calculation mode</strong>
                             </label>
 
-                            <input type="text"
+                            <div class="classification--search" style="position: relative;">
+
+                                <input type="search"
+                                       style="padding: 1rem; font-size: 1rem;"
+                                       class="search"
+                                       value=""
+                                       placeholder="Select mode"
+                                       data-ng-model="page.modelInputs.swp.mode"
+                                       uib-typeahead="mode as mode.name for mode in page.modelInputs.swp_modes"
+                                       typeahead-min-length="0"
+                                       typeahead-template-url="templates/search--tpl.html">
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="footprint_area" class="meta-label">
+                                <strong>Load source</strong>
+                            </label>
+
+                            <div class="classification--search"
+                                 style="position: relative;">
+
+                                <input type="search"
+                                       style="padding: 1rem; font-size: 1rem;"
+                                       class="search"
+                                       value=""
+                                       placeholder="Select load source"
+                                       data-ng-model="page.modelInputs.swp.load_source"
+                                       uib-typeahead="src as src.name for src in page.modelInputs.swp_load_sources"
+                                       typeahead-min-length="0"
+                                       typeahead-template-url="templates/search--tpl.html">
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="footprint_area" class="meta-label">
+                                <strong>BMP footprint area (acres)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
                                    class="form-control"
-                                   data-ng-model="bank.id"
-                                   id="bank_id-{{ idx }}"
-                                   name="bank_id-{{ idx }}"
+                                   data-ng-model="page.modelInputs.swp.footprint_area"
+                                   id="footprint_area"
+                                   name="footprint_area"
                                    placeholder="&hellip;"/>
 
                         </div>
 
                         <div class="form-element">
 
-                            <label for="bulk_density_of_soil-{{ idx }}" class="meta-label">
-                                <strong>Bulk density of soil (lbs/ft<sup>3</sup>)</strong>
+                            <label for="impervious_acres" class="meta-label">
+                                <strong>Impervious acres in drainage area</strong>
                             </label>
 
                             <input type="number"
                                    step="any"
                                    class="form-control"
-                                   data-ng-model="bank.bulk_density_of_soil"
-                                   id="bulk_density_of_soil-{{ idx }}"
-                                   name="bulk_density_of_soil-{{ idx }}"
-                                   placeholder=""/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="bank_erosion_rate-{{ idx }}" class="meta-label">
-                                <strong>Bank erosion rate (ft/year)</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="bank.bank_erosion_rate"
-                                   id="bank_erosion_rate-{{ idx }}"
-                                   name="bank_erosion_rate-{{ idx }}"
-                                   placeholder=""/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="eroding_bank_length-{{ idx }}" class="meta-label">
-                                <strong>Eroding bank length (ft)</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="bank.eroding_bank_length"
-                                   id="eroding_bank_length-{{ idx }}"
-                                   name="eroding_bank_length-{{ idx }}"
+                                   data-ng-model="page.modelInputs.swp.impervious_acres"
+                                   id="impervious_acres"
+                                   name="impervious_acres"
                                    placeholder="&hellip;"/>
 
                         </div>
 
                         <div class="form-element">
 
-                            <label for="eroding_bank_height-{{ idx }}" class="meta-label">
-                                <strong>Eroding bank height (ft)</strong>
+                            <label for="ponding_depth" class="meta-label">
+                                <strong>Ponding depth (feet)</strong>
                             </label>
 
                             <input type="number"
                                    step="any"
                                    class="form-control"
-                                   data-ng-model="bank.eroding_bank_height"
-                                   id="eroding_bank_height-{{ idx }}"
-                                   name="eroding_bank_height-{{ idx }}"
-                                   placeholder="&hellip;"/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="nitrogen_concentration-{{ idx }}" class="meta-label">
-                                <strong>Nitrogen concentration (lbs/ton)</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="bank.nitrogen_concentration"
-                                   id="nitrogen_concentration-{{ idx }}"
-                                   name="nitrogen_concentration-{{ idx }}"
-                                   placeholder="&hellip;"/>
-
-                        </div>
-
-                        <div class="form-element pad-0">
-
-                            <label for="phosphorus_concentration-{{ idx }}" class="meta-label">
-                                <strong>Phosphorus concentration (lbs/ton)</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="bank.phosphorus_concentration"
-                                   id="phosphorus_concentration-{{ idx }}"
-                                   name="phosphorus_concentration-{{ idx }}"
+                                   data-ng-model="page.modelInputs.swp.ponding_depth"
+                                   id="ponding_depth"
+                                   name="ponding_depth"
                                    placeholder="&hellip;"/>
 
                         </div>
