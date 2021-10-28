@@ -246,7 +246,8 @@ def get_load_sources(segments, data):
         return data
 
     rate_q = db.session.query(
-        LoadRates.source.label('name')
+        LoadRates.source.label('name'),
+        LoadRates.normalized_source.label('key')
     ).filter(
         LoadRates.key.in_(segments)
     ).order_by(
