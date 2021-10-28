@@ -1712,6 +1712,7 @@
                    style="position: fixed; right: 100%;"
                    id="protocol4-checkbox"
                    name="protocol4-checkbox"
+                   data-ng-change="page.saveInputs('swp')"
                    data-ng-model="page.modelInputs.conditions.protocol4">
         </label>
     </div>
@@ -1785,7 +1786,7 @@
                                             selected>
                                         Select load source&hellip;
                                     </option>
-                                    <option data-ng-repeat="src in page.modelInputs.swp_load_sources track by src.key"
+                                    <option data-ng-repeat="src in page.modelInputs.swp.load_sources track by src.key"
                                             data-ng-selected="src.key === page.modelInputs.swp.source_key"
                                             value="{{ src.key }}"
                                             title="{{ src.name }}">

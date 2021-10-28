@@ -50,6 +50,8 @@ class LoadRates(db.Model):
 
     key = db.Column(db.Text)
 
+    source = db.Column(db.Text)
+
     normalized_source = db.Column(db.Text)
 
     load_rate = db.Column(db.Numeric)

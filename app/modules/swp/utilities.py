@@ -82,18 +82,22 @@ def tss(value):
 
 
 def reduction(data):
-    
-    # Calculation mode.
 
-    mode = data.get('mode')
+    # Land river segment list.
+
+    segments = data.get('segments')
+
+    if not isinstance(segments, list):
+
+        return data
 
     # Load source key.
 
     source_key = data.get('source_key')
-    
+
     if not isinstance(source_key, basestring):
-        
-        return {}
+
+        return get_load_sources(segments, data)
 
     # Practice footprint area (acres)
 
@@ -107,18 +111,20 @@ def reduction(data):
 
     ponding_depth = data.get('ponding_depth')
 
-    segments = data.get('segments')
-
     values = [
         footprint_area,
         impervious_acres,
         ponding_depth,
     ]
 
-    if (not isinstance(segments, list) or
+    # Calculation mode.
+
+    mode = data.get('mode')
+
+    if (mode not in ['rr', 'st'] or
             not all(isinstance(x, (float, int)) for x in values)):
 
-        return {}
+        return data
 
     # Runoff storage volume (acre feet)
 
@@ -230,3 +236,26 @@ def calc_load_reduction(loads, key, reductions):
     except InvalidOperation:
 
         return 0
+
+
+def get_load_sources(segments, data):
+
+    if not isinstance(segments, list) or not isinstance(data, dict):
+
+        return data
+
+    rate_q = db.session.query(
+        LoadRates.source.label('name')
+    ).filter(
+        LoadRates.key.in_(segments)
+    ).order_by(
+        LoadRates.source
+    ).distinct(
+        LoadRates.source
+    )
+
+    data.update({
+        'load_sources': [row._asdict() for row in rate_q]
+    })
+
+    return data
