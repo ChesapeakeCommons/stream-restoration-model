@@ -1718,7 +1718,9 @@
 
     <form id="protocol-4"
           data-ng-submit="page.saveInputs('swp')"
-          data-ng-if="page.modelInputs.conditions.protocol1 && !page.modelInputs.conditions.protocol5"
+          data-ng-if="page.modelInputs.conditions.protocol4 &&
+                      page.modelInputs.conditions.protocol1 &&
+                      !page.modelInputs.conditions.protocol5"
           class="form"
           role="form">
 
@@ -1732,13 +1734,15 @@
 
                         <div class="form-element">
 
-                            <label for="footprint_area" class="meta-label">
+                            <label for="swp_modes">
                                 <strong>Calculation mode</strong>
                             </label>
 
                             <div class="classification--search" style="position: relative;">
 
                                 <input type="search"
+                                       id="swp_modes"
+                                       name="swp_modes"
                                        style="padding: 1rem; font-size: 1rem;"
                                        class="search"
                                        value=""
@@ -1754,7 +1758,7 @@
 
                         <div class="form-element">
 
-                            <label for="footprint_area" class="meta-label">
+                            <label for="swp_load_sources">
                                 <strong>Load source</strong>
                             </label>
 
@@ -1762,6 +1766,8 @@
                                  style="position: relative;">
 
                                 <input type="search"
+                                       id="swp_load_sources"
+                                       name="swp_load_sources"
                                        style="padding: 1rem; font-size: 1rem;"
                                        class="search"
                                        value=""
