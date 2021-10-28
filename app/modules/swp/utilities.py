@@ -209,6 +209,9 @@ def reduced_loads(segments, source_key, reductions):
     tss_load = calc_load_reduction(s_loads, 'tss', reductions)
 
     return {
+        'tn_pct_reduced': reductions.get('tn'),
+        'tp_pct_reduced': reductions.get('tp'),
+        'tss_pct_reduced': reductions.get('tss'),
         'tn_lbs_reduced': tn_load,
         'tp_lbs_reduced': tp_load,
         'tss_lbs_reduced': tss_load
