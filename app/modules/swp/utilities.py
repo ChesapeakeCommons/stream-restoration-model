@@ -95,7 +95,8 @@ def reduction(data):
 
     source_key = data.get('source_key')
 
-    if not isinstance(source_key, basestring):
+    if (not isinstance(source_key, basestring) or
+            not isinstance(data.get('load_sources'), list)):
 
         return get_load_sources(segments, data)
 
