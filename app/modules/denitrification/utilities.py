@@ -18,6 +18,8 @@ limitations under the License.
 
 # Import standard dependencies
 
+from __future__ import division
+
 import math as Math
 from datetime import datetime
 

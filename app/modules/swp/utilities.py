@@ -18,6 +18,8 @@ limitations under the License.
 
 # Import standard dependencies
 
+from __future__ import division
+
 from decimal import Decimal, InvalidOperation
 
 # Import package dependencies

@@ -18,6 +18,8 @@ limitations under the License.
 
 # Import standard dependencies
 
+from __future__ import division
+
 import math
 from datetime import datetime
 
@@ -87,7 +89,7 @@ def process_bank(data, idx):
         eroding_bank_height
     ]
 
-    tss_lbs_reduced = (reduce(lambda x, y: x * y, operands)) / 2000.0
+    tss_lbs_reduced = reduce(lambda x, y: x * y, operands)
 
     tn_lbs_reduced = tss_lbs_reduced * nitrogen_concentration
 
