@@ -34,13 +34,7 @@ from .constants import URBAN_STATE_UAL as load_data
 
 def base_tn(value):
 
-    operands = [
-        2.69,
-        10e-3,
-        value,
-    ]
-
-    return reduce(lambda x, y: x*y, operands)
+    return value * 0.00269
 
 
 def reduction(data):
