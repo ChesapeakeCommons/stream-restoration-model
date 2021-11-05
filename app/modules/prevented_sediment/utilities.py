@@ -91,9 +91,9 @@ def process_bank(data, idx):
 
     tss_lbs_reduced = reduce(lambda x, y: x * y, operands)
 
-    tn_lbs_reduced = tss_lbs_reduced * nitrogen_concentration
+    tn_lbs_reduced = (tss_lbs_reduced/2000) * nitrogen_concentration
 
-    tp_lbs_reduced = tss_lbs_reduced * phosphorus_concentration
+    tp_lbs_reduced = (tss_lbs_reduced/2000) * phosphorus_concentration
 
     idx['tss_lbs_reduced'] += tss_lbs_reduced
 
