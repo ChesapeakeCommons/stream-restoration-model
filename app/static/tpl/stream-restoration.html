@@ -1739,36 +1739,6 @@
 
                         <div class="form-element">
 
-                            <label for="swp_modes">
-                                <strong>Calculation mode</strong>
-                            </label>
-
-                            <div class="classification--search margin-t-1"
-                                 style="position: relative;">
-
-                                <select id="swp_modes"
-                                        name="swp_modes"
-                                        data-ng-model="page.modelInputs.swp.mode">
-                                    <option value=""
-                                            data-ng-if="!page.modelInputs.swp.mode"
-                                            disabled
-                                            selected>
-                                        Select mode&hellip;
-                                    </option>
-                                    <option data-ng-repeat="mode in page.modelInputs.swp_modes track by mode.key"
-                                            data-ng-selected="mode.key === page.modelInputs.swp.mode"
-                                            value="{{ mode.key }}"
-                                            title="{{ mode.name }}">
-                                        {{ mode.name }}
-                                    </option>
-                                </select>
-
-                            </div>
-
-                        </div>
-
-                        <div class="form-element">
-
                             <label for="swp_load_sources">
                                 <strong>Load source</strong>
                             </label>

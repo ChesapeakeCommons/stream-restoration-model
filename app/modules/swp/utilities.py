@@ -122,7 +122,7 @@ def reduction(data):
 
     # Calculation mode.
 
-    mode = data.get('mode')
+    mode = data.get('mode', 'rr')
 
     if (mode not in ['rr', 'st'] or
             not all(isinstance(x, (float, int)) for x in values)):
