@@ -281,7 +281,8 @@ def get_load_sources(segments, data):
         LoadRates.source.label('name'),
         LoadRates.normalized_source.label('key')
     ).filter(
-        LoadRates.key.in_(segments)
+        LoadRates.key.in_(segments),
+        LoadRates.normalized_source != 'regulated_construction'
     ).order_by(
         LoadRates.source
     ).distinct(
