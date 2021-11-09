@@ -1722,7 +1722,8 @@
           class="form"
           role="form">
 
-        <article class="feature-detail"
+        <article class="feature-detail pad-1 margin-b-1"
+                 style="border-radius: .5rem; background: #F5F5F5;"
                  data-ng-repeat="(idx, group) in page.modelInputs.swp.inputs">
 
             <div class="feature-detail-content">
@@ -1985,7 +1986,7 @@
             </div>
 
             <div data-ng-click="page.modelInputs.swp.inputs.splice(idx, 1); page.resetInputs('swp')"
-                 class="pad-b-1 flex flex-dir-row flex-align-center flex-justify-end flex-nwrap">
+                 class="pad-b-1 pad-t-1 flex flex-dir-row flex-align-center flex-justify-end flex-nwrap">
                 <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
                          width="24px" fill="#0366d6">
@@ -2003,7 +2004,7 @@
         <div data-ng-click="page.modelInputs.swp.inputs.push({source_key:null,footprint_area:null,
                 impervious_acres:null,ponding_depth:null})"
              data-ng-if="page.modelInputs.conditions.protocol4"
-             class="pad-b-1"
+             class="pad-b-1 pad-t-1"
              style="display: flex; flex-flow: row nowrap; align-items: center;">
             <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
