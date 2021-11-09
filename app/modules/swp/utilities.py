@@ -236,16 +236,34 @@ def calc_reduced_loads(segments, source_key, group, data):
 
             pass
 
-    tn_load = calc_load_reduction(n_loads, 'tn_pct_reduced', group)
+    red_credits = {
+        'tn': calc_load_reduction(
+            n_loads,
+            'tn_pct_reduced',
+            group
+        ),
+        'tp': calc_load_reduction(
+            p_loads,
+            'tp_pct_reduced',
+            group
+        ),
+        'tss': calc_load_reduction(
+            s_loads,
+            'tss_pct_reduced',
+            group
+        )
+    }
 
-    tp_load = calc_load_reduction(p_loads, 'tp_pct_reduced', group)
-
-    tss_load = calc_load_reduction(s_loads, 'tss_pct_reduced', group)
+    # tn_load = calc_load_reduction(n_loads, 'tn_pct_reduced', group)
+    #
+    # tp_load = calc_load_reduction(p_loads, 'tp_pct_reduced', group)
+    #
+    # tss_load = calc_load_reduction(s_loads, 'tss_pct_reduced', group)
 
     group.update({
-        'tn_lbs_reduced': tn_load,
-        'tp_lbs_reduced': tp_load,
-        'tss_lbs_reduced': tss_load
+        'tn_lbs_reduced': red_credits.get('tn'),
+        'tp_lbs_reduced': red_credits.get('tp'),
+        'tss_lbs_reduced': red_credits.get('tss')
     })
 
     keys = [
@@ -256,15 +274,36 @@ def calc_reduced_loads(segments, source_key, group, data):
 
     for key in keys:
 
-        set_default(data, key)
+        prefix = key.split('_')[0]
 
-    data['tss_lbs_reduced'] += tss_load
+        set_total(data, key, red_credits.get(prefix))
 
-    data['tn_lbs_reduced'] += tn_load
-
-    data['tp_lbs_reduced'] += tp_load
+    #     set_default(data, key)
+    #
+    # total_tss = data.get('tss_lbs_reduced')
+    #
+    # data['tss_lbs_reduced'] += tss_load
+    #
+    # data['tn_lbs_reduced'] += tn_load
+    #
+    # data['tp_lbs_reduced'] += tp_load
 
     return data
+
+
+def set_total(data, key, value):
+
+    existing_value = data.get(key)
+
+    if not isinstance(existing_value, (float, int, Decimal)):
+
+        existing_value = Decimal(0)
+
+    else:
+
+        existing_value = Decimal(existing_value)
+
+    data[key] = existing_value + Decimal(value)
 
 
 def set_default(data, key, default=0):
