@@ -1722,9 +1722,15 @@
           class="form"
           role="form">
 
-        <article class="feature-detail pad-1 margin-b-1"
+        <p class="pad-0 margin-0 margin-b-1" style="font-size: 1.125rem;">
+            <strong>
+                Enter a separate set of measurements for each treated load source.
+            </strong>
+        </p>
+
+        <article class="feature-detail pad-1 margin-b-2"
                  style="border-radius: .5rem; background: #F5F5F5;"
-                 data-ng-repeat="(idx, group) in page.modelInputs.swp.inputs">
+                 data-ng-repeat="(idx, group) in page.modelInputs.swp.input_groups">
 
             <div class="feature-detail-content">
 
@@ -1985,7 +1991,7 @@
 
             </div>
 
-            <div data-ng-click="page.modelInputs.swp.inputs.splice(idx, 1); page.resetInputs('swp')"
+            <div data-ng-click="page.modelInputs.swp.input_groups.splice(idx, 1); page.resetInputs('swp')"
                  class="pad-b-1 pad-t-1 flex flex-dir-row flex-align-center flex-justify-end flex-nwrap">
                 <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
@@ -2001,7 +2007,7 @@
 
         </article>
 
-        <div data-ng-click="page.modelInputs.swp.inputs.push({source_key:null,footprint_area:null,
+        <div data-ng-click="page.modelInputs.swp.input_groups.push({source_key:null,footprint_area:null,
                 impervious_acres:null,ponding_depth:null})"
              data-ng-if="page.modelInputs.conditions.protocol4"
              class="pad-b-1 pad-t-1"

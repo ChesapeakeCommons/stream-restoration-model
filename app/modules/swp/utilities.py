@@ -93,26 +93,50 @@ def reduction(data):
 
         return data
 
-    # Load source key.
-
-    source_key = data.get('source_key')
-
-    if (not isinstance(source_key, basestring) or
-            not isinstance(data.get('load_sources'), list)):
+    if not isinstance(data.get('load_sources'), list):
 
         return get_load_sources(segments, data)
 
+    input_groups = data.get('input_groups', [])
+
+    if not isinstance(input_groups, list):
+
+        return {}
+
+    for group in input_groups:
+
+        try:
+
+            process_input_group(segments, group, data)
+
+        except ValueError:
+
+            pass
+
+    return data
+
+
+def process_input_group(segments, group, data):
+
+    # Load source key.
+
+    source_key = group.get('source_key')
+
+    if not isinstance(source_key, basestring):
+
+        raise ValueError('Missing valid `source_key`.')
+
     # Practice footprint area (acres)
 
-    footprint_area = data.get('footprint_area')
+    footprint_area = group.get('footprint_area')
 
     # Impervious acres in practice drainage area
 
-    impervious_acres = data.get('impervious_acres')
+    impervious_acres = group.get('impervious_acres')
 
     # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
 
-    ponding_depth = data.get('ponding_depth')
+    ponding_depth = group.get('ponding_depth')
 
     values = [
         footprint_area,
@@ -127,14 +151,14 @@ def reduction(data):
     if (mode not in ['rr', 'st'] or
             not all(isinstance(x, (float, int)) for x in values)):
 
-        return data
+        raise ValueError('Invalid mode or numeric inputs.')
 
     # Runoff storage volume (acre feet)
 
     runoff_storage_volume = footprint_area * ponding_depth
 
     logger.warning(
-        'swp.utilities.reduction:runoff_storage_volume: %s.',
+        'swp.utilities.process_input_group:runoff_storage_volume: %s.',
         runoff_storage_volume
     )
 
@@ -150,117 +174,34 @@ def reduction(data):
         )
 
         logger.warning(
-            'swp.utilities.reduction:inches_treated: %s.',
+            'swp.utilities.process_input_group:inches_treated: %s.',
             inches_treated
         )
 
-        reductions = {
+        group.update({
             'tn': CALCS[mode]['tn'](inches_treated),
             'tp': CALCS[mode]['tp'](inches_treated),
             'tss': CALCS[mode]['tss'](inches_treated)
-        }
+        })
 
         logger.warning(
-            'swp.utilities.reduction:reductions: %s.',
-            reductions
+            'swp.utilities.process_input_group:reductions: %s.',
+            group
         )
 
-        return reduced_loads(
+        calc_reduced_loads(
             segments,
             source_key,
-            reductions
+            group,
+            data
         )
 
-    except ZeroDivisionError:
+    except ZeroDivisionError as error:
 
-        return {}
-
-
-def process_input_group(segments, data):
-
-    # Load source key.
-
-    source_key = data.get('source_key')
-
-    if (not isinstance(source_key, basestring) or
-            not isinstance(data.get('load_sources'), list)):
-
-        return get_load_sources(segments, data)
-
-    # Practice footprint area (acres)
-
-    footprint_area = data.get('footprint_area')
-
-    # Impervious acres in practice drainage area
-
-    impervious_acres = data.get('impervious_acres')
-
-    # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
-
-    ponding_depth = data.get('ponding_depth')
-
-    values = [
-        footprint_area,
-        impervious_acres,
-        ponding_depth,
-    ]
-
-    # Calculation mode.
-
-    mode = data.get('mode', 'rr')
-
-    if (mode not in ['rr', 'st'] or
-            not all(isinstance(x, (float, int)) for x in values)):
-        return data
-
-    # Runoff storage volume (acre feet)
-
-    runoff_storage_volume = footprint_area * ponding_depth
-
-    logger.warning(
-        'swp.utilities.reduction:runoff_storage_volume: %s.',
-        runoff_storage_volume
-    )
-
-    # Runoff depth treated per impervious acres (inches)
-
-    # Inches treated = (RunoffStorageVolume * 12) / ImperviousAcres
-    # If this is below 0.05 then set to 0.05. If above 2.5 then set to 2.5.
-
-    try:
-
-        inches_treated = adjust_inches_treated(
-            (runoff_storage_volume * 12) / impervious_acres
-        )
-
-        logger.warning(
-            'swp.utilities.reduction:inches_treated: %s.',
-            inches_treated
-        )
-
-        reductions = {
-            'tn': CALCS[mode]['tn'](inches_treated),
-            'tp': CALCS[mode]['tp'](inches_treated),
-            'tss': CALCS[mode]['tss'](inches_treated)
-        }
-
-        logger.warning(
-            'swp.utilities.reduction:reductions: %s.',
-            reductions
-        )
-
-        return reduced_loads(
-            segments,
-            source_key,
-            reductions
-        )
-
-    except ZeroDivisionError:
-
-        return {}
+        raise ValueError(error.message)
 
 
-def reduced_loads(segments, source_key, reductions):
+def calc_reduced_loads(segments, source_key, group, data):
 
     s_loads = []
     n_loads = []
@@ -295,20 +236,25 @@ def reduced_loads(segments, source_key, reductions):
 
             pass
 
-    tn_load = calc_load_reduction(n_loads, 'tn', reductions)
+    tn_load = calc_load_reduction(n_loads, 'tn', group)
 
-    tp_load = calc_load_reduction(p_loads, 'tp', reductions)
+    tp_load = calc_load_reduction(p_loads, 'tp', group)
 
-    tss_load = calc_load_reduction(s_loads, 'tss', reductions)
+    tss_load = calc_load_reduction(s_loads, 'tss', group)
 
-    return {
-        'tn_pct_reduced': reductions.get('tn'),
-        'tp_pct_reduced': reductions.get('tp'),
-        'tss_pct_reduced': reductions.get('tss'),
+    group.update({
         'tn_lbs_reduced': tn_load,
         'tp_lbs_reduced': tp_load,
         'tss_lbs_reduced': tss_load
-    }
+    })
+
+    data['tss_lbs_reduced'] += tss_load
+
+    data['tn_lbs_reduced'] += tn_load
+
+    data['tp_lbs_reduced'] += tp_load
+
+    return data
 
 
 def calc_load_reduction(loads, key, reductions):
