@@ -179,9 +179,9 @@ def process_input_group(segments, group, data):
         )
 
         group.update({
-            'tn': CALCS[mode]['tn'](inches_treated),
-            'tp': CALCS[mode]['tp'](inches_treated),
-            'tss': CALCS[mode]['tss'](inches_treated)
+            'tn_pct_reduced': CALCS[mode]['tn'](inches_treated),
+            'tp_pct_reduced': CALCS[mode]['tp'](inches_treated),
+            'tss_pct_reduced': CALCS[mode]['tss'](inches_treated)
         })
 
         logger.warning(
@@ -236,11 +236,11 @@ def calc_reduced_loads(segments, source_key, group, data):
 
             pass
 
-    tn_load = calc_load_reduction(n_loads, 'tn', group)
+    tn_load = calc_load_reduction(n_loads, 'tn_pct_reduced', group)
 
-    tp_load = calc_load_reduction(p_loads, 'tp', group)
+    tp_load = calc_load_reduction(p_loads, 'tp_pct_reduced', group)
 
-    tss_load = calc_load_reduction(s_loads, 'tss', group)
+    tss_load = calc_load_reduction(s_loads, 'tss_pct_reduced', group)
 
     group.update({
         'tn_lbs_reduced': tn_load,
