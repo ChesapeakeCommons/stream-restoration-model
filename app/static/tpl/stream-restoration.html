@@ -1722,7 +1722,8 @@
           class="form"
           role="form">
 
-        <article class="feature-detail">
+        <article class="feature-detail"
+                 data-ng-repeat="(idx, group) in page.modelInputs.swp.inputs">
 
             <div class="feature-detail-content">
 
@@ -1730,120 +1731,102 @@
 
                     <p class="pad-0 margin-0 margin-b-1" style="font-size: 1.125rem;">
                         <strong>
-                            1. Treatment inputs
+                            Treatment inputs
                         </strong>
                     </p>
 
-                    <div data-ng-repeat="(idx, group) in page.modelInputs.swp.inputs">
+                    <fieldset class="pad-0 margin-0"
+                              style="border: none; float: none;">
 
-                        <fieldset class="pad-0 margin-0"
-                                  style="border: none; float: none;">
+                        <div class="form-element">
 
-                            <div class="form-element">
+                            <label for="swp_load_sources-{{ idx }}">
+                                <strong>Load source</strong>
+                            </label>
 
-                                <label for="swp_load_sources-{{ idx }}">
-                                    <strong>Load source</strong>
-                                </label>
+                            <div class="classification--search margin-t-1"
+                                 style="position: relative;">
 
-                                <div class="classification--search margin-t-1"
-                                     style="position: relative;">
-
-                                    <select id="swp_load_sources-{{ idx }}"
-                                            name="swp_load_sources-{{ idx }}"
-                                            data-ng-model="group.source_key">
-                                        <option value=""
-                                                data-ng-if="!group.source_key"
-                                                disabled
-                                                selected>
-                                            Select load source&hellip;
-                                        </option>
-                                        <option data-ng-repeat="src in page.modelInputs.swp.load_sources track by src.key"
-                                                data-ng-selected="src.key === group.source_key"
-                                                value="{{ src.key }}"
-                                                title="{{ src.name }}">
-                                            {{ src.name }}
-                                        </option>
-                                    </select>
-
-                                </div>
+                                <select id="swp_load_sources-{{ idx }}"
+                                        name="swp_load_sources-{{ idx }}"
+                                        data-ng-model="group.source_key">
+                                    <option value=""
+                                            data-ng-if="!group.source_key"
+                                            disabled
+                                            selected>
+                                        Select load source&hellip;
+                                    </option>
+                                    <option data-ng-repeat="src in page.modelInputs.swp.load_sources track by src.key"
+                                            data-ng-selected="src.key === group.source_key"
+                                            value="{{ src.key }}"
+                                            title="{{ src.name }}">
+                                        {{ src.name }}
+                                    </option>
+                                </select>
 
                             </div>
 
-                            <div class="form-element-{{ idx }}">
-
-                                <label for="footprint_area-{{ idx }}" class="meta-label">
-                                    <strong>BMP footprint area (acres)</strong>
-                                </label>
-
-                                <input type="number"
-                                       step="any"
-                                       class="form-control"
-                                       data-ng-model="group.footprint_area"
-                                       id="footprint_area-{{ idx }}"
-                                       name="footprint_area-{{ idx }}"
-                                       placeholder="&hellip;"/>
-
-                            </div>
-
-                            <div class="form-element">
-
-                                <label for="impervious_acres-{{ idx }}" class="meta-label">
-                                    <strong>Impervious acres in drainage area</strong>
-                                </label>
-
-                                <input type="number"
-                                       step="any"
-                                       class="form-control"
-                                       data-ng-model="group.impervious_acres"
-                                       id="impervious_acres-{{ idx }}"
-                                       name="impervious_acres-{{ idx }}"
-                                       placeholder="&hellip;"/>
-
-                            </div>
-
-                            <div class="form-element">
-
-                                <label for="ponding_depth-{{ idx }}" class="meta-label">
-                                    <strong>Ponding depth<sup>*</sup></strong>
-                                </label>
-
-                                <input type="number"
-                                       step="any"
-                                       class="form-control"
-                                       data-ng-model="group.ponding_depth"
-                                       id="ponding_depth-{{ idx }}"
-                                       name="ponding_depth-{{ idx }}"
-                                       placeholder="&hellip;"/>
-
-                                <p class="pad-0 margin-0 margin-t-1"
-                                   style=font-size:.9rem;">
-                                    <sup>*</sup>Ponding depth (ft) = surface volume storage (ft) + (filter media layer depth
-                                    (ft) * porosity)
-                                </p>
-
-                            </div>
-
-                        </fieldset>
-
-                        <div data-ng-click="page.modelInputs.swp.inputs.splice(idx, 1); page.resetInputs('swp')"
-                             class="pad-b-1 flex flex-dir-row flex-align-center flex-justify-end flex-nwrap">
-                            <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
-                                     width="24px" fill="#0366d6">
-                                    <path d="M0 0h24v24H0V0z" fill="none"/>
-                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"/>
-                                </svg>
-                            </div>
-                            <a href="#">
-                                Remove this set of measurements.
-                            </a>
                         </div>
 
-                    </div>
+                        <div class="form-element">
+
+                            <label for="footprint_area-{{ idx }}" class="meta-label">
+                                <strong>BMP footprint area (acres)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="group.footprint_area"
+                                   id="footprint_area-{{ idx }}"
+                                   name="footprint_area-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="impervious_acres-{{ idx }}" class="meta-label">
+                                <strong>Impervious acres in drainage area</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="group.impervious_acres"
+                                   id="impervious_acres-{{ idx }}"
+                                   name="impervious_acres-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="ponding_depth-{{ idx }}" class="meta-label">
+                                <strong>Ponding depth<sup>*</sup></strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="group.ponding_depth"
+                                   id="ponding_depth-{{ idx }}"
+                                   name="ponding_depth-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                            <p class="pad-0 margin-0 margin-t-1"
+                               style=font-size:.9rem;">
+                                <sup>*</sup>Ponding depth (ft) = surface volume storage (ft) + (filter media layer depth
+                                (ft) * porosity)
+                            </p>
+
+                        </div>
+
+                    </fieldset>
 
                     <p class="pad-0 margin-0 margin-b-2" style="font-size: 1.125rem;">
                         <strong>
-                            2. Load calculations
+                            Load calculations
                         </strong>
                     </p>
 
@@ -1857,16 +1840,16 @@
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="tn_pct_reduced">
+                                           for="tn_pct_reduced-{{ idx }}">
                                         <strong>TN % reduced</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           value="{{ page.modelInputs.swp.tn_pct_reduced | number:2 }}"
-                                           id="tn_pct_reduced"
-                                           name="tn_pct_reduced"
+                                           value="{{ group.tn_pct_reduced | number:2 }}"
+                                           id="tn_pct_reduced-{{ idx }}"
+                                           name="tn_pct_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
 
                                 </div>
@@ -1878,16 +1861,16 @@
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="tp_pct_reduced">
+                                           for="tp_pct_reduced-{{ idx }}">
                                         <strong>TP % reduced</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           value="{{ page.modelInputs.swp.tp_pct_reduced | number:2 }}"
-                                           id="tp_pct_reduced"
-                                           name="tp_pct_reduced"
+                                           value="{{ group.tp_pct_reduced | number:2 }}"
+                                           id="tp_pct_reduced-{{ idx }}"
+                                           name="tp_pct_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
 
                                 </div>
@@ -1899,16 +1882,16 @@
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="tss_pct_reduced">
+                                           for="tss_pct_reduced-{{ idx }}">
                                         <strong>TSS % reduced</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           value="{{ page.modelInputs.swp.tss_pct_reduced | number:2 }}"
-                                           id="tss_pct_reduced"
-                                           name="tss_pct_reduced"
+                                           value="{{ group.tss_pct_reduced | number:2 }}"
+                                           id="tss_pct_reduced-{{ idx }}"
+                                           name="tss_pct_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
 
                                 </div>
@@ -1921,7 +1904,7 @@
 
                     <p class="pad-0 margin-0 margin-t-2 margin-b-2" style="font-size: 1.125rem;">
                         <strong>
-                            3. Reduction credits (pounds per year)
+                            Reduction credits (pounds per year)
                         </strong>
                     </p>
 
@@ -1935,16 +1918,16 @@
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="tn_lbs_reduced">
+                                           for="tn_lbs_reduced-{{ idx }}">
                                         <strong>TN reduction (lbs)</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           value="{{ page.modelInputs.swp.tn_lbs_reduced | number:2 }}"
-                                           id="tn_lbs_reduced"
-                                           name="tn_lbs_reduced"
+                                           value="{{ group.tn_lbs_reduced | number:2 }}"
+                                           id="tn_lbs_reduced-{{ idx }}"
+                                           name="tn_lbs_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
 
                                 </div>
@@ -1956,16 +1939,16 @@
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="tp_lbs_reduced">
+                                           for="tp_lbs_reduced-{{ idx }}">
                                         <strong>TP reduction (lbs)</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           value="{{ page.modelInputs.swp.tp_lbs_reduced | number:2 }}"
-                                           id="tp_lbs_reduced"
-                                           name="tp_lbs_reduced"
+                                           value="{{ group.tp_lbs_reduced | number:2 }}"
+                                           id="tp_lbs_reduced-{{ idx }}"
+                                           name="tp_lbs_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
 
                                 </div>
@@ -1977,16 +1960,16 @@
                                 <div class="form-element pad-0 margin-0">
 
                                     <label class="meta-label"
-                                           for="tss_lbs_reduced">
+                                           for="tss_lbs_reduced-{{ idx }}">
                                         <strong>TSS reduction (lbs)</strong>
                                     </label>
 
                                     <input type="number"
                                            step="any"
                                            class="form-control"
-                                           value="{{ page.modelInputs.swp.tss_lbs_reduced | number:2 }}"
-                                           id="tss_lbs_reduced"
-                                           name="tss_lbs_reduced"
+                                           value="{{ group.tss_lbs_reduced | number:2 }}"
+                                           id="tss_lbs_reduced-{{ idx }}"
+                                           name="tss_lbs_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
 
                                 </div>
@@ -2001,7 +1984,38 @@
 
             </div>
 
+            <div data-ng-click="page.modelInputs.swp.inputs.splice(idx, 1); page.resetInputs('swp')"
+                 class="pad-b-1 flex flex-dir-row flex-align-center flex-justify-end flex-nwrap">
+                <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                         width="24px" fill="#0366d6">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"/>
+                    </svg>
+                </div>
+                <a href="#">
+                    Remove this set of measurements.
+                </a>
+            </div>
+
         </article>
+
+        <div data-ng-click="page.modelInputs.swp.inputs.push({source_key:null,footprint_area:null,
+                impervious_acres:null,ponding_depth:null})"
+             data-ng-if="page.modelInputs.conditions.protocol4"
+             class="pad-b-1"
+             style="display: flex; flex-flow: row nowrap; align-items: center;">
+            <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                     width="24px" fill="#0366d6">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/>
+                </svg>
+            </div>
+            <a class="pad-r-2" href="#">
+                Add a set of measurements.
+            </a>
+        </div>
 
         <div class="pad-y-2 flex flex-dir-row flex-nwrap flex-align-center flex-justify-end">
             <button type="button"
