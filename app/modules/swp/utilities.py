@@ -176,6 +176,90 @@ def reduction(data):
         return {}
 
 
+def process_input_group(segments, data):
+
+    # Load source key.
+
+    source_key = data.get('source_key')
+
+    if (not isinstance(source_key, basestring) or
+            not isinstance(data.get('load_sources'), list)):
+
+        return get_load_sources(segments, data)
+
+    # Practice footprint area (acres)
+
+    footprint_area = data.get('footprint_area')
+
+    # Impervious acres in practice drainage area
+
+    impervious_acres = data.get('impervious_acres')
+
+    # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
+
+    ponding_depth = data.get('ponding_depth')
+
+    values = [
+        footprint_area,
+        impervious_acres,
+        ponding_depth,
+    ]
+
+    # Calculation mode.
+
+    mode = data.get('mode', 'rr')
+
+    if (mode not in ['rr', 'st'] or
+            not all(isinstance(x, (float, int)) for x in values)):
+        return data
+
+    # Runoff storage volume (acre feet)
+
+    runoff_storage_volume = footprint_area * ponding_depth
+
+    logger.warning(
+        'swp.utilities.reduction:runoff_storage_volume: %s.',
+        runoff_storage_volume
+    )
+
+    # Runoff depth treated per impervious acres (inches)
+
+    # Inches treated = (RunoffStorageVolume * 12) / ImperviousAcres
+    # If this is below 0.05 then set to 0.05. If above 2.5 then set to 2.5.
+
+    try:
+
+        inches_treated = adjust_inches_treated(
+            (runoff_storage_volume * 12) / impervious_acres
+        )
+
+        logger.warning(
+            'swp.utilities.reduction:inches_treated: %s.',
+            inches_treated
+        )
+
+        reductions = {
+            'tn': CALCS[mode]['tn'](inches_treated),
+            'tp': CALCS[mode]['tp'](inches_treated),
+            'tss': CALCS[mode]['tss'](inches_treated)
+        }
+
+        logger.warning(
+            'swp.utilities.reduction:reductions: %s.',
+            reductions
+        )
+
+        return reduced_loads(
+            segments,
+            source_key,
+            reductions
+        )
+
+    except ZeroDivisionError:
+
+        return {}
+
+
 def reduced_loads(segments, source_key, reductions):
 
     s_loads = []

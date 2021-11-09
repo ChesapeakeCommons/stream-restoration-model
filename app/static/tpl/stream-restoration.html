@@ -1734,94 +1734,112 @@
                         </strong>
                     </p>
 
-                    <fieldset class="pad-0 margin-0"
-                              style="border: none; float: none;">
+                    <div data-ng-repeat="(idx, group) in page.modelInputs.swp.inputs">
 
-                        <div class="form-element">
+                        <fieldset class="pad-0 margin-0"
+                                  style="border: none; float: none;">
 
-                            <label for="swp_load_sources">
-                                <strong>Load source</strong>
-                            </label>
+                            <div class="form-element">
 
-                            <div class="classification--search margin-t-1"
-                                 style="position: relative;">
+                                <label for="swp_load_sources-{{ idx }}">
+                                    <strong>Load source</strong>
+                                </label>
 
-                                <select id="swp_load_sources"
-                                        name="swp_load_sources"
-                                        data-ng-model="page.modelInputs.swp.source_key">
-                                    <option value=""
-                                            data-ng-if="!page.modelInputs.swp.source_key"
-                                            disabled
-                                            selected>
-                                        Select load source&hellip;
-                                    </option>
-                                    <option data-ng-repeat="src in page.modelInputs.swp.load_sources track by src.key"
-                                            data-ng-selected="src.key === page.modelInputs.swp.source_key"
-                                            value="{{ src.key }}"
-                                            title="{{ src.name }}">
-                                        {{ src.name }}
-                                    </option>
-                                </select>
+                                <div class="classification--search margin-t-1"
+                                     style="position: relative;">
+
+                                    <select id="swp_load_sources-{{ idx }}"
+                                            name="swp_load_sources-{{ idx }}"
+                                            data-ng-model="group.source_key">
+                                        <option value=""
+                                                data-ng-if="!group.source_key"
+                                                disabled
+                                                selected>
+                                            Select load source&hellip;
+                                        </option>
+                                        <option data-ng-repeat="src in page.modelInputs.swp.load_sources track by src.key"
+                                                data-ng-selected="src.key === group.source_key"
+                                                value="{{ src.key }}"
+                                                title="{{ src.name }}">
+                                            {{ src.name }}
+                                        </option>
+                                    </select>
+
+                                </div>
 
                             </div>
 
+                            <div class="form-element-{{ idx }}">
+
+                                <label for="footprint_area-{{ idx }}" class="meta-label">
+                                    <strong>BMP footprint area (acres)</strong>
+                                </label>
+
+                                <input type="number"
+                                       step="any"
+                                       class="form-control"
+                                       data-ng-model="group.footprint_area"
+                                       id="footprint_area-{{ idx }}"
+                                       name="footprint_area-{{ idx }}"
+                                       placeholder="&hellip;"/>
+
+                            </div>
+
+                            <div class="form-element">
+
+                                <label for="impervious_acres-{{ idx }}" class="meta-label">
+                                    <strong>Impervious acres in drainage area</strong>
+                                </label>
+
+                                <input type="number"
+                                       step="any"
+                                       class="form-control"
+                                       data-ng-model="group.impervious_acres"
+                                       id="impervious_acres-{{ idx }}"
+                                       name="impervious_acres-{{ idx }}"
+                                       placeholder="&hellip;"/>
+
+                            </div>
+
+                            <div class="form-element">
+
+                                <label for="ponding_depth-{{ idx }}" class="meta-label">
+                                    <strong>Ponding depth<sup>*</sup></strong>
+                                </label>
+
+                                <input type="number"
+                                       step="any"
+                                       class="form-control"
+                                       data-ng-model="group.ponding_depth"
+                                       id="ponding_depth-{{ idx }}"
+                                       name="ponding_depth-{{ idx }}"
+                                       placeholder="&hellip;"/>
+
+                                <p class="pad-0 margin-0 margin-t-1"
+                                   style=font-size:.9rem;">
+                                    <sup>*</sup>Ponding depth (ft) = surface volume storage (ft) + (filter media layer depth
+                                    (ft) * porosity)
+                                </p>
+
+                            </div>
+
+                        </fieldset>
+
+                        <div data-ng-click="page.modelInputs.swp.inputs.splice(idx, 1); page.resetInputs('swp')"
+                             class="pad-b-1 flex flex-dir-row flex-align-center flex-justify-end flex-nwrap">
+                            <div class="flex flex-dir-col flex-align-center flex-justify-center margin-r-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24"
+                                     width="24px" fill="#0366d6">
+                                    <path d="M0 0h24v24H0V0z" fill="none"/>
+                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"/>
+                                </svg>
+                            </div>
+                            <a href="#">
+                                Remove this set of measurements.
+                            </a>
                         </div>
 
-                        <div class="form-element">
-
-                            <label for="footprint_area" class="meta-label">
-                                <strong>BMP footprint area (acres)</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="page.modelInputs.swp.footprint_area"
-                                   id="footprint_area"
-                                   name="footprint_area"
-                                   placeholder="&hellip;"/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="impervious_acres" class="meta-label">
-                                <strong>Impervious acres in drainage area</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="page.modelInputs.swp.impervious_acres"
-                                   id="impervious_acres"
-                                   name="impervious_acres"
-                                   placeholder="&hellip;"/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="ponding_depth" class="meta-label">
-                                <strong>Ponding depth<sup>*</sup></strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="page.modelInputs.swp.ponding_depth"
-                                   id="ponding_depth"
-                                   name="ponding_depth"
-                                   placeholder="&hellip;"/>
-
-                            <p class="pad-0 margin-0 margin-t-1"
-                               style=font-size:.9rem;">
-                                <sup>*</sup>Ponding depth (ft) = surface volume storage (ft) + (filter media layer depth
-                                (ft) * porosity)
-                            </p>
-
-                        </div>
-
-                    </fieldset>
+                    </div>
 
                     <p class="pad-0 margin-0 margin-b-2" style="font-size: 1.125rem;">
                         <strong>
