@@ -113,6 +113,16 @@ def reduction(data):
 
             pass
 
+    keys = [
+        'tss_lbs_reduced',
+        'tn_lbs_reduced',
+        'tss_lbs_reduced'
+    ]
+
+    for key in keys:
+
+        data[key] = sum(group.get(key) for group in input_groups)
+
     return data
 
 
@@ -254,39 +264,23 @@ def calc_reduced_loads(segments, source_key, group, data):
         )
     }
 
-    # tn_load = calc_load_reduction(n_loads, 'tn_pct_reduced', group)
-    #
-    # tp_load = calc_load_reduction(p_loads, 'tp_pct_reduced', group)
-    #
-    # tss_load = calc_load_reduction(s_loads, 'tss_pct_reduced', group)
-
     group.update({
         'tn_lbs_reduced': red_credits.get('tn'),
         'tp_lbs_reduced': red_credits.get('tp'),
         'tss_lbs_reduced': red_credits.get('tss')
     })
 
-    keys = [
-        'tss_lbs_reduced',
-        'tn_lbs_reduced',
-        'tss_lbs_reduced'
-    ]
-
-    for key in keys:
-
-        prefix = key.split('_')[0]
-
-        set_total(data, key, red_credits.get(prefix))
-
-    #     set_default(data, key)
+    # keys = [
+    #     'tss_lbs_reduced',
+    #     'tn_lbs_reduced',
+    #     'tss_lbs_reduced'
+    # ]
     #
-    # total_tss = data.get('tss_lbs_reduced')
+    # for key in keys:
     #
-    # data['tss_lbs_reduced'] += tss_load
+    #     prefix = key.split('_')[0]
     #
-    # data['tn_lbs_reduced'] += tn_load
-    #
-    # data['tp_lbs_reduced'] += tp_load
+    #     set_total(data, key, red_credits.get(prefix))
 
     return data
 
