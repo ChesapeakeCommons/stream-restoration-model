@@ -114,8 +114,8 @@ def reduction(data):
             pass
 
     keys = [
-        'tss_lbs_reduced',
         'tn_lbs_reduced',
+        'tp_lbs_reduced',
         'tss_lbs_reduced'
     ]
 
