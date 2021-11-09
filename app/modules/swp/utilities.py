@@ -248,11 +248,32 @@ def calc_reduced_loads(segments, source_key, group, data):
         'tss_lbs_reduced': tss_load
     })
 
+    keys = [
+        'tss_lbs_reduced',
+        'tn_lbs_reduced',
+        'tss_lbs_reduced'
+    ]
+
+    for key in keys:
+
+        set_default(data, key)
+
     data['tss_lbs_reduced'] += tss_load
 
     data['tn_lbs_reduced'] += tn_load
 
     data['tp_lbs_reduced'] += tp_load
+
+    return data
+
+
+def set_default(data, key, default=0):
+
+    value = data.get(key)
+
+    if not isinstance(value, (float, int, Decimal)):
+
+        data[key] = default
 
     return data
 
