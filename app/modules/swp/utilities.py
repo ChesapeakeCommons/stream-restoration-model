@@ -172,6 +172,8 @@ def process_input_group(segments, group, data):
         runoff_storage_volume
     )
 
+    treatment_depth = runoff_storage_volume * 12
+
     # Runoff depth treated per impervious acres (inches)
 
     # Inches treated = (RunoffStorageVolume * 12) / ImperviousAcres
@@ -179,9 +181,11 @@ def process_input_group(segments, group, data):
 
     try:
 
-        inches_treated = adjust_inches_treated(
-            (runoff_storage_volume * 12) / impervious_acres
-        )
+        inches_treated = treatment_depth / impervious_acres
+
+        # inches_treated = adjust_inches_treated(
+        #     treatment_depth / impervious_acres
+        # )
 
         logger.warning(
             'swp.utilities.process_input_group:inches_treated: %s.',
@@ -336,7 +340,8 @@ def get_load_sources(segments, data):
         LoadRates.normalized_source.label('key')
     ).filter(
         LoadRates.key.in_(segments),
-        LoadRates.normalized_source != 'regulated_construction'
+        LoadRates.normalized_source != 'regulated_construction',
+        LoadRates.normalized_source != 'css_construction'
     ).order_by(
         LoadRates.source
     ).distinct(
