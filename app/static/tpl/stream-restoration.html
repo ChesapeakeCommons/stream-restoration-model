@@ -1776,6 +1776,22 @@
 
                         <div class="form-element">
 
+                            <label for="source_acres-{{ idx }}" class="meta-label">
+                                <strong>Load source acres</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="group.source_acres"
+                                   id="source_acres-{{ idx }}"
+                                   name="source_acres-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
                             <label for="footprint_area-{{ idx }}" class="meta-label">
                                 <strong>BMP footprint area (acres)</strong>
                             </label>
@@ -1792,16 +1808,16 @@
 
                         <div class="form-element">
 
-                            <label for="impervious_acres-{{ idx }}" class="meta-label">
-                                <strong>Impervious acres in drainage area</strong>
+                            <label for="drainage_acres-{{ idx }}" class="meta-label">
+                                <strong>Acres in drainage area</strong>
                             </label>
 
                             <input type="number"
                                    step="any"
                                    class="form-control"
-                                   data-ng-model="group.impervious_acres"
-                                   id="impervious_acres-{{ idx }}"
-                                   name="impervious_acres-{{ idx }}"
+                                   data-ng-model="group.drainage_acres"
+                                   id="drainage_acres-{{ idx }}"
+                                   name="drainage_acres-{{ idx }}"
                                    placeholder="&hellip;"/>
 
                         </div>
@@ -1850,7 +1866,7 @@
                                         <strong>TN % reduced</strong>
                                     </label>
 
-                                    <input type="number"
+                                    <input type="text"
                                            step="any"
                                            class="form-control"
                                            value="{{ group.tn_pct_reduced | number:2 }}"
@@ -1871,7 +1887,7 @@
                                         <strong>TP % reduced</strong>
                                     </label>
 
-                                    <input type="number"
+                                    <input type="text"
                                            step="any"
                                            class="form-control"
                                            value="{{ group.tp_pct_reduced | number:2 }}"
@@ -1892,7 +1908,7 @@
                                         <strong>TSS % reduced</strong>
                                     </label>
 
-                                    <input type="number"
+                                    <input type="text"
                                            step="any"
                                            class="form-control"
                                            value="{{ group.tss_pct_reduced | number:2 }}"
@@ -1928,7 +1944,7 @@
                                         <strong>TN reduction (lbs)</strong>
                                     </label>
 
-                                    <input type="number"
+                                    <input type="text"
                                            step="any"
                                            class="form-control"
                                            value="{{ group.tn_lbs_reduced | number:2 }}"
@@ -1949,7 +1965,7 @@
                                         <strong>TP reduction (lbs)</strong>
                                     </label>
 
-                                    <input type="number"
+                                    <input type="text"
                                            step="any"
                                            class="form-control"
                                            value="{{ group.tp_lbs_reduced | number:2 }}"
@@ -1970,7 +1986,7 @@
                                         <strong>TSS reduction (lbs)</strong>
                                     </label>
 
-                                    <input type="number"
+                                    <input type="text"
                                            step="any"
                                            class="form-control"
                                            value="{{ group.tss_lbs_reduced | number:2 }}"

@@ -136,21 +136,26 @@ def process_input_group(segments, group, data):
 
         raise ValueError('Missing valid `source_key`.')
 
+    # Load source acres
+
+    source_acres = group.get('source_acres')
+
     # Practice footprint area (acres)
 
     footprint_area = group.get('footprint_area')
 
     # Impervious acres in practice drainage area
 
-    impervious_acres = group.get('impervious_acres')
+    drainage_acres = group.get('drainage_acres')
 
     # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
 
     ponding_depth = group.get('ponding_depth')
 
     values = [
+        source_acres,
         footprint_area,
-        impervious_acres,
+        drainage_acres,
         ponding_depth,
     ]
 
@@ -181,10 +186,10 @@ def process_input_group(segments, group, data):
 
     try:
 
-        inches_treated = treatment_depth / impervious_acres
+        inches_treated = treatment_depth / drainage_acres
 
         # inches_treated = adjust_inches_treated(
-        #     treatment_depth / impervious_acres
+        #     treatment_depth / drainage_acres
         # )
 
         logger.warning(
@@ -315,14 +320,19 @@ def set_default(data, key, default=0):
     return data
 
 
-def calc_load_reduction(loads, key, reductions):
+def calc_load_reduction(loads, key, group):
 
     try:
 
-        return (
-            (sum(loads) / Decimal(len(loads))) *
-            Decimal(reductions.get(key))
-        )
+        # Load rate (pounds/acre)
+
+        segment_avg_load = sum(loads) / Decimal(len(loads))
+
+        # Pre-restoration load (pounds/acre)
+
+        pre_load = segment_avg_load * group.get('source_acres')
+
+        return pre_load * Decimal(group.get(key))
 
     except InvalidOperation:
 

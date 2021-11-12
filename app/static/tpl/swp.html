@@ -202,6 +202,22 @@
 
                         <div class="form-element">
 
+                            <label for="source_acres-{{ idx }}" class="meta-label">
+                                <strong>Load source acres</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="group.source_acres"
+                                   id="source_acres-{{ idx }}"
+                                   name="source_acres-{{ idx }}"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
                             <label for="footprint_area-{{ idx }}" class="meta-label">
                                 <strong>BMP footprint area (acres)</strong>
                             </label>
