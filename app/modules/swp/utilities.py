@@ -56,7 +56,11 @@ def adjust_inches_treated(value):
 
         return 0.05
 
-    return 2.5 % value
+    if value > 2.5:
+
+        return 2.5
+
+    return value
 
 
 def tn(value):
@@ -142,20 +146,20 @@ def process_input_group(segments, group, data):
 
     # Practice footprint area (acres)
 
-    footprint_area = group.get('footprint_area')
+    footprint_area = data.get('footprint_area')
 
     # Impervious acres in practice drainage area
 
-    drainage_acres = group.get('drainage_acres')
+    impervious_acres = data.get('impervious_acres')
 
     # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
 
-    ponding_depth = group.get('ponding_depth')
+    ponding_depth = data.get('ponding_depth')
 
     values = [
         source_acres,
         footprint_area,
-        drainage_acres,
+        impervious_acres,
         ponding_depth,
     ]
 
@@ -186,11 +190,11 @@ def process_input_group(segments, group, data):
 
     try:
 
-        inches_treated = treatment_depth / drainage_acres
+        # inches_treated = treatment_depth / impervious_acres
 
-        # inches_treated = adjust_inches_treated(
-        #     treatment_depth / drainage_acres
-        # )
+        inches_treated = adjust_inches_treated(
+            treatment_depth / impervious_acres
+        )
 
         logger.warning(
             'swp.utilities.process_input_group:inches_treated: %s.',

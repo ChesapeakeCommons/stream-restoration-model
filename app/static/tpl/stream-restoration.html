@@ -1727,6 +1727,91 @@
             Enter a separate set of measurements for each treated load source.
         </p>
 
+        <p class="pad-0 margin-0 margin-b-1"
+           style="font-size: 1.125rem;">
+            <strong>
+                Treatment inputs
+            </strong>
+        </p>
+
+        <article class="feature-detail margin-b-2">
+
+            <div class="feature-detail-content">
+
+                <div>
+
+                    <fieldset class="pad-0 margin-0"
+                              style="border: none; float: none;">
+
+                        <div class="form-element">
+
+                            <label for="footprint_area-{{ idx }}" class="meta-label">
+                                <strong>BMP footprint area (acres)</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.swp.footprint_area"
+                                   id="footprint_area"
+                                   name="footprint_area"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="imp_drainage_acres-{{ idx }}" class="meta-label">
+                                <strong>Impervious acres in drainage area</strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.swp.impervious_acres"
+                                   id="imp_drainage_acres"
+                                   name="imp_drainage_acres"
+                                   placeholder="&hellip;"/>
+
+                        </div>
+
+                        <div class="form-element">
+
+                            <label for="ponding_depth-{{ idx }}" class="meta-label">
+                                <strong>Ponding depth<sup>*</sup></strong>
+                            </label>
+
+                            <input type="number"
+                                   step="any"
+                                   class="form-control"
+                                   data-ng-model="page.modelInputs.swp.ponding_depth"
+                                   id="ponding_depth"
+                                   name="ponding_depth"
+                                   placeholder="&hellip;"/>
+
+                            <p class="pad-0 margin-0 margin-t-1"
+                               style=font-size:.9rem;">
+                                <sup>*</sup>Ponding depth (ft) = surface volume storage (ft) + (filter media layer depth
+                                (ft) * porosity)
+                            </p>
+
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <p class="pad-0 margin-0 margin-b-1"
+           style="font-size: 1.125rem;">
+            <strong>
+                Load sources
+            </strong>
+        </p>
+
         <article class="feature-detail pad-1 margin-b-2"
                  style="border-radius: .5rem; background: #F5F5F5;"
                  data-ng-repeat="(idx, group) in page.modelInputs.swp.input_groups">
@@ -1734,12 +1819,6 @@
             <div class="feature-detail-content">
 
                 <div>
-
-                    <p class="pad-0 margin-0 margin-b-1" style="font-size: 1.125rem;">
-                        <strong>
-                            Treatment inputs
-                        </strong>
-                    </p>
 
                     <fieldset class="pad-0 margin-0"
                               style="border: none; float: none;">
@@ -1787,60 +1866,6 @@
                                    id="source_acres-{{ idx }}"
                                    name="source_acres-{{ idx }}"
                                    placeholder="&hellip;"/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="footprint_area-{{ idx }}" class="meta-label">
-                                <strong>BMP footprint area (acres)</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="group.footprint_area"
-                                   id="footprint_area-{{ idx }}"
-                                   name="footprint_area-{{ idx }}"
-                                   placeholder="&hellip;"/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="drainage_acres-{{ idx }}" class="meta-label">
-                                <strong>Acres in drainage area</strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="group.drainage_acres"
-                                   id="drainage_acres-{{ idx }}"
-                                   name="drainage_acres-{{ idx }}"
-                                   placeholder="&hellip;"/>
-
-                        </div>
-
-                        <div class="form-element">
-
-                            <label for="ponding_depth-{{ idx }}" class="meta-label">
-                                <strong>Ponding depth<sup>*</sup></strong>
-                            </label>
-
-                            <input type="number"
-                                   step="any"
-                                   class="form-control"
-                                   data-ng-model="group.ponding_depth"
-                                   id="ponding_depth-{{ idx }}"
-                                   name="ponding_depth-{{ idx }}"
-                                   placeholder="&hellip;"/>
-
-                            <p class="pad-0 margin-0 margin-t-1"
-                               style=font-size:.9rem;">
-                                <sup>*</sup>Ponding depth (ft) = surface volume storage (ft) + (filter media layer depth
-                                (ft) * porosity)
-                            </p>
 
                         </div>
 
