@@ -1894,7 +1894,7 @@
                                     <input type="text"
                                            step="any"
                                            class="form-control"
-                                           value="{{ group.tn_pct_reduced | number:2 }}"
+                                           value="{{ (group.tn_pct_reduced * 100) | number:2 }}"
                                            id="tn_pct_reduced-{{ idx }}"
                                            name="tn_pct_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
@@ -1915,7 +1915,7 @@
                                     <input type="text"
                                            step="any"
                                            class="form-control"
-                                           value="{{ group.tp_pct_reduced | number:2 }}"
+                                           value="{{ (group.tp_pct_reduced * 100) | number:2 }}"
                                            id="tp_pct_reduced-{{ idx }}"
                                            name="tp_pct_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
@@ -1936,7 +1936,7 @@
                                     <input type="text"
                                            step="any"
                                            class="form-control"
-                                           value="{{ group.tss_pct_reduced | number:2 }}"
+                                           value="{{ (group.tss_pct_reduced * 100) | number:2 }}"
                                            id="tss_pct_reduced-{{ idx }}"
                                            name="tss_pct_reduced-{{ idx }}"
                                            placeholder="&hellip;" disabled readonly/>
