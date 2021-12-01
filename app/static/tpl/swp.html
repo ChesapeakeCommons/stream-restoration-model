@@ -113,6 +113,41 @@
           class="form"
           role="form">
 
+        <fieldset class="pad-0 margin-0"
+                  style="border: none; float: none;">
+
+            <div class="form-element">
+
+                <label for="swp_modes">
+                    <strong>Calculation mode</strong>
+                </label>
+
+                <div class="classification--search margin-t-1"
+                     style="position: relative;">
+
+                    <select id="swp_modes"
+                            name="swp_modes"
+                            data-ng-model="page.modelInputs.swp.mode">
+                        <option value=""
+                                data-ng-if="!page.modelInputs.swp.mode"
+                                disabled
+                                selected>
+                            Select mode&hellip;
+                        </option>
+                        <option data-ng-repeat="mode in page.modelInputs.swp_modes track by mode.key"
+                                data-ng-selected="mode.key === page.modelInputs.swp.mode"
+                                value="{{ mode.key }}"
+                                title="{{ mode.name }}">
+                            {{ mode.name }}
+                        </option>
+                    </select>
+
+                </div>
+
+            </div>
+
+        </fieldset>
+
         <p class="pad-1 margin-0 margin-b-1"
            style="font-size: 1rem; background: #FFF8E1; border-radius: .5rem;">
             Enter a separate set of measurements for each treated load source.
