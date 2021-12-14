@@ -334,7 +334,7 @@ def calc_load_reduction(loads, key, group):
 
         # Pre-restoration load (pounds/acre)
 
-        pre_load = segment_avg_load * group.get('source_acres')
+        pre_load = segment_avg_load * Decimal(group.get('source_acres'))
 
         return pre_load * Decimal(group.get(key))
 
