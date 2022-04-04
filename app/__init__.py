@@ -10,13 +10,9 @@ __version__ = '0.0.1'
 
 import logging
 
-from celery import Celery
 from flask.ext.sqlalchemy import SQLAlchemy
 
 from . import responses
-
-
-celery = Celery(__name__)
 
 
 """Setup Database.

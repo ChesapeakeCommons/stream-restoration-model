@@ -5,7 +5,6 @@ from datetime import datetime
 
 from flask import request
 
-from . import celery
 from . import db
 from . import flask
 from . import imp
@@ -65,10 +64,7 @@ class Application(object):
                 """
         self.setup_database()
 
-        self.init_celery()
-
         logger.info('Application setup complete')
-
 
     def setup_cors(self, response):
         """Define global Cross Origin Resource Sharing rules.
@@ -139,15 +135,6 @@ class Application(object):
         Create all of the database tables defined with the modules
         """
         db.create_all()
-
-    def init_celery(self):
-        
-        celery.conf.result_backend = self.app.config['CELERY_BACKEND']
-        celery.conf.broker_url = self.app.config['CELERY_BROKER']
-
-        celery.conf.update(self.app.config)
-
-        celery.app = self.app
 
     def load_modules(self):
         """Load all application modules.
