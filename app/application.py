@@ -1,36 +1,12 @@
-"""Define the class for creating our application.
-
-Created by Viable Industries, L.L.C. on 12/27/2015.
-Copyright 2016 Viable Industries, L.L.C. All rights reserved.
-
-For license and copyright information please see the LICENSE document (the
-"License") included with this software package. This file may not be used
-in any manner except in compliance with the License unless required by
-applicable law or agreed to in writing, software distributed under the
-License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-CONDITIONS OF ANY KIND, either express or implied.
-
-See the License for the specific language governing permissions and
-limitations under the License.
-"""
+#!/usr/bin/env python
 
 import os
-
-# Import standard dependencies
-
 from datetime import datetime
 
-# Import Flask dependencies
-
-from flask import jsonify
 from flask import request
-from flask.ext.restless import APIManager
-from flask.ext.security.signals import user_registered
 
-# Import package dependencies
-
-from . import db
 from . import celery
+from . import db
 from . import flask
 from . import imp
 from . import logger
@@ -138,7 +114,6 @@ class Application(object):
 
         return response
 
-
     def load_extensions(self):
         """Define reusable extensions throughout the main application.
 
@@ -165,7 +140,6 @@ class Application(object):
         """
         db.create_all()
 
-
     def init_celery(self):
         
         celery.conf.result_backend = self.app.config['CELERY_BACKEND']
@@ -174,7 +148,6 @@ class Application(object):
         celery.conf.update(self.app.config)
 
         celery.app = self.app
-
 
     def load_modules(self):
         """Load all application modules.
