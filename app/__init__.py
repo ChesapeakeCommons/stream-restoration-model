@@ -8,7 +8,11 @@ __organization__ = 'The Commons'
 __status__ = 'Development'
 __version__ = '0.0.1'
 
+import argparse
+import flask
+import imp
 import logging
+import os
 
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -40,7 +44,7 @@ def create_application():
     from . import errors
 
     instance = application.Application(
-        name="__main__",
+        name='__main__',
         environment='production.ProductionConfig'
     )
 
