@@ -6,3 +6,4 @@ SQLAlchemy
 itsdangerous
 psycopg2
 python-dateutil
+sentry-sdk[flask]
