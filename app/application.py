@@ -26,6 +26,8 @@ class Application(object):
             The name of the environment in which to load the application.
         """
 
+        extensions = extensions or {}
+
         self.name = name
         self.environment = environment
         self.extensions = extensions
