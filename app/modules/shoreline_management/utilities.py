@@ -2,8 +2,7 @@
 
 from __future__ import division
 
-import functools
-import operator
+from app.utilities import product
 
 from .constants import STATE_COEFFICIENTS
 
@@ -25,9 +24,7 @@ def tn_1(seq):
     by the given input variable values.
     """
 
-    product = functools.reduce(operator.mul, seq)
-
-    return product * 0.00029
+    return product(seq) * 0.00029
 
 
 def tp_1(seq):
@@ -44,9 +41,7 @@ def tp_1(seq):
     by the given input variable values.
     """
 
-    product = functools.reduce(operator.mul, seq)
-
-    return product * 0.000205
+    return product(seq) * 0.000205
 
 
 def tss_1(seq):
@@ -63,9 +58,7 @@ def tss_1(seq):
     produced by the given input variable values.
     """
 
-    product = functools.reduce(operator.mul, seq)
-
-    return product / 2000
+    return product(seq) / 2000
 
 
 # Protocol 2: Denitrification
@@ -181,6 +174,24 @@ def reduction(data):
 
     planted_tidal_wetland_area = data.get('planted_tidal_wetland_area', 0.25)
 
+    values = [
+        length_of_living_shoreline,
+        existing_avg_bank_height,
+        existing_shoreline_recession_rate,
+        soil_bulk_density,
+        sand_reduction_factor,
+        bank_instability_reduction_factor,
+        planted_tidal_wetland_area,
+    ]
+
+    if not all(isinstance(x, (float, int)) for x in values):
+
+        return {
+            'tn_lbs_reduced': 0,
+            'tp_lbs_reduced': 0,
+            'tss_lbs_reduced': 0
+        }
+
     if has_majority_design_completion:
 
         return {
@@ -213,22 +224,20 @@ def reduction(data):
             'tss_tons_reduced_3': tss_3(planted_tidal_wetland_area)
         }
 
-    else:
+    state_code = str(data.get('state_code', 0)).lower()
 
-        state_code = str(data.get('state_code', 0)).lower()
+    if state_code in ['dc', 'de', 'md', 'va']:
 
-        if state_code in ['dc', 'de', 'md', 'va']:
+        n_func = STATE_COEFFICIENTS.get('n').get(state_code)
 
-            n_func = STATE_COEFFICIENTS.get('n').get(state_code)
+        p_func = STATE_COEFFICIENTS.get('p').get(state_code)
 
-            p_func = STATE_COEFFICIENTS.get('p').get(state_code)
+        tss_func = STATE_COEFFICIENTS.get('tss').get(state_code)
 
-            tss_func = STATE_COEFFICIENTS.get('tss').get(state_code)
-
-            return {
-                'tn_lbs_reduced': n_func(length_of_living_shoreline),
-                'tp_lbs_reduced': p_func(length_of_living_shoreline),
-                'tss_tons_reduced': tss_func(length_of_living_shoreline)
-            }
+        return {
+            'tn_lbs_reduced': n_func(length_of_living_shoreline),
+            'tp_lbs_reduced': p_func(length_of_living_shoreline),
+            'tss_tons_reduced': tss_func(length_of_living_shoreline)
+        }
 
     return {}

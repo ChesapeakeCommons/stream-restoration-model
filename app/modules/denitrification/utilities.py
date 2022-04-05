@@ -10,6 +10,13 @@ def base_tn(value):
     return value * 0.00269
 
 
+def final_tn(operands, value):
+
+    operands.append(value)
+
+    return product(operands)
+
+
 def reduction(data):
 
     floodplain_sq_ft = data.get('floodplain_sq_ft', 0)
@@ -33,7 +40,7 @@ def reduction(data):
         channel_sq_ft,
         brf,
         fhf,
-        acrf
+        acrf,
     ]
 
     res = {
@@ -50,13 +57,9 @@ def reduction(data):
 
     discount_factors = [brf, fhf, acrf]
 
-    total_floodplain_tn = product(
-        discount_factors.append(floodplain_tn)
-    )
+    total_floodplain_tn = final_tn(discount_factors, floodplain_tn)
 
-    total_channel_tn = product(
-        discount_factors.append(channel_tn)
-    )
+    total_channel_tn = final_tn(discount_factors, channel_tn)
 
     # See: https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P2-DESIGN-EXAMPLE.pdf
 
