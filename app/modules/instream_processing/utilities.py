@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from __future__ import division
+
 
 from .constants import URBAN_STATE_UAL as load_data
 

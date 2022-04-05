@@ -1,14 +1,17 @@
 #!/usr/bin/env python
 
+from app.utilities import product
+
 
 def base_tn(value):
+
     operands = [
         2.69,
         10e-3,
         value,
     ]
 
-    return reduce(lambda x, y: x * y, operands)
+    return product(operands)
 
 
 def adjust_inches_treated(value):

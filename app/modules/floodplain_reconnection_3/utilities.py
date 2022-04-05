@@ -54,7 +54,7 @@ def reduction(data):
     tp = []
     tss = []
 
-    for key, value in EFF.iteritems():
+    for key, value in EFF.items():
 
         tn.append(
             value['tn'] * tn_treatable_load

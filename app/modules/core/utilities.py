@@ -27,7 +27,7 @@ def validate_request(data):
 
         practice_code = data.get('practice_code')
 
-        return practice_code and isinstance(practice_code, basestring)
+        return practice_code and isinstance(practice_code, str)
 
     except (AttributeError, KeyError):
 

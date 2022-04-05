@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from __future__ import division
+from app.utilities import product
 
 
 def reduction(data):
@@ -27,7 +27,7 @@ def reduction(data):
 
             pass
 
-    return {key: value * 0.5 for key, value in idx.iteritems()}
+    return {key: value * 0.5 for key, value in idx.items()}
 
 
 def process_bank(data, idx):
@@ -64,7 +64,7 @@ def process_bank(data, idx):
         eroding_bank_height
     ]
 
-    tss_lbs_reduced = reduce(lambda x, y: x * y, operands)
+    tss_lbs_reduced = product(operands)
 
     tn_lbs_reduced = (tss_lbs_reduced/2000) * nitrogen_concentration
 

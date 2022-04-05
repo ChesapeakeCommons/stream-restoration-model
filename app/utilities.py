@@ -54,7 +54,7 @@ def truncate(text, length):
     #: Conditional will be falsey if
     #: text is None or empty string.
 
-    if text and isinstance(text, basestring):
+    if text and isinstance(text, str):
 
         return text[:length]
 
@@ -66,7 +66,7 @@ def parse_snake(text, operation=None):
     #: Conditional will be falsey if
     #: text is None or empty string.
 
-    if text and isinstance(text, basestring):
+    if text and isinstance(text, str):
 
         _tpl = text.replace('_', ' ')
 
@@ -91,33 +91,13 @@ def parse_snake(text, operation=None):
     return None
 
 
-def scrub_request(model, data):
-
-    insp = inspect(model)
-
-    whitelist = [
-        attr for attr in insp.all_orm_descriptors.keys()
-        if not(attr.startswith('_'))
-    ]
-
-    inputs = data.keys()
-
-    for attribute in inputs:
-
-        if attribute not in whitelist:
-
-            data.pop(attribute, None)
-
-    return data
-
-
 def rgetattr(obj, attr, *args):
     """See https://stackoverflow.com/questions/31174295/getattr-and-setattr-on-nested-objects"""
     def _getattr(obj, attr):
 
         return getattr(obj, attr, *args)
 
-    return reduce(_getattr, [obj] + attr.split('.'))
+    return functools.reduce(_getattr, [obj] + attr.split('.'))
 
 
 def product(seq):

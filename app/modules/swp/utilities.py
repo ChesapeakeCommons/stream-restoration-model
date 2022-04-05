@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from __future__ import division
+
 
 from decimal import Decimal
 from decimal import InvalidOperation
@@ -116,7 +116,7 @@ def process_input_group(segments, group, data):
 
     source_key = group.get('source_key')
 
-    if not isinstance(source_key, basestring):
+    if not isinstance(source_key, str):
 
         raise ValueError('Missing valid `source_key`.')
 
