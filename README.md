@@ -229,7 +229,7 @@ Pass values to model.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `input_groups` | float/integer | Array of objects containing values for each load source. |
+| `input_groups` | float/integer | Array of objects containing parameters for each load source. |
 
 **Input group**
 
