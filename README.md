@@ -8,7 +8,7 @@ The source code contains separate modules for each of the five protocols. The fo
 
 ## Protocol 1: Prevented sediment
 
-Protocol 1 provides credit for projects occurring in first through third order streams with perennial flow that stabilize banks and prevent sediment erosion in actively degrading channels.
+Protocol 1 provides credit for projects occurring in first- through third-order streams with perennial flow that stabilize banks and prevent sediment erosion in actively degrading channels.
 
 See complete [2019 Protocol 1 Guidance](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2020/03/PROTOCOL-1-MEMO_WQGIT-Approved_revised-2.27.20_clean_w-appendices.pdf).
 
@@ -181,4 +181,106 @@ total_channel_tn = brf * fhf * acrf * channel_tn
 tn_lbs_reduced = total_floodplain_tn + total_channel_tn
 ```
 
+## Protocol 4: Stormwater performance standard
+
+**This protocol is also referred to as "Dry channel regenerative stormwater conveyance".**
+
+Protocol 4 is for zero-order channels with intermittent flow and is credited as a stormwater retrofit practice. These practices occur in the urban drainage zone to directly capture upland runoff or are used at the stormwater outfall to capture and treat stormwater in the headwater transition zone.
+
+View [source code](https://github.com/ChesapeakeCommons/stream-restoration-model/blob/master/app/modules/swp/utilities.py).
+
+### Calculation modes
+
+**Runoff reduction**
+
+Total post-development runoff volume that is reduced through canopy interception, soil amendments, evaporation, rainfall harvesting, engineered infiltration, extended filtration or evapo-transpiration. Stormwater practices that achieve at least a 25% reduction of the annual runoff volume are classified as providing runoff reduction, and therefore earn a higher net removal rate.
+
+BMPs to use with this module include landscape restoration/reforestation, riparian buffer restoration, rooftop disconnection (to amended soils, conservation area, or pervious area), sheetflow to filter/openspace, non-structural BMPs (chapter 5 of 2006 Pennsylvania Stormwater BMP manual), all ESD practices in MD 2007, bioretention/rain garden, dry channel regenerative stormwater conveyance, dry swale, expanded tree pits, grass channels (with soil amendments, aka bioswales), green roofs, green streets, infiltrations practices (infiltration basin, infiltration bed, infiltration trench, dry well, landscape infiltration), permeable pavement, and rainwater harvesting.
+
+Estimated reductions calculated using acres treated by the practice.
+
+**Stormwater treatment**
+
+Total post-development runoff volume that is reduced through a permanent pool, constructed wetlands or sand filters have less runoff reduction capability, and their removal rate is lower than runoff reduction.
+
+BMPs to use with this module include contructed wetlands, filtering practices (e.g. constructed filters, sand filters, stormwater filtering systems), proprietary practices (manufactured BMPs), wet ponds, and wet swales.
+
+Estimated reductions calculated using acres treated by the practice.
+
+### Inputs
+
+Protocol 4 requires multiple input steps to derive values for downstream calculations. The sequence is organized as follows.
+
+**Step 1**
+
+Retrieve the land river segment(s) that intersect the practice footprint.
+
+**Step 2**
+
+Retrieve list of eligible load source(s) for the selected land river segment(s).
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `segments` | array | Array of land river segment identifiers. Example: `['H24023PU2_4720_4750']` |
+
+**Step 3**
+
+Pass values to model.
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `input_groups` | float/integer | Array of objects containing values for each load source. |
+
+**Input group**
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `mode` | string | Calculation mode key. Accepts `rr` or `st`. (See [definitions](https://github.com/ChesapeakeCommons/stream-restoration-model/edit/master/README.md#calculation-modes).) |
+| `source_key` | string | Normalized load source reference. Example: `ms4_tree_canopy_over_impervious` |
+| `source_acres` | array | Array of land river segment identifiers. Example: `['H24023PU2_4720_4750']` |
+| `footprint_area` | array | Array of available load sources. |
+| `impervious_acres` | float/integer | Array of objects containing values for each load source. |
+| `ponding_depth` | float/integer | Array of objects containing values for each load source. |
+
+### Outputs
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids (`tss`). If multiple banks are provided, this number will be the aggregate of all `tss` reductions. |
+| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen (`tn`). If multiple banks are provided, this number will be the aggregate of all `tn` reductions. |
+| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus (`tp`). If multiple banks are provided, this number will be the aggregate of all `tp` reductions. |
+
+### Formulas
+
+See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/Design-Example-for-Protocol-4.pdf).
+
+```
+floodplain_tn = floodplain_sq_ft * 0.00269
+
+channel_tn = channel_sq_ft * 0.00269
+
+total_floodplain_tn = brf * fhf * acrf * floodplain_tn
+
+total_channel_tn = brf * fhf * acrf * channel_tn
+
+tn_lbs_reduced = total_floodplain_tn + total_channel_tn
+```
+
+## Protocol 5: Outfall and gully stabilization
+
+**This protocol is also referred to as "Outfall and gully restoration".**
+
+Protocol 5 is designed to create a stable channel to dissipate energy that extends from the storm drain outfall to the perennial stream network. The new channel is re-constructed to achieve an equilibrium state where future sediment loss is minimized or eliminated altogether. These projects may only be applied within the headwater transition zone and active headcut areas (Group 2, 2019).
+
+### Inputs
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids (`tss`). |
+| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen (`tn`). |
+| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus (`tp`). |
+
+### Outputs
+
+The functional implementation of protocol 5 is a no-op that leaves the inputs unchanged.
 
