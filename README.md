@@ -111,7 +111,7 @@ View [source code.](https://github.com/ChesapeakeCommons/stream-restoration-mode
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen (`tn`). |
+| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen. |
 
 ### Formulas
 
@@ -246,9 +246,9 @@ Pass values to model.
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids (`tss`). If multiple banks are provided, this number will be the aggregate of all `tss` reductions. |
-| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen (`tn`). If multiple banks are provided, this number will be the aggregate of all `tn` reductions. |
-| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus (`tp`). If multiple banks are provided, this number will be the aggregate of all `tp` reductions. |
+| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids (`tss`). If multiple load source input groups are provided, this number will be the aggregate of all `tss` reductions. |
+| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen (`tn`). If multiple load source input groups are provided, this number will be the aggregate of all `tn` reductions. |
+| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus (`tp`). If multiple load source input groups are provided, this number will be the aggregate of all `tp` reductions. |
 
 ### Formulas
 
@@ -276,9 +276,9 @@ Protocol 5 is designed to create a stable channel to dissipate energy that exten
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids (`tss`). |
-| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen (`tn`). |
-| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus (`tp`). |
+| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids. |
+| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen. |
+| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus. |
 
 ### Outputs
 
