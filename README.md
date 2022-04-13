@@ -6,6 +6,14 @@ There are currently five protocols that define the nutrient and sediment removal
 
 The source code contains separate modules for each of the five protocols. The following sections describe module inputs and outputs.
 
+## Modules
+
+* [Protocol 1: Prevented sediment](#protocol-1-prevented-sediment)
+* [Protocol 2: Hyporheic exchange](#protocol-2-hyporheic-exchange)
+* [Protocol 3: Floodplain reconnection](#protocol-3-floodplain-reconnection)
+* [Protocol 4: Stormwater performance standard](#protocol-4-stormwater-performance-standard)
+* [Protocol 5: Outfall and gully stabilization](#protocol-5-outfall-and-gully-stabilization)
+
 ## Protocol 1: Prevented sediment
 
 Protocol 1 provides credit for projects occurring in first- through third-order streams with perennial flow that stabilize banks and prevent sediment erosion in actively degrading channels.
