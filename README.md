@@ -43,21 +43,10 @@ View [source code.](https://github.com/ChesapeakeCommons/stream-restoration-mode
 
 See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/Design-Example-for-Protocol-1-recent.pdf).
 
-**Abbreviations**
-
-| Input | Abbreviation |
-| :--- | :--- |
-| `bulk_density_of_soil` | `bds` |
-| `bank_erosion_rate` | `ber` |
-| `eroding_bank_length` | `ebl` |
-| `eroding_bank_height` | `ebh` |
-| `nitrogen_concentration` | `ncon` |
-| `phosphorus_concentration` | `pcon` |
-
 ```python
 # Calculate sediment load.
 
-tss_lbs_reduced = bds * ber * ebl * ebl
+tss_lbs_reduced = bulk_density_of_soil * bank_erosion_rate * eroding_bank_length * eroding_bank_height
 
 # Convert erosion rate to nutrient loading rates.
 #
@@ -93,7 +82,7 @@ View [source code.](https://github.com/ChesapeakeCommons/stream-restoration-mode
 
 *Effective hyporheic zone N credit = (Base rate) (EHZ) (Bf) (Hf) (Af)*
 
-| Baseflow reduction factor (B<sub>f</sub>) || Floodplain height factor (H<sub>f</sub>)<sup>1</sup> || Aquifer conductivity reduction factor (A<sub>f</sub>)<sup>2</sup> ||
+| Baseflow reduction factor | B<sub>f</sub> | Floodplain height factor<sup>1</sup> | H<sub>f</sub> | Aquifer conductivity reduction factor<sup>2</sup> | A<sub>f</sub> |
 | :--- | :--- | :--- | :--- | :--- | :--- 
 | Perennial baseflow 	| 1.0 | 0 - 0.75 ft | 1.0 | cobbly gravel, gravel, gravelly sand, sand and peat | 1.0 |
 | Baseflow in all but late summer/fall | 0.75 | 0.76 ft - 1.00 ft | 0.75 | gravelly silt, silty sand or loamy sand, sandy loam, and organic silt with no coarse material layer connected to the streambed | 0.60 |
