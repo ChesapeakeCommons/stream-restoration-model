@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-
-
 from app.utilities import product
 
 from .constants import STATE_COEFFICIENTS

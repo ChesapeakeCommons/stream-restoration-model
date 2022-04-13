@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import math as Math
+import math
 
 from app import logger
 from .constants import URBAN_STATE_UAL as load_data
@@ -44,13 +44,13 @@ def adjustor_curve_nitrogen(data):
 
     reduction = 0.0
 
-    first = 0.0308 * Math.pow(depth_treated, 5)
+    first = 0.0308 * math.pow(depth_treated, 5)
 
-    second = 0.2562 * Math.pow(depth_treated, 4)
+    second = 0.2562 * math.pow(depth_treated, 4)
 
-    third = 0.8634 * Math.pow(depth_treated, 3)
+    third = 0.8634 * math.pow(depth_treated, 3)
 
-    fourth = 1.5285 * Math.pow(depth_treated, 2)
+    fourth = 1.5285 * math.pow(depth_treated, 2)
 
     fifth = 1.501 * depth_treated
 
@@ -67,10 +67,10 @@ def adjustor_curve_phosphorus(data):
 
     reduction = 0.0
 
-    first = 0.0304 * Math.pow(depth_treated, 5)
-    second = 0.2619 * Math.pow(depth_treated, 4)
-    third = 0.9161 * Math.pow(depth_treated, 3)
-    fourth = 1.6837 * Math.pow(depth_treated, 2)
+    first = 0.0304 * math.pow(depth_treated, 5)
+    second = 0.2619 * math.pow(depth_treated, 4)
+    third = 0.9161 * math.pow(depth_treated, 3)
+    fourth = 1.6837 * math.pow(depth_treated, 2)
     fifth = 1.7072 * depth_treated
 
     reduction = (first - second + third - fourth + fifth - 0.0091)
@@ -86,10 +86,10 @@ def adjustor_curve_sediment(data):
 
     reduction = 0.0
         
-    first = 0.0326 * Math.pow(depth_treated, 5)
-    second = 0.2806 * Math.pow(depth_treated, 4)
-    third = 0.9816 * Math.pow(depth_treated, 3)
-    fourth = 1.8039 * Math.pow(depth_treated, 2)
+    first = 0.0326 * math.pow(depth_treated, 5)
+    second = 0.2806 * math.pow(depth_treated, 4)
+    third = 0.9816 * math.pow(depth_treated, 3)
+    fourth = 1.8039 * math.pow(depth_treated, 2)
     fifth = 1.8292 * depth_treated
 
     reduction = (first - second + third - fourth + fifth - 0.0098)
@@ -101,7 +101,7 @@ def nitrogen(data, preinstallation=False):
 
     multiplier = 1.0
 
-    if preinstallation == False:
+    if not preinstallation:
 
         multiplier = adjustor_curve_nitrogen(data)
 
@@ -119,7 +119,7 @@ def phosphorus(data, preinstallation=False):
 
     multiplier = 1.0
 
-    if preinstallation == False:
+    if not preinstallation:
 
         multiplier = adjustor_curve_phosphorus(data)
 
@@ -137,7 +137,7 @@ def sediment(data, preinstallation=False):
 
     multiplier = 1.0
 
-    if preinstallation == False:
+    if not preinstallation:
 
         multiplier = adjustor_curve_sediment(data)
 

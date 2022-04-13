@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 
-
-
 from .constants import URBAN_STATE_UAL as load_data
 
 
