@@ -205,7 +205,7 @@ treatable_flow_credit = (
 
 Calculate treatable loads for TSS, TN, and TP.
 
-Calculations depend on [load rates for each land river segment](https://github.com/ChesapeakeCommons/stream-restoration-model/blob/master/app/modules/floodplain_reconnection_2/constants.py) from the 2019 CAST Scenario.
+Calculations depend on `treatable_flow_credit` and [load rates for each land river segment](https://github.com/ChesapeakeCommons/stream-restoration-model/blob/master/app/modules/floodplain_reconnection_2/constants.py) from the 2019 CAST Scenario.
 
 **Inputs**
 
@@ -274,7 +274,7 @@ Calculations depend on `tn_treatable_load`, `tp_treatable_load`, and `tss_treata
 See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P3-Design-Example.pdf).
 
 ```python
-# Credit coefficients for wetland practices.
+# Wetland pollutant removal efficiencies.
 
 COEFF = {
     "restoration": {
@@ -297,6 +297,8 @@ COEFF = {
 tn = []
 tp = []
 tss = []
+
+# Apply the appropriate wetland pollutant removal efficiencies.
 
 for key, value in COEFF.items():
 
