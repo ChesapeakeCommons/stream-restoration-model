@@ -485,3 +485,36 @@ Protocol 5 is designed to create a stable channel to dissipate energy that exten
 
 The functional implementation of protocol 5 is a no-op that leaves the inputs unchanged.
 
+## Acronyms
+
+| Acronym | Reference |
+| :-- | :--|
+| BANCS | Bank Assessment for NPS Consequences of Sediment |
+| BEHI | Bank Erosion Hazard Index |
+| BMP | Best Management Practices |
+| CAST | Chesapeake Assessment Scenario Tool |
+| CBP | Chesapeake Bay Program |
+| CBWM | Chesapeake Bay Watershed Model |
+| EHZ | Effective Hyporheic Zone |
+| FR-LSR | Floodplain Restoration: Legacy Sediment Removal |
+| FR-RSB | Floodplain Restoration: Raising the Stream Bed |
+| FRV | Floodplain Reconnection Volume |
+| FTZ | Floodplain Trapping Zone |
+| HA | Hyporheic Aquifer |
+| HEZ | Hyporheic Exchange Zone |
+| HTZ | Headwater Transition Zone |
+| LEC | Limited Erosion Control |
+| LSR | Legacy Sediment Removal |
+| MS4 | Municipal Separate Storm Sewer System |
+| NBS | Near Bank Stress |
+| NCD | Natural Channel Design |
+| OGSP | Outfall and Gully Stabilization Projects |
+| RR | Runoff Reduction |
+| RTVM | Reporting, Tracking, Verification and Monitoring |
+| RSC | Regenerative Stormwater Conveyance |
+| TMDL | Total Maximum Daily Load |
+| TN | Total Nitrogen |
+| TP | Total Phosphorus |
+| TSS | Total Suspended Solids |
+
+
