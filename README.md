@@ -14,6 +14,8 @@ The source code contains separate modules for each of the five protocols. The fo
 * [Protocol 4: Stormwater performance standard](#protocol-4-stormwater-performance-standard)
 * [Protocol 5: Outfall and gully stabilization](#protocol-5-outfall-and-gully-stabilization)
 
+<br />
+
 ## Protocol 1: Prevented sediment
 
 Protocol 1 provides credit for projects occurring in first- through third-order streams with perennial flow that stabilize banks and prevent sediment erosion in actively degrading channels.
@@ -75,6 +77,8 @@ tn_lbs_reduced = tn_lbs_reduced * 0.50
 
 tp_lbs_reduced = tp_lbs_reduced * 0.50
 ```
+
+<br />
 
 ## Protocol 2: Hyporheic exchange
 
@@ -143,6 +147,8 @@ total_channel_tn = brf * fhf * acrf * channel_tn
 tn_lbs_reduced = total_floodplain_tn + total_channel_tn
 ```
 
+<br />
+
 ## Protocol 3: Floodplain reconnection
 
 Protocol 3 provides credit for projects that reconnect the stream channel with its natural floodplain, encouraging floodplain deposition, plant uptake and denitrification.
@@ -151,43 +157,169 @@ See complete [2020 Protocol 3 Guidance](https://chesapeakestormwater.net/wp-cont
 
 View source code [here](https://github.com/ChesapeakeCommons/stream-restoration-model/blob/master/app/modules/floodplain_reconnection_1/utilities.py), [here](https://github.com/ChesapeakeCommons/stream-restoration-model/blob/master/app/modules/floodplain_reconnection_2/utilities.py), and [here](https://github.com/ChesapeakeCommons/stream-restoration-model/blob/master/app/modules/floodplain_reconnection_3/utilities.py).
 
-### Inputs
-
 Protocol 3 requires multiple input steps to derive values for downstream calculations. The sequence is organized as follows.
 
-**Step 1
+### Step 1
+
+Calculate treatable flow credit.
+
+**Inputs**
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `floodplain_sq_ft` | float/integer | The number of objects to be returned. Limit can range between 1 and 100. **Default:** 0. |
-| `channel_sq_ft` | float/integer | The result set page to be returned. **Default:** 0. |
-| `brf` | float/integer | Baseflow reduction factor. **Default:** 0. |
-| `fhf` | float/integer | Floodplain height factor. **Default:** 0. |
-| `acrf` | float/integer | Aquifer conductivity reduction factor. **Default:** 0. |
+| `existing_treated_discharge` | float/integer | The number of objects to be returned. Limit can range between 1 and 100. |
+| `proposed_treated_discharge` | float/integer | The result set page to be returned. |
+| `existing_total_discharge` | float/integer | Baseflow reduction factor. |
+| `proposed_total_discharge` | float/integer | Floodplain height factor. |
 
-### Outputs
+**Outputs**
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids (`tss`). |
-| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen (`tn`). |
-| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus (`tp`). |
+| `existing_percent_flow_treated` | float | Annual reduction in pounds of total suspended solids (`tss`). |
+| `proposed_percent_flow_treated` | float | Annual reduction in pounds of total nitrogen (`tn`). |
+| `treatable_flow_credit` | float | Annual reduction in pounds of total phosphorus (`tp`). |
 
-### Formulas
+**Formulas**
 
 See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P3-Design-Example.pdf).
 
+```python
+existing_percent_flow_treated = (
+    float(existing_treated_discharge) /
+    float(existing_total_discharge)
+)
+
+proposed_percent_flow_treated = (
+    float(proposed_treated_discharge) /
+    float(proposed_total_discharge)
+)
+
+treatable_flow_credit = (
+    proposed_percent_flow_treated -
+    existing_percent_flow_treated
+)
 ```
-floodplain_tn = floodplain_sq_ft * 0.00269
 
-channel_tn = channel_sq_ft * 0.00269
+### Step 2
 
-total_floodplain_tn = brf * fhf * acrf * floodplain_tn
+Calculate treatable loads for TSS, TN, and TP.
 
-total_channel_tn = brf * fhf * acrf * channel_tn
+Calculations depend on [load rates for each land river segment](https://github.com/ChesapeakeCommons/stream-restoration-model/blob/master/app/modules/floodplain_reconnection_2/constants.py) from the 2019 CAST Scenario.
 
-tn_lbs_reduced = total_floodplain_tn + total_channel_tn
+**Inputs**
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `segments` | array | The number of objects to be returned. Limit can range between 1 and 100. |
+| `upstream_miles` | float/integer | The result set page to be returned. |
+| `treatable_flow_credit` | float/integer | Baseflow reduction factor. |
+
+**Outputs**
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `tn_load` | float | Annual reduction in pounds of total suspended solids (`tss`). |
+| `tp_load` | float | Annual reduction in pounds of total nitrogen (`tn`). |
+| `tss_load` | float | Annual reduction in pounds of total phosphorus (`tp`). |
+| `tn_treatable_load` | float | Annual reduction in pounds of total suspended solids (`tss`). |
+| `tp_treatable_load` | float | Annual reduction in pounds of total nitrogen (`tn`). |
+| `tss_treatable_load` | float | Annual reduction in pounds of total phosphorus (`tp`). |
+
+**Formulas**
+
+See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P3-Design-Example.pdf).
+
+```python
+tn_load = (sum(nitrogen_loads) / float(len(n_loads))) * upstream_miles
+
+tp_load = (sum(phosphorus_loads) / float(len(p_loads))) * upstream_miles
+
+tss_load = (sum(sediment_loads) / float(len(s_loads))) * upstream_miles
+
+tn_treatable_load = tn_load * treatable_flow_credit
+
+tp_treatable_load = tp_load * treatable_flow_credit
+
+tss_treatable_load = tss_load * treatable_flow_credit
 ```
+
+### Step 3
+
+Calculate load reduction credits for TSS, TN, and TP.
+
+Calculations depend on `tn_treatable_load`, `tp_treatable_load`, and `tss_treatable_load` values from step 2.
+
+**Inputs**
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `tn_treatable_load` | float | Annual reduction in pounds of total suspended solids (`tss`). |
+| `tp_treatable_load` | float | Annual reduction in pounds of total nitrogen (`tn`). |
+| `tss_treatable_load` | float | Annual reduction in pounds of total phosphorus (`tp`). |
+| `wetland_restoration` | float | Annual reduction in pounds of total suspended solids (`tss`). |
+| `wetland_creation` | float | Annual reduction in pounds of total nitrogen (`tn`). |
+| `wetland_rehab` | float | Annual reduction in pounds of total phosphorus (`tp`). |
+
+**Outputs**
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| `tss_lbs_reduced` | float | Annual reduction in pounds of total suspended solids. |
+| `tn_lbs_reduced` | float | Annual reduction in pounds of total nitrogen. |
+| `tp_lbs_reduced` | float | Annual reduction in pounds of total phosphorus. |
+
+**Formulas**
+
+See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P3-Design-Example.pdf).
+
+```python
+# Credit coefficients for wetland practices.
+
+COEFF = {
+    "restoration": {
+        "tn": 0.42,
+        "tp": 0.4,
+        "tss": 0.31
+    },
+    "creation": {
+        "tn": 0.3,
+        "tp": 0.33,
+        "tss": 0.27
+    },
+    "rehab": {
+        "tn": 0.16,
+        "tp": 0.22,
+        "tss": 0.19
+    }
+}
+
+tn = []
+tp = []
+tss = []
+
+for key, value in COEFF.items():
+
+    tn.append(
+        value['tn'] * tn_treatable_load
+    )
+
+    tp.append(
+        value['tp'] * tp_treatable_load
+    )
+
+    tss.append(
+        value['tss'] * tss_treatable_load
+    )
+
+tn_lbs_reduced = sum(tn)
+
+tp_lbs_reduced = sum(tp)
+
+tss_lbs_reduced = sum(tss)
+```
+
+<br />
 
 ## Protocol 4: Stormwater performance standard
 
@@ -273,6 +405,8 @@ total_channel_tn = brf * fhf * acrf * channel_tn
 
 tn_lbs_reduced = total_floodplain_tn + total_channel_tn
 ```
+
+<br />
 
 ## Protocol 5: Outfall and gully stabilization
 
