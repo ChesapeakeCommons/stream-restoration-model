@@ -394,7 +394,7 @@ Pass values to model.
 
 See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/Design-Example-for-Protocol-4.pdf).
 
-```
+```python
 # Function mapping
 
 FUNCS = {
@@ -434,52 +434,21 @@ tss_pct_reduced = FUNCS[mode]['tss'](inches_treated)
 
 # Calculate load reductions
 
-s_loads = []
-n_loads = []
-p_loads = []
+sediment_loads = []
+nitrogen_loads = []
+phosphorus_loads = []
 
 for segment in segments:
 
-rate_q = db.session.query(
-    LoadRates
-).filter(
-    LoadRates.key == segment,
-    LoadRates.normalized_source == source_key
-).first()
+    rate_query_result = object # Load rates for land river segment from database.
 
-try:
+    load_rate = rate_query_result.load_rate
 
-load_rate = rate_q.load_rate
+    nitrogen_loads.append(rate_query_result.n / load_rate)
 
-n_loads.append(
-    rate_q.n / load_rate
-)
+    phosphorus_loads.append(rate_query_result.p / load_rate)
 
-p_loads.append(
-    rate_q.p / load_rate
-)
-
-s_loads.append(
-    rate_q.tss / load_rate
-)
-
-red_credits = {
-    'tn': calc_load_reduction(
-        n_loads,
-        'tn_pct_reduced',
-        group
-    ),
-    'tp': calc_load_reduction(
-        p_loads,
-        'tp_pct_reduced',
-        group
-    ),
-    'tss': calc_load_reduction(
-        s_loads,
-        'tss_pct_reduced',
-        group
-    )
-}
+    sediment_loads.append(rate_query_result.tss / load_rate)
 
 # Perform the following for each load reduction.
 
