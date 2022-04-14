@@ -34,10 +34,10 @@ View [source code.](https://github.com/ChesapeakeCommons/stream-restoration-mode
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `bulk_density_of_soil` | float/integer | Bulk density of bank soil measured in pounds per cubic foot (lbs/ft<sup>3</sup>). **Default:** 0. |
-| `bank_erosion_rate` | float/integer | Bank erosion rate measured in pounds per foot per year (lbs/ft/year). **Default:** 0. |
-| `eroding_bank_length` | float/integer | Eroding bank length measured in feet (ft). **Default:** 0. |
-| `eroding_bank_height` | float/integer | Eroding bank height measured in feet (ft). **Default:** 0. |
+| `bulk_density_of_soil` | float/integer | Bulk density of bank soil measured in pounds per cubic foot (lbs/ft<sup>3</sup>). |
+| `bank_erosion_rate` | float/integer | Bank erosion rate measured in pounds per foot per year (lbs/ft/year). |
+| `eroding_bank_length` | float/integer | Eroding bank length measured in feet (ft). |
+| `eroding_bank_height` | float/integer | Eroding bank height measured in feet (ft). |
 | `nitrogen_concentration` | float/integer | **Default:** 0. |
 | `phosphorus_concentration` | float/integer | **Default:** 0. |
 
@@ -113,11 +113,11 @@ View [source code.](https://github.com/ChesapeakeCommons/stream-restoration-mode
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `floodplain_sq_ft` | float/integer | Area of the restored floodplain measured in square feet (ft<sup>2</sup>).  **Default:** 0. |
-| `channel_sq_ft` | float/integer | Area of the restored channel measured in square feet (ft<sup>2</sup>). **Default:** 0. |
-| `brf` | float/integer | Baseflow reduction factor. **Default:** 0. |
-| `fhf` | float/integer | Floodplain height factor. **Default:** 0. |
-| `acrf` | float/integer | Aquifer conductivity reduction factor. **Default:** 0. |
+| `floodplain_sq_ft` | float/integer | Area of the restored floodplain measured in square feet (ft<sup>2</sup>). |
+| `channel_sq_ft` | float/integer | Area of the restored channel measured in square feet (ft<sup>2</sup>). |
+| `brf` | float/integer | Baseflow reduction factor. |
+| `fhf` | float/integer | Floodplain height factor. |
+| `acrf` | float/integer | Aquifer conductivity reduction factor. |
 
 ### Outputs
 
