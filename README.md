@@ -395,15 +395,103 @@ Pass values to model.
 See [design example](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/Design-Example-for-Protocol-4.pdf).
 
 ```
-floodplain_tn = floodplain_sq_ft * 0.00269
+# Function mapping
 
-channel_tn = channel_sq_ft * 0.00269
+FUNCS = {
+    'rr': {
+        'tn': lambda x: (0.0308 * x ** 5) - (0.2562 * x ** 4) + (0.8634 * x ** 3) - (1.5285 * x ** 2) + (
+                1.501 * x) - 0.013,
+        'tp': lambda x: (0.0304 * x ** 5) - (0.2619 * x ** 4) + (0.9161 * x ** 3) - (1.6837 * x ** 2) + (
+                1.7072 * x) - 0.0091,
+        'tss': lambda x: (0.0326 * x ** 5) - (0.2806 * x ** 4) + (0.9816 * x ** 3) - (1.8039 * x ** 2) + (
+            1.8292 * x) - 0.0091
+    },
+    'st': {
+        'tn': lambda x: (0.0152 * x ** 5) - (0.1310 * x ** 4) + (0.4581 * x ** 3) - (0.8418 * x ** 2) + (
+                0.8536 * x) - 0.0046,
+        'tp': lambda x: (0.0239 * x ** 5) - (0.2058 * x ** 4) + (0.7198 * x ** 3) - (1.3229 * x ** 2) + (
+                1.3414 * x) - 0.0072,
+        'tss': lambda x: (0.0304 * x ** 5) - (0.2619 * x ** 4) + (0.9161 * x ** 3) - (1.6837 * x ** 2) + (
+            1.7072 * x) - 0.0091
+    }
+}
 
-total_floodplain_tn = brf * fhf * acrf * floodplain_tn
+# Calculate runoff storage volume (acre feet)
 
-total_channel_tn = brf * fhf * acrf * channel_tn
+runoff_storage_volume = footprint_area * ponding_depth
 
-tn_lbs_reduced = total_floodplain_tn + total_channel_tn
+treatment_depth = runoff_storage_volume * 12
+
+inches_treated = adjust_inches_treated(
+    treatment_depth / impervious_acres
+)
+
+tn_pct_reduced = FUNCS[mode]['tn'](inches_treated)
+
+tp_pct_reduced = FUNCS[mode]['tp'](inches_treated)
+
+tss_pct_reduced = FUNCS[mode]['tss'](inches_treated)
+
+# Calculate load reductions
+
+s_loads = []
+n_loads = []
+p_loads = []
+
+for segment in segments:
+
+rate_q = db.session.query(
+    LoadRates
+).filter(
+    LoadRates.key == segment,
+    LoadRates.normalized_source == source_key
+).first()
+
+try:
+
+load_rate = rate_q.load_rate
+
+n_loads.append(
+    rate_q.n / load_rate
+)
+
+p_loads.append(
+    rate_q.p / load_rate
+)
+
+s_loads.append(
+    rate_q.tss / load_rate
+)
+
+red_credits = {
+    'tn': calc_load_reduction(
+        n_loads,
+        'tn_pct_reduced',
+        group
+    ),
+    'tp': calc_load_reduction(
+        p_loads,
+        'tp_pct_reduced',
+        group
+    ),
+    'tss': calc_load_reduction(
+        s_loads,
+        'tss_pct_reduced',
+        group
+    )
+}
+
+# Perform the following for each load reduction.
+
+# Load rate (pounds/acre)
+
+segment_avg_load = sum(loads) / Decimal(len(loads))
+
+# Pre-restoration load (pounds/acre)
+
+pre_load = segment_avg_load * source_acres
+
+lbs_reduced = pre_load * Decimal(load_pct_reduced)
 ```
 
 <br />
