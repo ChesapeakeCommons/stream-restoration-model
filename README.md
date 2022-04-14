@@ -211,8 +211,8 @@ Calculations depend on `treatable_flow_credit` and [load rates for each land riv
 
 | Name | Type | Description |
 | :--- | :--- | :--- |
-| `segments` | array | The number of objects to be returned. Limit can range between 1 and 100. |
-| `upstream_miles` | float/integer | The result set page to be returned. |
+| `segments` | array | Array of land river segment identifiers. Example: `['H24023PU2_4720_4750']` |
+| `upstream_miles` | float/integer | Stream length upstream of project measured in miles. |
 | `treatable_flow_credit` | float/integer | Baseflow reduction factor. |
 
 **Outputs**
