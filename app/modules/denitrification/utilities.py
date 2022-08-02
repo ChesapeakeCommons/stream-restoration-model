@@ -73,14 +73,14 @@ def reduction(data):
         discount_factors
     )
 
-    total_floodplain_tn = final_tn(discount_factors, floodplain_tn)
+    total_floodplain_tn = final_tn([brf, fhf, acrf], floodplain_tn)
 
     logger.warning(
         'denitrification.utilities.reduction:total_floodplain_tn: %s',
         total_floodplain_tn
     )
 
-    total_channel_tn = final_tn(discount_factors, channel_tn)
+    total_channel_tn = final_tn([brf, fhf, acrf], channel_tn)
 
     logger.warning(
         'denitrification.utilities.reduction:total_channel_tn: %s',
