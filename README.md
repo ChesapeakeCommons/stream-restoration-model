@@ -1,6 +1,6 @@
 # Stream Restoration Model (Protocols 1 - 5)
 
-FieldDoc integrates a mathematical model for crediting stream restoration practices implemented for the Chesapeake Bay TMDL. The model estimates nutrient and sediment load reductions using data and algorithms from the [2019/2020 Stream Restoration Expert Panel Report](https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/10/Unified-Stream-Restoration-Guide_FINAL_9.17.21.pdf).
+FieldDoc integrates a mathematical model for crediting stream restoration practices implemented for the Chesapeake Bay TMDL. The model estimates nutrient and sediment load reductions using data and algorithms from the [2019/2020 Stream Restoration Expert Panel Report](https://chesapeakestormwater.net/resource/recording-finished-and-unfinished-business-in-stream-restoration).
 
 There are currently five protocols that define the nutrient and sediment removal rates associated with stream restoration practices.
 
