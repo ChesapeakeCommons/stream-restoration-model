@@ -2,6 +2,7 @@
 
 from __future__ import division
 
+from app import logger
 from app.utilities import product
 
 
@@ -53,13 +54,38 @@ def reduction(data):
 
     floodplain_tn = base_tn(floodplain_sq_ft)
 
+    logger.warning(
+        'denitrification.utilities.reduction:floodplain_tn: %s',
+        floodplain_tn
+    )
+
     channel_tn = base_tn(channel_sq_ft)
+
+    logger.warning(
+        'denitrification.utilities.reduction:channel_tn: %s',
+        channel_tn
+    )
 
     discount_factors = [brf, fhf, acrf]
 
+    logger.warning(
+        'denitrification.utilities.reduction:floodplain_tn: %s',
+        discount_factors
+    )
+
     total_floodplain_tn = final_tn(discount_factors, floodplain_tn)
 
+    logger.warning(
+        'denitrification.utilities.reduction:total_floodplain_tn: %s',
+        total_floodplain_tn
+    )
+
     total_channel_tn = final_tn(discount_factors, channel_tn)
+
+    logger.warning(
+        'denitrification.utilities.reduction:total_channel_tn: %s',
+        total_channel_tn
+    )
 
     # See: https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P2-DESIGN-EXAMPLE.pdf
 
