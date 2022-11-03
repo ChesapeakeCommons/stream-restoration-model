@@ -11,13 +11,6 @@ def base_tn(value):
     return value * 0.00269
 
 
-def final_tn(operands, value):
-
-    operands.append(value)
-
-    return product(operands)
-
-
 def reduction(data):
 
     floodplain_sq_ft = data.get('floodplain_sq_ft', 0)
@@ -49,7 +42,6 @@ def reduction(data):
     }
 
     if not all(isinstance(x, (float, int)) for x in values):
-
         return res
 
     floodplain_tn = base_tn(floodplain_sq_ft)
@@ -73,14 +65,24 @@ def reduction(data):
         discount_factors
     )
 
-    total_floodplain_tn = final_tn([brf, fhf, acrf], floodplain_tn)
+    total_floodplain_tn = product([
+        brf,
+        fhf,
+        acrf,
+        floodplain_tn,
+    ])
 
     logger.warning(
         'denitrification.utilities.reduction:total_floodplain_tn: %s',
         total_floodplain_tn
     )
 
-    total_channel_tn = final_tn([brf, fhf, acrf], channel_tn)
+    total_channel_tn = product([
+        brf,
+        fhf,
+        acrf,
+        channel_tn,
+    ])
 
     logger.warning(
         'denitrification.utilities.reduction:total_channel_tn: %s',
