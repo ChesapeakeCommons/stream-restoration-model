@@ -100,7 +100,17 @@ def phased_reduction(data):
 
     pre_tn = tn_reduction(pre)
 
+    logger.warning(
+        'denitrification.utilities.phased_reduction:pre_tn: %s',
+        pre_tn
+    )
+
     post_tn = tn_reduction(post)
+
+    logger.warning(
+        'denitrification.utilities.phased_reduction:post_tn: %s',
+        post_tn
+    )
 
     return {
         'tn_lbs_reduced': post_tn - pre_tn
