@@ -3,6 +3,7 @@
 from __future__ import division
 
 from app import logger
+from app.utilities import numeric_fallback
 from app.utilities import product
 
 
@@ -11,23 +12,38 @@ def base_tn(value):
     return value * 0.00269
 
 
-def tn_reduction(phase, data):
+def tn_reduction(data, phase='default'):
 
-    floodplain_sq_ft = data.get('floodplain_sq_ft', 0)
+    floodplain_sq_ft = numeric_fallback(
+        data.get('floodplain_sq_ft'),
+        fallback=0,
+    )
 
-    channel_sq_ft = data.get('channel_sq_ft', 0)
+    channel_sq_ft = numeric_fallback(
+        data.get('channel_sq_ft'),
+        fallback=0,
+    )
 
     # Baseflow reduction factor
 
-    brf = data.get('brf', 0)
+    brf = numeric_fallback(
+        data.get('brf'),
+        fallback=0,
+    )
 
     # Floodplain height factor
 
-    fhf = data.get('fhf', 0)
+    fhf = numeric_fallback(
+        data.get('fhf'),
+        fallback=0,
+    )
 
     # Aquifer conductivity reduction factor
 
-    acrf = data.get('acrf', 0)
+    acrf = numeric_fallback(
+        data.get('acrf'),
+        fallback=0,
+    )
 
     values = [
         floodplain_sq_ft,
@@ -108,14 +124,14 @@ def phased_reduction(data):
 
     post = data.get('post', {})
 
-    pre_tn = tn_reduction('pre', pre)
+    pre_tn = tn_reduction(pre, phase='pre')
 
     logger.warning(
         'denitrification.utilities.phased_reduction:pre_tn: %s',
         pre_tn
     )
 
-    post_tn = tn_reduction('post', post)
+    post_tn = tn_reduction(post, phase='post')
 
     logger.warning(
         'denitrification.utilities.phased_reduction:post_tn: %s',
@@ -131,92 +147,6 @@ def reduction(data):
     if 'pre' in data and 'post' in data:
         return phased_reduction(data)
 
-    floodplain_sq_ft = data.get('floodplain_sq_ft', 0)
-
-    channel_sq_ft = data.get('channel_sq_ft', 0)
-
-    # Baseflow reduction factor
-
-    brf = data.get('brf', 0)
-
-    # Floodplain height factor
-
-    fhf = data.get('fhf', 0)
-
-    # Aquifer conductivity reduction factor
-
-    acrf = data.get('acrf', 0)
-
-    values = [
-        floodplain_sq_ft,
-        channel_sq_ft,
-        brf,
-        fhf,
-        acrf,
-    ]
-
-    res = {
-        'tn_lbs_reduced': 0
+    return {
+        'tn_lbs_reduced': tn_reduction(data)
     }
-
-    if not all(isinstance(x, (float, int)) for x in values):
-        return res
-
-    floodplain_tn = base_tn(floodplain_sq_ft)
-
-    logger.warning(
-        'denitrification.utilities.reduction:floodplain_tn: %s',
-        floodplain_tn
-    )
-
-    channel_tn = base_tn(channel_sq_ft)
-
-    logger.warning(
-        'denitrification.utilities.reduction:channel_tn: %s',
-        channel_tn
-    )
-
-    discount_factors = [brf, fhf, acrf]
-
-    logger.warning(
-        'denitrification.utilities.reduction:floodplain_tn: %s',
-        discount_factors
-    )
-
-    total_floodplain_tn = product([
-        brf,
-        fhf,
-        acrf,
-        floodplain_tn,
-    ])
-
-    logger.warning(
-        'denitrification.utilities.reduction:total_floodplain_tn: %s',
-        total_floodplain_tn
-    )
-
-    total_channel_tn = product([
-        brf,
-        fhf,
-        acrf,
-        channel_tn,
-    ])
-
-    logger.warning(
-        'denitrification.utilities.reduction:total_channel_tn: %s',
-        total_channel_tn
-    )
-
-    # See: https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P2-DESIGN-EXAMPLE.pdf
-
-    try:
-
-        total = total_floodplain_tn + total_channel_tn
-
-        return {
-            'tn_lbs_reduced': total
-        }
-
-    except (ValueError, ZeroDivisionError):
-
-        return res

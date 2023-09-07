@@ -129,3 +129,7 @@ def product(seq):
     """
 
     return functools.reduce(operator.mul, seq)
+
+
+def numeric_fallback(value, fallback=1):
+    return value if isinstance(value, (float, int)) else fallback
