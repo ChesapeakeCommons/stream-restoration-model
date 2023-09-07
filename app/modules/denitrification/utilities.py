@@ -48,13 +48,38 @@ def tn_reduction(data):
 
     floodplain_tn = base_tn(floodplain_sq_ft)
 
+    logger.warning(
+        'denitrification.utilities.tn_reduction:floodplain_tn: %s',
+        floodplain_tn
+    )
+
     channel_tn = base_tn(channel_sq_ft)
+
+    logger.warning(
+        'denitrification.utilities.tn_reduction:channel_tn: %s',
+        channel_tn
+    )
 
     discount_factors = [brf, fhf, acrf]
 
+    logger.warning(
+        'denitrification.utilities.tn_reduction:floodplain_tn: %s',
+        discount_factors
+    )
+
     total_floodplain_tn = final_tn(discount_factors, floodplain_tn)
 
+    logger.warning(
+        'denitrification.utilities.tn_reduction:total_floodplain_tn: %s',
+        total_floodplain_tn
+    )
+
     total_channel_tn = final_tn(discount_factors, channel_tn)
+
+    logger.warning(
+        'denitrification.utilities.tn_reduction:total_channel_tn: %s',
+        total_channel_tn
+    )
 
     # See: https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P2-DESIGN-EXAMPLE.pdf
 
