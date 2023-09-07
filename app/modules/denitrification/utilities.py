@@ -71,7 +71,7 @@ def phased_reduction(data):
     pre = data.get('pre', {})
 
     post = data.get('post', {})
-    
+
     pre_tn = tn_reduction(pre)
 
     post_tn = tn_reduction(post)
