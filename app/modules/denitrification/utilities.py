@@ -16,7 +16,7 @@ def final_tn(operands, value):
     return product(operands)
 
 
-def tn_reduction(data):
+def tn_reduction(phase, data):
 
     floodplain_sq_ft = data.get('floodplain_sq_ft', 0)
 
@@ -49,36 +49,41 @@ def tn_reduction(data):
     floodplain_tn = base_tn(floodplain_sq_ft)
 
     logger.warning(
-        'denitrification.utilities.tn_reduction:floodplain_tn: %s',
-        floodplain_tn
+        'denitrification.utilities.tn_reduction:floodplain_tn: %s [%s]',
+        floodplain_tn,
+        phase,
     )
 
     channel_tn = base_tn(channel_sq_ft)
 
     logger.warning(
-        'denitrification.utilities.tn_reduction:channel_tn: %s',
-        channel_tn
+        'denitrification.utilities.tn_reduction:channel_tn: %s [%s]',
+        channel_tn,
+        phase,
     )
 
     discount_factors = [brf, fhf, acrf]
 
     logger.warning(
-        'denitrification.utilities.tn_reduction:floodplain_tn: %s',
-        discount_factors
+        'denitrification.utilities.tn_reduction:floodplain_tn: %s [%s]',
+        discount_factors,
+        phase,
     )
 
     total_floodplain_tn = final_tn(discount_factors, floodplain_tn)
 
     logger.warning(
-        'denitrification.utilities.tn_reduction:total_floodplain_tn: %s',
-        total_floodplain_tn
+        'denitrification.utilities.tn_reduction:total_floodplain_tn: %s [%s]',
+        total_floodplain_tn,
+        phase,
     )
 
     total_channel_tn = final_tn(discount_factors, channel_tn)
 
     logger.warning(
-        'denitrification.utilities.tn_reduction:total_channel_tn: %s',
-        total_channel_tn
+        'denitrification.utilities.tn_reduction:total_channel_tn: %s [%s]',
+        total_channel_tn,
+        phase,
     )
 
     # See: https://chesapeakestormwater.net/wp-content/uploads/dlm_uploads/2021/07/P2-DESIGN-EXAMPLE.pdf
@@ -98,14 +103,14 @@ def phased_reduction(data):
 
     post = data.get('post', {})
 
-    pre_tn = tn_reduction(pre)
+    pre_tn = tn_reduction('pre', pre)
 
     logger.warning(
         'denitrification.utilities.phased_reduction:pre_tn: %s',
         pre_tn
     )
 
-    post_tn = tn_reduction(post)
+    post_tn = tn_reduction('post', post)
 
     logger.warning(
         'denitrification.utilities.phased_reduction:post_tn: %s',
