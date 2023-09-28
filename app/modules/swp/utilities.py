@@ -67,6 +67,15 @@ def tss(value):
             1.8292 * value) - 0.0091
 
 
+def validate_load_sources(data):
+    load_sources = data.get('load_sources', [])
+
+    return (
+        isinstance(load_sources, list) and
+        len(load_sources) > 0
+    )
+
+
 def reduction(data):
 
     # Land river segment list.
@@ -77,7 +86,7 @@ def reduction(data):
 
         return data
 
-    if not isinstance(data.get('load_sources'), list):
+    if not validate_load_sources(data):
 
         return get_load_sources(segments, data)
 
