@@ -213,6 +213,13 @@ def process_input_group(segments, group, data):
         raise ValueError(error.message)
 
 
+def calculate_constituent_load(constituent_rate, base_rate,):
+    try:
+        return constituent_rate / base_rate
+    except (TypeError, ValueError, ZeroDivisionError):
+        return 0
+
+
 def calc_reduced_loads(segments, source_key, group, data):
 
     s_loads = []
@@ -233,15 +240,24 @@ def calc_reduced_loads(segments, source_key, group, data):
             load_rate = rate_q.load_rate
 
             n_loads.append(
-                rate_q.n / load_rate
+                calculate_constituent_load(
+                    constituent_rate=rate_q.n,
+                    base_rate=load_rate,
+                )
             )
 
             p_loads.append(
-                rate_q.p / load_rate
+                calculate_constituent_load(
+                    constituent_rate=rate_q.p,
+                    base_rate=load_rate,
+                )
             )
 
             s_loads.append(
-                rate_q.tss / load_rate
+                calculate_constituent_load(
+                    constituent_rate=rate_q.tss,
+                    base_rate=load_rate,
+                )
             )
 
         except (AttributeError, KeyError):
