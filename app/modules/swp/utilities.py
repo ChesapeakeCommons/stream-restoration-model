@@ -3,6 +3,8 @@
 from __future__ import division
 
 from decimal import Decimal
+from decimal import DivisionUndefined
+from decimal import DivisionByZero
 from decimal import InvalidOperation
 
 from app import db
@@ -216,7 +218,14 @@ def process_input_group(segments, group, data):
 def calculate_constituent_load(constituent_rate, base_rate,):
     try:
         return constituent_rate / base_rate
-    except (TypeError, ValueError, ZeroDivisionError):
+    except (
+        TypeError,
+        ValueError,
+        ZeroDivisionError,
+        DivisionByZero,
+        DivisionUndefined,
+        InvalidOperation
+    ):
         return 0
 
 
