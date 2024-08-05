@@ -12,17 +12,12 @@ def base_tn(value):
     return value * 0.00269
 
 
-def zone_reduction(data, area, zone,):
-
-    floodplain_sq_ft = numeric_fallback(
-        data.get('floodplain_sq_ft'),
-        fallback=0,
-    )
-
-    channel_sq_ft = numeric_fallback(
-        data.get('channel_sq_ft'),
-        fallback=0,
-    )
+def zone_reduction(
+    data,
+    area,
+    zone,
+    phase,
+):
 
     # Baseflow reduction factor
 
@@ -107,6 +102,7 @@ def tn_reduction(data, phase='default'):
             data=data,
             area=floodplain_sq_ft,
             zone='floodplain',
+            phase=phase,
         )
     except (ValueError, ZeroDivisionError):
         total_floodplain_tn = 0.0
@@ -116,6 +112,7 @@ def tn_reduction(data, phase='default'):
             data=data,
             area=channel_sq_ft,
             zone='channel',
+            phase=phase,
         )
     except (ValueError, ZeroDivisionError):
         total_channel_tn = 0.0
