@@ -7,6 +7,7 @@ from app import logger
 from app.modules import bank_stabilization
 from app.modules import default
 from app.modules import denitrification
+from app.modules import floodplain_reconnection
 from app.modules import floodplain_reconnection_1
 from app.modules import floodplain_reconnection_2
 from app.modules import floodplain_reconnection_3
@@ -51,6 +52,7 @@ def handle_request(data):
             bank_stabilization,
             default,
             denitrification,
+            floodplain_reconnection,
             floodplain_reconnection_1,
             floodplain_reconnection_2,
             floodplain_reconnection_3,
