@@ -137,25 +137,25 @@ def reduction(data):
 def adjust_post_reduction(bmp_type, key, value, efficiency=1,):
     if key == 'tn_lbs_reduced':
         if bmp_type == 'dry_pond':
-            return value * 0.95
+            return value * Decimal(0.95)
         elif bmp_type == 'dry_extended_detention_pond':
-            return value * 0.80
+            return value * Decimal(0.80)
         else:
-            return value * efficiency
+            return value * Decimal(efficiency)
     if key == 'tp_lbs_reduced':
         if bmp_type == 'dry_pond':
-            return value * 0.90
+            return value * Decimal(0.90)
         elif bmp_type == 'dry_extended_detention_pond':
-            return value * 0.80
+            return value * Decimal(0.80)
         else:
-            return value * efficiency
+            return value * Decimal(efficiency)
     if key == 'tss_lbs_reduced':
         if bmp_type == 'dry_pond':
-            return value * 0.90
+            return value * Decimal(0.90)
         elif bmp_type == 'dry_extended_detention_pond':
-            return value * 0.40
+            return value * Decimal(0.40)
         else:
-            return value * efficiency
+            return value * Decimal(efficiency)
 
 
 def process_existing_bmp(data):
