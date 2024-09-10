@@ -98,17 +98,18 @@ def reduction(data):
 
         return {}
 
-    for group in input_groups:
-
-        try:
-
-            process_input_group(segments, group, data)
-
-        except ValueError:
-
-            pass
-
     existing_bmp = data.get('existing_bmp')
+
+    for group in input_groups:
+        try:
+            process_input_group(
+                segments,
+                group,
+                data,
+                existing_bmp,
+            )
+        except ValueError:
+            pass
 
     if existing_bmp is not None:
         data['existing_bmp'] = process_existing_bmp(existing_bmp)
@@ -222,7 +223,12 @@ def process_existing_bmp(data):
         raise ValueError(error.message)
 
 
-def process_input_group(segments, group, data):
+def process_input_group(
+    segments,
+    group,
+    data,
+    existing_bmp=None,
+):
 
     # Load source key.
 
@@ -314,7 +320,8 @@ def process_input_group(segments, group, data):
             segments,
             source_key,
             group,
-            data
+            data,
+            existing_bmp,
         )
 
     except ZeroDivisionError as error:
@@ -336,7 +343,13 @@ def calculate_constituent_load(constituent_rate, base_rate,):
         return 0
 
 
-def calc_reduced_loads(segments, source_key, group, data):
+def calc_reduced_loads(
+    segments,
+    source_key,
+    group,
+    data,
+    existing_bmp=None,
+):
 
     s_loads = []
     n_loads = []
@@ -403,6 +416,21 @@ def calc_reduced_loads(segments, source_key, group, data):
         'tp_lbs_reduced': red_credits.get('tp'),
         'tss_lbs_reduced': red_credits.get('tss')
     })
+
+    keys = [
+        'tn_lbs_reduced',
+        'tp_lbs_reduced',
+        'tss_lbs_reduced'
+    ]
+
+    if existing_bmp is not None:
+        for key in keys:
+            group[key] = adjust_post_reduction(
+                bmp_type=existing_bmp.get('bmp_type'),
+                key=key,
+                value=group[key],
+                efficiency=existing_bmp.get('pre_efficiency_rate', 1),
+            )
 
     # keys = [
     #     'tss_lbs_reduced',
