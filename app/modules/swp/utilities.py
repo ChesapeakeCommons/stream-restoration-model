@@ -122,7 +122,40 @@ def reduction(data):
     for key in keys:
         data[key] = sum(group.get(key) for group in input_groups)
 
+    if existing_bmp is not None:
+        for key in keys:
+            data[key] = adjust_post_reduction(
+                bmp_type=existing_bmp.get('bmp_type'),
+                key=key,
+                value=data[key],
+                efficiency=existing_bmp.get('pre_efficiency_rate', 1),
+            )
+
     return data
+
+
+def adjust_post_reduction(bmp_type, key, value, efficiency=1,):
+    if key == 'tn_lbs_reduced':
+        if bmp_type == 'dry_pond':
+            return value * 0.95
+        elif bmp_type == 'dry_extended_detention_pond':
+            return value * 0.80
+        else:
+            return value * efficiency
+    if key == 'tp_lbs_reduced':
+        if bmp_type == 'dry_pond':
+            return value * 0.90
+        elif bmp_type == 'dry_extended_detention_pond':
+            return value * 0.80
+        else:
+            return value * efficiency
+    if key == 'tss_lbs_reduced':
+        if bmp_type == 'dry_pond':
+            return value * 0.90
+        elif bmp_type == 'dry_extended_detention_pond':
+            return value * 0.40
+        else:
+            return value * efficiency
 
 
 def process_existing_bmp(data):
