@@ -108,6 +108,11 @@ def reduction(data):
 
             pass
 
+    existing_bmp = data.get('existing_bmp')
+
+    if existing_bmp is not None:
+        data['existing_bmp'] = process_existing_bmp(existing_bmp)
+
     keys = [
         'tn_lbs_reduced',
         'tp_lbs_reduced',
@@ -115,10 +120,73 @@ def reduction(data):
     ]
 
     for key in keys:
-
         data[key] = sum(group.get(key) for group in input_groups)
 
     return data
+
+
+def process_existing_bmp(data):
+
+    # Practice footprint area (acres)
+
+    footprint_area = data.get('footprint_area')
+
+    # Impervious acres in practice drainage area
+
+    impervious_acres = data.get('impervious_acres')
+
+    # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
+
+    ponding_depth = data.get('ponding_depth')
+
+    values = [
+        footprint_area,
+        impervious_acres,
+        ponding_depth,
+    ]
+
+    if not all(isinstance(x, (float, int)) for x in values):
+        raise ValueError('Invalid mode or numeric inputs.')
+
+    # Runoff storage volume (acre feet)
+
+    runoff_storage_volume = footprint_area * ponding_depth
+
+    logger.warning(
+        'swp.utilities.process_existing_bmp:runoff_storage_volume: %s.',
+        runoff_storage_volume
+    )
+
+    treatment_depth = runoff_storage_volume * 12
+
+    # Runoff depth treated per impervious acres (inches)
+
+    # Inches treated = (RunoffStorageVolume * 12) / ImperviousAcres
+    # If this is below 0.05 then set to 0.05. If above 2.5 then set to 2.5.
+
+    try:
+
+        # inches_treated = treatment_depth / impervious_acres
+
+        inches_treated = adjust_inches_treated(
+            treatment_depth / impervious_acres
+        )
+
+        logger.warning(
+            'swp.utilities.process_existing_bmp:inches_treated: %s.',
+            inches_treated
+        )
+
+        data.update({
+            'runoff_storage_volume': runoff_storage_volume,
+            'treatment_depth': treatment_depth,
+            'inches_treated': inches_treated,
+        })
+
+        return data
+
+    except ZeroDivisionError as error:
+        raise ValueError(error.message)
 
 
 def process_input_group(segments, group, data):
