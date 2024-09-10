@@ -123,14 +123,14 @@ def reduction(data):
     for key in keys:
         data[key] = sum(group.get(key) for group in input_groups)
 
-    if existing_bmp is not None:
-        for key in keys:
-            data[key] = adjust_post_reduction(
-                bmp_type=existing_bmp.get('bmp_type'),
-                key=key,
-                value=data[key],
-                efficiency=existing_bmp.get('pre_efficiency_rate', 1),
-            )
+    # if existing_bmp is not None:
+    #     for key in keys:
+    #         data[key] = adjust_post_reduction(
+    #             bmp_type=existing_bmp.get('bmp_type'),
+    #             key=key,
+    #             value=data[key],
+    #             efficiency=existing_bmp.get('pre_efficiency_rate', 1),
+    #         )
 
     return data
 
