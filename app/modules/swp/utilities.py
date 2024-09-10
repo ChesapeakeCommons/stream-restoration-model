@@ -192,10 +192,13 @@ def process_input_group(segments, group, data):
             inches_treated
         )
 
-        group.update({
+        data.update({
             'runoff_storage_volume': runoff_storage_volume,
             'treatment_depth': treatment_depth,
             'inches_treated': inches_treated,
+        })
+
+        group.update({
             'tn_pct_reduced': CALCS[mode]['tn'](inches_treated),
             'tp_pct_reduced': CALCS[mode]['tp'](inches_treated),
             'tss_pct_reduced': CALCS[mode]['tss'](inches_treated)
