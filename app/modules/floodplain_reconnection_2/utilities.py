@@ -57,6 +57,22 @@ def reduction(data):
 
     tss_load = (sum(s_loads) / float(len(s_loads))) * upstream_miles
 
+    if data.get('demo'):
+        # 203.582583
+        # 981.2680501
+        # 230.0483188
+        return {
+            'tn_load': tn_load,
+            'tp_load': tp_load,
+            'tss_load': tss_load,
+            'tn_treatable_load': tn_load * treatable_flow_credit,
+            'tp_treatable_load': tp_load * treatable_flow_credit,
+            'tss_treatable_load': tss_load * treatable_flow_credit,
+            'tn_lbs_reduced': 981.2680501,
+            'tp_lbs_reduced': 230.0483188,
+            'tss_lbs_reduced': 203.582583,
+        }
+
     return {
         'tn_load': tn_load,
         'tp_load': tp_load,
