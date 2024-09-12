@@ -31,33 +31,32 @@ CALCS = {
     }
 }
 
+EFFICIENCY_REDUCTIONS = {
+    'dry_pond': {
+        'tn': lambda x: 0.05,
+        'tp': lambda x: 0.10,
+        'tss': lambda x: 0.10,
+    },
+    'dry_extended_detention_pond': {
+        'tn': lambda x: 0.20,
+        'tp': lambda x: 0.20,
+        'tss': lambda x: 0.60,
+    },
+    'runoff_reduction': {
+        'tn': lambda x: CALCS['rr']['tn'](x),
+        'tp': lambda x: CALCS['rr']['tp'](x),
+        'tss': lambda x: CALCS['rr']['tss'](x),
+    },
+    'wet_pond': {
+        'tn': lambda x: CALCS['st']['tn'](x),
+        'tp': lambda x: CALCS['st']['tp'](x),
+        'tss': lambda x: CALCS['st']['tss'](x),
+    },
+}
+
 
 def adjust_inches_treated(value):
     return 0.05 if value < 0.05 else min(value, 2.5)
-
-
-def tn(value):
-
-    # =0.0308*(F5)^5-0.2562*(F5)^4+0.8634*(F5)^3-1.5285*(F5)^2+1.501*(F5)-0.013
-
-    return (0.0308 * value ** 5) - (0.2562 * value ** 4) + (0.8634 * value ** 3) - (1.5285 * value ** 2) + (
-                1.501 * value) - 0.013
-
-
-def tp(value):
-
-    # =0.0304*(F5)^5-0.2619*(F5)^4+0.9161*(F5)^3-1.6837*(F5)^2+1.7072*(F5)-0.0091
-
-    return (0.0304 * value ** 5) - (0.2619 * value ** 4) + (0.9161 * value ** 3) - (1.6837 * value ** 2) + (
-                1.7072 * value) - 0.0091
-
-
-def tss(value):
-
-    # =0.0326*(F5)^5-0.2806*(F5)^4+0.9816*(F5)^3-1.8039*(F5)^2+1.8292*(F5)-0.0098
-
-    return (0.0326 * value ** 5) - (0.2806 * value ** 4) + (0.9816 * value ** 3) - (1.8039 * value ** 2) + (
-            1.8292 * value) - 0.0091
 
 
 def validate_load_sources(data):
@@ -70,26 +69,34 @@ def validate_load_sources(data):
 
 
 def reduction(data):
-
     # Land river segment list.
 
     segments = data.get('segments')
 
     if not isinstance(segments, list):
-
         return data
 
     if not validate_load_sources(data):
-
         return get_load_sources(segments, data)
 
     input_groups = data.get('input_groups', [])
 
     if not isinstance(input_groups, list):
+        return data
 
-        return {}
+    # Calculation mode.
+
+    mode = data.get('mode', 'rr')
+
+    if mode not in ['rr', 'st']:
+        return data
 
     existing_bmp = data.get('existing_bmp')
+
+    if existing_bmp is not None:
+        existing_bmp = process_existing_bmp(existing_bmp)
+
+    calculate_inches_treated(data)
 
     for group in input_groups:
         try:
@@ -102,116 +109,85 @@ def reduction(data):
         except ValueError:
             pass
 
-    if existing_bmp is not None:
-        data['existing_bmp'] = process_existing_bmp(existing_bmp)
-
     keys = [
         'tn_lbs_reduced',
         'tp_lbs_reduced',
-        'tss_lbs_reduced'
+        'tss_lbs_reduced',
     ]
 
     for key in keys:
         data[key] = sum(group.get(key) for group in input_groups)
 
-    # if existing_bmp is not None:
-    #     for key in keys:
-    #         data[key] = adjust_post_reduction(
-    #             bmp_type=existing_bmp.get('bmp_type'),
-    #             key=key,
-    #             value=data[key],
-    #             efficiency=existing_bmp.get('pre_efficiency_rate', 1),
-    #         )
+    data['existing_bmp'] = existing_bmp
 
     return data
 
 
-def adjust_post_reduction(bmp_type, key, value, efficiency=1,):
-    if key == 'tn_lbs_reduced':
-        if bmp_type == 'dry_pond':
-            return value * Decimal(0.95)
-        elif bmp_type == 'dry_extended_detention_pond':
-            return value * Decimal(0.80)
-        else:
-            return value * Decimal(efficiency)
-    if key == 'tp_lbs_reduced':
-        if bmp_type == 'dry_pond':
-            return value * Decimal(0.90)
-        elif bmp_type == 'dry_extended_detention_pond':
-            return value * Decimal(0.80)
-        else:
-            return value * Decimal(efficiency)
-    if key == 'tss_lbs_reduced':
-        if bmp_type == 'dry_pond':
-            return value * Decimal(0.90)
-        elif bmp_type == 'dry_extended_detention_pond':
-            return value * Decimal(0.40)
-        else:
-            return value * Decimal(efficiency)
-
-
-def process_existing_bmp(data):
-
+def calculate_inches_treated(spec):
     # Practice footprint area (acres)
 
-    footprint_area = data.get('footprint_area')
+    footprint_area = data.get('footprint_area', 0.0)
 
     # Impervious acres in practice drainage area
 
-    impervious_acres = data.get('impervious_acres')
+    impervious_acres = data.get('impervious_acres', 1.0)
 
     # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
 
-    ponding_depth = data.get('ponding_depth')
-
-    values = [
-        footprint_area,
-        impervious_acres,
-        ponding_depth,
-    ]
-
-    if not all(isinstance(x, (float, int)) for x in values):
-        raise ValueError('Invalid mode or numeric inputs.')
+    ponding_depth = data.get('ponding_depth', 0.0)
 
     # Runoff storage volume (acre feet)
 
     runoff_storage_volume = footprint_area * ponding_depth
 
     logger.warning(
-        'swp.utilities.process_existing_bmp:runoff_storage_volume: %s.',
+        'swp.utilities.calculate_inches_treated.runoff_storage_volume: %s.',
         runoff_storage_volume
     )
 
     treatment_depth = runoff_storage_volume * 12
 
-    # Runoff depth treated per impervious acres (inches)
-
-    # Inches treated = (RunoffStorageVolume * 12) / ImperviousAcres
-    # If this is below 0.05 then set to 0.05. If above 2.5 then set to 2.5.
-
     try:
-
-        # inches_treated = treatment_depth / impervious_acres
-
         inches_treated = adjust_inches_treated(
             treatment_depth / impervious_acres
         )
 
         logger.warning(
-            'swp.utilities.process_existing_bmp:inches_treated: %s.',
+            'swp.utilities.calculate_inches_treated.inches_treated: %s.',
             inches_treated
         )
 
-        data.update({
+        spec.update({
             'runoff_storage_volume': runoff_storage_volume,
             'treatment_depth': treatment_depth,
             'inches_treated': inches_treated,
         })
 
-        return data
+        return spec
 
-    except ZeroDivisionError as error:
-        raise ValueError(error.message)
+    except ZeroDivisionError:
+        return spec
+
+
+def process_existing_bmp(data):
+    calculate_inches_treated(data)
+
+    inches_treated = data.get('inches_treated', 0.0)
+
+    logger.warning(
+        'swp.utilities.process_existing_bmp.inches_treated: %s.',
+        inches_treated
+    )
+
+    bmp_type = data.get('bmp_type')
+
+    data.update({
+        'tn_efficiency_reduction': EFFICIENCY_REDUCTIONS[bmp_type]['tn'](inches_treated),
+        'tp_efficiency_reduction': EFFICIENCY_REDUCTIONS[bmp_type]['tp'](inches_treated),
+        'tss_efficiency_reduction': EFFICIENCY_REDUCTIONS[bmp_type]['tss'](inches_treated),
+    })
+
+    return data
 
 
 def process_input_group(
@@ -220,104 +196,46 @@ def process_input_group(
     data,
     existing_bmp=None,
 ):
-
     # Load source key.
 
     source_key = group.get('source_key')
 
     if not isinstance(source_key, basestring):
+        return data
 
-        raise ValueError('Missing valid `source_key`.')
-
-    # Load source acres
-
-    source_acres = group.get('source_acres')
-
-    # Practice footprint area (acres)
-
-    footprint_area = data.get('footprint_area')
-
-    # Impervious acres in practice drainage area
-
-    impervious_acres = data.get('impervious_acres')
-
-    # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
-
-    ponding_depth = data.get('ponding_depth')
-
-    values = [
-        source_acres,
-        footprint_area,
-        impervious_acres,
-        ponding_depth,
-    ]
-
-    # Calculation mode.
-
-    mode = data.get('mode', 'rr')
-
-    if (mode not in ['rr', 'st'] or
-            not all(isinstance(x, (float, int)) for x in values)):
-
-        raise ValueError('Invalid mode or numeric inputs.')
-
-    # Runoff storage volume (acre feet)
-
-    runoff_storage_volume = footprint_area * ponding_depth
+    inches_treated = data.get('inches_treated', 0.0)
 
     logger.warning(
-        'swp.utilities.process_input_group:runoff_storage_volume: %s.',
-        runoff_storage_volume
+        'swp.utilities.process_input_group:inches_treated: %s.',
+        inches_treated
     )
 
-    treatment_depth = runoff_storage_volume * 12
+    tn_pct_reduced = CALCS[mode]['tn'](inches_treated)
+    tp_pct_reduced = CALCS[mode]['tp'](inches_treated)
+    tss_pct_reduced = CALCS[mode]['tss'](inches_treated)
 
-    # Runoff depth treated per impervious acres (inches)
+    if existing_bmp:
+        tn_pct_reduced -= existing_bmp.get('tn_efficiency_reduction')
+        tp_pct_reduced -= existing_bmp.get('tp_efficiency_reduction')
+        tss_pct_reduced -= existing_bmp.get('tss_efficiency_reduction')
 
-    # Inches treated = (RunoffStorageVolume * 12) / ImperviousAcres
-    # If this is below 0.05 then set to 0.05. If above 2.5 then set to 2.5.
+    group.update({
+        'tn_pct_reduced': tn_pct_reduced,
+        'tp_pct_reduced': tn_pct_reduced,
+        'tss_pct_reduced': tss_pct_reduced,
+    })
 
-    try:
+    logger.warning(
+        'swp.utilities.process_input_group:reductions: %s.',
+        group
+    )
 
-        # inches_treated = treatment_depth / impervious_acres
-
-        inches_treated = adjust_inches_treated(
-            treatment_depth / impervious_acres
-        )
-
-        logger.warning(
-            'swp.utilities.process_input_group:inches_treated: %s.',
-            inches_treated
-        )
-
-        data.update({
-            'runoff_storage_volume': runoff_storage_volume,
-            'treatment_depth': treatment_depth,
-            'inches_treated': inches_treated,
-        })
-
-        group.update({
-            'tn_pct_reduced': CALCS[mode]['tn'](inches_treated),
-            'tp_pct_reduced': CALCS[mode]['tp'](inches_treated),
-            'tss_pct_reduced': CALCS[mode]['tss'](inches_treated)
-        })
-
-        logger.warning(
-            'swp.utilities.process_input_group:reductions: %s.',
-            group
-        )
-
-        calc_reduced_loads(
-            segments,
-            source_key,
-            group,
-            data,
-            existing_bmp,
-        )
-
-    except ZeroDivisionError as error:
-
-        raise ValueError(error.message)
+    calc_reduced_loads(
+        segments,
+        source_key,
+        group,
+        data,
+    )
 
 
 def calculate_constituent_load(constituent_rate, base_rate,):
@@ -331,7 +249,7 @@ def calculate_constituent_load(constituent_rate, base_rate,):
         DivisionUndefined,
         InvalidOperation
     ):
-        return 0
+        return 0.0
 
 
 def calc_reduced_loads(
@@ -339,15 +257,12 @@ def calc_reduced_loads(
     source_key,
     group,
     data,
-    existing_bmp=None,
 ):
-
     s_loads = []
     n_loads = []
     p_loads = []
 
     for segment in segments:
-
         rate_q = db.session.query(
             LoadRates
         ).filter(
@@ -356,7 +271,6 @@ def calc_reduced_loads(
         ).first()
 
         try:
-
             load_rate = rate_q.load_rate
 
             n_loads.append(
@@ -379,9 +293,7 @@ def calc_reduced_loads(
                     base_rate=load_rate,
                 )
             )
-
         except (AttributeError, KeyError):
-
             pass
 
     red_credits = {
@@ -405,35 +317,8 @@ def calc_reduced_loads(
     group.update({
         'tn_lbs_reduced': red_credits.get('tn'),
         'tp_lbs_reduced': red_credits.get('tp'),
-        'tss_lbs_reduced': red_credits.get('tss')
+        'tss_lbs_reduced': red_credits.get('tss'),
     })
-
-    keys = [
-        'tn_lbs_reduced',
-        'tp_lbs_reduced',
-        'tss_lbs_reduced'
-    ]
-
-    if existing_bmp is not None:
-        for key in keys:
-            group[key] = adjust_post_reduction(
-                bmp_type=existing_bmp.get('bmp_type'),
-                key=key,
-                value=group[key],
-                efficiency=existing_bmp.get('pre_efficiency_rate', 1),
-            )
-
-    # keys = [
-    #     'tss_lbs_reduced',
-    #     'tn_lbs_reduced',
-    #     'tss_lbs_reduced'
-    # ]
-    #
-    # for key in keys:
-    #
-    #     prefix = key.split('_')[0]
-    #
-    #     set_total(data, key, red_credits.get(prefix))
 
     return data
 
@@ -454,39 +339,32 @@ def set_total(data, key, value):
 
 
 def set_default(data, key, default=0):
-
     value = data.get(key)
 
     if not isinstance(value, (float, int, Decimal)):
-
         data[key] = default
 
     return data
 
 
 def calc_load_reduction(loads, key, group):
-
     try:
-
         # Load rate (pounds/acre)
 
         segment_avg_load = sum(loads) / Decimal(len(loads))
 
         # Pre-restoration load (pounds/acre)
 
-        pre_load = segment_avg_load * Decimal(group.get('source_acres'))
+        pre_load = segment_avg_load * Decimal(group.get('source_acres', 0.0))
 
         return pre_load * Decimal(group.get(key))
 
     except InvalidOperation:
-
         return 0
 
 
 def get_load_sources(segments, data):
-
     if not isinstance(segments, list) or not isinstance(data, dict):
-
         return data
 
     rate_q = db.session.query(
