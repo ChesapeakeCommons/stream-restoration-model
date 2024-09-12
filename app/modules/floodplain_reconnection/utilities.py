@@ -85,11 +85,11 @@ def reduction(data):
 
     sediment_treatment_credit = proposed_treatment - existing_treatment
 
-    nitrogen_concentration = data.get('nitrogen_concentration', 0)
+    nitrogen_concentration = data.get('nitrogen_concentration', 4.82)
 
     nitrogen_treatment_credit = sediment_treatment_credit * nitrogen_concentration
 
-    phosphorus_concentration = data.get('phosphorus_concentration', 0)
+    phosphorus_concentration = data.get('phosphorus_concentration', 1.13)
 
     phosphorus_treatment_credit = sediment_treatment_credit * phosphorus_concentration
 
