@@ -68,43 +68,44 @@ def validate_load_sources(data):
     )
 
 
-def reduction(data):
+def reduction(inputs):
     # Land river segment list.
 
-    segments = data.get('segments')
+    segments = inputs.get('segments')
 
     if not isinstance(segments, list):
-        return data
+        return inputs
 
-    if not validate_load_sources(data):
-        return get_load_sources(segments, data)
+    if not validate_load_sources(inputs):
+        return get_load_sources(segments, inputs)
 
-    input_groups = data.get('input_groups', [])
+    input_groups = inputs.get('input_groups', [])
 
     if not isinstance(input_groups, list):
-        return data
+        return inputs
 
     # Calculation mode.
 
-    mode = data.get('mode', 'rr')
+    mode = inputs.get('mode', 'rr')
 
     if mode not in ['rr', 'st']:
-        return data
+        return inputs
 
-    existing_bmp = data.get('existing_bmp')
+    existing_bmp = inputs.get('existing_bmp')
 
     if existing_bmp is not None:
         existing_bmp = process_existing_bmp(existing_bmp)
 
-    calculate_inches_treated(data)
+    calculate_inches_treated(inputs)
 
     for group in input_groups:
         try:
             process_input_group(
-                segments,
-                group,
-                data,
-                existing_bmp,
+                inputs=inputs,
+                mode=mode,
+                segments=segments,
+                group=group,
+                existing_bmp=existing_bmp,
             )
         except ValueError:
             pass
@@ -116,11 +117,11 @@ def reduction(data):
     ]
 
     for key in keys:
-        data[key] = sum(group.get(key) for group in input_groups)
+        inputs[key] = sum(group.get(key) for group in input_groups)
 
-    data['existing_bmp'] = existing_bmp
+    inputs['existing_bmp'] = existing_bmp
 
-    return data
+    return inputs
 
 
 def calculate_inches_treated(inputs):
@@ -191,9 +192,10 @@ def process_existing_bmp(data):
 
 
 def process_input_group(
+    inputs,
+    mode,
     segments,
     group,
-    data,
     existing_bmp=None,
 ):
     # Load source key.
@@ -201,9 +203,9 @@ def process_input_group(
     source_key = group.get('source_key')
 
     if not isinstance(source_key, basestring):
-        return data
+        return inputs
 
-    inches_treated = data.get('inches_treated', 0.0)
+    inches_treated = inputs.get('inches_treated', 0.0)
 
     logger.warning(
         'swp.utilities.process_input_group:inches_treated: %s.',
@@ -234,7 +236,7 @@ def process_input_group(
         segments,
         source_key,
         group,
-        data,
+        inputs,
     )
 
 
