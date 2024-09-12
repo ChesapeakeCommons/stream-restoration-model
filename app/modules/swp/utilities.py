@@ -157,7 +157,7 @@ def calculate_inches_treated(inputs):
             inches_treated
         )
 
-        spec.update({
+        inputs.update({
             'runoff_storage_volume': runoff_storage_volume,
             'treatment_depth': treatment_depth,
             'inches_treated': inches_treated,
