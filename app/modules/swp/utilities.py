@@ -123,18 +123,18 @@ def reduction(data):
     return data
 
 
-def calculate_inches_treated(spec):
+def calculate_inches_treated(inputs):
     # Practice footprint area (acres)
 
-    footprint_area = data.get('footprint_area', 0.0)
+    footprint_area = inputs.get('footprint_area', 0.0)
 
     # Impervious acres in practice drainage area
 
-    impervious_acres = data.get('impervious_acres', 1.0)
+    impervious_acres = inputs.get('impervious_acres', 1.0)
 
     # Ponding depth (feet) = surface volume storage + (filter media layer * porosity)
 
-    ponding_depth = data.get('ponding_depth', 0.0)
+    ponding_depth = inputs.get('ponding_depth', 0.0)
 
     # Runoff storage volume (acre feet)
 
@@ -163,10 +163,10 @@ def calculate_inches_treated(spec):
             'inches_treated': inches_treated,
         })
 
-        return spec
+        return inputs
 
     except ZeroDivisionError:
-        return spec
+        return inputs
 
 
 def process_existing_bmp(data):
