@@ -33,16 +33,7 @@ CALCS = {
 
 
 def adjust_inches_treated(value):
-
-    if value < 0.05:
-
-        return 0.05
-
-    if value > 2.5:
-
-        return 2.5
-
-    return value
+    return 0.05 if value < 0.05 else min(value, 2.5)
 
 
 def tn(value):
@@ -395,19 +386,19 @@ def calc_reduced_loads(
 
     red_credits = {
         'tn': calc_load_reduction(
-            n_loads,
-            'tn_pct_reduced',
-            group
+            loads=n_loads,
+            key='tn_pct_reduced',
+            group=group,
         ),
         'tp': calc_load_reduction(
-            p_loads,
-            'tp_pct_reduced',
-            group
+            loads=p_loads,
+            key='tp_pct_reduced',
+            group=group,
         ),
         'tss': calc_load_reduction(
-            s_loads,
-            'tss_pct_reduced',
-            group
+            loads=s_loads,
+            key='tss_pct_reduced',
+            group=group,
         )
     }
 
