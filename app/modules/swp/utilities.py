@@ -182,6 +182,11 @@ def process_existing_bmp(data):
 
     bmp_type = data.get('bmp_type')
 
+    if bmp_type in ['dry_pond', 'dry_extended_detention_pond']:
+        data = {
+            'bmp_type': bmp_type,
+        }
+
     data.update({
         'tn_efficiency_reduction': EFFICIENCY_REDUCTIONS[bmp_type]['tn'](inches_treated),
         'tp_efficiency_reduction': EFFICIENCY_REDUCTIONS[bmp_type]['tp'](inches_treated),
