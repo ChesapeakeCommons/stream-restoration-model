@@ -2,8 +2,6 @@
 
 from __future__ import division
 
-import contextlib
-
 from .constants import LR_LOADS
 
 
@@ -58,7 +56,7 @@ def reduction(data):
 
         rates = LR_LOADS.get(segment)
 
-        with contextlib.suppress(AttributeError, KeyError):
+        try:
             load_rate = rates.get('load_rate', 1)
             nitrogen_loads.append(
                 rates['n'] / load_rate
@@ -69,6 +67,8 @@ def reduction(data):
             sediment_loads.append(
                 rates['tss'] / load_rate
             )
+        except (AttributeError, KeyError):
+            pass
 
     tn_load = calculate_load(nitrogen_loads, upstream_miles)
 
