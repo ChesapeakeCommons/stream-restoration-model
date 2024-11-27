@@ -2,7 +2,24 @@
 
 from __future__ import division
 
+import contextlib
+
 from .constants import LR_LOADS
+
+
+def calculate_load(
+    loads,
+    upstream_miles,
+):
+    try:
+        return (sum(loads) / float(len(loads))) * upstream_miles
+    except (
+        AttributeError,
+        TypeError,
+        ValueError,
+        ZeroDivisionError,
+    ):
+        return 0
 
 
 def calculate_sediment_storage(load):
@@ -10,6 +27,13 @@ def calculate_sediment_storage(load):
         return (load / 55) * 0.0000229569
     except (TypeError, ValueError) as error:
         return 0
+
+
+def cap_load_reduction(
+    total_treatable_load,
+    treatment_credit,
+):
+    return min(treatment_credit, total_treatable_load)
 
 
 def reduction(data):
@@ -24,42 +48,33 @@ def reduction(data):
 
     if (not isinstance(segments, list) or
             not all(isinstance(x, (float, int)) for x in values)):
-
         return {}
 
-    s_loads = []
-    n_loads = []
-    p_loads = []
+    sediment_loads = []
+    nitrogen_loads = []
+    phosphorus_loads = []
 
     for segment in segments:
 
         rates = LR_LOADS.get(segment)
 
-        try:
-
-            load_rate = rates.get('load_rate')
-
-            n_loads.append(
+        with contextlib.suppress(AttributeError, KeyError):
+            load_rate = rates.get('load_rate', 1)
+            nitrogen_loads.append(
                 rates['n'] / load_rate
             )
-
-            p_loads.append(
+            phosphorus_loads.append(
                 rates['p'] / load_rate
             )
-
-            s_loads.append(
+            sediment_loads.append(
                 rates['tss'] / load_rate
             )
 
-        except (AttributeError, KeyError):
+    tn_load = calculate_load(nitrogen_loads, upstream_miles)
 
-            pass
+    tp_load = calculate_load(phosphorus_loads, upstream_miles)
 
-    tn_load = (sum(n_loads) / float(len(n_loads))) * upstream_miles
-
-    tp_load = (sum(p_loads) / float(len(p_loads))) * upstream_miles
-
-    tss_load = (sum(s_loads) / float(len(s_loads))) * upstream_miles
+    tss_load = calculate_load(sediment_loads, upstream_miles)
 
     annual_sediment_volume = calculate_sediment_storage(tss_load)
 
@@ -94,7 +109,16 @@ def reduction(data):
     phosphorus_treatment_credit = sediment_treatment_credit * phosphorus_concentration
 
     return {
-        'tn_lbs_reduced': nitrogen_treatment_credit,
-        'tp_lbs_reduced': phosphorus_treatment_credit,
-        'tss_lbs_reduced': sediment_treatment_credit * 2000,
+        'tn_lbs_reduced': cap_load_reduction(
+            total_treatable_load=tn_load,
+            treatment_credit=nitrogen_treatment_credit,
+        ),
+        'tp_lbs_reduced': cap_load_reduction(
+            total_treatable_load=tp_load,
+            treatment_credit=phosphorus_treatment_credit,
+        ),
+        'tss_lbs_reduced': cap_load_reduction(
+            total_treatable_load=tss_load,
+            treatment_credit=(sediment_treatment_credit * 2000),
+        )
     }
